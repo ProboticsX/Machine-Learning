@@ -1,0 +1,13 @@
+Financial Portfolio Summary:
+
+Total Investment: $13,000
+
+Investment Distribution:
+- AMZ: 15.38% ($2,000)
+- BTC: 7.69% ($1,000)
+- Bonds: 76.92% ($10,000)
+
+Key Insights:
+- The majority of your investments are in Bonds, indicating a conservative approach to risk.
+- AMZ and BTC make up a smaller portion of your portfolio, suggesting limited exposure to equities and cryptocurrencies.
+- Consider diversifying your portfolio to balance risk and potential returns.
