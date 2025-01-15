@@ -1,0 +1,608 @@
+ {
+    "public_identifier": "shubham-jain-b31375137",
+    "profile_pic_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/shubham-jain-b31375137/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=4ee1fed58e5662296d4c23a84087b2d1034da86fcd7e97226d5265c5371f832e",
+    "background_cover_image_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/person/shubham-jain-b31375137/cover?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c16beec08420d06bb8964429668dbe21372d992f73f9a35547741d1396851957",
+    "first_name": "Shubham",
+    "last_name": "Jain",
+    "full_name": "Shubham Jain",
+    "follower_count": 3166,
+    "occupation": "Software Engineer II at LexisNexis",
+    "headline": "Software Engineer II at LexisNexis | AWS Certified (Solutions Architect, Cloud Practitioner) | Hashicorp Certified (Terraform Associate (003)) | MS CS at NC State\\'23 | Medium Tech blogger",
+    "summary": "I work in Cloud, mainly Kubernetes! I am here to connect with skilled professionals in any tech related domain.\\n\\nI have grabbed some cool certifications from AWS: AWS Solutions Architect & AWS Cloud Practitioner and Hashicorp Terraform Associate too!\\nSometimes I post about my projects on my Github and solve some Leetcode problems as well.Don't forget to read my Medium articles:https://medium.com/@jainshubham0403",
+    "country": "US",
+    "country_full_name": "United States",
+    "city": "Raleigh",
+    "state": "North Carolina",
+    "experiences": [{
+        "starts_at": {
+            "day": 1,
+            "month": 6,
+            "year": 2024
+        },
+        "ends_at": null,
+        "company": "LexisNexis",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/lexisnexis",
+        "company_facebook_profile_url": null,
+        "title": "Software Engineer II",
+        "description": "Provisioned Karpenter through Helm charts and ArgoCD for intelligent node scheduling and managing the workloads on the cluster according to their requirements thus saving almost 8% monthly costs.\\n\\u2022 Implemented cost savings strategies like Graviton node migration and ECR cleanups at LNLP that brought down the EKS monthly\\ncosts by 13% along with the multi-architecture docker image builds.\\n\\u2022 Reduced the startup time by heavy AI/ML k8s pods drastically from minutes to a few seconds by implementing a bootstrap image\\ncaching solution using Daemonset and Karpenter.\\n\\u2022 Worked on setting up Network & Kyverno policies for setting guardrails for different namespaces in a multi-tenant cluster\\nenvironment.",
+        "location": "Raleigh, North Carolina, United States",
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/lexisnexis/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a6728b1c4ba2572ea3ac3319e419f2505e2c8cb1e47da3820d61ff9e18dfc9a"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 6,
+            "year": 2023
+        },
+        "ends_at": {
+            "day": 30,
+            "month": 6,
+            "year": 2024
+        },
+        "company": "LexisNexis",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/lexisnexis",
+        "company_facebook_profile_url": null,
+        "title": "Software Engineer",
+        "description": "- Migrated more than 10 core component applications from the legacy Infrastructure to the standardized Infrastructure for Kubernetes cluster using Argo CD that is being used by various customers across the organization.\\n- Created multiple Kyverno policies to manage the security of the cluster and made it organizable via Splunk Dashboard which is currently managing approximately 12 policies across 7 clusters and is expected to grow in size with more customers.\\n- Implemented NVIDIA GPU Operator to that will provision GPU nodes to manage the AI workloads on the clusters.\\n- Provisioned Karpenter for automatically scheduling and managing the workloads on the cluster according to their requirements thus saving almost 8% monthly costs and the effort to manually create cluster auto scalars",
+        "location": "Raleigh, North Carolina, United States",
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/lexisnexis/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=2a6728b1c4ba2572ea3ac3319e419f2505e2c8cb1e47da3820d61ff9e18dfc9a"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 5,
+            "year": 2022
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 8,
+            "year": 2022
+        },
+        "company": "Arista Networks",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/arista-networks-inc",
+        "company_facebook_profile_url": null,
+        "title": "Software Engineer Intern",
+        "description": "- Worked on improving the software toolchain used in Arista software development and testing environments. This includes working with Docker/Kubernetes and many other tools written in-house.\\n- Automated developing of a Jenkins pipeline and deployed into Kubernetes cluster.",
+        "location": "Nashua, New Hampshire, United States",
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/arista-networks-inc/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=c3e9cf82e4309038287d59ce74de12b424c4bac9d405663812ff557e937b674b"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 6,
+            "year": 2020
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 8,
+            "year": 2020
+        },
+        "company": "Chimps Technology Pvt. Ltd.",
+        "company_linkedin_profile_url": null,
+        "company_facebook_profile_url": null,
+        "title": "Software Engineer Intern",
+        "description": "Worked on developing a job search Android App Rojgar Setu.",
+        "location": null,
+        "logo_url": null
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 6,
+            "year": 2019
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 7,
+            "year": 2019
+        },
+        "company": "FusionHawk",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/fusionhawk-private-limited",
+        "company_facebook_profile_url": null,
+        "title": "Software Engineer Intern",
+        "description": "Created Amazon Alexa Smart Wi-Fi Plugs \\nand \\nMyResume Chatbot using Google DialogFlow",
+        "location": "Delhi, Delhi",
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/fusionhawk-private-limited/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=04f9f402ddcde55c55a11f20ecd5a3f132a1efaff5655a7ef802acaf824c144e"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 6,
+            "year": 2018
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 7,
+            "year": 2018
+        },
+        "company": "OSI Consulting",
+        "company_linkedin_profile_url": "https://www.linkedin.com/company/osi-consulting",
+        "company_facebook_profile_url": null,
+        "title": "Software Engineer Intern",
+        "description": "Created Google Pi-Tv as an IoT developer in research.",
+        "location": "New Delhi Area, India",
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/osi-consulting/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=0d15bfa6c3bd0d85d5c2f0a1bea75651d8b5e929f3d85c0dedf6a7b2a169102f"
+    }],
+    "education": [{
+        "starts_at": {
+            "day": 1,
+            "month": 8,
+            "year": 2021
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 5,
+            "year": 2023
+        },
+        "field_of_study": "Computer Science",
+        "degree_name": "Masters degree",
+        "school": "North Carolina State University",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/4813/",
+        "school_facebook_profile_url": null,
+        "description": "Skills: Cloud Computing \\u00b7 SQL \\u00b7 Software Development \\u00b7 DevOps \\u00b7 Java",
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/north-carolina-state-university/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=22a63cf59d56673d76a434c53f56689b82d2328d5ca130d7c38d58f1441c68b2",
+        "grade": "4.0",
+        "activities_and_societies": null
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 8,
+            "year": 2016
+        },
+        "ends_at": {
+            "day": 30,
+            "month": 9,
+            "year": 2020
+        },
+        "field_of_study": "Electrical, Electronics and Communications Engineering",
+        "degree_name": "Bachelor of Technology - BTech",
+        "school": "Guru Gobind Singh Indraprastha University",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/9584148/",
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": "https://s3.us-west-000.backblazeb2.com/proxycurl/company/guru-gobind-singh-indraprastha-university/profile?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=0004d7f56a0400b0000000001%2F20250114%2Fus-west-000%2Fs3%2Faws4_request&X-Amz-Date=20250114T225240Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=ca5882550363fc2239f085f845504e9c0c837fabee180cd24db20c5b7637338e",
+        "grade": "8.29",
+        "activities_and_societies": null
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 1,
+            "year": 2002
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 12,
+            "year": 2016
+        },
+        "field_of_study": null,
+        "degree_name": "completed 12th",
+        "school": "Venkateshwar International School - India",
+        "school_linkedin_profile_url": "https://www.linkedin.com/company/7856785/",
+        "school_facebook_profile_url": null,
+        "description": null,
+        "logo_url": null,
+        "grade": "93.3% in 12th standard",
+        "activities_and_societies": null
+    }],
+    "languages": ["English", "French", "Hindi"],
+    "languages_and_proficiencies": [{
+        "name": "English",
+        "proficiency": "ELEMENTARY"
+    }, {
+        "name": "French",
+        "proficiency": "ELEMENTARY"
+    }, {
+        "name": "Hindi",
+        "proficiency": "NATIVE_OR_BILINGUAL"
+    }],
+    "accomplishment_organisations": [{
+        "starts_at": {
+            "day": 1,
+            "month": 8,
+            "year": 2021
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 10,
+            "year": 2021
+        },
+        "org_name": "Hindu Yuva Society of NC State University",
+        "title": "Event Leader",
+        "description": "Organized 75th Independence Day of India in Kennsington Park, Raleigh, USA"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 10,
+            "year": 2020
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 10,
+            "year": 2020
+        },
+        "org_name": "SANGAM Sweet Home for Children",
+        "title": "Volunteer Teacher",
+        "description": "Taught English to Orphanage Children in an Organization"
+    }],
+    "accomplishment_publications": [{
+        "name": "Amazon Alexa Enabled Smart Wi-Fi Switch",
+        "publisher": "Journal of Multi Disciplinary Engineering Technologies",
+        "published_on": {
+            "day": 1,
+            "month": 8,
+            "year": 2019
+        },
+        "description": "Presented a paper titled Amazon Alexa Enabled Smart Wi-Fi Plug at TECHODYUM\\u201919 \\nconducted by Bharati Vidyapeeth College of Engineering held at Bharati Vidyapeeth College \\nof Engineering, Delhi; with publication in Journal of Multi Disciplinary College of \\nTechnologies (Vol 13 Issue 1), Delhi (2019)",
+        "url": "http://www.jmdet.com/wp-content/uploads/2019/09/JMDET_13_1_15-NEW.pdf"
+    }],
+    "accomplishment_honors_awards": [{
+        "title": "Best Research Paper",
+        "issuer": "Bharati Vidyapeeth College of Engineering",
+        "issued_on": {
+            "day": 1,
+            "month": 3,
+            "year": 2019
+        },
+        "description": "2nd Position for Best Research Paper during TECHODYUM\\u201919 conducted by Bharati Vidyapeeth College of Engineering held at Paschim Vihar, Delhi\\u201404/19 "
+    }, {
+        "title": "Zonals round winner at Innovians IoT competition ",
+        "issuer": "Innovians Technologies",
+        "issued_on": {
+            "day": 1,
+            "month": 10,
+            "year": 2017
+        },
+        "description": "Zonals round winner at Innovians IoT competition "
+    }, {
+        "title": "Inter School Winner- Robotics Competition",
+        "issuer": "N K Bagrodia School Dwarka ",
+        "issued_on": {
+            "day": 1,
+            "month": 7,
+            "year": 2015
+        },
+        "description": "Scored 1st rank in robotics interschool competition for making a vacuum cleaner out of electronic waste"
+    }, {
+        "title": "Bronze medallist in International Mathematical Olympiad at School Level",
+        "issuer": "IMO",
+        "issued_on": {
+            "day": 1,
+            "month": 11,
+            "year": 2014
+        },
+        "description": "Got 3rd rank in school and 100th rank in state in International Mathematical Olympiad"
+    }, {
+        "title": "Topper\\'s Academic Award- Class X",
+        "issuer": "Venkateshwar International School",
+        "issued_on": {
+            "day": 1,
+            "month": 7,
+            "year": 2014
+        },
+        "description": "Received Trophy for scoring first rank in class 10th"
+    }],
+    "accomplishment_patents": [],
+    "accomplishment_courses": [{
+        "name": "Algorithms for Data Guided Business Intelligence",
+        "number": "CSC 591"
+    }, {
+        "name": "Automated Learning & Data Analysis",
+        "number": "CSC 522"
+    }, {
+        "name": "Computational Models of Interactive Narrative",
+        "number": "CSC 582"
+    }, {
+        "name": "Computer Networks",
+        "number": "CSC 570"
+    }, {
+        "name": "Database Management Systems",
+        "number": "CSC 540"
+    }, {
+        "name": "Design & Analysis of Algorithms",
+        "number": "CSC 505"
+    }, {
+        "name": "DevOps: Modern Software Engineering Practices",
+        "number": "CSC 519"
+    }, {
+        "name": "Introduction to Computer Graphics",
+        "number": "CSC 561"
+    }, {
+        "name": "Software Engineering",
+        "number": "CSC 510"
+    }],
+    "accomplishment_projects": [{
+        "starts_at": {
+            "day": 1,
+            "month": 5,
+            "year": 2023
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 5,
+            "year": 2023
+        },
+        "title": "Software Engineering Java Project: Blog Rest API app",
+        "description": "\\u2022Developed the fully working REST-API Blog app using Java Spring Boot Framework with multiple endpoints and SQL database.\\n\\u2022Successfully developed the CRUD operations and integrated Spring Database Security, Pagination & Sorting features as well.\\n\\u2022Containerized the whole application using Docker and deployed it on a Kubernetes cluster with full configuration set up using Config Map, Secret Keys and Services.",
+        "url": "https://github.com/ProboticsX/SpringProject-BlogAPI"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 10,
+            "year": 2022
+        },
+        "ends_at": {
+            "day": 30,
+            "month": 11,
+            "year": 2022
+        },
+        "title": "Software Engineering DBMS Project: AUTOR-SQL",
+        "description": "\\u2022Developed an Automobile Servicing app using Java Backend and integrated it with SQL database using Oracle JDBC.\\n\\u2022Used various DDL, DML queries to create, populate and update the database.\\n\\u2022The business app logic was written in Java and used various joins to form relations between the different sets of schemas.",
+        "url": "https://github.com/ProboticsX/DBMS-AUTOR"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 1,
+            "year": 2022
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 5,
+            "year": 2022
+        },
+        "title": "DevOps Project: Pipeline (init, build, test, deploy)",
+        "description": "- Worked on developing Pipeline Architecture: Init, Build, Test, Deploy\\n- Used Oracle VirtualBox to develop on Virtual Machines and set up dependencies for running Java application.\\n- Implemented Fuzzing testing techniques and applied mutation testing over 1000 iterations to test Java application\\n- Deployed the Java application on Digital Ocean cloud provider and setting up of Proxy server for blue-green deployment was also done successfully.\\n- Setting up of similar pipeline for Angular application was done along with code analysis codacy, cloc, PMD, EsLint",
+        "url": "https://github.com/ProboticsX/DevOps-Pipeline-Project"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 1,
+            "year": 2022
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 5,
+            "year": 2022
+        },
+        "title": "Discord Reward Bot",
+        "description": "- Programmed backend code in JavaScript for handling all the use-cases of the bot such as rewarding points to users.\\n- Handled the database of the bot using PostGresql database and integrated it with the use-cases as well.\\n- Created the message-embeds for front-end and linked the bot to GitHub using webhooks to monitor GitHub activities",
+        "url": "https://github.com/ProboticsX/Reward-Bot"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 8,
+            "year": 2020
+        },
+        "ends_at": {
+            "day": 30,
+            "month": 9,
+            "year": 2020
+        },
+        "title": "Of Course I Love Mars Filter for Instagram",
+        "description": "The filter contains following features built in consideration for optimising the same on Instagram Reels:\\n\\nPanoramic 360-Degree World Experience: This filter basically immerses the user into completely new surroundings of Mars planet thus giving its users an amazing out of the world experience. As the user moves, the background in the filter moves accordingly or in other words, it gives user a panoramic 360-degree world experience.\\n\\nAstronaut Helmet: The filter augments the user\\u2019s reality by adding an astronaut helmet on the user\\u2019s face which moves and responds according to user\\u2019s head movement.\\n\\nAnimated Drones: If the user taps on the drones present in the scene, the drones change their location thereby creating a user-friendly experience.\\n\\nDust Particles: The filter contains dust particles throughout the screen to give users World AR immersive exposure.\\n\\nBackground Audio: This filter has a background audio associated with it which can be heard whenever user operates the filter.\\n\\nUser Voice Modulation: It has an interesting feature where the filter basically modulates the user\\u2019s voice if he/she speaks whist recording the video using the filter.\\n\\nRead more about it in article: https://www.linkedin.com/feed/update/urn:li:activity:6704853521805705216/",
+        "url": "https://github.com/ProboticsX/Of-Course-I-Love-Mars-Filter"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 6,
+            "year": 2020
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 7,
+            "year": 2020
+        },
+        "title": "Rojgar Setu: An Indian Job Search App",
+        "description": "An Indian Job Search android App",
+        "url": "https://github.com/ProboticsX/Rojgar-Setu"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 10,
+            "year": 2019
+        },
+        "ends_at": {
+            "day": 30,
+            "month": 11,
+            "year": 2019
+        },
+        "title": "ARBook",
+        "description": "An Augmented Reality Book for Education",
+        "url": "https://github.com/ProboticsX/AR-Book"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 9,
+            "year": 2019
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 10,
+            "year": 2019
+        },
+        "title": "MyResume ChatBot",
+        "description": " An Innovative way to present my resume using Google Assistant ",
+        "url": "https://www.youtube.com/watch?v=rLLL51NyOqQ"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 3,
+            "year": 2019
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 3,
+            "year": 2019
+        },
+        "title": "Jal Android App",
+        "description": "An Extraordinary Android App for all concerns related to Water Supply issues and Complants. User needs to enter KNO and password and can have their following problems sorted:\\n1. Wrong Water Bill\\n2. Water Supply issues\\n3. Pay Water Bill\\n4. Error in Water Meter\\n5. Pipeline Leakage, etc.\\nUsers can also check their complaint status and moreover, department guys can also use it to resolve people\\'s complaints.",
+        "url": "https://github.com/ProboticsX/Jal-App"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 7,
+            "year": 2018
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 8,
+            "year": 2018
+        },
+        "title": "Amazon Alexa Smart Plug",
+        "description": "A smart wifi plug based on nodemcu that can be governed by Amazon Alexa using voice commands\\nthere will be no need to buy expensive smart plugs, we can develop it on our own !\\n",
+        "url": "https://github.com/ProboticsX/alexa-smart-plug"
+    }],
+    "accomplishment_test_scores": [{
+        "name": "12 boards",
+        "score": "93",
+        "date_on": {
+            "day": 1,
+            "month": 3,
+            "year": 2016
+        },
+        "description": "I scored 93 aggregate percentage in 12th standard"
+    }, {
+        "name": "10 boards school",
+        "score": "95 percentage",
+        "date_on": {
+            "day": 1,
+            "month": 3,
+            "year": 2014
+        },
+        "description": "I got 10 cgpa in class 10"
+    }],
+    "volunteer_work": [],
+    "certifications": [{
+        "starts_at": {
+            "day": 1,
+            "month": 10,
+            "year": 2023
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 10,
+            "year": 2026
+        },
+        "name": "AWS Certified Solutions Architect \\u2013 Associate",
+        "license_number": null,
+        "display_source": "credly.com",
+        "authority": "Amazon Web Services (AWS)",
+        "url": "https://www.credly.com/badges/22234310-eb61-427f-9557-bbb2dbe265ae/linked_in_profile"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 9,
+            "year": 2023
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 10,
+            "year": 2026
+        },
+        "name": "AWS Certified Cloud Practitioner",
+        "license_number": null,
+        "display_source": "credly.com",
+        "authority": "Amazon Web Services (AWS)",
+        "url": "https://www.credly.com/badges/954ffead-5bb5-434f-a348-f0164e5bf246/linked_in_profile"
+    }, {
+        "starts_at": {
+            "day": 1,
+            "month": 1,
+            "year": 2024
+        },
+        "ends_at": {
+            "day": 31,
+            "month": 1,
+            "year": 2026
+        },
+        "name": "Terraform Associate (003)",
+        "license_number": null,
+        "display_source": "credly.com",
+        "authority": "HashiCorp",
+        "url": "https://www.credly.com/badges/d1025027-0219-424e-8939-9f714a3ee297/public_url"
+    }],
+    "connections": 3171,
+    "people_also_viewed": [{
+        "link": "https://www.linkedin.com/in/srisanmathi-ramachandran?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACilXqkBCzxKTf3JMMhXe08PtcDeaf5mwTA",
+        "name": "Srisanmathi Ramachandran",
+        "summary": "Software Engineer | LexisNexis",
+        "location": null
+    }, {
+        "link": "https://www.linkedin.com/in/animeshsaxena?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACP8j3UBDFwuPQ5GIue4BmGhuFnCPowgo0c",
+        "name": "Animesh Saxena",
+        "summary": "Nokia | Nokia Bell Labs | Accenture | MS CN at North Carolina State University",
+        "location": null
+    }, {
+        "link": "https://www.linkedin.com/in/saumitra-apte?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACQKwxkBQuwfqULAHQAVAHbiHWpyAYH6uWY",
+        "name": "Saumitra Apte",
+        "summary": "Software Engineer at LexisNexis",
+        "location": null
+    }, {
+        "link": "https://www.linkedin.com/in/revanthmadamala?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAABj9cesBoX65CM-QYEawlBz1jCqgFcyjihg",
+        "name": "Revanth Madamala",
+        "summary": "ex-Data Scientist(GenAI, NLP) @LexisNexis | ex-Autodesk | ex-USC | ex-kore.ai | ex-CDAC | GHC 22 | GHC 23",
+        "location": null
+    }, {
+        "link": "https://www.linkedin.com/in/rachanakondabala?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAABOJLsgB0tCe4CXGDbB2tRLGVQguKN1XEB8",
+        "name": "Rachana K.",
+        "summary": "Software Engineer | NCSU | Toshiba | Pega Systems",
+        "location": null
+    }],
+    "recommendations": ["Matt Story\\n\\n\\n\\nShubham approached his internship in the EngProd group at Arista with great enthusiasm.  He showed both the desire and ability to learn new technologies and apply them to his project work."],
+    "activities": [{
+        "title": "For folks affected by recent layoffs - StampMyVisa is hiring across product, design and engineering.We are looking for superhumans who thrive in\\u2026",
+        "link": "https://www.linkedin.com/posts/satwadhi-das-18530b54_layoffs-activity-7022203264158900224-4ETM",
+        "activity_status": "Liked by Shubham Jain"
+    }],
+    "similarly_named_profiles": [{
+        "name": "Shubham Jain",
+        "link": "https://in.linkedin.com/in/jain-shubham8888",
+        "summary": "Human Resources Executive at Apco Infratech Pvt. Ltd",
+        "location": "New Delhi"
+    }, {
+        "name": "Shubham Jain",
+        "link": "https://in.linkedin.com/in/shubham-jain-19486036",
+        "summary": "Founder/Director at Bookswagon.com- Hiring CTO, IT Strategy Architect for Bookswagon.com",
+        "location": "Delhi, India"
+    }, {
+        "name": "Shubham Jain",
+        "link": "https://in.linkedin.com/in/shubham-jain-84358b77",
+        "summary": "Software Development Engineer at Byjus Research | NodeJS | ReactJS  | Django | Python | System Design | Machine Learning | Laravel | Rest APIs | Azure | MSSQL Server | AWS | Bitbucket | Mentor",
+        "location": "Bengaluru"
+    }, {
+        "name": "Shubham Jain",
+        "link": "https://in.linkedin.com/in/shubhamdeepjain",
+        "summary": "Noida Power Company Ltd | Cash Expert | Cashier | Data Reconciliation | Ms Excel | Ex- BSES Rajdhani Power Ltd",
+        "location": "Noida"
+    }, {
+        "name": "Shubham jain",
+        "link": "https://in.linkedin.com/in/shubham-jain-1aa27154",
+        "summary": "Senior Engineer at Rockwell Automation",
+        "location": "Pune"
+    }],
+    "articles": [{
+        "title": "Of Course I Love Mars Filter for Instagram",
+        "link": "https://www.linkedin.com/pulse/course-i-love-mars-filter-instagram-shubham-jain",
+        "published_date": {
+            "day": 27,
+            "month": 1,
+            "year": 2020
+        },
+        "author": "By Shubham Jain",
+        "image_url": "https://media.licdn.com/dms/image/C4E12AQG-X-F515lQyA/article-cover_image-shrink_180_320/0/1598562163666?e=2147483647&v=beta&t=KDywZkGvycTx67ah0WjAeLN9gsP81YLg5ycuaLglnZE"
+    }, {
+        "title": "Pi-TV: Google Home",
+        "link": "https://www.linkedin.com/pulse/pi-tv-google-home-shubham-jain",
+        "published_date": {
+            "day": 27,
+            "month": 1,
+            "year": 2018
+        },
+        "author": "By Shubham Jain",
+        "image_url": "https://media.licdn.com/dms/image/C4E12AQHwrJ2JR7Im1g/article-inline_image-shrink_400_744/0/1530105243739?e=2147483647&v=beta&t=DCFiVejr5ykTx44eVsOFvx8_yssZ5Hc4EHIHnoitXkc"
+    }],
+    "groups": [],
+    "skills": [],
+    "inferred_salary": null,
+    "gender": null,
+    "birth_date": null,
+    "industry": null,
+    "extra": null,
+    "interests": [],
+    "personal_emails": [],
+    "personal_numbers": []
+}
