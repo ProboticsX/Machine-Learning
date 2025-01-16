@@ -1,4 +1,6 @@
 import os
+import sys
+
 from dotenv import load_dotenv
 import requests
 from langchain_core.output_parsers import StrOutputParser
@@ -11,9 +13,14 @@ from langchain.agents import (
 )
 from langchain import hub
 
-from tools.tools import get_profile_url_tavily
 
 load_dotenv()
+pythonpath = os.getenv('PYTHONPATH')
+if pythonpath and pythonpath not in sys.path:
+    sys.path.append(pythonpath)
+    print(sys.path)
+
+from tools.tools import get_profile_url_tavily
 
 def lookup(name: str) -> str:
     llm = ChatOpenAI(
@@ -41,5 +48,5 @@ def lookup(name: str) -> str:
     return linkedin_profile_url
 
 if __name__ == "__main__":
-    linkedin_url = lookup(name="Bill Gates")
+    linkedin_url = lookup(name="Shubham Jain, NCSU, LexisNexis, Software Engineer")
     print(linkedin_url)
