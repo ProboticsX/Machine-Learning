@@ -19,12 +19,12 @@ def scrape_user_tweets(username, num_tweets=5, mock:bool=False):
     '''
     tweet_list = []
     if mock:
-        twitter_gist = "https://gist.githubusercontent.com/emarco177/827323bb599553d0f0e662da07b9ff68/raw/57bf38cf8acce0c87e060f9bb51f6ab72098fbd6/eden-marco-twitter.json"
+        twitter_gist = "https://gist.githubusercontent.com/ProboticsX/f49ab683745913c5f6c9e053ad1782b4/raw/24fa8d232fa88fa599c3ea630c5705e6139f523f/elonmusk-tweets.json"
         tweets = requests.get(twitter_gist, timeout=5).json()
         for tweet in tweets:
             tweet_dict = {}
             tweet_dict["text"] = tweet["text"]
-            tweet_dict["url"] = f"https://twitter.com/{username}/status/{tweet['id']}"
+            tweet_dict["url"] = tweet["url"]
             tweet_list.append(tweet_dict)
     else:
         user_id = twitter_client.get_user(username=username).data.id
@@ -38,5 +38,5 @@ def scrape_user_tweets(username, num_tweets=5, mock:bool=False):
 
 if __name__ == "__main__":
 
-    tweets = scrape_user_tweets(username="elonmusk", mock=False)
+    tweets = scrape_user_tweets(username="elonmusk", mock=True)
     print(tweets)
