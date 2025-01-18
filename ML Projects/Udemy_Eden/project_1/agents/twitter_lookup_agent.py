@@ -2,8 +2,6 @@ import os
 import sys
 
 from dotenv import load_dotenv
-import requests
-from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import Tool
@@ -20,7 +18,7 @@ if pythonpath and pythonpath not in sys.path:
     sys.path.append(pythonpath)
     print(sys.path)
 
-from tools.tools import get_profile_url_tavily
+from project_1.tools.tools import get_profile_url_tavily
 
 def lookup_twitter(name: str) -> str:
     llm = ChatOpenAI(

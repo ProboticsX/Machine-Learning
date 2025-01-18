@@ -1,14 +1,12 @@
-import os
 from dotenv import load_dotenv
-from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
-from agents.linkedin_lookup_agent import lookup
-from agents.twitter_lookup_agent import lookup_twitter
+from project_1.agents.linkedin_lookup_agent import lookup
+from project_1.agents.twitter_lookup_agent import lookup_twitter
 from output_parsers import summary_parser
-from third_parties.linkedin import scrape_linkedin_profile
-from third_parties.twitter import scrape_user_tweets
+from project_1.third_parties.linkedin import scrape_linkedin_profile
+from project_1.third_parties.twitter import scrape_user_tweets
 
 
 def ice_break_with(name: str) -> str:
