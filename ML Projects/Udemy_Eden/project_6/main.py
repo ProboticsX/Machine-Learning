@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from langchain import hub
 from langchain.agents import create_react_agent, AgentExecutor
+from langchain_experimental.agents import create_csv_agent
 from langchain_experimental.tools import PythonREPLTool
 from langchain_openai import ChatOpenAI
 
@@ -22,11 +23,25 @@ def main():
         llm = ChatOpenAI(),
         tools = tools
     )
-    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-    agent_executor.invoke(
+    # agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    # agent_executor.invoke(
+    #     input={
+    #         "input": """generate and save in current working directory 15 QRcodes
+    #                                 that point to www.udemy.com/course/langchain, you have qrcode package installed already"""
+    #     }
+    # )
+    csv_agent = create_csv_agent(
+        llm=ChatOpenAI(),
+        path="episode_info.csv",
+        verbose=True,
+        allow_dangerous_code=True
+    )
+    csv_agent.invoke(
+        input={"input": "how many columns are there in file episode_info.csv"}
+    )
+    csv_agent.invoke(
         input={
-            "input": """generate and save in current working directory 15 QRcodes
-                                    that point to www.udemy.com/course/langchain, you have qrcode package installed already"""
+            "input": "print the seasons by ascending order of the number of episodes they have"
         }
     )
 
