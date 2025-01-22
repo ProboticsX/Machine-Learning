@@ -31,6 +31,7 @@ builder.add_edge(REFLECT, GENERATE)
 
 graph = builder.compile()
 print(graph.get_graph().draw_mermaid())
+graph.get_graph().draw_mermaid_png(output_file_path="reflection_graph.png")
 
 if __name__ == "__main__":
     print("Hello LangGraph!")
