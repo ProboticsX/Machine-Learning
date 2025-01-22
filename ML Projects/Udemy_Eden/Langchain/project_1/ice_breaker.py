@@ -2,11 +2,11 @@ from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
-from project_1.agents.linkedin_lookup_agent import lookup
-from project_1.agents.twitter_lookup_agent import lookup_twitter
+from Langchain.project_1.agents.linkedin_lookup_agent import lookup
+from Langchain.project_1.agents.twitter_lookup_agent import lookup_twitter
 from output_parsers import summary_parser
-from project_1.third_parties.linkedin import scrape_linkedin_profile
-from project_1.third_parties.twitter import scrape_user_tweets
+from Langchain.project_1.third_parties.linkedin import scrape_linkedin_profile
+from Langchain.project_1.third_parties.twitter import scrape_user_tweets
 
 
 def ice_break_with(name: str) -> str:

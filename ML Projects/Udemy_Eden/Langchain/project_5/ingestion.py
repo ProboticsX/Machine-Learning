@@ -10,7 +10,8 @@ load_dotenv()
 embeddings = OpenAIEmbeddings()
 
 def ingest_docs():
-    loader = ReadTheDocsLoader("/Users/shubhams/Documents/Repos/ProboticsX/Machine-Learning/ML Projects/Udemy_Eden/project_5/documentation-helper/langchain-docs/api.python.langchain.com/en/latest")
+    loader = ReadTheDocsLoader(
+        "/Langchain/project_5/documentation-helper/langchain-docs/api.python.langchain.com/en/latest")
     raw_documents = loader.load()
     print(f"Loaded {len(raw_documents)} documents")
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=600, chunk_overlap=50)

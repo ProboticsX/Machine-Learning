@@ -10,7 +10,7 @@ load_dotenv()
 
 if __name__ == "__main__":
     print("Ingesting")
-    loader = TextLoader("/Users/shubhams/Documents/Repos/ProboticsX/Machine-Learning/ML Projects/Udemy_Eden/project_3/mediumblog1.txt")
+    loader = TextLoader("/Langchain/project_3/mediumblog1.txt")
     document = loader.load()
 
     print("splitting")

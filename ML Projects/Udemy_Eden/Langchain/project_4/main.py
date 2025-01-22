@@ -12,7 +12,7 @@ from openai import embeddings
 
 load_dotenv()
 if __name__=="__main__":
-    pdf_path = '/Users/shubhams/Documents/Repos/ProboticsX/Machine-Learning/ML Projects/Udemy_Eden/project_4/paper.pdf'
+    pdf_path = '/Langchain/project_4/paper.pdf'
     loader = PyPDFLoader(file_path=pdf_path)
     documents = loader.load()
 

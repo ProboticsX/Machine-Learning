@@ -18,22 +18,22 @@ if pythonpath and pythonpath not in sys.path:
     sys.path.append(pythonpath)
     print(sys.path)
 
-from project_1.tools.tools import get_profile_url_tavily
+from Langchain.project_1.tools.tools import get_profile_url_tavily
 
-def lookup_twitter(name: str) -> str:
+def lookup(name: str) -> str:
     llm = ChatOpenAI(
         temperature=0,
         model_name="gpt-4o-mini",
     )
-    template = """Given the full name {name_of_person} I want you to get it me a link to their Twitter profile page.
-                    Your answer should only contain the user's Twitter username. Remove @ from the username.
+    template = """Given the full name {name_of_person} I want you to get it me a link to their LinkedIn profile page.
+                    Your answer should only contain a URL
     """
     prompt_template = PromptTemplate(input_variables=["name_of_person"], template=template)
     tools_for_agent = [
         Tool(
-            name = "Crawl Google for Twitter Profile Page",
+            name = "Crawl Google for LinkedIn Profile Page",
             func = get_profile_url_tavily,
-            description = "useful when you need to get the Twitter Profile Page URL"
+            description = "useful when you need to get the LinkedIn Page URL"
         )
     ]
     react_prompt = hub.pull("hwchase17/react")
@@ -42,9 +42,9 @@ def lookup_twitter(name: str) -> str:
     result = agent_executor.invoke(
         input={"input":prompt_template.format_prompt(name_of_person=name)}
     )
-    twitter_profile_url = result["output"]
-    return twitter_profile_url
+    linkedin_profile_url = result["output"]
+    return linkedin_profile_url
 
 if __name__ == "__main__":
-    twitter_url = lookup_twitter(name="Elon Musk")
-    print(twitter_url)
+    linkedin_url = lookup(name="Shubham Jain, NCSU, LexisNexis, Software Engineer")
+    print(linkedin_url)
