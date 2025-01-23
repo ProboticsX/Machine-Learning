@@ -23,7 +23,7 @@ Current time: {time}
 
 1. {first_instruction}
 2. Reflect and critique your answer. Be severe to maximize improvement.
-3. Recommend search queries to research information and improve your answer.""",
+3. Separately, recommend 1-3 search queries to research information and improve your answer. These should not overlap with the reflection.""",
         ),
         MessagesPlaceholder(variable_name="messages"),
         ("system", "Answer the user's question above using the required format."),

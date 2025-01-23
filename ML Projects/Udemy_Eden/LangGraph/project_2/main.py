@@ -5,9 +5,8 @@ from dotenv import load_dotenv
 from langchain_core.messages import BaseMessage, ToolMessage
 from langgraph.graph import MessageGraph
 
-from LangGraph.project_2.chains import revisor
-from LangGraph.project_2.tool_executor import execute_tools
-from chains import first_responder
+from tool_executor import execute_tools
+from chains import first_responder, revisor
 
 load_dotenv()
 MAX_ITERATIONS = 2
