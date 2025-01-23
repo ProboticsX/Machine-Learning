@@ -2,7 +2,7 @@ import datetime
 
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage
-from langchain_core.output_parsers import JsonOutputToolsParser, PydanticToolsParser
+from langchain_core.output_parsers.openai_tools import (JsonOutputToolsParser, PydanticToolsParser)
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
 
@@ -11,8 +11,6 @@ from schemas import AnswerQuestion, ReviseAnswer
 load_dotenv()
 
 llm = ChatOpenAI(model="gpt-4-turbo-preview")
-parser = JsonOutputToolsParser(return_id=True)
-parser_pydantic = PydanticToolsParser(tools=[AnswerQuestion])
 
 actor_prompt_template = ChatPromptTemplate.from_messages(
     [

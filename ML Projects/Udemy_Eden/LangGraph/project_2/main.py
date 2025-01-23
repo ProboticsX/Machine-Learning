@@ -1,11 +1,10 @@
-from tkinter import END
 from typing import List
 
 from dotenv import load_dotenv
 from langchain_core.messages import BaseMessage, ToolMessage
-from langgraph.graph import MessageGraph
+from langgraph.graph import MessageGraph, END
 
-from tool_executor import execute_tools
+from tool_executor import tool_node
 from chains import first_responder, revisor
 
 load_dotenv()
@@ -17,7 +16,7 @@ REVISOR = "revisor"
 
 builder = MessageGraph()
 builder.add_node(DRAFT, first_responder)
-builder.add_node(EXECUTE_TOOLS, execute_tools)
+builder.add_node(EXECUTE_TOOLS, tool_node)
 builder.add_node(REVISOR, revisor)
 
 builder.add_edge(DRAFT, EXECUTE_TOOLS)
@@ -40,4 +39,9 @@ if __name__=="__main__":
     res = graph.invoke(
         "Write about AI-Powered SOC / autonomous soc  problem domain, list startups that do that and raised capital."
     )
+    print("SUMMARY:\n")
     print(res[-1].tool_calls[0]["args"]["answer"])
+    print("REFERENCES:\n")
+    print(res[-1].tool_calls[0]["args"]["references"])
+    print("res object:\n")
+    print(res)
