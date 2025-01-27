@@ -36,4 +36,5 @@ if __name__=="__main__":
             "input": "what is the weather in sf? List it and then Triple it ",
         }
     )
-    print(res["agent_outcome"].return_values["output"])
+    print(res)
+    # print(res["agent_outcome"].return_values["output"])

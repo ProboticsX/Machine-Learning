@@ -132,3 +132,4 @@ virtual_env
 #Other docs
 documentation-helper/
 faiss_index_react/
+.chroma/
