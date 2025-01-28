@@ -28,6 +28,6 @@ doc_splits = text_splitter.split_documents(docs_list)
 
 retriever = Chroma(
     collection_name="rag-chroma",
-    persist_directory="./.chroma",
+    persist_directory="/Users/shubhams/Documents/Repos/ProboticsX/Machine-Learning/ML Projects/Udemy_Eden/LangGraph/project_4/graph/.chroma",
     embedding_function=OpenAIEmbeddings()
 ).as_retriever()
