@@ -1,6 +1,5 @@
 from typing import Dict, Any
-from xml.dom.minidom import Document
-
+from langchain.schema import Document
 from dotenv import load_dotenv
 from langchain_community.tools import TavilySearchResults
 
