@@ -3,6 +3,7 @@ from langgraph.graph import END, StateGraph
 
 from LangGraph.project_4.graph.chains.answer_grader import answer_grader
 from LangGraph.project_4.graph.chains.hallucination_grader import hallucination_grader
+from LangGraph.project_4.graph.chains.router import RouteQuery, question_router
 from LangGraph.project_4.graph.consts import WEBSEARCH, GENERATE, RETRIEVE, GRADE_DOCUMENTS
 from LangGraph.project_4.graph.nodes.generate import generate
 from LangGraph.project_4.graph.nodes.grade_documents import grade_documents
@@ -46,6 +47,16 @@ def grade_generated_answer_grounded_in_documents_and_question(state: GraphState)
         print("--DECISION: GENERATION IS NOT GROUNDED IN DOCUMENTS--")
         return "not supported"
 
+def route_question(state: GraphState):
+    print("--ASSESS HOW TO ROUTE USER QUESTION: Vectorstore/Websearch--")
+    question = state["question"]
+    res: RouteQuery = question_router.invoke({"question": question})
+    if res.datasource == "vectorstore":
+        print("--DECISION: VECTORSTORE--")
+        return RETRIEVE
+    else:
+        print("--DECISION: WEBSEARCH--")
+        return WEBSEARCH
 
 
 workflow = StateGraph(GraphState)
@@ -54,7 +65,13 @@ workflow.add_node(GRADE_DOCUMENTS, grade_documents)
 workflow.add_node(GENERATE, generate)
 workflow.add_node(WEBSEARCH, web_search)
 
-workflow.set_entry_point(RETRIEVE)
+workflow.set_conditional_entry_point(
+    route_question,
+    {
+        WEBSEARCH: WEBSEARCH,
+        RETRIEVE: RETRIEVE,
+    },
+)
 workflow.add_edge(RETRIEVE, GRADE_DOCUMENTS)
 workflow.add_conditional_edges(
     GRADE_DOCUMENTS,
@@ -77,4 +94,4 @@ workflow.add_edge(WEBSEARCH, GENERATE)
 workflow.add_edge(GENERATE, END)
 
 app = workflow.compile()
-app.get_graph().draw_mermaid_png(output_file_path="self_graph.png")
+app.get_graph().draw_mermaid_png(output_file_path="adaptive_graph.png")
