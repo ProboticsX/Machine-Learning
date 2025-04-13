@@ -6,3 +6,5 @@ langserve[all]
 python-dotenv
 langchain_openai
 openai
+fastapi
+langchain_core
