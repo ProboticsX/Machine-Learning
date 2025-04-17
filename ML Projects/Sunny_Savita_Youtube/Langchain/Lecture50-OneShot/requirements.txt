@@ -10,3 +10,4 @@ fastapi
 langchain_core
 wikipedia
 faiss-cpu
+chromadb
