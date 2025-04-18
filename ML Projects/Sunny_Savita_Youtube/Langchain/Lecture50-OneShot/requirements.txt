@@ -12,3 +12,5 @@ wikipedia
 faiss-cpu
 chromadb
 pydantic[email]
+duckduckgo-search
+yfinance
