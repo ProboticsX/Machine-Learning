@@ -9,13 +9,19 @@ def reasoner(state):
     print("===REASONER===")
     print(state)
     messages = state["messages"]
-    system_prompt = """You are a helpful assistant that can answer questions and help with tasks. \n
+    question = state["question"]
+    system_msg = """You are a helpful assistant that can answer questions and help with tasks. \n
                         You are equipped with tools like\n
                             - DuckDuckGoSearchRun to search the web for information.\n
                             - Yahoo Finance tool to get the stock price. \n
+                        You are given a question and you need to answer it using the tools provided (if needed). \n
                         Please stop reasoning when you have the final answer."""
-    system_message = SystemMessage(content=system_prompt)
-    result = llm_with_tools.invoke([system_message]+messages)
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_msg),
+        ("user", "Here is the question: {question}"),
+    ])
+    reasoning_chain = prompt | llm_with_tools
+    result = reasoning_chain.invoke({"question": question})
     return {"messages": [result]}
     
 
@@ -37,5 +43,5 @@ def tavily_search():
 def get_tools():
     return [tavily_search, get_stock_price]
 
-llm = ChatOpenAI(model_name="gpt-4o")
+llm = ChatOpenAI(model_name="gpt-4o-mini")
 llm_with_tools = llm.bind_tools(get_tools())
