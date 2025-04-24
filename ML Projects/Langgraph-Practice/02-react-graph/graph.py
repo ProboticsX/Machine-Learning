@@ -10,6 +10,10 @@ workflow.set_entry_point(REASONER)
 workflow.add_conditional_edges(
     REASONER,
     tools_condition,
+    {
+        TOOLS: TOOLS,
+        END: END
+    }
 )
 workflow.add_edge(TOOLS, REASONER)
 graph = workflow.compile()

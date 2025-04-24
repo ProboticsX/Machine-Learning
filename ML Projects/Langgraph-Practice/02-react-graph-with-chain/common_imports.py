@@ -13,7 +13,7 @@ from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_community.tools import TavilySearchResults
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, ToolMessage
 from langchain import hub
 from langgraph.prebuilt import create_react_agent, ToolNode
 from langgraph.checkpoint.memory import MemorySaver

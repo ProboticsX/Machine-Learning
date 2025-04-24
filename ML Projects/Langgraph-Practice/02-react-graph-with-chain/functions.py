@@ -3,25 +3,34 @@ from common_imports import *
 def displayGraph(graph):
     # display(Image(graph.get_graph(xray=True).draw_mermaid_png()))
     print(graph.get_graph().draw_ascii())
-    # graph.get_graph().draw_mermaid_png(output_file_path="react_graph.png")
+    graph.get_graph().draw_mermaid_png(output_file_path="react_graph_with_chain.png")
 
 def reasoner(state):
     print("===REASONER===")
     print(state)
     messages = state["messages"]
     question = state["question"]
-    system_msg = """You are a helpful assistant that can answer questions and help with tasks. \n
+    # instructions = state["instructions"]
+    system_prompt = """You are a helpful assistant that can answer questions and help with tasks. \n
                         You are equipped with tools like\n
-                            - DuckDuckGoSearchRun to search the web for information.\n
-                            - Yahoo Finance tool to get the stock price. \n
+                            - tavily_search to search the web for information.\n
+                            - get_stock_price to get the stock price. \n
                         You are given a question and you need to answer it using the tools provided (if needed). \n
+                        Optionally, you will be also provided with some instructions to follow (if provided), then you will need to follow those instructions.\n
                         Please stop reasoning when you have the final answer."""
     prompt = ChatPromptTemplate.from_messages([
-        ("system", system_msg),
+        ("system", system_prompt),
         ("user", "Here is the question: {question}"),
     ])
+    print("===PROMPT=====")
+    print(prompt)
     reasoning_chain = prompt | llm_with_tools
-    result = reasoning_chain.invoke({"question": question})
+    final_message = {"question": question, "messages":messages}
+    print("===FINAL MESSAGE=====")
+    print(final_message)
+    result = reasoning_chain.invoke(final_message)
+    print("========RESULT========")
+    print(result)
     return {"messages": [result]}
     
 
@@ -36,9 +45,10 @@ def get_stock_price(ticker: str) -> float:
     return stock.info['previousClose']
 
 
-def tavily_search():
+def tavily_search(search_query: str):
     """Search the web for the query."""
-    return TavilySearchResults()
+    search = TavilySearchResults()
+    return search.invoke(search_query)
 
 def get_tools():
     return [tavily_search, get_stock_price]
