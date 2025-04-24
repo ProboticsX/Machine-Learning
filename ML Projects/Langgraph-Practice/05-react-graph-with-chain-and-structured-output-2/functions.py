@@ -69,10 +69,10 @@ def output_router(state):
     print("========RESULT========")
     print(result)
     if result.binary_score == 1:
-        return {"next": RESPONDER}
+        return RESPONDER
     else:
         print("Here is the final response: ", messages[-1].content)
-        return {"next": END}
+        return END
 
 
 
