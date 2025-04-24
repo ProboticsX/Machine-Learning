@@ -10,25 +10,24 @@ def reasoner(state):
     print(state)
     messages = state["messages"]
     question = state["question"]
-    # instructions = state["instructions"]
+    instructions = state["instructions"]
     system_prompt = """You are a helpful assistant that can answer questions and help with tasks. \n
                         You are equipped with tools like\n
                             - tavily_search to search the web for information.\n
                             - get_stock_price to get the stock price. \n
                         You are given a question and you need to answer it using the tools provided (if needed). \n
+                        You will be given some context as well. \n
                         Optionally, you will be also provided with some instructions to follow (if provided), then you will need to follow those instructions.\n
                         Please stop reasoning when you have the final answer."""
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the question: {question}"),
+        ("user", "Here is the question: {question} and some context: {context} and some instructions: {instructions}"),
     ])
-    print("===PROMPT=====")
-    print(prompt)
     reasoning_chain = prompt | llm_with_tools
-    final_message = {"question": question, "messages":messages}
-    print("===FINAL MESSAGE=====")
-    print(final_message)
-    result = reasoning_chain.invoke(final_message)
+    invoke_message = {"question": question, "context":messages, "instructions":instructions}
+    print("===INVOKE MESSAGE=====")
+    print(invoke_message)
+    result = reasoning_chain.invoke(invoke_message)
     print("========RESULT========")
     print(result)
     return {"messages": [result]}
