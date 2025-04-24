@@ -50,9 +50,10 @@ def reasoner_router(state):
     else:
         return OUTPUT_DECIDER
 
+# Always have two different functions for output decider and output router because Node functions that modify the state (should return a state dictionary) like this output_decider
+# whereas Conditional edge functions that determine routing (can return END or another node name) like output_decider_router
 def output_decider(state):
     print("===OUTPUT ROUTER===")
-    messages = state["messages"]
     question = state["question"]
     system_prompt = """You are a helpful assistant that needs to decide if the user's question is related to any city/geographical location or not. \n
                         Return 0 if the query is not related to any city/geographical location, else return 1. \n
@@ -69,11 +70,7 @@ def output_decider(state):
     print("========RESULT========")
     print(result)
     return {"output_router_state": result}
-    # if result.binary_score == 1:
-    #     return RESPONDER
-    # else:
-    #     print("Here is the final response: ", messages[-1].content)
-    #     return END
+
 
 def output_decider_router(state):
     print("===OUTPUT DECIDER ROUTER===")
