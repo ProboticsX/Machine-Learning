@@ -7,6 +7,7 @@ class CityDetails(BaseModel):
     state_capital: str = Field(description="State capital of the city")
     country_name: str = Field(description="Country name of the city")
     country_capital: str = Field(description="Country capital of the city")
+    city_summary: str = Field(description="Summary of the city in 2-3 sentences")
 
 class OutputRouterState(BaseModel):
     """State for the output router."""

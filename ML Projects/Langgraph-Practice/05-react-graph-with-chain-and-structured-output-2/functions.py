@@ -48,9 +48,9 @@ def reasoner_router(state):
     if state["messages"][-1].tool_calls:
         return TOOLS
     else:
-        return OUTPUT_ROUTER
+        return OUTPUT_DECIDER
 
-def output_router(state):
+def output_decider(state):
     print("===OUTPUT ROUTER===")
     messages = state["messages"]
     question = state["question"]
@@ -61,21 +61,27 @@ def output_router(state):
         ("system", system_prompt),
         ("user", "Here is the user's question: {question}"),
     ])
-    output_router_chain = prompt | llm_with_structured_output_router
+    output_decider_chain = prompt | llm_with_structured_output_router
     invoke_message = {"question": question}
     print("===INVOKE MESSAGE=====")
     print(invoke_message)
-    result = output_router_chain.invoke(invoke_message)
+    result = output_decider_chain.invoke(invoke_message)
     print("========RESULT========")
     print(result)
-    if result.binary_score == 1:
+    return {"output_router_state": result}
+    # if result.binary_score == 1:
+    #     return RESPONDER
+    # else:
+    #     print("Here is the final response: ", messages[-1].content)
+    #     return END
+
+def output_decider_router(state):
+    print("===OUTPUT DECIDER ROUTER===")
+    if state["output_router_state"].binary_score == 1:
         return RESPONDER
     else:
-        print("Here is the final response: ", messages[-1].content)
         return END
-
-
-
+    
 def get_stock_price(ticker: str) -> float:
     """Gets a stock price from Yahoo Finance.
 
@@ -94,7 +100,7 @@ def tavily_search(search_query: str):
 def get_tools():
     return [tavily_search, get_stock_price]
 
-llm = ChatOpenAI(model_name="gpt-4o")
+llm = ChatOpenAI(model_name="gpt-4o-mini")
 llm_with_tools = llm.bind_tools(get_tools())
 llm_with_structured_output = llm.with_structured_output(CityDetails)
 llm_with_structured_output_router = llm.with_structured_output(OutputRouterState)
