@@ -42,7 +42,7 @@ def execute_tools(state):
     invoke_message = {"search_queries": search_queries}
     print("========INVOKE MESSAGE========")
     print(invoke_message)
-    result = execute_tool_chain.invoke(search_queries)
+    result = execute_tool_chain.invoke(invoke_message)
     print("========RESULT========")
     print(result)
     return {"execute_tool_details": result}
@@ -52,7 +52,12 @@ def revisor(state):
     print(state)
     topic = state['topic']
     first_instruction = state['first_instruction']
-    context = state['execute_tool_details']
+    context = state['draft_details']
+    revisor_count = 0
+    if state.get("revisor_details", None) is not None:
+        context = state['revisor_details']
+        revisor_count = state['revisor_details'].revisor_count
+    search_results = state['execute_tool_details']
     system_prompt = """Revise your previous answer using the new information.\n
     - You should rewrite the summary to use the previous critique to add important information to your answer from what was missing before. Moreover, you should use the previous critique to remove superfluous information from your answer.\n
     - You should rewrite the missing information in the newly rewritten summary.\n
@@ -66,26 +71,30 @@ def revisor(state):
         - Original topic
         - Original first instruction
         - Previous answer including the previous summary, missing information, superfluous information and search queries
+        - Search results from the tool
 """
     revisor_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here's the original topic: {topic}\n and original first instruction: {first_instruction}\n Here's the previous answer: {context}"),
+        ("user", "Here's the original topic: {topic}\n and original first instruction: {first_instruction}\n Here's the previous answer: {context}\n Here's the search results: {search_results}"),
     ])
     revisor_chain = revisor_prompt | llm_with_structured_output_revisor
-    invoke_message = {"context": context, "first_instruction": first_instruction, "topic": topic}
+    invoke_message = {"context": context, "first_instruction": first_instruction, "topic": topic, "search_results": search_results}
     print("========INVOKE MESSAGE========")
     print(invoke_message)
     result = revisor_chain.invoke(invoke_message)
     print("========RESULT========")
+    result.revisor_count = revisor_count + 1
     print(result)
     return {"revisor_details": result}
 
 def revisor_router(state):
     print("========REVISOR ROUTER========")
-    count_tool_visits = sum(isinstance(item, ToolMessage) for item in state)
-    if count_tool_visits > MAX_ITERATIONS:
+    print(state)
+    revisor_count = state['revisor_details'].revisor_count
+    print(f"Revisor count: {revisor_count}")
+    if revisor_count > MAX_ITERATIONS:
         return END
-    return REVISOR
+    return EXECUTE_TOOLS
 
 def get_stock_price(ticker: str) -> float:
     """Gets a stock price from Yahoo Finance.

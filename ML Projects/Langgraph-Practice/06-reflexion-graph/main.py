@@ -11,5 +11,7 @@ if __name__ == "__main__":
     instructions = "The summary should be approximately 250 words."
     displayGraph(graph) 
     response = graph.invoke({"topic": topic, "first_instruction": instructions})
-    for msg in response['messages']:
-        msg.pretty_print()
+    print("======SUMMARY=======")
+    print(response['revisor_details'].summary)
+    print("=====REFERENCES=====")
+    print(response['revisor_details'].references)
