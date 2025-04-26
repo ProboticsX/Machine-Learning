@@ -86,12 +86,31 @@ def generator_function(state):
     print(result)
     return {"messages": [result]}
 
+def transform_question_function(state):
+    print("=====TRANSFORM QUESTION FUNCTION======")
+    print(state)
+    question = state["question"]
+    system_prompt = """
+    You are a helpful assistant that transforms the question to a more specific and detailed question.
+    The output should be a question that is more specific and detailed.
+    """
+    transoform_question_prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("user", "Question: {question}"),
+    ])
+    input_message = {"question": question}
+    transform_chain = transoform_question_prompt | llm
+    result = transform_chain.invoke(input_message)
+    print("=====RESULT FROM TRANSFORM QUESTION FUNCTION======")
+    print(result)
+    return {"question": result.content}
+
 def grader_router(state):
     print("=====GRADER ROUTER======")
     print(state)
     web_search = state["web_search"]
     if web_search:
-        return WEBSEARCH
+        return TRANSFORM_QUESTION
     else:
         return GENERATOR
 
