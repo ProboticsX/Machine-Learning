@@ -1,0 +1,8 @@
+RETRIEVER = "retriever"
+GRADER = "grader"
+WEBSEARCH = "websearch"
+GENERATOR = "generator"
+TRANSFORM_QUESTION = "transform_question"
+ANSWER_NOT_GROUNDED = "answer_not_grounded"
+ANSWER_NOT_RELEVANT = "answer_not_relevant"
+ANSWER_GROUNDED_AND_RELEVANT = "answer_grounded_and_relevant"
