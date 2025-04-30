@@ -39,6 +39,7 @@ from IPython.display import Image, display
 from typing import List, Literal
 from typing_extensions import TypedDict
 import yfinance as yf
+import math
 
 # Load environment variables
 load_dotenv() 
