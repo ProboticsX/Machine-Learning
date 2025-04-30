@@ -8,10 +8,12 @@ def addition_agent_function(state):
     print("==========ADDITION AGENT==========")
     print(state)
     question = state["question"]
+    messages = state["messages"]
+    goto = get_next_node(messages, MULTIPLICATION_AGENT)
     system_message = """
         You are an addition expert, you can ask the multiplication expert for help with multiplication. \n
         Always do your portion of calculation before the handoff. \n
-        You will be given a question by the user.
+        If you have a final answer to the original question, say FINAL ANSWER followed by the result. \n
         """
     addition_prompt = ChatPromptTemplate.from_messages([
         ("system", system_message),
@@ -31,17 +33,19 @@ def addition_agent_function(state):
             "content": "Successfully transferred",
             "tool_call_id": tool_call_id,
         }
-        return Command(goto=MULTIPLICATION_AGENT, update={"messages": [response, tool_msg]})
-    return {"messages": [response]}
+        return Command(goto=goto, update={"messages": [response, tool_msg]})
+    return Command(goto=goto, update={"messages": [response]})
 
 def multiplication_agent_function(state):
     print("==========MULTIPLICATION AGENT==========")
     print(state)
     question = state["question"]
+    messages = state["messages"]
+    goto = get_next_node(messages, ADDITION_AGENT)
     system_message = """
         You are a multiplication expert, you can ask the addition expert for help with addition. \n
         Always do your portion of calculation before the handoff. \n
-        You will be given a question by the user.
+        If you have a final answer to the original question, say FINAL ANSWER followed by the result. \n
         """
     multiplication_prompt = ChatPromptTemplate.from_messages([
         ("system", system_message),
@@ -61,18 +65,24 @@ def multiplication_agent_function(state):
             "content": "Successfully transferred",
             "tool_call_id": tool_call_id,
         }
-        return Command(goto=ADDITION_AGENT, update={"messages": [response, tool_msg]})
-    return {"messages": [response]}
+        return Command(goto=goto, update={"messages": [response, tool_msg]})
+    return Command(goto=goto, update={"messages": [response]})
 
-def transfer_to_multiplication_expert():
-    """Ask multiplication agent for help"""
-    return
+def multiply(a, b):
+    """Multiply the two numbers"""
+    return a * b
 
-def transfer_to_addition_expert():
-    """Ask addition agent for help"""
-    return
+def add(a, b):
+    """Add the two numbers"""
+    return a + b    
+
+def get_next_node(messages, goto):
+    if len(messages) > 0 and "FINAL ANSWER" in messages[-1].content:
+        # Any agent decided the work is done
+        return END
+    return goto
 
 embeddings = OpenAIEmbeddings()
-tools = [transfer_to_multiplication_expert, transfer_to_addition_expert]
+tools = [multiply, add]
 llm = ChatOpenAI(model_name="gpt-4o-mini")
 llm_with_tools = llm.bind_tools(tools)
