@@ -12,9 +12,9 @@ def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]
     print("==========ADDITION AGENT RESULT==========")
     print(result)
     goto = get_next_node(result["messages"][-1], MULTIPLICATION_AGENT)
-    result["messages"][-1] = HumanMessage(
-        content=result["messages"][-1].content, name=ADDITION_AGENT
-    )
+    # result["messages"][-1] = HumanMessage(
+    #     content=result["messages"][-1].content, name=ADDITION_AGENT
+    # )
     return Command(
         update={
             "messages": result["messages"],
@@ -30,9 +30,9 @@ def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END
     print("==========MULTIPLICATION AGENT RESULT==========")
     print(result)
     goto = get_next_node(result["messages"][-1], ADDITION_AGENT)
-    result["messages"][-1] = HumanMessage(
-        content=result["messages"][-1].content, name=MULTIPLICATION_AGENT
-    )
+    # result["messages"][-1] = HumanMessage(
+    #     content=result["messages"][-1].content, name=MULTIPLICATION_AGENT
+    # )
     return Command(
         update={
             "messages": result["messages"],

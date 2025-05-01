@@ -8,21 +8,48 @@ def displayGraph(graph):
 def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]]:
     print("==========ADDITION AGENT==========")
     print(state)
-    input = state["messages"][-1].content
+    input = state["messages"][0].content
+    tool_functions = [add]
+    tool_names = ["add"]
+    agent_scratchpad = state["messages"]
     custom_prompt = make_system_prompt(
         "You can only do addition. You are working with a multiplication colleague. You can't perform any other operations."
     )
-    invoke_message = {"input": input, "tools": [add], "user": custom_prompt}
-    addition_agent_chain = react_prompt | llm
+    s = """
+    Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
+    Use the following format:\n\n
+        Question: the input question you must answer\n
+        Thought: you should always think about what to do\n
+        Action: the action to take, should be one of the given tool names provided by the user\n
+        Action Input: the input to the action\n
+        Observation: the result of the action\n... 
+        (this Thought/Action/Action Input/Observation can repeat N times)\n
+        Thought: I now know the final answer\n
+        Final Answer: the final answer to the original input question\n
+        Begin!\n
+        Question: will be provided by the user\n
+        Thought: will be provided by the user \n
+
+        So you will be given the following input: \n
+        - Question: the input question you must answer\n
+        - Tool functions: the tool functions you can use\n
+        - Tool names: the tool names you can use\n
+        - Agent scratchpad: the agent scratchpad you can use for though process
+    """
+    addition_agent_prompt = ChatPromptTemplate.from_messages(
+        [("system", custom_prompt+ s), ("user", 'Question: {input}\n Tool funcitions: {tool_functions}\n Tool names: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
+    )
+    addition_agent_chain = addition_agent_prompt | llm
     print("==========ADDITION AGENT INVOKE MESSAGE==========")
+    invoke_message = {"input": input, "agent_scratchpad": agent_scratchpad, "tool_names": tool_names, "tool_functions": tool_functions}
     print(invoke_message)
     result = addition_agent_chain.invoke(invoke_message)
     print("==========ADDITION AGENT RESULT==========")
     print(result)
-    goto = get_next_node(result["messages"][-1], MULTIPLICATION_AGENT)
+    goto = get_next_node(result, MULTIPLICATION_AGENT)
     return Command(
         update={
-            "messages": result["messages"],
+            "messages": [result],
         },
         goto=goto,
     )
@@ -31,22 +58,49 @@ def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]
 def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END]]:
     print("==========MULTIPLICATION AGENT==========")
     print(state)
-    input = state["messages"][-1].content
+    input = state["messages"][0].content
+    tool_functions = [multiply]
+    tool_names = ["multiply"]
+    agent_scratchpad = state["messages"]
     custom_prompt = make_system_prompt(
         "You can only do multiplication. You are working with an addition colleague. You can't perform any other operations."
     )
-    invoke_message = {"input": input, "tools": [multiply], "user": custom_prompt}
-    multiplication_agent_chain = react_prompt | llm
+    s = """
+    Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
+    Use the following format:\n\n
+        Question: the input question you must answer\n
+        Thought: you should always think about what to do\n
+        Action: the action to take, should be one of the given tool names provided by the user\n
+        Action Input: the input to the action\n
+        Observation: the result of the action\n... 
+        (this Thought/Action/Action Input/Observation can repeat N times)\n
+        Thought: I now know the final answer\n
+        Final Answer: the final answer to the original input question\n
+        Begin!\n
+        Question: will be provided by the user\n
+        Thought: will be provided by the user \n
+
+        So you will be given the following input: \n
+        - Question: the input question you must answer\n
+        - Tool functions: the tool functions you can use\n
+        - Tool names: the tool names you can use\n
+        - Agent scratchpad: the agent scratchpad you can use for though process
+    """
+    multiplication_agent_prompt = ChatPromptTemplate.from_messages(
+        [("system", custom_prompt+ s), ("user", 'Question: {input}\n Tool funcitions: {tool_functions}\n Tool names: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
+    )
+    multiplication_agent_chain = multiplication_agent_prompt | llm
     print("==========MULTIPLICATION AGENT INVOKE MESSAGE==========")
+    invoke_message = {"input": input, "agent_scratchpad": agent_scratchpad, "tool_names": tool_names, "tool_functions": tool_functions}
     print(invoke_message)
     result = multiplication_agent_chain.invoke(invoke_message)
     print("==========MULTIPLICATION AGENT RESULT==========")
     print(result)
-    goto = get_next_node(result["messages"][-1], ADDITION_AGENT)
+    goto = get_next_node(result, ADDITION_AGENT)
 
     return Command(
         update={
-            "messages": result["messages"],
+            "messages": [result],
         },
         goto=goto,
     )
