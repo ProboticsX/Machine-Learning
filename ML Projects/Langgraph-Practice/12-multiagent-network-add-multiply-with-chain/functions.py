@@ -13,7 +13,7 @@ def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]
     tool_names = ["add"]
     agent_scratchpad = state["messages"]
     custom_prompt = make_system_prompt(
-        "You can only do addition. You are working with a multiplication colleague. You can't perform any other operations."
+        "You can only do addition. You are working with a multiplication colleague. You can't perform any other operations.\n\n"
     )
     s = """
     Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
@@ -37,11 +37,12 @@ def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]
         - Agent scratchpad: the agent scratchpad you can use for though process
     """
     addition_agent_prompt = ChatPromptTemplate.from_messages(
-        [("system", custom_prompt+ s), ("user", 'Question: {input}\n Tool funcitions: {tool_functions}\n Tool names: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
+        [("system", custom_prompt), ("user", 'Question: {input}\n Tool names which you can use: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
     )
-    addition_agent_chain = addition_agent_prompt | llm
+    llm_with_tools = llm.bind_tools(tool_functions)
+    addition_agent_chain = addition_agent_prompt | llm_with_tools
     print("==========ADDITION AGENT INVOKE MESSAGE==========")
-    invoke_message = {"input": input, "agent_scratchpad": agent_scratchpad, "tool_names": tool_names, "tool_functions": tool_functions}
+    invoke_message = {"input": input, "agent_scratchpad": agent_scratchpad, "tool_names": tool_names}
     print(invoke_message)
     result = addition_agent_chain.invoke(invoke_message)
     print("==========ADDITION AGENT RESULT==========")
@@ -87,11 +88,12 @@ def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END
         - Agent scratchpad: the agent scratchpad you can use for though process
     """
     multiplication_agent_prompt = ChatPromptTemplate.from_messages(
-        [("system", custom_prompt+ s), ("user", 'Question: {input}\n Tool funcitions: {tool_functions}\n Tool names: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
+        [("system", custom_prompt), ("user", 'Question: {input}\n Tool names which you can use: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
     )
-    multiplication_agent_chain = multiplication_agent_prompt | llm
+    llm_with_tools = llm.bind_tools(tool_functions)
+    multiplication_agent_chain = multiplication_agent_prompt | llm_with_tools
     print("==========MULTIPLICATION AGENT INVOKE MESSAGE==========")
-    invoke_message = {"input": input, "agent_scratchpad": agent_scratchpad, "tool_names": tool_names, "tool_functions": tool_functions}
+    invoke_message = {"input": input, "agent_scratchpad": agent_scratchpad, "tool_names": tool_names}
     print(invoke_message)
     result = multiplication_agent_chain.invoke(invoke_message)
     print("==========MULTIPLICATION AGENT RESULT==========")
@@ -105,12 +107,14 @@ def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END
         goto=goto,
     )
 
+@tool
 def multiply(a, b):
-    """Multiply the two numbers.  You can't perfrom any other operations.\n\nIf you have completed all tasks, respond with FINAL ANSWER."""
+    """Multiply the two numbers.  You can't perfrom any other operations.\n\n"""
     return (a * b)
 
+@tool
 def add(a, b):
-    """Add the two numbers.  You can't perfrom any other operations.\n\nIf you have completed all tasks, respond with FINAL ANSWER."""
+    """Add the two numbers.  You can't perfrom any other operations.\n\n"""
     return (a + b)
 
 
