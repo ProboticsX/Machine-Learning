@@ -5,6 +5,33 @@ def displayGraph(graph):
     print(graph.get_graph().draw_ascii())
     graph.get_graph().draw_mermaid_png(output_file_path="multiagent-network-add-multiply-with-chain.png")
 
+@tool
+def multiply(a, b):
+    """Multiply the two numbers.  You can't perfrom any other operations.\n\n"""
+    return (a * b)
+
+@tool
+def add(a, b):
+    """Add the two numbers.  You can't perfrom any other operations.\n\n"""
+    return (a + b)
+
+def get_next_node(last_message, goto):
+    if "FINAL ANSWER" in last_message.content:
+        # Any agent decided the work is done
+        return END
+    return goto
+
+def make_system_prompt(suffix: str) -> str:
+    return (
+        "You are a helpful AI assistant, collaborating with other assistants."
+        " Use the provided tools to progress towards answering the question."
+        " If you are unable to fully answer, that's OK, another assistant with different tools "
+        " will help where you left off. Execute what you can to make progress."
+        " If you or any of the other assistants have the final answer or deliverable,"
+        " prefix your response with FINAL ANSWER so the team knows to stop."
+        f"\n{suffix}"
+    )
+
 def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]]:
     print("==========ADDITION AGENT==========")
     print(state)
@@ -105,34 +132,6 @@ def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END
             "messages": [result],
         },
         goto=goto,
-    )
-
-@tool
-def multiply(a, b):
-    """Multiply the two numbers.  You can't perfrom any other operations.\n\n"""
-    return (a * b)
-
-@tool
-def add(a, b):
-    """Add the two numbers.  You can't perfrom any other operations.\n\n"""
-    return (a + b)
-
-
-def get_next_node(last_message, goto):
-    if "FINAL ANSWER" in last_message.content:
-        # Any agent decided the work is done
-        return END
-    return goto
-
-def make_system_prompt(suffix: str) -> str:
-    return (
-        "You are a helpful AI assistant, collaborating with other assistants."
-        " Use the provided tools to progress towards answering the question."
-        " If you are unable to fully answer, that's OK, another assistant with different tools "
-        " will help where you left off. Execute what you can to make progress."
-        " If you or any of the other assistants have the final answer or deliverable,"
-        " prefix your response with FINAL ANSWER so the team knows to stop."
-        f"\n{suffix}"
     )
 
 embeddings = OpenAIEmbeddings()
