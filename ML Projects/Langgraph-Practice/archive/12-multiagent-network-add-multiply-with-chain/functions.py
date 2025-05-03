@@ -42,27 +42,27 @@ def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]
     custom_prompt = make_system_prompt(
         "You can only do addition. You are working with a multiplication colleague. You can't perform any other operations.\n\n"
     )
-    s = """
-    Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
-    Use the following format:\n\n
-        Question: the input question you must answer\n
-        Thought: you should always think about what to do\n
-        Action: the action to take, should be one of the given tool names provided by the user\n
-        Action Input: the input to the action\n
-        Observation: the result of the action\n... 
-        (this Thought/Action/Action Input/Observation can repeat N times)\n
-        Thought: I now know the final answer\n
-        Final Answer: the final answer to the original input question\n
-        Begin!\n
-        Question: will be provided by the user\n
-        Thought: will be provided by the user \n
+    # s = """
+    # Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
+    # Use the following format:\n\n
+    #     Question: the input question you must answer\n
+    #     Thought: you should always think about what to do\n
+    #     Action: the action to take, should be one of the given tool names provided by the user\n
+    #     Action Input: the input to the action\n
+    #     Observation: the result of the action\n... 
+    #     (this Thought/Action/Action Input/Observation can repeat N times)\n
+    #     Thought: I now know the final answer\n
+    #     Final Answer: the final answer to the original input question\n
+    #     Begin!\n
+    #     Question: will be provided by the user\n
+    #     Thought: will be provided by the user \n
 
-        So you will be given the following input: \n
-        - Question: the input question you must answer\n
-        - Tool functions: the tool functions you can use\n
-        - Tool names: the tool names you can use\n
-        - Agent scratchpad: the agent scratchpad you can use for though process
-    """
+    #     So you will be given the following input: \n
+    #     - Question: the input question you must answer\n
+    #     - Tool functions: the tool functions you can use\n
+    #     - Tool names: the tool names you can use\n
+    #     - Agent scratchpad: the agent scratchpad you can use for though process
+    # """
     addition_agent_prompt = ChatPromptTemplate.from_messages(
         [("system", custom_prompt), ("user", 'Question: {input}\n Tool names which you can use: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
     )
@@ -93,27 +93,27 @@ def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END
     custom_prompt = make_system_prompt(
         "You can only do multiplication. You are working with an addition colleague. You can't perform any other operations."
     )
-    s = """
-    Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
-    Use the following format:\n\n
-        Question: the input question you must answer\n
-        Thought: you should always think about what to do\n
-        Action: the action to take, should be one of the given tool names provided by the user\n
-        Action Input: the input to the action\n
-        Observation: the result of the action\n... 
-        (this Thought/Action/Action Input/Observation can repeat N times)\n
-        Thought: I now know the final answer\n
-        Final Answer: the final answer to the original input question\n
-        Begin!\n
-        Question: will be provided by the user\n
-        Thought: will be provided by the user \n
+    # s = """
+    # Answer the following questions as best you can. You have access to the tools which will be provided by the user \n\n
+    # Use the following format:\n\n
+    #     Question: the input question you must answer\n
+    #     Thought: you should always think about what to do\n
+    #     Action: the action to take, should be one of the given tool names provided by the user\n
+    #     Action Input: the input to the action\n
+    #     Observation: the result of the action\n... 
+    #     (this Thought/Action/Action Input/Observation can repeat N times)\n
+    #     Thought: I now know the final answer\n
+    #     Final Answer: the final answer to the original input question\n
+    #     Begin!\n
+    #     Question: will be provided by the user\n
+    #     Thought: will be provided by the user \n
 
-        So you will be given the following input: \n
-        - Question: the input question you must answer\n
-        - Tool functions: the tool functions you can use\n
-        - Tool names: the tool names you can use\n
-        - Agent scratchpad: the agent scratchpad you can use for though process
-    """
+    #     So you will be given the following input: \n
+    #     - Question: the input question you must answer\n
+    #     - Tool functions: the tool functions you can use\n
+    #     - Tool names: the tool names you can use\n
+    #     - Agent scratchpad: the agent scratchpad you can use for though process
+    # """
     multiplication_agent_prompt = ChatPromptTemplate.from_messages(
         [("system", custom_prompt), ("user", 'Question: {input}\n Tool names which you can use: {tool_names}\n Agent scratchpad: {agent_scratchpad}')]
     )

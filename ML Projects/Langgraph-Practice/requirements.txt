@@ -16,3 +16,4 @@ duckduckgo-search
 yfinance
 grandalf
 tavily-python
+langgraph_supervisor

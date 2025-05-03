@@ -1,0 +1,3 @@
+RESEARCH_AGENT = "research_agent"
+MATH_AGENT = "math_agent"
+SUPERVISOR = "supervisor"

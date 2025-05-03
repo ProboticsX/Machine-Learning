@@ -8,13 +8,20 @@ def displayGraph(graph):
 def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]]:
     print("==========ADDITION AGENT==========")
     print(state)
+    addition_agent = create_react_agent(
+        llm,
+        tools=[add],
+        prompt=make_system_prompt(
+            "You can only do addition. You are working with a multiplication colleague. You can't perform any other operations."
+        ),
+    )
     result = addition_agent.invoke(state)
     print("==========ADDITION AGENT RESULT==========")
     print(result)
     goto = get_next_node(result["messages"][-1], MULTIPLICATION_AGENT)
-    # result["messages"][-1] = HumanMessage(
-    #     content=result["messages"][-1].content, name=ADDITION_AGENT
-    # )
+    result["messages"][-1] = HumanMessage(
+        content=result["messages"][-1].content, name=ADDITION_AGENT
+    )
     return Command(
         update={
             "messages": result["messages"],
@@ -26,13 +33,20 @@ def addition_agent_function(state) -> Command[Literal[MULTIPLICATION_AGENT, END]
 def multiplication_agent_function(state)  -> Command[Literal[ADDITION_AGENT, END]]:
     print("==========MULTIPLICATION AGENT==========")
     print(state)
+    multiplication_agent = create_react_agent(
+        llm,
+        tools=[multiply],
+        prompt=make_system_prompt(
+            "You can only do multiplication. You are working with an addition colleague. You can't perform any other operations."
+        ),
+    )
     result = multiplication_agent.invoke(state)
     print("==========MULTIPLICATION AGENT RESULT==========")
     print(result)
     goto = get_next_node(result["messages"][-1], ADDITION_AGENT)
-    # result["messages"][-1] = HumanMessage(
-    #     content=result["messages"][-1].content, name=MULTIPLICATION_AGENT
-    # )
+    result["messages"][-1] = HumanMessage(
+        content=result["messages"][-1].content, name=MULTIPLICATION_AGENT
+    )
     return Command(
         update={
             "messages": result["messages"],
@@ -68,24 +82,4 @@ def make_system_prompt(suffix: str) -> str:
 
 embeddings = OpenAIEmbeddings()
 tools = [multiply, add]
-llm = ChatOpenAI(model_name="gpt-4o")
-llm_with_tools = llm.bind_tools(tools)
-
-# Research agent and node
-addition_agent = create_react_agent(
-    llm,
-    tools=[add],
-    prompt=make_system_prompt(
-        "You can only do addition. You are working with a multiplication colleague. You can't perform any other operations."
-    ),
-)
-
-multiplication_agent = create_react_agent(
-    llm,
-    tools=[multiply],
-    prompt=make_system_prompt(
-        "You can only do multiplication. You are working with an addition colleague. You can't perform any other operations."
-    ),
-)
-
-
+llm = ChatOpenAI(model_name="gpt-4o-mini")
