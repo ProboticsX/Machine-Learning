@@ -3,7 +3,7 @@ from constants import *
 
 def displayGraph(graph):
     # print(graph.get_graph().draw_ascii())
-    graph.get_graph().draw_mermaid_png(output_file_path="multiagent-supervisor-scratch.png")
+    graph.get_graph().draw_mermaid_png(output_file_path="multiagent-supervisor-with-handoffs.png")
 
 @tool
 def multiply(a, b):
@@ -49,7 +49,7 @@ def create_handoff_tool(agent_name, description):
 
 embeddings = OpenAIEmbeddings()
 math_agent_tools = [multiply, add, divide]
-llm = ChatOpenAI(model_name="gpt-4o-mini")
+llm = ChatOpenAI(model_name="gpt-4o")
 
 web_search_tool = TavilySearchResults(max_results=3)
 research_agent = create_react_agent(

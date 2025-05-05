@@ -1,6 +1,6 @@
 from common_imports import *
 from constants import *
-from classes import AgentState, CityDetails
+from classes import AgentState
 
 def displayGraph(graph):
     # print(graph.get_graph().draw_ascii())
@@ -30,110 +30,103 @@ def get_stock_price(ticker: str) -> float:
     stock = yf.Ticker(ticker)
     return stock.info['previousClose']
 
-def create_handoff_tool(agent_name, description):
-    name = f"transfer_to_{agent_name}"
-    description = description or f"Ask {agent_name} for help."
+def make_supervisor_node(llm, members) -> str:
+    print("====SUPERVISOR NODE=====")
+    options = ["FINISH"] + members
+    system_prompt = (
+        "You are a supervisor tasked with managing a conversation between the"
+        f" following workers: {members}. Given the following user request,"
+        " respond with the worker to act next. Each worker will perform a"
+        " task and respond with their results and status. When finished,"
+        " respond with FINISH."
+    )
 
-    @tool(name, description=description)
-    def handoff_tool(state: Annotated[AgentState, InjectedState], tool_call_id: Annotated[str, InjectedToolCallId]) -> Command:
-        print("\n=== Current State ===")
+    class Router(TypedDict):
+        """Worker to route to next. If no workers needed, route to FINISH."""
+
+        next: Literal[*options]
+
+    def supervisor_node(state: AgentState) -> Command[Literal[*members, END]]:
+        print("===STATE=====")
         print(state)
-        print(f"Tool Call ID: {tool_call_id}")
-        print(f"Transferring to: {agent_name}")
-        print("===================\n")
-        
-        tool_message = {
-            "role": "tool",
-            "content": f"Successfully transferred to {agent_name}",
-            "name": name,
-            "tool_call_id": tool_call_id,
-        }
-        return Command(
-            goto=agent_name,
-            update={**state, "messages": state["messages"] + [tool_message], "question": state["question"], "instructions": state["instructions"]}, # update the state with the tool message
-            graph=Command.PARENT, # transfer control back to the parent graph (supervisor agent)
-        )
+        """An LLM-based router."""
+        previous_messages = state["messages"]
+        invoke_message = [{"role": "system", "content": system_prompt},] + previous_messages
+        print("===INVOKE MESSAGE=====")
+        print(invoke_message)
+        llm_with_structured_output = llm.with_structured_output(Router)
+        response = llm_with_structured_output.invoke(invoke_message)
+        print("===RESPONSE=====")
+        print(response)
+        goto = response["next"]
+        if goto == "FINISH":
+            goto = END
+        print("===GOTO=====")
+        print(goto)
+        return Command(goto=goto, update={"next": goto})
 
-    return handoff_tool
+    return supervisor_node
 
+
+def research_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
+    print("====RESEARCH NODE=====")
+    print("===STATE=====")
+    print(state)
+    research_agent = create_react_agent(llm, tools=research_agent_tools)
+    result = research_agent.invoke(state)
+    print("===RESULT=====")
+    print(result)
+    return Command(
+        update={
+            "messages": [
+                HumanMessage(content=result["messages"][-1].content, name=RESEARCH_AGENT)
+            ]
+        },
+        # We want our workers to ALWAYS "report back" to the supervisor when done
+        goto=SUPERVISOR_AGENT,
+    )
+
+def finance_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
+    print("====FINANCE NODE=====")
+    print("===STATE=====")
+    print(state)
+    finance_agent = create_react_agent(llm, tools=finance_agent_tools)
+    result = finance_agent.invoke(state)
+    print("===RESULT=====")
+    print(result)
+    return Command(
+        update={
+            "messages": [
+                HumanMessage(content=result["messages"][-1].content, name=FINANCE_AGENT)
+            ]
+        },
+        goto=SUPERVISOR_AGENT,
+    )
+
+def math_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
+    print("====MATH NODE=====")
+    print("===STATE=====")
+    print(state)
+    math_agent = create_react_agent(llm, tools=math_agent_tools)
+    result = math_agent.invoke(state)
+    print("===RESULT=====")
+    print(result)
+    return Command(
+        update={
+            "messages": [
+                HumanMessage(content=result["messages"][-1].content, name=MATH_AGENT)
+            ]
+        },
+        goto=SUPERVISOR_AGENT,
+    )
 
 web_search_tool = TavilySearchResults(max_results=3)
-
-embeddings = OpenAIEmbeddings()
 math_agent_tools = [multiply, add, divide]
 research_agent_tools = [web_search_tool]
 finance_agent_tools = [get_stock_price]
 
 llm = ChatOpenAI(model_name="gpt-4o-mini")
-llm_with_structured_output = llm.with_structured_output(CityDetails)
 
-
-research_agent = create_react_agent(
-    model=llm,
-    tools=[web_search_tool],
-    response_format=CityDetails,
-    prompt=(
-        "You are a research agent.\n\n"
-        "INSTRUCTIONS:\n"
-        "- Assist ONLY with research-related tasks, DO NOT do any math\n"
-        "- After you're done with your tasks, respond to the supervisor directly\n"
-        "- Respond ONLY with the results of your work, do NOT include ANY other text."
-    ),
-    name=RESEARCH_AGENT,
-)
-
-math_agent = create_react_agent(
-    model=llm,
-    tools=math_agent_tools,
-    prompt=(
-        "You are a math agent.\n\n"
-        "INSTRUCTIONS:\n"
-        "- Assist ONLY with math-related tasks\n"
-        "- After you're done with your tasks, respond to the supervisor directly\n"
-        "- Respond ONLY with the results of your work, do NOT include ANY other text."
-    ),
-    name=MATH_AGENT,
-)
-
-finance_agent = create_react_agent(
-    model=llm,
-    tools=finance_agent_tools,
-    prompt=(
-        "You are a finance agent.\n\n"
-        "INSTRUCTIONS:\n"
-        "- Assist ONLY with finance-related tasks\n"
-        "- After you're done with your tasks, respond to the supervisor directly\n"
-        "- Respond ONLY with the results of your work, do NOT include ANY other text."
-    ),
-    name=FINANCE_AGENT,
-)
-
-# Handoffs
-assign_to_research_agent = create_handoff_tool(
-    agent_name=RESEARCH_AGENT,
-    description="Assign task to a researcher agent.",
-)
-
-assign_to_math_agent = create_handoff_tool(
-    agent_name=MATH_AGENT,
-    description="Assign task to a math agent.",
-)
-
-assign_to_finance_agent = create_handoff_tool(
-    agent_name=FINANCE_AGENT,
-    description="Assign task to a finance agent.",
-)
-
-supervisor_agent = create_react_agent(
-    model=llm,
-    tools=[assign_to_research_agent, assign_to_math_agent, assign_to_finance_agent],
-    prompt=(
-        "You are a supervisor managing three agents:\n"
-        "- a research agent. Assign research-related tasks to this agent\n"
-        "- a math agent. Assign math-related tasks to this agent\n"
-        "- a finance agent. Assign finance-related tasks to this agent\n"
-        "Assign work to one agent at a time, do not call agents in parallel.\n"
-        "Do not do any work yourself."
-    ),
-    name=SUPERVISOR_AGENT,
-)
+# members = {RESEARCH_AGENT:"use it for researching on the web", FINANCE_AGENT:"use it for getting stock price", MATH_AGENT:"use it for doing math operations"}
+members = [RESEARCH_AGENT, FINANCE_AGENT, MATH_AGENT]
+supervisor_agent = make_supervisor_node(llm, members=members)
