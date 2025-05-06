@@ -1,0 +1,136 @@
+{
+    "status": "ok",
+    "totalResults": 10,
+    "articles": [
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "Formula 1 Drivers Just Hit the Track in These Full-Sized Lego Cars",
+            "description": "At the Miami Grand Prix's driver's parade, the sport's biggest stars rode in drivable Lego cars that took eight months to build. It was as awesome as it sounds.",
+            "url": "https://www.wired.com/story/lego-formula-1-drivable-big-builds/",
+            "urlToImage": "https://media.wired.com/photos/6817b1a95927503627dedc03/191:100/w_1280,c_limit/BL_19421_3e06jDZh_20250504062418.jpg",
+            "publishedAt": "2025-05-04T18:30:00Z",
+            "content": "If you've ever attended a Formula 1 event, you'll know: The cars are loud. The revving of an F1 cars power unit can reach up to 140 decibels. Thats like standing next to a firework as its exploding. … [+2079 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "AquaRest's Affordable Hard-Sided Hot Tub Is Great for Soakers",
+            "description": "The cheapest hard-sided hot tub on Wayfair is totally worth buying.",
+            "url": "https://www.wired.com/review/aquarest-discover-ar-150/",
+            "urlToImage": "https://media.wired.com/photos/6815794c4fc007e74d15680e/191:100/w_1280,c_limit/Aquarest-Discover-AR150_052025_Lede.jpg",
+            "publishedAt": "2025-05-04T14:22:27.60625Z",
+            "content": "Youll want to make sure that you have a good level space that can handle the thousands of pounds a full hot tub weighs before you place this thing there: its not light, and it absolutely shouldnt be … [+1817 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "Why Pigeons at Rest Are at the Center of Complexity Theory",
+            "description": "When pigeons outnumber pigeonholes, some birds must double up. This obvious statement, and its inverse, have deep connections to many areas of math and computer science.",
+            "url": "https://www.wired.com/story/how-a-problem-about-pigeons-powers-complexity-theory/",
+            "urlToImage": "https://media.wired.com/photos/68134ac6de8b05f5b07daf6b/191:100/w_1280,c_limit/shutterstock_675583102.jpg",
+            "publishedAt": "2025-05-04T11:00:00Z",
+            "content": "By January 2020, Papadimitriou had been thinking about the pigeonhole principle for 30 years. So he was surprised when a playful conversation with a frequent collaborator led them to a simple twist o… [+3397 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "The Phony Physics of Star Wars Are a Blast",
+            "description": "Those epic battle scenes in space are awesome—and physically impossible. But hey, it’s more fun this way!",
+            "url": "https://www.wired.com/story/the-phony-physics-of-star-wars-are-a-blast/",
+            "urlToImage": "https://media.wired.com/photos/68151e64c58f3fa3dd005ffc/191:100/w_1280,c_limit/Star-Wars-Day-Physics-Science-MCDSTWA_EC148.jpg",
+            "publishedAt": "2025-05-04T10:00:00Z",
+            "content": "I'm a huge fan of Star Wars. The first movie (no, not Episode 1) came out when I was young, so I grew up thinking about the Millennium Falcon and lightsabers. Perhaps it sparked my interest in scienc… [+2771 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "Trump’s Quest for Crypto Riches Is a Constitutional Scandal Waiting to Happen",
+            "description": "The largest investors in Donald Trump’s crypto coin have been promised a private audience with the president. The arrangement could put Trump at odds with the Constitution and add fuel to calls for his impeachment, experts say.",
+            "url": "https://www.wired.com/story/trumps-quest-for-crypto-riches-is-a-constitutional-scandal-waiting-to-happen/",
+            "urlToImage": "https://media.wired.com/photos/681152881d1168dd5c4e68e1/191:100/w_1280,c_limit/TrumpCoin-vs-Constitution-Business.jpg",
+            "publishedAt": "2025-05-01T11:19:03Z",
+            "content": "Whether its a utility token or a memecoin, its not regulated by the SEC, says Lisa Bragança, attorney at Bragança Law and former branch chief at the SEC. Therefore, to avoid the attention of regulato… [+2975 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "North Korea Stole Your Job",
+            "description": "For years, North Korea has been secretly placing young IT workers inside Western companies. With AI, their schemes are now more devious—and effective—than ever.",
+            "url": "https://www.wired.com/story/north-korea-stole-your-tech-job-ai-interviews/",
+            "urlToImage": "https://media.wired.com/photos/6812569b75d9458c4f548685/191:100/w_1280,c_limit/Korean-Job-Scams-Simon-6776-Edit.jpg",
+            "publishedAt": "2025-05-01T07:00:00Z",
+            "content": "Even security experts can be fooled. In July 2024, Knowbe4, a Florida-based company that offers security training, discovered that a new hire known as Kyle was actually a foreign agent. He interviewe… [+3205 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "DOGE Put a College Student in Charge of Using AI to Rewrite Regulations",
+            "description": "A DOGE operative has been tasked with using AI to propose rewrites to the Department of Housing and Urban Development’s regulations—an effort sources are told will roll out across government.",
+            "url": "https://www.wired.com/story/doge-college-student-ai-rewrite-regulations-deregulation/",
+            "urlToImage": "https://media.wired.com/photos/680fd900cff726aaf024901e/191:100/w_1280,c_limit/politics_HUD_GettyImages-2201176867.jpg",
+            "publishedAt": "2025-04-30T19:34:24Z",
+            "content": "Another source told WIRED that Sweet has also been using the tool at other parts of HUD. WIRED reviewed a copy of the output of the AIs review of one HUD department, which features columns displaying… [+3784 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "A Tariff Standoff With China, Power Outages, and the End of Christmas",
+            "description": "On today's episode of \"Uncanny Valley,\" we break down how Trump's tariffs might threaten this year's holiday season.",
+            "url": "https://www.wired.com/story/uncanny-valley-podcast-trump-tariffs-end-of-christmas/",
+            "urlToImage": "https://media.wired.com/photos/6810fe468b5d18153bd78483/191:100/w_1280,c_limit/Uncanny-Valley-Christmas-Tariffs-Business-2209019796.jpg",
+            "publishedAt": "2025-04-30T16:21:45Z",
+            "content": "Zoë Schiffer: Got it, okay. Obviously, that makes sense for logistical reasons. It's easier to just add a tariff charge than raise the price of individual goods. But is it also a way to subtly exert … [+3538 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "Best Graphics Cards (GPUs) for PC: Nvidia, AMD, Intel",
+            "description": "Looking for a new graphics card? There’s no shortage of options to choose from, but here are the best to buy now.",
+            "url": "https://www.wired.com/gallery/best-graphics-cards-gpu/",
+            "urlToImage": "https://media.wired.com/photos/67eafa307195c788823e183b/191:100/w_2580,c_limit/Sapphire%20Pulse%20AMD%20Radeon%20RX%207600%20Gaming%20Graphics%20Card%20Abstract%20Background%20032025%20SOURCE%20Amazon.jpg",
+            "publishedAt": "2025-04-01T15:00:00Z",
+            "content": "Previous-Generation Cards\r\nNot everyone wants to spend $1,000 or more on a GPU, and you have a few options if you're working on a tighter overall budget. Normally, Id recommend a previous generation … [+3702 chars]"
+        },
+        {
+            "source": {
+                "id": "wired",
+                "name": "Wired"
+            },
+            "author": "Wired",
+            "title": "22 Great Gifts for Mom: Ideas for the Best Mother (2025)",
+            "description": "There are many kinds of mothers, but these are our favorite picks for the WIRED mom in your life.",
+            "url": "https://www.wired.com/gallery/gifts-for-moms/",
+            "urlToImage": "https://media.wired.com/photos/68157d6ee844d9827d24fdc2/191:100/w_2580,c_limit/Gifts-for-the-Best-Mom_052025_Lede.jpg",
+            "publishedAt": "2019-12-07T13:00:00Z",
+            "content": "Moms are people, too. They love their kids but also have plenty of their own hobbies (cooking! running! gaming!), and they deserve gifts that honor them as people, not just as parents. Gifts for Mom … [+1157 chars]"
+        }
+    ]
+}

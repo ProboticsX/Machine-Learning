@@ -1,0 +1,240 @@
+{
+    "status": "ok",
+    "totalResults": 68,
+    "articles": [
+        {
+            "source": {
+                "id": null,
+                "name": "ScienceAlert"
+            },
+            "author": "David Nield",
+            "title": "AI Detects an Unusual Detail Hidden in a Famous Raphael Masterpiece - ScienceAlert",
+            "description": "Artificial intelligence (AI) can be trained to see details in images that escape the human eye, and an AI neural network identified something unusual about a face in a Raphael painting: It wasn't actually painted by Raphael.",
+            "url": "https://www.sciencealert.com/ai-detects-an-unusual-detail-hidden-in-a-famous-raphael-masterpiece",
+            "urlToImage": "https://www.sciencealert.com/images/2023/12/PaintingClose.jpg",
+            "publishedAt": "2025-05-05T00:28:32Z",
+            "content": "Artificial intelligence (AI) can be trained to see details in imagesthat escape the human eye, and an AI neural network identified something unusual about a face in a Raphael painting: It wasn't actu… [+3435 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "9to5google.com"
+            },
+            "author": "Abner Li",
+            "title": "The Material 3 Expressive redesign of Google Clock leaks out [Gallery] - 9to5Google",
+            "description": "Ahead of Material 3 Expressive’s debut at I/O 2025 later this month, a redesign of the Google Clock app has emerged.",
+            "url": "http://9to5google.com/2025/05/04/google-clock-material-3-expressive-leak/",
+            "urlToImage": "https://i0.wp.com/9to5google.com/wp-content/uploads/sites/4/2024/03/Google-Clock-v2.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2025-05-04T23:15:00Z",
+            "content": "Ahead of Material 3 Expressives debut at I/O 2025 later this month, a redesign of the Google Clock app has emerged.\r\nAccording to screenshots shared by Mystic Leaks (who previously provided a look at… [+1843 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "9to5Mac"
+            },
+            "author": "Michael Burkhardt",
+            "title": "These are the best new MacBook deals right now: options as low as $649 - 9to5Mac",
+            "description": "In the Apple Silicon era, MacBooks have become more affordable than ever – with brand new models starting as low...",
+            "url": "https://9to5mac.com/2025/05/04/best-macbook-deals-may-2025/",
+            "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/05/M4-MacBook-Air-take-two.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2025-05-04T22:59:00Z",
+            "content": "In the Apple Silicon era, MacBooks have become more affordable than ever – with brand new models starting as low as $649. With looming tariffs on China, these great deals could potentially be coming … [+4747 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Wes Davis",
+            "title": "Roku is looking into complaints about washed-out HDR streams - The Verge",
+            "description": "Roku is investigating user complaints that their Roku TVs are producing washed-out HDR images when streaming.",
+            "url": "https://www.theverge.com/news/660950/roku-hdr-issues-washed-out-colors-gray",
+            "urlToImage": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/Roku.jpeg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+            "publishedAt": "2025-05-04T22:17:05Z",
+            "content": "The problem seems to stem from a recent software update.\r\nThe problem seems to stem from a recent software update.\r\nRoku is investigating user reports of washed-out colors when streaming HDR content … [+2089 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Cord Cutters News, LLC"
+            },
+            "author": "Luke Bouma",
+            "title": "A Major Blu-ray Manufacture Will Stop Making Blu-ray Drives & Stop Making Blu-ray Discs As Demand Drops - | Cord Cutters News",
+            "description": "In a significant shift for the optical media industry, Pioneer Corporation has reportedly withdrawn from the Blu-ray optical drive business, according to a report by Impress. The Japanese electronics giant has transferred all shares of its optical drive subsi…",
+            "url": "https://cordcuttersnews.com/a-major-blu-ray-manufacture-will-stop-making-blu-ray-drives-stop-making-blu-ray-discs-as-demand-drops/",
+            "urlToImage": "https://cordcuttersnews.com/wp-content/uploads/2019/04/DVD-Player-e1555164430945.jpg",
+            "publishedAt": "2025-05-04T20:51:45Z",
+            "content": "In a significant shift for the optical media industry, Pioneer Corporation has reportedly withdrawn from the Blu-ray optical drive business, according to a report by Impress. The Japanese electronics… [+2777 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Farmingdale-observer.com"
+            },
+            "author": null,
+            "title": "\"This skyscraper runs solely on solar energy\": in Miami, this sculpted tower powers all its floors with revolutionary integrated technology. - Farmingdale Observer",
+            "description": "Miami's latest architectural marvel captures worldwide attention with its innovative approach to sustainable luxury. The Residences at 1428 Brickell stands as a testament to how modern engineering can harmonize with environmental consciousness. This 70-story …",
+            "url": "https://farmingdale-observer.com/2025/05/04/this-skyscraper-runs-solely-on-solar-energy-in-miami-this-sculpted-tower-powers-all-its-floors-with-revolutionary-integrated-technology/",
+            "urlToImage": null,
+            "publishedAt": "2025-05-04T20:49:00Z",
+            "content": "Miami’s latest architectural marvel captures worldwide attention with its innovative approach to sustainable luxury. The Residences at 1428 Brickell stands as a testament to how modern engineering ca… [+4981 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "9to5google.com"
+            },
+            "author": "Ben Schoon",
+            "title": "Google Calendar update makes it easier to juggle accounts while creating events, sort of - 9to5Google",
+            "description": "A new Google Calendar update is rolling out that makes it easier to juggle accounts at the time of event creation.",
+            "url": "http://9to5google.com/2025/05/04/google-calendar-event-creation-event-update/",
+            "urlToImage": "https://i0.wp.com/9to5google.com/wp-content/uploads/sites/4/2023/03/google-calendar-logo-1.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2025-05-04T18:15:00Z",
+            "content": "A new update is rolling out to Google Calendar on Android which makes it easier to create events across separate Google accounts.\r\nWhen you have multiple Google accounts on your Android device, that … [+1112 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "InsideEVs "
+            },
+            "author": "Mack Hogan",
+            "title": "Watch A Chevy Blazer EV SS Crush A Mountain-Climbing Range Test - InsideEVs",
+            "description": "The new Chevrolet Blazer EV SS' range is put to the test in a new long-range drive that involves a 7,000-foot hill climb.",
+            "url": "https://insideevs.com/news/758467/chevy-blazer-ev-ss-mountain-range/",
+            "urlToImage": "https://cdn.motor1.com/images/mgl/lEqbQw/s1/chevy-blazer-ev-ss-mountain-test.jpg",
+            "publishedAt": "2025-05-04T18:05:37Z",
+            "content": "When it comes to planning EV road trips, elevation is a weird factor. On the one hand, if you go up 3,000 feet and then down 3,000 feet again, technically your net change in elevation is zero. You ma… [+1974 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "9to5Mac"
+            },
+            "author": "Michael Burkhardt",
+            "title": "There’s a new opportunity for Apple to bring back a unique product that it discontinued - 9to5Mac",
+            "description": "In 2020, Apple surprised a lot of people by re-entering a neglected segment of the smartphone market: small phones. With...",
+            "url": "https://9to5mac.com/2025/05/04/apple-bring-back-discontinued-iphone-mini-unique-opportunity/",
+            "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2022/01/The-Rewind-iPhone-SE-vs-iPhone-13-mini.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2025-05-04T17:58:00Z",
+            "content": "In 2020, Apple surprised a lot of people by re-entering a neglected segment of the smartphone market: small phones. With iPhone 12 mini, Apple did something fairly special, by squeezing all of the sa… [+3086 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Video Games Chronicle"
+            },
+            "author": "Chris Scullion",
+            "title": "The Louvre’s Nintendo 3DS audio guide service is ending after 13 years - Video Games Chronicle",
+            "description": "The Paris museum says 'a new system' is taking its place",
+            "url": "https://www.videogameschronicle.com/news/the-louvres-nintendo-3ds-audio-guide-service-is-ending-after-13-years/",
+            "urlToImage": "https://www.videogameschronicle.com/files/2025/05/nintendo-3ds-louvre.jpg",
+            "publishedAt": "2025-05-04T17:57:20Z",
+            "content": "The Louvre Museum in Paris is ending its long-running 3DS audio guide service.\r\nOriginally launched back in Spring 2012, the service allows visitors to pay 6 to hire a Nintendo 3DS handheld during th… [+1593 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Forbes"
+            },
+            "author": "Paul Tassi",
+            "title": "It May Be Too Late To Fix Marathon’s Core Problem - Forbes",
+            "description": "There have been many positive and negative takeaways from the Closed Alpha of Marathon. One issue seems more serious than the others.",
+            "url": "https://www.forbes.com/sites/paultassi/2025/05/04/it-may-be-too-late-to-fix-marathons-core-problem/",
+            "urlToImage": "https://imageio.forbes.com/specials-images/imageserve/68179d3c0a115e193b6cd0ac/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
+            "publishedAt": "2025-05-04T17:06:43Z",
+            "content": "Marathon\r\nBungie\r\nMarathon just extended its Closed Alpha for a couple more days, today making the AI more dangerous and unlocking a lot of upgrades for players so they can experience late season pla… [+4425 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Gematsu"
+            },
+            "author": "Sal Romano",
+            "title": "Arashi Gaiden launches July 14 - Gematsu",
+            "description": "Turn-based action game Arashi Gaiden will launch for PC via Steam on July 14, publishers Nuntius Games and Vsoo Games, and developers Staera Studio and Wired Dreams Studio announced.",
+            "url": "https://www.gematsu.com/2025/05/arashi-gaiden-launches-july-14",
+            "urlToImage": "https://www.gematsu.com/wp-content/uploads/2025/05/Arashi-Gaiden-Date_05-04-25.jpg",
+            "publishedAt": "2025-05-04T16:56:52Z",
+            "content": "Turn-based action gameArashi Gaiden will launch for PC via Steam on July 14, publishers Nuntius Games and Vsoo Games, and developers Staera Studio and Wired Dreams Studio announced. \r\nHere is an over… [+1315 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Thegamepost.com"
+            },
+            "author": null,
+            "title": "Call of Duty: Black Ops 7 Leak Reveals Battle Pass Paywall For LTMs and Exclusive Rewards - The Game Post",
+            "description": "A new leak suggests Call of Duty: Black Ops 7 might lock Limited-Time Modes and exclusive cosmetics behind the Battle Pass.",
+            "url": "https://thegamepost.com/call-of-duty-black-ops-7-leak-battle-pass-paywall-ltms-exclusive-rewards/",
+            "urlToImage": "https://thegamepost.com/wp-content/uploads/2025/05/call-of-duty-black-ops-7-leak-battle-pass-paywall-ltms-exclusive-rewards-3.webp",
+            "publishedAt": "2025-05-04T16:35:53Z",
+            "content": "A new leak suggests Call of Duty: Black Ops 7 might lock Limited-Time Modes and exclusive cosmetics behind the Battle Pass.\r\nThe next Call of Duty game, Black Ops 7, is already getting people talking… [+2747 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Gizmodo.com"
+            },
+            "author": "Lucas Ropek",
+            "title": "Dating App ‘Raw’ Accidentally Rawdogs Users’ Location Data, Personal Info - Gizmodo",
+            "description": "App users' data was left completely and utterly unprotected.",
+            "url": "https://gizmodo.com/dating-app-raw-accidentally-rawdogs-users-location-data-personal-info-2000597766",
+            "urlToImage": "https://gizmodo.com/app/uploads/2025/05/Screen-Shot-2025-05-02-at-3.15.18-PM.jpg",
+            "publishedAt": "2025-05-04T16:32:03Z",
+            "content": "A dating app that, just this week, announced a creepy new wearable, has been found to have publicly exposed users’ data. The data was granular and personal, including their approximate locations.\r\nTh… [+3327 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "9to5Mac"
+            },
+            "author": "Michael Burkhardt",
+            "title": "Apple wants to take control of the chips used in your iPhone: Here’s whats on the roadmap - 9to5Mac",
+            "description": "In 2020, Apple announced the Mac transition to Apple Silicon. Replacing Intel was a large undertaking, but it proved successful....",
+            "url": "https://9to5mac.com/2025/05/04/apple-taking-control-of-iphone-chips-in-house-modems/",
+            "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/02/apple-c1-modem-chip.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+            "publishedAt": "2025-05-04T16:09:00Z",
+            "content": "In 2020, Apple announced the Mac transition to Apple Silicon. Replacing Intel was a large undertaking, but it proved successful. Apple was able to develop chips that were both faster and more efficie… [+3517 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Insider-gaming.com"
+            },
+            "author": "Tom Henderson",
+            "title": "New Plants vs Zombies 3 Images Leak Revealing \"Fusions\" Mod Might Come to The Official Game - Insider Gaming",
+            "description": "Several new images of Plants vs Zombies 3 have leaked online thanks to a player survey which asked players their opinions on new features.",
+            "url": "https://insider-gaming.com/new-plants-vs-zombies-3-images-leak-revealing-fusions-mod-might-come-to-the-official-game/",
+            "urlToImage": "https://insider-gaming.com/wp-content/uploads/2025/05/plants-vs-zombies-3.jpg",
+            "publishedAt": "2025-05-04T16:08:30Z",
+            "content": "Several new images of Plants vs Zombies 3 have leaked online thanks to a player survey which asked players their opinions on new features coming to the game.\r\nThe leak was uploaded to the PlantsvsZom… [+1576 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "EventHubs"
+            },
+            "author": "Justin AdaptiveTrigger Gordon",
+            "title": "Nintendo released an update that could potentially brick Switch consoles but have since come up with a solution for those affected - EventHubs",
+            "description": "The version 20.0.0 patch for the Nintendo Switch was recently released. This patch was supposed to implement the Virtual Game Cards and GameShare functions that was initially introduced with the unveiling of the Switch 2.Nintendo was paving ...",
+            "url": "https://www.eventhubs.com/news/2025/may/04/nintendo-update-brick-switch-solution/",
+            "urlToImage": "https://media.eventhubs.com/images/2025/05/04_switch-error-bnrt.webp",
+            "publishedAt": "2025-05-04T15:57:34Z",
+            "content": "The version 20.0.0 patch for the Nintendo Switch was recently released. This patch was supposed to implement the Virtual Game Cards and GameShare functions that was initially introduced with the unve… [+1490 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Forbes"
+            },
+            "author": "Paul Tassi",
+            "title": "Leak Reveals ‘Destiny 2: Edge Of Fate’ Release Date, New Location - Forbes",
+            "description": "Destiny 2: The Edge of Fate now has a leaked release date, Behemoth has a name and we have a destination at hand.",
+            "url": "https://www.forbes.com/sites/paultassi/2025/05/04/leak-reveals-destiny-2-edge-of-fate-release-date-new-location/",
+            "urlToImage": "https://imageio.forbes.com/specials-images/imageserve/67ffb72646c7f460e0f5d99a/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds",
+            "publishedAt": "2025-05-04T15:46:01Z",
+            "content": "The Edge of Fate\r\nBungie\r\nDestiny 2 has a big reveal on Tuesday, May 6, but ahead of that, store leaks just cannot stop happening despite Bungies best efforts. Once again, the $275 Collectors Edition… [+2634 chars]"
+        }
+    ]
+}

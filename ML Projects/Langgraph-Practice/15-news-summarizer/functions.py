@@ -4,7 +4,7 @@ from classes import AgentState
 
 def displayGraph(graph):
     # print(graph.get_graph().draw_ascii())
-    graph.get_graph().draw_mermaid_png(output_file_path="multiagent-supervisor-scratch-with-so.png")
+    graph.get_graph().draw_mermaid_png(output_file_path="news-summarizer.png")
 
 @tool
 def multiply(a, b):
@@ -67,65 +67,32 @@ def make_supervisor_node(llm, members) -> str:
 
     return supervisor_node
 
-
-def research_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
-    print("====RESEARCH NODE=====")
-    print("===STATE=====")
-    print(state)
-    research_agent = create_react_agent(llm, tools=research_agent_tools)
-    result = research_agent.invoke(state)
-    print("===RESULT=====")
-    print(result)
-    return Command(
-        update={
-            "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=RESEARCH_AGENT)
-            ]
-        },
-        # We want our workers to ALWAYS "report back" to the supervisor when done
-        goto=SUPERVISOR_AGENT,
-    )
-
-def finance_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
+def finance_news_node(state: AgentState) -> Command[Literal[NEWS_SUPERVISOR_AGENT]]:
     print("====FINANCE NODE=====")
     print("===STATE=====")
     print(state)
-    finance_agent = create_react_agent(llm, tools=finance_agent_tools)
-    result = finance_agent.invoke(state)
+    finance_news_agent = create_react_agent(llm, tools=finance_news_agent_tools)
+    result = finance_news_agent.invoke(state)
     print("===RESULT=====")
     print(result)
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=FINANCE_AGENT)
+                HumanMessage(content=result["messages"][-1].content, name=FINANCE_NEWS_AGENT)
             ]
         },
-        goto=SUPERVISOR_AGENT,
+        goto=NEWS_SUPERVISOR_AGENT,
     )
 
-def math_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
-    print("====MATH NODE=====")
-    print("===STATE=====")
-    print(state)
-    math_agent = create_react_agent(llm, tools=math_agent_tools)
-    result = math_agent.invoke(state)
-    print("===RESULT=====")
-    print(result)
-    return Command(
-        update={
-            "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=MATH_AGENT)
-            ]
-        },
-        goto=SUPERVISOR_AGENT,
-    )
 
 web_search_tool = TavilySearchResults(max_results=3)
 math_agent_tools = [multiply, add, divide]
+web_search_tool = TavilySearchResults(max_results=3)
+math_agent_tools = [multiply, add, divide]
 research_agent_tools = [web_search_tool]
-finance_agent_tools = [get_stock_price]
+finance_news_agent_tools = [get_stock_price]
 
 llm = ChatOpenAI(model_name="gpt-4o-mini")
 
-members = [RESEARCH_AGENT, FINANCE_AGENT, MATH_AGENT]
+members = [FINANCE_NEWS_AGENT]
 supervisor_agent = make_supervisor_node(llm, members=members)

@@ -1,0 +1,240 @@
+{
+    "status": "ok",
+    "totalResults": 33,
+    "articles": [
+        {
+            "source": {
+                "id": null,
+                "name": "Formula 1"
+            },
+            "author": "F1",
+            "title": "Piastri wins as McLaren seal commanding 1-2 in Miami GP - Formula 1",
+            "description": "Oscar Piastri has strengthened his lead in the World Championship by clinching his fourth victory of the season at the Miami Grand Prix, the Australian leading home team mate Lando Norris to seal a dominant 1-2 for McLaren.",
+            "url": "https://www.formula1.com/en/latest/article/piastri-wins-from-norris-and-russell-as-mclaren-seal-commanding-1-2-in-miami.6Vfaf5zEMOKmPHzHdkGdof",
+            "urlToImage": "https://media.formula1.com/image/upload/t_16by9North/f_auto/q_auto/v1746395622/trackside-images/2025/F1_Grand_Prix_of_Miami/2213411373.jpg",
+            "publishedAt": "2025-05-04T21:54:37Z",
+            "content": "The battle got increasingly feisty by Lap 18, with Norris pushing Verstappen wide into Turn 11 to squeeze down the inside and take the position. The Briton subsequently handed the place back having s… [+1345 chars]"
+        },
+        {
+            "source": {
+                "id": "cbs-news",
+                "name": "CBS News"
+            },
+            "author": "Lucia I Suarez Sang",
+            "title": "Wisconsin woman missing nearly 63 years was found \"alive and well,\" police say - CBS News",
+            "description": "Audrey Backeberg was 20 years old when she first disappeared from her home in Reedsburg, Wisconsin, in July 1962.",
+            "url": "https://www.cbsnews.com/news/wisconsin-woman-missing-nearly-63-years-found-alive-well-police-say/",
+            "urlToImage": "https://assets1.cbsnewsstatic.com/hub/i/r/2025/05/04/a615d10f-5083-467f-9e95-995664ccec33/thumbnail/1200x630/db212b1b476036126d6c4dbbdd0e5ffa/audrey-backeberg.png?v=7c5acc180b39394767372ab4e02619ce",
+            "publishedAt": "2025-05-04T21:44:08Z",
+            "content": "A Wisconsin woman who went missing more than 60 years ago was recently found \"alive and well,\" authorities revealed last week.\r\nAudrey Backeberg was 20 years old when she first disappeared from her h… [+2435 chars]"
+        },
+        {
+            "source": {
+                "id": "abc-news",
+                "name": "ABC News"
+            },
+            "author": "ABC News",
+            "title": "Brazilian police arrest 2 suspects over alleged plot targeting Lady Gaga's concert in Rio - ABC News",
+            "description": null,
+            "url": "https://abcnews.go.com/International/brazilian-police-arrest-2-suspects-bomb-plot-targeting/story?id\\\\u003d121448479",
+            "urlToImage": null,
+            "publishedAt": "2025-05-04T21:33:03Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "BBC News"
+            },
+            "author": null,
+            "title": "Netanyahu vows response after Houthi missile hits near Israel's main airport - BBC",
+            "description": "Footage appeared to show a plume of black smoke rising from an area near the airport on the outskirts of Tel Aviv.",
+            "url": "https://www.bbc.com/news/articles/cyvqr00278no",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/a38d/live/31ab1030-28c8-11f0-9761-1905a59d240c.jpg",
+            "publishedAt": "2025-05-04T20:59:31Z",
+            "content": "Israeli Prime Minister Benjamin Netanyahu has vowed to retaliate against the Houthis after a missile fired by the group struck the grounds of Israel's main airport.\r\nIn a video posted on social media… [+2630 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "WRAL.com"
+            },
+            "author": "WRAL staff",
+            "title": "Recall alert: Salmonella contamination prompts tomato recalls in 14 states, including NC - WRAL.com",
+            "description": "The Food and Drug Administration has issued two recalls on tomatoes over possible salmonella contamination in more than a dozen states, including North Carolina.",
+            "url": "https://www.wral.com/lifestyle/health/salmonella-tomato-recall-nc-ga-sc-may-2025/",
+            "urlToImage": "https://images.wral.com/d16c44cf-dd78-4817-9577-f0116b9225e8?w=1200&h=630",
+            "publishedAt": "2025-05-04T20:58:12Z",
+            "content": "The Food and Drug Administration has issued two recalls on tomatoes over possible salmonella contamination in multiple states, including North Carolina.\r\nAccording to the FDA, the tomatoes from H&amp… [+1151 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Deadline"
+            },
+            "author": "Natalie Oganesyan",
+            "title": "Charley Scalies Dies: ‘The Wire’ & ‘The Sopranos’ Actor Was 84 - Deadline",
+            "description": "Charley Scalies, a character actor who appeared in HBO's 'The Wire' and 'The Sopranos' and was a former business executive, died at the age of 84.",
+            "url": "http://deadline.com/2025/05/charley-scalies-dead-the-wire-the-sopranos-actor-1236384929/",
+            "urlToImage": "https://deadline.com/wp-content/uploads/2025/05/Screenshot-2025-05-04-at-1.02.51 PM.png?w=1024",
+            "publishedAt": "2025-05-04T20:21:00Z",
+            "content": "Charley Scalies, a character actor who appeared in HBO’s The Wireand The Sopranosand was a former business executive, died May 1 at the age of 84 following a protracted battle with Alzheimer’s. \r\nThe… [+2394 chars]"
+        },
+        {
+            "source": {
+                "id": "the-washington-post",
+                "name": "The Washington Post"
+            },
+            "author": "Matt Viser",
+            "title": "Trump says ‘I don’t know’ when asked if he’s required to uphold Constitution - The Washington Post",
+            "description": "The president also downplayed fears of a recession and spoke of potential successors when his four-year term ends in an NBC interview.",
+            "url": "https://www.washingtonpost.com/politics/2025/05/04/trump-nbc-interview-constitution-economy/",
+            "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/OWK7R2TGJHTA32E57P7SBZZPEU_size-normalized.jpg&w=1440",
+            "publishedAt": "2025-05-04T19:11:50Z",
+            "content": "WEST PALM BEACH, Fla. President Donald Trump, asked during an interview on NBC Newss Meet the Press whether he believes that he needs to uphold the Constitution during his presidency, responded, I do… [+8601 chars]"
+        },
+        {
+            "source": {
+                "id": "politico",
+                "name": "Politico"
+            },
+            "author": "Amanda Friedman",
+            "title": "Rep. Himes says Waltz’s exit weakens the national security team - Politico",
+            "description": "“You can't run anything, much less the United States is a national security policy without having people who are willing to put uncomfortable truths in front of the president,” the Connecticut Democrat said.",
+            "url": "https://www.politico.com/news/2025/05/04/jim-himes-mike-waltz-national-security-00326079",
+            "urlToImage": "https://static.politico.com/02/c1/c26b166343b98f8d57f7ba7d1cf9/trump-91345.jpg",
+            "publishedAt": "2025-05-04T19:08:01Z",
+            "content": "Rubio, already leading the State Department, is currently filling the national security adviser role in an interim capacity after Waltz was removed from the post following a tenure marred by the fall… [+2368 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Wes Davis",
+            "title": "Nintendo is suing accessory maker Genki after its unofficial Switch 2 mockups - The Verge",
+            "description": "Nintendo has accused accessory maker Genki of several violations related to its promotion of unofficial Switch 2 accessories using Nintendo’s trademarks.",
+            "url": "https://www.theverge.com/news/660815/nintendo-lawsuit-genki-switch-2-accessories",
+            "urlToImage": "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25822958/010824_Nintendo_Switch_2_3D_printed_mockup_ADiBenedetto_0001.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
+            "publishedAt": "2025-05-04T19:05:15Z",
+            "content": "Genki has allegedly been misusing Nintendos trademarks and misleading customers about its Switch 2 accessories.\r\nGenki has allegedly been misusing Nintendos trademarks and misleading customers about … [+2875 chars]"
+        },
+        {
+            "source": {
+                "id": "the-jerusalem-post",
+                "name": "The Jerusalem Post"
+            },
+            "author": "By  AMICHAI STEIN,  JERUSALEM POST STAFF",
+            "title": "Israeli, Turkish fighter jets avoid confrontation over Syria by radio contact - report - The Jerusalem Post",
+            "description": "Turkish F-16s sent warning signals to the Israeli jets using their electronic warfare systems, and a brief radio contact was made between the aircraft.",
+            "url": "https://www.jpost.com/breaking-news/article-852533",
+            "urlToImage": "https://images.jpost.com/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_407,w_690/643264",
+            "publishedAt": "2025-05-04T18:11:00Z",
+            "content": "During the Israeli strike near the presidential palace in Damascus overnight on Thursday, Turkish fighter jets reportedly conducted reconnaissance flights in the area where Israeli aircraft were oper… [+1861 chars]"
+        },
+        {
+            "source": {
+                "id": "al-jazeera-english",
+                "name": "Al Jazeera English"
+            },
+            "author": "Al Jazeera",
+            "title": "Israel calling up tens of thousands of reservists to expand war on Gaza - Al Jazeera",
+            "description": "Move comes despite global outrage over humanitarian blockade and calls to reach lasting ceasefire.",
+            "url": "https://www.aljazeera.com/news/2025/5/4/israel-calls-up-thousands-of-reservists-to-expand-war-on-gaza",
+            "urlToImage": "https://www.aljazeera.com/wp-content/uploads/2025/05/ap_68179b13231e3-1746377491.jpg?resize=1920%2C1440",
+            "publishedAt": "2025-05-04T18:08:29Z",
+            "content": "The Israeli military will call up tens of thousands of reservists to expand the countrys assault on the besieged Gaza Strip, army chief Eyal Zamir says.\r\nHe made the announcement on Sunday after Isra… [+3259 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Earth.com"
+            },
+            "author": null,
+            "title": "New source of gold, platinum, and uranium discovered in space - Earth.com",
+            "description": "Magnetar flares can create gold, platinum, and uranium in seconds, reshaping cosmic element formation theories.",
+            "url": "https://www.earth.com/news/magnetar-flares-create-gold-platinum-uranium-in-seconds/",
+            "urlToImage": "https://cff2.earth.com/uploads/2025/05/04115751/magnetar-flare_gold_platinum_uranium_1m.jpg",
+            "publishedAt": "2025-05-04T18:01:38Z",
+            "content": "A flash of intense radiation seen in space has upended long-held ideas about how some of our heaviest metals emerge. Scientists have found that such a flare can pump out vast amounts of heavy, rare a… [+5394 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Abc45.com"
+            },
+            "author": "ANISSA REYES | The National News Desk",
+            "title": "South Texas approves creation of SpaceX's new city, Starbase - WKRC",
+            "description": "The South Texas site Elon Musk and his SpaceX rocket company has been vying for has been approved to become an official city with the galactic name, “Starbase.”",
+            "url": "https://abc45.com/news/nation-world/south-texas-approves-creation-of-spacexs-new-city-starbase-elon-musk-boca-chica-beach-park-access-rocket-launches-rio-grande-debate-controversy",
+            "urlToImage": "https://abc45.com/resources/media2/16x9/4000/986/0x208/90/a7a144e2-9d1b-4f1e-bcc7-07cd2e7262ac-AP25123772267513.jpg",
+            "publishedAt": "2025-05-04T17:55:27Z",
+            "content": "(TNND) The South Texas site Elon Musk and his SpaceX rocket company has been vying for has been approved to become an official city with the galactic name, Starbase.\r\nOn Saturday, a vote to formally … [+1841 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Caroline Baum",
+            "title": "Father of crypto entrepreneur rescued from kidnappers after having finger severed - CNN",
+            "description": "French police rescued the father of a cryptocurrency entrepreneur from his kidnappers Saturday night, but found he’d had one of his fingers severed – the latest in a spate of abductions tied to cryptocurrency.",
+            "url": "https://www.cnn.com/2025/05/04/europe/crypto-entrepreneur-finger-severed-intl-latam",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/c-ap25124383024192.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2025-05-04T17:52:00Z",
+            "content": "French police rescued the father of a cryptocurrency entrepreneur from his kidnappers Saturday night, but found hed had one of his fingers severed the latest in a spate of abductions tied to cryptocu… [+1733 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Yahoo Entertainment"
+            },
+            "author": "Chuck Mindenhall",
+            "title": "Bo Nickal got run over by a Reinier, which is par for the UFC course in 2025 - Yahoo Sports",
+            "description": "Bo Nickal is the latest hyped prospect to lose his momentum and his perfect record with Saturday's UFC Fight Night loss to Reinier de Ridder.",
+            "url": "https://sports.yahoo.com/mma/article/bo-nickal-got-run-over-by-a-reinier-which-is-par-for-the-ufc-course-in-2025-174113143.html",
+            "urlToImage": "https://s.yimg.com/ny/api/res/1.2/DN.RIoQ57xUmGxE8YUveqw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03OTc7Y2Y9d2VicA--/https://s.yimg.com/os/creatr-uploaded-images/2025-05/e6594890-290d-11f0-97cf-9bf0ae6d0beb",
+            "publishedAt": "2025-05-04T17:41:13Z",
+            "content": "Back in January, the blue-chip prospect Payton Talbott made the walk as a 10-to-1 favorite against Raoni Barcelos at UFC 311 and then got dominated for three rounds. That hurt, but not nearly as bad … [+4359 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Auzinea Bacon",
+            "title": "Disney’s ‘Thunderbolts’ rallies Marvel fans for a $76 million opening weekend - CNN",
+            "description": "Marvel’s “Thunderbolts” electrified the box office, beating expectations with $76 million in domestic sales this weekend.",
+            "url": "https://www.cnn.com/2025/05/04/business/thunderbolts-marvel-box-office",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/oab-trl3-still-uhd-1-1-26-r-0.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2025-05-04T17:04:00Z",
+            "content": "Marvels Thunderbolts electrified the box office, beating expectations with $76million in domestic sales this weekend.\r\nWhile not the massive opening weekend numbers that Marvel movies once posted, Th… [+3444 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "NPR"
+            },
+            "author": "Joe Hernandez",
+            "title": "Catholic leaders criticize Trump for posting apparent AI photo of himself as the pope - NPR",
+            "description": "When asked about the image, Cardinal Timothy Dolan, the archbishop of New York who is friendly with Trump, said \"it wasn't good\" and that he hoped Trump had nothing to do with it.",
+            "url": "https://www.npr.org/2025/05/04/nx-s1-5386516/catholic-leaders-criticize-trump-ai-pope-photo",
+            "urlToImage": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/4176x2349+0+218/resize/1400/quality/100/format/jpeg/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F8d%2F6a%2F1255d9fe4ec8b354f1079ae42cec%2Fgettyimages-687568262.jpg",
+            "publishedAt": "2025-05-04T15:34:46Z",
+            "content": "Some Catholic leaders and at least one U.S. Catholic group are criticizing President Trump after he posted on social media what appears to be an artificial intelligence-generated image of himself dre… [+2422 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Videocardz.com"
+            },
+            "author": null,
+            "title": "PNY GeForce RTX 5060 becomes first blackwell RTX 50 GPU listed below $300 by a retailer - VideoCardz.com",
+            "description": "PNY RTX 5060 OC at $299 Bestbuy first to list Blackwell GPU below $300.  BestBuy has published the first product page for the RTX 5060 graphics card, the entry-level model in NVIDIA’s new Blackwell gaming lineup. The card has not yet been released and is expe…",
+            "url": "https://videocardz.com/newz/pny-geforce-rtx-5060-becomes-first-blackwell-rtx-50-gpu-listed-below-300-by-a-retailer",
+            "urlToImage": "https://cdn.videocardz.com/1/2025/05/RTX5060-PNY.jpg",
+            "publishedAt": "2025-05-04T13:46:00Z",
+            "content": "Bestbuy first to list Blackwell GPU below $300. \r\nBestBuy has published the first product page for the RTX 5060 graphics card, the entry-level model in NVIDIA’s new Blackwell gaming lineup. The card … [+2545 chars]"
+        }
+    ]
+}
