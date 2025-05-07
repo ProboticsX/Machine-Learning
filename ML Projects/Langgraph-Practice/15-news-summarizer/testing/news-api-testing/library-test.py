@@ -2,6 +2,8 @@ import sys
 import os
 import json
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from newsapi import NewsApiClient
 
