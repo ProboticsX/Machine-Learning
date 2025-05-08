@@ -5,23 +5,49 @@ from datetime import datetime
 import time
 from typing import Dict, List
 import logging
+import os
+import sys
+from dotenv import load_dotenv
+from newsapi import NewsApiClient
 
-# Set up logging
-logging.basicConfig(level=logging.INFO)
+# Set up logging with more detailed format and stream handler
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
-def load_news_data(file_path: str) -> Dict:
-    """Load the news data from JSON file."""
+# Create console handler with formatting
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s', 
+                            datefmt='%Y-%m-%d %H:%M:%S')
+console_handler.setFormatter(formatter)
+logger.addHandler(console_handler)
+
+# Load environment variables
+load_dotenv()
+
+def fetch_news() -> Dict:
+    """Fetch latest news from NewsAPI."""
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        # Initialize NewsAPI client
+        newsapi = NewsApiClient(api_key=os.getenv('NEWS_API_KEY'))
+        
+        # Fetch top headlines
+        logger.info("Fetching latest news from NewsAPI...")
+        response = newsapi.get_top_headlines(
+            language='en',
+            country='us',
+            page_size=100  # Get more articles to ensure we have enough with content
+        )
+        logger.info(f"Successfully fetched {len(response['articles'])} articles from NewsAPI")
+        return response
     except Exception as e:
-        logger.error(f"Error loading news data: {e}")
+        logger.error(f"Error fetching news: {e}")
         raise
 
 def fetch_article_content(url: str) -> str:
     """Fetch and extract the main content from a news article URL."""
     try:
+        logger.info(f"Fetching content from URL: {url}")
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
@@ -42,6 +68,8 @@ def fetch_article_content(url: str) -> str:
         chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
         text = ' '.join(chunk for chunk in chunks if chunk)
         
+        content_length = len(text)
+        logger.info(f"Successfully extracted {content_length} characters of content")
         return text
     except Exception as e:
         logger.error(f"Error fetching content from {url}: {e}")
@@ -54,7 +82,9 @@ def process_articles(articles: List[Dict]) -> List[Dict]:
     
     while len(processed_articles) < 10 and article_index < len(articles):
         article = articles[article_index]
-        logger.info(f"Processing article {article_index + 1}/{len(articles)}: {article['title']}")
+        logger.info(f"\nProcessing article {article_index + 1}/{len(articles)}")
+        logger.info(f"Title: {article['title']}")
+        logger.info(f"Source: {article['source']['name']}")
         
         content = fetch_article_content(article["url"])
         
@@ -70,45 +100,49 @@ def process_articles(articles: List[Dict]) -> List[Dict]:
                 "content": content
             }
             processed_articles.append(article_data)
-            logger.info(f"Successfully processed article {len(processed_articles)}/10")
+            logger.info(f"✓ Successfully processed article {len(processed_articles)}/10")
         else:
-            logger.warning(f"No content found for article: {article['title']}")
+            logger.warning(f"✗ No content found for article: {article['title']}")
         
         article_index += 1
-        time.sleep(1)  # Be nice to the servers
+        if article_index < len(articles):
+            logger.info("Waiting 1 second before processing next article...")
+            time.sleep(1)  # Be nice to the servers
     
-    logger.info(f"Processed {len(processed_articles)} articles with full content")
+    logger.info(f"\nFinished processing. Successfully processed {len(processed_articles)} articles with full content")
     return processed_articles
 
-def save_processed_articles(articles: List[Dict], output_file: str):
-    """Save the processed articles to a JSON file."""
-    output_data = {
-        "processed_at": datetime.utcnow().isoformat(),
-        "total_articles": len(articles),
-        "articles": articles
-    }
-    
+def save_json(data: Dict, output_file: str):
+    """Save data to a JSON file."""
     try:
+        # Create news directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_file), exist_ok=True)
+        
         with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(output_data, f, indent=2, ensure_ascii=False)
-        logger.info(f"Successfully saved processed articles to {output_file}")
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        logger.info(f"Successfully saved data to {output_file}")
     except Exception as e:
-        logger.error(f"Error saving processed articles: {e}")
+        logger.error(f"Error saving data: {e}")
         raise
 
 def main():
-    input_file = "tech_news_20250506_230315.json"
-    output_file = f"processed_news_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
-    
     try:
-        # Load news data
-        news_data = load_news_data(input_file)
+        # Fetch news articles
+        news_data = fetch_news()
+        
+        # Save raw news data
+        save_json(news_data, "news/raw_news.json")
         
         # Process articles
         processed_articles = process_articles(news_data["articles"])
         
         # Save processed articles
-        save_processed_articles(processed_articles, output_file)
+        output_data = {
+            "processed_at": datetime.utcnow().isoformat(),
+            "total_articles": len(processed_articles),
+            "articles": processed_articles
+        }
+        save_json(output_data, "news/processed_news.json")
         
     except Exception as e:
         logger.error(f"An error occurred: {e}")

@@ -44,6 +44,8 @@ import yfinance as yf
 import math
 from newsapi import NewsApiClient
 from serpapi import GoogleSearch
+from news_content_tool import NewsContentTool
+
 
 # Load environment variables
 load_dotenv() 

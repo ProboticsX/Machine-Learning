@@ -120,7 +120,7 @@ def math_node(state: AgentState) -> Command[Literal[SUPERVISOR_AGENT]]:
         goto=SUPERVISOR_AGENT,
     )
 
-web_search_tool = TavilySearchResults(max_results=3)
+web_search_tool = TavilySearchResults(max_results=5)
 math_agent_tools = [multiply, add, divide]
 research_agent_tools = [web_search_tool]
 finance_agent_tools = [get_stock_price]

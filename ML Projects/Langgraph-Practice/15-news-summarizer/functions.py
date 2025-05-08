@@ -30,7 +30,14 @@ def get_stock_price(ticker: str) -> float:
     stock = yf.Ticker(ticker)
     return stock.info['previousClose']
 
-def make_supervisor_node(llm, members) -> str:
+@tool
+def get_top_headlines() -> str:
+    """Gets the top headlines from the news API."""
+    news_tool = NewsContentTool()
+    result = news_tool.get_top_headlines()
+    return result
+
+def make_news_supervisor_node(llm, members) -> str:
     options = ["FINISH"] + members
     system_prompt = (
         "You are a supervisor tasked with managing a conversation between the"
@@ -45,13 +52,13 @@ def make_supervisor_node(llm, members) -> str:
 
         next: Literal[*options]
 
-    def supervisor_node(state: AgentState) -> Command[Literal[*members, END]]:
-        print("====SUPERVISOR NODE=====")
+    def news_supervisor_node(state: AgentState) -> Command[Literal[*members, END]]:
+        print("====NEWS SUPERVISOR NODE=====")
         print("===STATE=====")
         print(state)
         """An LLM-based router."""
-        previous_messages = state["messages"]
-        invoke_message = [{"role": "system", "content": system_prompt},] + previous_messages
+        last_message = state["messages"][-1]
+        invoke_message = [{"role": "system", "content": system_prompt},] + [last_message]
         print("===INVOKE MESSAGE=====")
         print(invoke_message)
         llm_with_structured_output = llm.with_structured_output(Router)
@@ -65,34 +72,92 @@ def make_supervisor_node(llm, members) -> str:
         print(goto)
         return Command(goto=goto, update={"next": goto})
 
-    return supervisor_node
+    return news_supervisor_node
 
-def finance_news_node(state: AgentState) -> Command[Literal[NEWS_SUPERVISOR_AGENT]]:
-    print("====FINANCE NODE=====")
+
+def make_top_headlines_supervisor_node(llm, members) -> str:
+    options = ["FINISH"] + members
+    system_prompt = (
+        "You are a supervisor who is expected to provide the top news headlines along with the summary of the news."
+        "You are tasked with managing a conversation between the"
+        f" following workers: {members}. Given the following user request,"
+        " respond with the worker to act next. Each worker will perform a"
+        " task and respond with their results and status. When finished,"
+        " respond with FINISH."
+        " Do not perform any task yourself. Just route the request to any of the workers."
+    )
+
+    class Router(TypedDict):
+        """Worker to route to next. If no workers needed, route to FINISH."""
+
+        next: Literal[*options]
+
+    def top_headlines_supervisor_node(state: AgentState) -> Command[Literal[*members, NEWS_SUPERVISOR_AGENT]]:
+        print("====TOP HEADLINES SUPERVISOR NODE=====")
+        print("===STATE=====")
+        print(state)
+        """An LLM-based router."""
+        last_message = state["messages"][-1]
+        invoke_message = [{"role": "system", "content": system_prompt},] + [last_message]
+        print("===INVOKE MESSAGE=====")
+        print(invoke_message)
+        llm_with_structured_output = llm.with_structured_output(Router)
+        response = llm_with_structured_output.invoke(invoke_message)
+        print("===RESPONSE=====")
+        print(response)
+        goto = response["next"]
+        if goto == "FINISH":
+            goto = NEWS_SUPERVISOR_AGENT
+        print("===GOTO=====")
+        print(goto)
+        return Command(goto=goto, update={"next": goto})
+
+    return top_headlines_supervisor_node
+
+def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPERVISOR_AGENT]]:
+    print("====TOP HEADLINES NODE=====")
     print("===STATE=====")
     print(state)
-    finance_news_agent = create_react_agent(llm, tools=finance_news_agent_tools)
-    result = finance_news_agent.invoke(state)
+    top_headlines_agent = create_react_agent(llm, 
+                                             tools=top_headlines_agent_tools, 
+                                             prompt = "Your job is to provide the top headlines using the tools provided.")
+    result = top_headlines_agent.invoke(state)
+    print("===RESULT=====")
+    print(result)
+    tool_message = result["messages"][-2]
+    return Command(
+        update={
+            "messages": [
+                HumanMessage(content=tool_message.content, name=TOP_HEADLINES_AGENT)
+            ]
+        },
+        goto=TOP_HEADLINES_SUPERVISOR_AGENT,
+    )
+
+def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPERVISOR_AGENT]]:
+    print("====TOP HEADLINES SUMMARIZER NODE=====")
+    print("===STATE=====")
+    print(state)
+    previous_messages = state["messages"]
+    system_prompt = "Your job is to summarize the top headlines. Remember to summarize each headline in about 200-300 words."
+    invoke_message = [{"role": "system", "content": system_prompt},] + previous_messages
+    result = llm.invoke(invoke_message)
     print("===RESULT=====")
     print(result)
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=FINANCE_NEWS_AGENT)
+                HumanMessage(content=result.content, name=TOP_HEADLINES_SUMMARIZER_AGENT)
             ]
         },
-        goto=NEWS_SUPERVISOR_AGENT,
+        goto=TOP_HEADLINES_SUPERVISOR_AGENT,
     )
 
-
-web_search_tool = TavilySearchResults(max_results=3)
-math_agent_tools = [multiply, add, divide]
-web_search_tool = TavilySearchResults(max_results=3)
-math_agent_tools = [multiply, add, divide]
-research_agent_tools = [web_search_tool]
-finance_news_agent_tools = [get_stock_price]
+top_headlines_agent_tools = [get_top_headlines]
 
 llm = ChatOpenAI(model_name="gpt-4o-mini")
 
-members = [FINANCE_NEWS_AGENT]
-supervisor_agent = make_supervisor_node(llm, members=members)
+news_supervisor_members = [TOP_HEADLINES_SUPERVISOR_AGENT]
+news_supervisor_agent = make_news_supervisor_node(llm, members=news_supervisor_members)
+top_headlines_members = [TOP_HEADLINES_AGENT, TOP_HEADLINES_SUMMARIZER_AGENT]
+top_headlines_supervisor_agent = make_top_headlines_supervisor_node(llm, members=top_headlines_members)
