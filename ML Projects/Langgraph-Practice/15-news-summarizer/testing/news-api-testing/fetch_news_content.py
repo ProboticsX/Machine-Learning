@@ -76,11 +76,11 @@ def fetch_article_content(url: str) -> str:
         return ""
 
 def process_articles(articles: List[Dict]) -> List[Dict]:
-    """Process articles until we have 10 with full content or we've gone through all articles."""
+    """Process articles until we have 5 with full content or we've gone through all articles."""
     processed_articles = []
     article_index = 0
     
-    while len(processed_articles) < 10 and article_index < len(articles):
+    while len(processed_articles) < 5 and article_index < len(articles):
         article = articles[article_index]
         logger.info(f"\nProcessing article {article_index + 1}/{len(articles)}")
         logger.info(f"Title: {article['title']}")
@@ -100,7 +100,7 @@ def process_articles(articles: List[Dict]) -> List[Dict]:
                 "content": content
             }
             processed_articles.append(article_data)
-            logger.info(f"✓ Successfully processed article {len(processed_articles)}/10")
+            logger.info(f"✓ Successfully processed article {len(processed_articles)}/5")
         else:
             logger.warning(f"✗ No content found for article: {article['title']}")
         
