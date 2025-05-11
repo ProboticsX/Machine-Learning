@@ -17,39 +17,29 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
 
     class Router(TypedDict):
         """Worker to route to next. If no workers needed, route to FINISH."""
+
         next: Literal[*options]
 
     def news_supervisor_node(state: AgentState) -> Command[Literal[*members, END]]:
         print("====NEWS SUPERVISOR NODE=====")
         print("===STATE AT NEWS SUPERVISOR NODE=====")
         print(state)
-        
-        # Create the agent with the system prompt
-        news_supervisor_agent = create_react_agent(
-            llm,
-            tools=[],  # No tools needed for routing
-            prompt=system_prompt,
-            response_format=("Give me the next worker to route to next.", Router)
-        )
-        
-        # Prepare the input
-        question = state["messages"][0].content
+        """An LLM-based router."""
         context = state["messages"]
-        invoke_message = {
-            "input": f"Here is the original user question: {question} and some context: {context}"
-        }
-        
-        # Get the response
-        response = news_supervisor_agent.invoke(invoke_message)
-        
+        question = state["messages"][0].content
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "Here is the original user question: {question} and some context: {context}"),
+        ])
+        invoke_message = {"context": context, "question": question}
+        llm_with_structured_output = llm.with_structured_output(Router)
+        news_supervisor_chain = prompt | llm_with_structured_output
+        response = news_supervisor_chain.invoke(invoke_message)
         print("===RESPONSE OF NEWS SUPERVISOR NODE=====")
         print(response)
-        
-        # Get the next worker from the structured response
-        goto = response["structured_response"]["next"]
+        goto = response["next"]
         if goto == "FINISH":
             goto = END
-            
         print("===GOTO=====")
         print(goto)
         return Command(goto=goto, update={"next": goto})
