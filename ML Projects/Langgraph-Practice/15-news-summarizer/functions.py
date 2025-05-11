@@ -1,6 +1,7 @@
 from common_imports import *
 from constants import *
 from classes import AgentState, TopHeadlinesClass
+from pathlib import Path
 
 def displayGraph(graph):
     print(graph.get_graph().draw_ascii())
@@ -39,19 +40,19 @@ def get_top_headlines() -> str:
 
 @tool
 def write_to_file(content: str) -> str:
-    """Writes the content to a file."""
+    """Writes the content to a file in the data/transcripts folder."""
     with open(transcript_file, "w") as f:
         f.write(content)
-    return "File written successfully"
+    return f"File written successfully to {transcript_file}"
 
 @tool
-def create_podcast(transcript_file: str) -> str:
+def create_podcast() -> str:
     """Creates a podcast from the transcript file."""
     audio_file = generate_podcast(
-		transcript_file=transcript_file,
-		tts_model="gemini",
-		api_key_label="GEMINI_API_KEY"
-	)
+        transcript_file=str(transcript_file),
+        tts_model="gemini",
+        api_key_label="GEMINI_API_KEY"
+    )
     print(f"Audio file generated and saved as: {audio_file}")
     return "Podcast created successfully"
 
@@ -194,10 +195,16 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     print("===STATE AT TOP HEADLINES NODE=====")
     print(state)
     system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_AGENT]}"
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("user", "Input: {user_request}"),
+    ])
+    formatted_prompt = prompt.format(user_request="Please fetch the top headlines")
     top_headlines_agent = create_react_agent(llm, 
                                              tools=top_headlines_agent_tools, 
-                                             prompt = system_prompt)
-    result = top_headlines_agent.invoke(state)
+                                             prompt = formatted_prompt)
+    invoke_message = {"input": "Please fetch the top headlines"}
+    result = top_headlines_agent.invoke(invoke_message)
     print("===RESULT OF TOP HEADLINES NODE=====")
     print(result)
     tool_message = result["messages"][-2]
@@ -321,8 +328,6 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
         goto=PODCAST_SUPERVISOR_AGENT,
     )
 
-transcript_file = "./podcast-script.txt"
-
 role_of_each_news_supervisor_worker = {
     PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the podcast script and audio file.",
     TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news."
@@ -337,6 +342,10 @@ role_of_each_podcast_worker = {
     PODCAST_TRANSCRIPT_GENERATOR_AGENT: "Script generator agent who is tasked with generating a podcast script for the top headlines and save the transcript to a file.",
     PODCAST_AUDIO_GENERATOR_AGENT: "Audio generator agent who is tasked with generating the audio file for the podcast and save it to a file.",
 }
+
+transcript_dir = Path("data/transcripts")
+transcript_dir.mkdir(parents=True, exist_ok=True)
+transcript_file = transcript_dir / "podcast-script.txt"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]

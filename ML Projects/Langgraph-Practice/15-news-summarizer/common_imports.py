@@ -3,6 +3,7 @@ import chromadb
 import warnings
 import json
 from datetime import datetime
+from pathlib import Path
 warnings.filterwarnings("ignore")
 
 # LangChain imports
