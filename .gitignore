@@ -135,3 +135,5 @@ faiss_index_react/
 .chroma/
 
 ./ML Projects/llm_engineering
+ML Projects/Langgraph-Practice/15-news-summarizer/testing/podcastfy-testing/data/audio
+ML Projects/Langgraph-Practice/15-news-summarizer/testing/google-testing/data/audio
