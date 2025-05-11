@@ -1,5 +1,5 @@
 from common_imports import *
-from functions import displayGraph
+from functions.helper_functions import displayGraph
 from graph import graph
 
 if __name__ == "__main__":

@@ -1,3 +1,5 @@
+MODEL_NAME = "gpt-4o-mini"
+
 NEWS_SUPERVISOR_AGENT = "news_supervisor_agent"
 TOP_HEADLINES_SUPERVISOR_AGENT = "top_headlines_supervisor_agent"
 TOP_HEADLINES_AGENT = "top_headlines_agent"
