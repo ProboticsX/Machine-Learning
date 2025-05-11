@@ -45,6 +45,7 @@ import math
 from newsapi import NewsApiClient
 from serpapi import GoogleSearch
 from news_content_tool import NewsContentTool
+from podcastfy.client import generate_podcast
 
 
 # Load environment variables

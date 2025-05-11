@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # question = "What's the stock price of Tesla?"
     # question = "Give me some information about Najafgarh"
     # question = "What is ((3*5) + 10)*5? Also, who's the richest person in the world?"
-    question = "What are the top headlines? Generate a podcast script for the top headlines."
+    question = "Create a podcast for the top headlines of the day."
     displayGraph(graph)
     result = graph.invoke({"messages": [question]})
     print("======RESULT=======")

@@ -4,7 +4,7 @@ from classes import AgentState, TopHeadlinesClass
 
 def displayGraph(graph):
     print(graph.get_graph().draw_ascii())
-    graph.get_graph().draw_mermaid_png(output_file_path="news-summarizer.png")
+    # graph.get_graph().draw_mermaid_png(output_file_path="news-summarizer.png")
 
 @tool
 def multiply(a, b):
@@ -40,9 +40,20 @@ def get_top_headlines() -> str:
 @tool
 def write_to_file(content: str) -> str:
     """Writes the content to a file."""
-    with open("podcast-script.txt", "w") as f:
+    with open(transcript_file, "w") as f:
         f.write(content)
     return "File written successfully"
+
+@tool
+def create_podcast() -> str:
+    """Creates a podcast from the transcript file."""
+    audio_file = generate_podcast(
+		transcript_file=transcript_file,
+		tts_model="gemini",
+		api_key_label="GEMINI_API_KEY"
+	)
+    print(f"Audio file generated and saved as: {audio_file}")
+    return "Podcast created successfully"
 
 def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
     options = ["FINISH"] + members
@@ -129,7 +140,7 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
         f" following workers: {members}. Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
         " task and respond with their results and status." 
-        "When you have received the podcast script, respond with FINISH."
+        "When you have received the podcast script and audio file, respond with FINISH."
         " Do not perform any task yourself. Just route the request to any of the workers."
         "Here's the role of each worker: \n"
         f"{role_of_each_worker}"
@@ -264,29 +275,31 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
         goto=PODCAST_SUPERVISOR_AGENT,
     )
 
-# def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_SUPERVISOR_AGENT]]:
-#     print("====PODCAST AUDIO GENERATOR NODE=====")
-#     print("===STATE=====")
-#     print(state)
-#     previous_messages = state["messages"]
-#     system_prompt = "Your job is to generate the audio file for the podcast."
-#     invoke_message = [{"role": "system", "content": system_prompt},] + previous_messages
-#     result = llm.invoke(invoke_message)
-#     print("===RESULT=====")
-#     print(result)
-#     return Command(
-#         update={
-#             "messages": [
-#                 HumanMessage(content=result.content, name=PODCAST_AUDIO_GENERATOR_AGENT)
-#             ]
-#         },
-#         goto=PODCAST_SUPERVISOR_AGENT,
-#     )
+def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_SUPERVISOR_AGENT]]:
+    print("====PODCAST AUDIO GENERATOR NODE=====")
+    print("===STATE AT PODCAST AUDIO GENERATOR NODE=====")
+    print(state)
+    system_prompt = f"{role_of_each_podcast_worker[PODCAST_AUDIO_GENERATOR_AGENT]}."
+    podcast_audio_generator_agent = create_react_agent(llm, 
+                                             tools=podcast_audio_generator_agent_tools, 
+                                             prompt = system_prompt)
+    result = podcast_audio_generator_agent.invoke(state)
+    print("===RESULT OF PODCAST AUDIO GENERATOR NODE=====")
+    print(result)
+    return Command(
+        update={
+            "messages": [
+                HumanMessage(content=result["messages"][-1].content, name=PODCAST_AUDIO_GENERATOR_AGENT)
+            ],
+        },
+        goto=PODCAST_SUPERVISOR_AGENT,
+    )
 
+transcript_file = "./podcast-script.txt"
 
 role_of_each_news_supervisor_worker = {
-    TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news.",
-    PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the podcast script and save the transcript to a file.",
+    PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the podcast script and audio file.",
+    TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news."
 }
 
 role_of_each_top_headlines_worker = {
@@ -296,15 +309,16 @@ role_of_each_top_headlines_worker = {
 
 role_of_each_podcast_worker = {
     PODCAST_TRANSCRIPT_GENERATOR_AGENT: "Script generator agent who is tasked with generating a podcast script for the top headlines and save the transcript to a file.",
+    PODCAST_AUDIO_GENERATOR_AGENT: "Audio generator agent who is tasked with generating the audio file for the podcast and save it to a file.",
 }
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
 podcast_transcript_generator_agent_tools = [write_to_file]
-# podcast_audio_generator_agent_tools = [create_podcast]
+podcast_audio_generator_agent_tools = [create_podcast]
 
 # LLM
-llm = ChatOpenAI(model_name="gpt-4.1")
+llm = ChatOpenAI(model_name="gpt-4.1-mini")
 
 
 #NEWS SUPERVISOR
