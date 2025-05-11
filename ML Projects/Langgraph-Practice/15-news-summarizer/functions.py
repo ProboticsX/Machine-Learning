@@ -45,7 +45,7 @@ def write_to_file(content: str) -> str:
     return "File written successfully"
 
 @tool
-def create_podcast() -> str:
+def create_podcast(transcript_file: str) -> str:
     """Creates a podcast from the transcript file."""
     audio_file = generate_podcast(
 		transcript_file=transcript_file,
@@ -59,12 +59,12 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
     options = ["FINISH"] + members
     system_prompt = (
         "You are a supervisor tasked with managing a conversation between the"
-        f" following workers: {members}. Given the following user request,"
+        " following workers: "+ ", ".join(members) + ". Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
-        " task and respond with their results and status. When finished,"
-        " respond with FINISH."
+        " task and respond with their results and status." 
+        "When you think you have answered the user request, respond with FINISH."
         "Here's the role of each worker: \n"
-        f"{role_of_each_worker}"
+        + "\n".join(f"{worker}: {role}" for worker, role in role_of_each_worker.items())
     )
 
     class Router(TypedDict):
@@ -77,10 +77,16 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
         print("===STATE AT NEWS SUPERVISOR NODE=====")
         print(state)
         """An LLM-based router."""
-        last_message = state["messages"][-1]
-        invoke_message = [{"role": "system", "content": system_prompt},] + [last_message]
+        context = state["messages"]
+        question = state["messages"][0].content
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "Here is the original user question: {question} and some context: {context}"),
+        ])
+        invoke_message = {"context": context, "question": question}
         llm_with_structured_output = llm.with_structured_output(Router)
-        response = llm_with_structured_output.invoke(invoke_message)
+        news_supervisor_chain = prompt | llm_with_structured_output
+        response = news_supervisor_chain.invoke(invoke_message)
         print("===RESPONSE OF NEWS SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
@@ -98,13 +104,13 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
     system_prompt = (
         f"{role_of_each_news_supervisor_worker[TOP_HEADLINES_SUPERVISOR_AGENT]}"
         "You are tasked with managing a conversation between the"
-        f" following workers: {members}. Given the following user request,"
+        " following workers: "+ str(members) + ". Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
         " task and respond with their results and status." 
         "When you have received the summary of the top headlines, respond with FINISH."
         " Do not perform any task yourself. Just route the request to any of the workers."
         "Here's the role of each worker: \n"
-        f"{role_of_each_worker}"
+        + "\n".join(f"{worker}: {role}" for worker, role in role_of_each_worker.items())
     )
 
     class Router(TypedDict):
@@ -118,9 +124,14 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
         print(state)
         """An LLM-based router."""
         last_message = state["messages"][-1]
-        invoke_message = [{"role": "system", "content": system_prompt},] + [last_message]
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "Here is some context: {context}"),
+        ])
+        invoke_message = {"context": last_message}
         llm_with_structured_output = llm.with_structured_output(Router)
-        response = llm_with_structured_output.invoke(invoke_message)
+        top_headlines_supervisor_chain = prompt | llm_with_structured_output
+        response = top_headlines_supervisor_chain.invoke(invoke_message)
         print("===RESPONSE OF TOP HEADLINES SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
@@ -135,15 +146,15 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
 def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
     options = ["FINISH"] + members
     system_prompt = (
-        f"{role_of_each_news_supervisor_worker[PODCAST_SUPERVISOR_AGENT]}"
+        role_of_each_news_supervisor_worker[PODCAST_SUPERVISOR_AGENT]+
         "You are tasked with managing a conversation between the"
-        f" following workers: {members}. Given the following user request,"
+        " following workers: "+ str(members) + ". Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
         " task and respond with their results and status." 
         "When you have received the podcast script and audio file, respond with FINISH."
         " Do not perform any task yourself. Just route the request to any of the workers."
         "Here's the role of each worker: \n"
-        f"{role_of_each_worker}"
+        + "\n".join(f"{worker}: {role}" for worker, role in role_of_each_worker.items())
     )
 
     class Router(TypedDict):
@@ -157,9 +168,14 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
         print(state)
         """An LLM-based router."""
         last_message = state["messages"][-1]
-        invoke_message = [{"role": "system", "content": system_prompt},] + [last_message]
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "Here is some context: {context}"),
+        ])
+        invoke_message = {"context": last_message}
         llm_with_structured_output = llm.with_structured_output(Router)
-        response = llm_with_structured_output.invoke(invoke_message)
+        podcast_supervisor_chain = prompt | llm_with_structured_output
+        response = podcast_supervisor_chain.invoke(invoke_message)
         print("===RESPONSE OF PODCAST SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
@@ -194,7 +210,8 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     return Command(
         update={
             "messages": [
-                HumanMessage(content=tool_message.content, name=TOP_HEADLINES_AGENT)
+                HumanMessage(content=tool_message.content, name=TOP_HEADLINES_AGENT),
+                HumanMessage(content="Top headlines fetched successfully.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines": current_top_headlines,
         },
@@ -226,7 +243,8 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result.content, name=TOP_HEADLINES_SUMMARIZER_AGENT)
+                HumanMessage(content=result.content, name=TOP_HEADLINES_SUMMARIZER_AGENT),
+                HumanMessage(content="Top headlines summarized successfully.", name=TOP_HEADLINES_SUMMARIZER_AGENT)
             ],
             "top_headlines": current_top_headlines,
         },
@@ -269,7 +287,8 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
+                HumanMessage(content=result["messages"][-1].content, name=PODCAST_TRANSCRIPT_GENERATOR_AGENT),
+                HumanMessage(content="Podcast transcript generated successfully.", name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
             ]
         },
         goto=PODCAST_SUPERVISOR_AGENT,
@@ -280,16 +299,23 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
     print("===STATE AT PODCAST AUDIO GENERATOR NODE=====")
     print(state)
     system_prompt = f"{role_of_each_podcast_worker[PODCAST_AUDIO_GENERATOR_AGENT]}."
+    podcast_audio_generator_prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("user", "Here is the transcript file path: {transcript_file}"),
+    ])
+    formatted_prompt = podcast_audio_generator_prompt.format(transcript_file=transcript_file)
     podcast_audio_generator_agent = create_react_agent(llm, 
                                              tools=podcast_audio_generator_agent_tools, 
-                                             prompt = system_prompt)
-    result = podcast_audio_generator_agent.invoke(state)
+                                             prompt = formatted_prompt)
+    invoke_message = {"input": "Generate the podcast audio from the transcript file"}
+    result = podcast_audio_generator_agent.invoke(invoke_message)
     print("===RESULT OF PODCAST AUDIO GENERATOR NODE=====")
     print(result)
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=PODCAST_AUDIO_GENERATOR_AGENT)
+                HumanMessage(content=result["messages"][-1].content, name=PODCAST_AUDIO_GENERATOR_AGENT),
+                HumanMessage(content="Podcast audio generated from the transcript successfully.", name=PODCAST_AUDIO_GENERATOR_AGENT)
             ],
         },
         goto=PODCAST_SUPERVISOR_AGENT,
