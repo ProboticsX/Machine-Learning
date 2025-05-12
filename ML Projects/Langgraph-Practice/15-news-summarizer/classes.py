@@ -1,5 +1,7 @@
 from common_imports import *
 
+class TopicClass(TypedDict):
+    topic: str = Field(description="The topic of the user question")
 
 class TopHeadlinesClass(TypedDict):
     top_headlines_full_content_from_tool: str = Field(description="The full content of the top headlines from the tool")
@@ -9,3 +11,4 @@ class AgentState(MessagesState):
     next: str = Field(description="The next agent to call")
     top_headlines: TopHeadlinesClass = Field(description="The top headlines class including the full content from the tool and the summary")
     podcast_transcript: str = Field(description="The podcast transcript")
+    topic: TopicClass = Field(description="The topic of the user question")

@@ -15,8 +15,6 @@ def podcast_transcript_finetuner_node(state: AgentState) -> Command[Literal[PODC
      - Make sure the podcasters mention Today's day and date at the start of the podcast show. \n
      - Add human touch to the script by adding interjections, pauses or when the person is thinking.\n
      - Add other natural human cues like "aah", "um", "like", "you know", etc or when a human repeats some words unintentionally like "yeah, yeah" or "like, like". Make sure to use these cues only 3-4 times in the script.\n
-     - Ask questions from the other podcaster so that it looks like a conversation between two people.\n
-     - Make sure the script is engaging and interesting.\n
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -28,7 +26,7 @@ def podcast_transcript_finetuner_node(state: AgentState) -> Command[Literal[PODC
     
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
-        tools=[], 
+        tools=podcast_transcript_finetuner_agent_tools, 
         prompt=formatted_prompt,
     )
     invoke_message = {"input": "Finetune the podcast script"}

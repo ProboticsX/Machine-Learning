@@ -28,3 +28,4 @@ serpapi
 google-search-results
 google-cloud-texttospeech
 podcastfy
+pinecone
