@@ -48,7 +48,7 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
 
 
 role_of_each_news_supervisor_worker = {
-    PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the podcast script and audio file.",
+    PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the fine tuned podcast script and audio file.",
     TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news."
 }
 

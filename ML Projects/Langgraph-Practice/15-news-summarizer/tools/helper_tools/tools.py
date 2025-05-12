@@ -35,5 +35,5 @@ transcript_file = transcript_dir / "podcast-script.txt"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
-podcast_transcript_generator_agent_tools = [write_to_file]
+podcast_transcript_writer_agent_tools = [write_to_file]
 podcast_audio_generator_agent_tools = [create_podcast]

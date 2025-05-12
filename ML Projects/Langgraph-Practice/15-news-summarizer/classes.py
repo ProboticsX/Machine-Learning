@@ -8,3 +8,4 @@ class TopHeadlinesClass(TypedDict):
 class AgentState(MessagesState):
     next: str = Field(description="The next agent to call")
     top_headlines: TopHeadlinesClass = Field(description="The top headlines class including the full content from the tool and the summary")
+    podcast_transcript: str = Field(description="The podcast transcript")

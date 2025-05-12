@@ -1,19 +1,33 @@
-<Person1> "Welcome to Newspresso – your personal generative AI podcast! We've got a jam-packed episode today covering everything from global politics to basketball buzzer-beaters. Let's dive right in with our first headline.
-"</Person1><Person2> "First up, Marvel's latest film, 'Thunderbolts,' continues its dominance at the U.S. box office. In its second weekend, it secured the top spot with an additional $9 million, bringing its total to over $100 million domestically. 
-"</Person2><Person1> "That’s impressive! The film seems to be doing much better than its predecessor, 'Captain America: Brave New World,' which saw steeper declines. 'Thunderbolts' is on track to surpass $130 million next weekend, especially since there aren't any major new releases coming. 
-"</Person1><Person2> "Exactly! Meanwhile, 'Sinners,' directed by Ryan Coogler, has crossed the $200 million mark domestically, becoming the second-highest-grossing film of 2025, just behind 'A Minecraft Movie.' It's great to see original content thriving alongside superhero films.
-"</Person2><Person1> "For sure! As we look forward, both films will need to keep up their momentum as competition ramps up. Speaking of competition, let’s shift gears to a tech story that’s grabbing attention.
-"</Person1><Person2> "Absolutely! Recently, TechCrunch reviewed the Ray-Ban Meta AI smart glasses, which offer built-in cameras and open-ear audio. The glasses attempt to enhance biking experiences by allowing users to capture moments on the go. 
-"</Person2><Person1> "That's quite interesting! While the glasses do offer some convenience, the reviewer mentioned they tend to slip during rides—definitely something to consider for avid bikers. Plus, the AI assistant struggles with complex tasks. 
-"</Person1><Person2> "Yes! Even with those drawbacks, the overall performance is promising and gives us a glimpse into the future of wearable tech. Now, on to our next headline, which involves serious global implications.
-"</Person2><Person1> "Indeed! European leaders have gathered in Kyiv, advocating for a 30-day unconditional ceasefire in the ongoing conflict between Ukraine and Russia. President Zelenskyy stressed the importance of a comprehensive ceasefire for meaningful diplomacy. 
-"</Person1><Person2> "Right, this comes amid growing frustrations over Russia's demands. British Prime Minister Keir Starmer emphasized accountability for Russia's actions, yet skepticism over their willingness to accept these terms remains high. 
-"</Person2><Person1> "It’s a pivotal moment for Ukraine as they seek to regroup, but history shows that achieving lasting peace in this conflict is a tall order. Now, let’s turn to a notable retirement in the sports world.
-"</Person1><Person2> "Yes! Derek Carr, quarterback for the New Orleans Saints, has officially announced his retirement after over 11 seasons in the NFL. His decision came after dealing with persistent shoulder pain and consulting with medical professionals. 
-"</Person2><Person1> "It’s always tough to see a talented player retire, especially one who’s experienced so much. Carr expressed gratitude to his teammates, coaches, and fans during his heartfelt announcement. This also means significant changes ahead for the Saints as they search for a new starting quarterback. 
-"</Person1><Person2> "Exactly! It's a transition phase for them. Speaking of transitions, let’s dive into some gaming news that’s generating buzz.
-"</Person2><Person1> "Right! TechSpot has recently released a benchmarking review for 'Doom: The Dark Ages,' which uses the idTech8 engine and has showcased impressive graphical performance across various GPUs.
-"</Person1><Person2> "The benchmarks revealed some nuances in performance across different GPUs—and highlighted optimization issues. While the graphics are top-notch, users with mid-range GPUs might find the game challenging to run efficiently.
-"</Person2><Person1> "That’s crucial information for gamers when considering their hardware capabilities! As always, we appreciate your tuning in to Newspresso. This wraps up our headline roundup! Don't forget to join us next time for more updates from around the globe. 
-"
-</Person1>
+<Person1> "Welcome to Newspresso – your personal generative AI podcast! We've got a jam-packed episode today, covering everything from UFC title fights to Timberwolves triumphs. So, like, let’s dive right in with an electrifying moment from UFC 315!"
+
+</Person1><Person2> "Absolutely! Aah, Jack Della Maddalena, like, totally captured the welterweight title with a stunning win against Belal Muhammad at the Bell Centre in Montreal. It was an intense showdown, you know? Della Maddalena landed a whopping 200 shots throughout the fight!"
+
+</Person2><Person1> "And the judges scored it a close match, with scores of 48-47, 48-47, and 49-46 in favor of Della Maddalena. I mean, wow! This victory not only elevates him to champion status, but it also ends Muhammad's unbeaten streak—what a moment for him!"
+
+</Person1><Person2> "Right! And, you know, Della Maddalena’s future also looks super bright. He's expressed interest in, um, challenging Islam Makhachev, the lightweight champion. That would be a thrilling match-up for sure!"
+
+</Person2><Person1> "Now, switching gears a bit, let’s talk about Walton Goggins' debut on Saturday Night Live. He had some funny reflections about, like, being seen as a sex symbol at age 53!"
+
+</Person1><Person2> "That’s right! Goggins embraced the attention with humor, especially referencing his character from 'The White Lotus.' His witty take on, um, societal standards and aging in Hollywood kept the audience entertained, you know?"
+
+</Person2><Person1> "And how could we forget his charming dance with his mother? It just showcased his charisma and, um, authenticity, making the episode a memorable one."
+
+</Person1><Person2> "Now, in an unexpected twist, former President Trump also made headlines during the same SNL episode, inserting himself into the festivities. Dressed in character, he shared his thoughts on current events, including the appointment of the new Pope."
+
+</Person2><Person1> "His interruption certainly kept viewers on their toes and brought a comedic element to the show! It exemplified SNL's knack for political satire, blending humor with societal commentary. Like, what a classic SNL moment!"
+
+</Person1><Person2> "In sports, we saw the Minnesota Timberwolves pull ahead in their playoff series with a nail-biting 102-97 victory over the Golden State Warriors. This puts them 2-1 up in the series!"
+
+</Person2><Person1> "Anthony Edwards led the charge with an incredible 36 points while, um, Julius Randle pulled off a triple-double. Even without Stephen Curry on the court, the Warriors fought hard but just couldn’t seal the deal."
+
+</Person1><Person2> "As we move into Game 4, the Timberwolves are, like, showing impressive resilience and teamwork, which will be crucial against a historically tough opponent like the Warriors. It's gonna be intense!"
+
+</Person2><Person1> "Last but not least, European leaders have unified their stance, demanding Russian President Vladimir Putin agree to a 30-day ceasefire in Ukraine. They've even threatened severe sanctions should he refuse."
+
+</Person1><Person2> "Indeed! This initiative, backed by significant Western powers, indicates a concerted effort towards peace, calling for a ceasefire by May 12. It can potentially revive diplomatic discussions amidst ongoing conflict. Aah, fingers crossed!"
+
+</Person2><Person1> "So much happening in the world, both in sports and politics! Thanks for joining us for today's episode of Newspresso. Keep tuning in to stay updated on all the latest headlines!"
+
+</Person1><Person2> "And remember, whether it's UFC, SNL, or the NBA playoffs, we've got you covered. See you next time!"
+
+</Person2>
