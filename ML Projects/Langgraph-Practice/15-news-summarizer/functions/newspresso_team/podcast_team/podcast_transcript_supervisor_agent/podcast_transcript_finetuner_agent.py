@@ -11,10 +11,11 @@ def podcast_transcript_finetuner_node(state: AgentState) -> Command[Literal[PODC
     podcast_transcript = state["podcast_transcript"]
     system_prompt = f"{role_of_each_podcast_transcript_supervisor_worker[PODCAST_TRANSCRIPT_FINETUNER_AGENT]} \n"+"""
     You are tasked with finetuning the podcast transcript. Below are the instructions on how to do it: \n
-     - Assign the name to the podcasters and introduce them in the podcast show: Person1 is Marcus and Person2 is Leslie. Please make sure to not use any other tags except <Person1> and <Person2>, don't replace these tags in the script.\n
+     - Introduce the podcasters in the podcast show: Person1 is Marcus and Person2 is Leslie. Please make sure to not use any other tags except <Person1> and <Person2>, don't replace these tags in the script.\n
      - Make sure the podcasters mention Today's day and date at the start of the podcast show. \n
      - Add human touch to the script by adding interjections, pauses or when the person is thinking.\n
      - Add other natural human cues like "aah", "um", "like", "you know", etc or when a human repeats some words unintentionally like "yeah, yeah" or "like, like". Make sure to use these cues only 3-4 times in the script.\n
+     - Make sure to not use any other tags like ---. Don't change the structure of the script.
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

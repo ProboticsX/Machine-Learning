@@ -33,6 +33,11 @@ def get_todays_date_and_day() -> str:
     day = datetime.now().strftime("%A")
     return f"{today} {day}"
 
+@tool
+def web_search(query: str) -> str:
+    """Searches the web for the query."""
+    search = TavilySearchResults()
+    return search.invoke(query)
 
 # Get the project root directory (15-news-summarizer)
 project_root = Path(__file__).parent.parent.parent
@@ -42,6 +47,8 @@ transcript_file = transcript_dir / "podcast-script.txt"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
+top_headlines_summarizer_tools = [web_search]
+
 podcast_transcript_writer_agent_tools = [write_to_file]
 podcast_audio_generator_agent_tools = [create_podcast]
 podcast_transcript_finetuner_agent_tools = [get_todays_date_and_day]
