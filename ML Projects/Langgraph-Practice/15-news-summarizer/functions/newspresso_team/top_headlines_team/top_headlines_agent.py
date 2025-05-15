@@ -50,17 +50,15 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     result = top_headlines_agent.invoke(invoke_message)
     print("===RESULT OF TOP HEADLINES NODE=====")
     print(result)
-    tool_message = result["messages"][-2]
     current_top_headlines = TopHeadlinesClass(
-        top_headlines_full_content_from_tool=tool_message.content
+        top_headlines_processed_news_file=processsed_news_file_path
     )
     if state.get("top_headlines") is not None:
         current_top_headlines = state["top_headlines"].copy()
-        current_top_headlines["top_headlines_full_content_from_tool"] = tool_message.content
+        current_top_headlines["top_headlines_processed_news_file"] = processsed_news_file_path
     return Command(
         update={
             "messages": [
-                HumanMessage(content=tool_message.content, name=TOP_HEADLINES_AGENT),
                 HumanMessage(content="Top headlines fetched successfully.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines": current_top_headlines,

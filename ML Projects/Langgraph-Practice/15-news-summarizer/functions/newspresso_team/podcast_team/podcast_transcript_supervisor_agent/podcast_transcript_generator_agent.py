@@ -1,6 +1,6 @@
 from common_imports import *
 from constants import *
-from classes import AgentState
+from classes import AgentState, PodcastClass
 from tools.helper_tools.tools import *
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_supervisor_agent import role_of_each_podcast_transcript_supervisor_worker
 
@@ -41,10 +41,9 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=PODCAST_TRANSCRIPT_GENERATOR_AGENT),
                 HumanMessage(content="Podcast transcript generated successfully.", name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
             ],
-            "podcast_transcript": result["messages"][-1].content
+            "podcast_class": PodcastClass(podcast_transcript=result["messages"][-1].content)
         },
         goto=PODCAST_TRANSCRIPT_SUPERVISOR_AGENT,
     )

@@ -13,7 +13,7 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
         " following workers: "+ str(members) + ". Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
         " task and respond with their results and status." 
-        "When you have saved the fine tuned podcast script and audio file, respond with FINISH."
+        "When the workers have saved the fine tuned podcast script and audio file, respond with FINISH."
         " Do not perform any task yourself. Just route the request to any of the workers."
         "Here's the role of each worker: \n"
         + "\n".join(f"{worker}: {role}" for worker, role in role_of_each_worker.items())

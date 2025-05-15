@@ -10,9 +10,11 @@ if __name__ == "__main__":
     # question = "What's the stock price of Tesla?"
     # question = "Give me some information about Najafgarh"
     # question = "What is ((3*5) + 10)*5? Also, who's the richest person in the world?"
+    # processsed_news_file_path = NewsTool().processed_news_path
+    # print(processsed_news_file_path)
     question = "What are the top headlines in the world of entertainment for the day? Create a podcast on the same."
     displayGraph(graph)
-    result = graph.invoke({"messages": [question]})
+    result = graph.invoke({"messages": [question]}, config={"recursion_limit": 35})
     print("======RESULT=======")
     print(result)
     print("======FINAL RESPONSE=======")

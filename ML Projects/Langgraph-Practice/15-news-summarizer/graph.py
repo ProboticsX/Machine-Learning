@@ -35,5 +35,5 @@ workflow.add_node(PODCAST_TRANSCRIPT_FINETUNER_AGENT, podcast_transcript_finetun
 
 workflow.add_edge(START, NEWS_SUPERVISOR_AGENT)
 
-graph = workflow.compile(config={"recursion_limit": 35})
+graph = workflow.compile()
 

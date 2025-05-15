@@ -19,6 +19,7 @@ def top_headlines_critic_node(state: AgentState) -> Command[Literal[TOP_HEADLINE
 
     system_prompt = f"{role_of_each_random_worker[TOP_HEADLINES_CRITIC_AGENT]}" +"""
       Please make sure to improve the critique based on the existing critique. \n
+      Example of a good critique can be such as preventing bias, adding facts, etc. \n
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -42,7 +43,6 @@ def top_headlines_critic_node(state: AgentState) -> Command[Literal[TOP_HEADLINE
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result.content, name=TOP_HEADLINES_CRITIC_AGENT),
                 HumanMessage(content="Top headlines critiqued successfully.", name=TOP_HEADLINES_CRITIC_AGENT)
             ],
             "top_headlines": current_top_headlines,

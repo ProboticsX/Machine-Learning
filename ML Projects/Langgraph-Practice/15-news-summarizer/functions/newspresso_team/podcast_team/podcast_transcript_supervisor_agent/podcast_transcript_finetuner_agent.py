@@ -1,6 +1,6 @@
 from common_imports import *
 from constants import *
-from classes import AgentState
+from classes import AgentState, PodcastClass
 from tools.helper_tools.tools import *
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_supervisor_agent import role_of_each_podcast_transcript_supervisor_worker
 
@@ -8,7 +8,7 @@ def podcast_transcript_finetuner_node(state: AgentState) -> Command[Literal[PODC
     print("====PODCAST TRANSCRIPT FINETUNER NODE=====")
     print("===STATE AT PODCAST TRANSCRIPT FINETUNER NODE=====")
     print(state)
-    podcast_transcript = state["podcast_transcript"]
+    podcast_transcript = state["podcast_class"]
     system_prompt = f"{role_of_each_podcast_transcript_supervisor_worker[PODCAST_TRANSCRIPT_FINETUNER_AGENT]} \n"+"""
     You are tasked with finetuning the podcast transcript. Below are the instructions on how to do it: \n
      - Introduce the podcasters in the podcast show: Person1 is Marcus and Person2 is Leslie. Please make sure to not use any other tags except <Person1> and <Person2>, don't replace these tags in the script.\n
@@ -37,10 +37,9 @@ def podcast_transcript_finetuner_node(state: AgentState) -> Command[Literal[PODC
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=PODCAST_TRANSCRIPT_FINETUNER_AGENT),
                 HumanMessage(content="Podcast transcript finetuned successfully.", name=PODCAST_TRANSCRIPT_FINETUNER_AGENT)
             ],
-            "podcast_transcript": result["messages"][-1].content
+            "podcast_class": PodcastClass(podcast_transcript=result["messages"][-1].content)
         },
         goto=PODCAST_TRANSCRIPT_SUPERVISOR_AGENT,
     )
