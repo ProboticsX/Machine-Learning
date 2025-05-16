@@ -40,10 +40,19 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
         print("===RESPONSE OF TOP HEADLINES SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
-        if goto == "FINISH":
-            goto = NEWS_SUPERVISOR_AGENT
         print("===GOTO=====")
         print(goto)
+        if goto == "FINISH":
+            goto = NEWS_SUPERVISOR_AGENT
+            return Command(
+            goto=goto, 
+            update={
+                "next": goto,
+                "messages": [
+                    HumanMessage(content="The top headlines were generated, summarized and saved to the file.", name=TOP_HEADLINES_SUPERVISOR_AGENT)
+                ]
+            }
+           )
         return Command(goto=goto, update={"next": goto})
 
     return top_headlines_supervisor_node

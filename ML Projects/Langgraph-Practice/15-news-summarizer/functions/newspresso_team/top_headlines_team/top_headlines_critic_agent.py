@@ -13,7 +13,7 @@ def top_headlines_critic_node(state: AgentState) -> Command[Literal[TOP_HEADLINE
     existing_top_headlines_critique = ""
     if state.get("top_headlines").get("top_headlines_critique") is not None:
         existing_top_headlines_critique = state["top_headlines"]["top_headlines_critique"]
-    current_top_headlines_critique_count = 0
+    current_top_headlines_critique_count = 1
     if state.get("top_headlines").get("top_headlines_critique_count") is not None:
         current_top_headlines_critique_count = state["top_headlines"]["top_headlines_critique_count"]+1
 

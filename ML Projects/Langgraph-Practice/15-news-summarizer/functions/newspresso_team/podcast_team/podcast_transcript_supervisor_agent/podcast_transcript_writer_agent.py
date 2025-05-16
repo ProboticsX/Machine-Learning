@@ -32,8 +32,7 @@ def podcast_transcript_writer_node(state: AgentState) -> Command[Literal[PODCAST
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=PODCAST_TRANSCRIPT_WRITER_AGENT),
-                HumanMessage(content="Podcast transcript written successfully to a file. Now generate the audio file from the transcript.", name=PODCAST_TRANSCRIPT_WRITER_AGENT)
+                HumanMessage(content="Podcast transcript written successfully to a file.", name=PODCAST_TRANSCRIPT_WRITER_AGENT)
             ]
         },
         goto=PODCAST_TRANSCRIPT_SUPERVISOR_AGENT,

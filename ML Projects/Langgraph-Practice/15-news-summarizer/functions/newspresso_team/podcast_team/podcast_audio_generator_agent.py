@@ -24,8 +24,7 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
     return Command(
         update={
             "messages": [
-                HumanMessage(content=result["messages"][-1].content, name=PODCAST_AUDIO_GENERATOR_AGENT),
-                HumanMessage(content="Podcast audio generated from the transcript successfully.", name=PODCAST_AUDIO_GENERATOR_AGENT)
+                HumanMessage(content="Podcast audio generated from the podcast transcript successfully.", name=PODCAST_AUDIO_GENERATOR_AGENT)
             ],
         },
         goto=PODCAST_SUPERVISOR_AGENT,

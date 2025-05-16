@@ -72,4 +72,4 @@ top_headlines_summarizer_tools = [read_json_file]
 
 podcast_transcript_writer_agent_tools = [write_to_file]
 podcast_audio_generator_agent_tools = [create_podcast]
-podcast_transcript_finetuner_agent_tools = [get_todays_date_and_day]
+podcast_transcript_critic_agent_tools = [get_todays_date_and_day]

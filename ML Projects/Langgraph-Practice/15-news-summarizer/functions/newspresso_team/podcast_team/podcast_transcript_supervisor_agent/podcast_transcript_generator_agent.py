@@ -9,8 +9,19 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     print("===STATE AT PODCAST TRANSCRIPT GENERATOR NODE=====")
     print(state)
     top_headlines_summary = state["top_headlines"]["top_headlines_summary"]
+    podcast_transcript_critique = ""
+    existing_podcast_transcript = ""
+    current_podcast_transcript_critique_count = 0
+    if state.get("podcast_class") is not None:
+        if state.get("podcast_class").get("podcast_transcript_critique") is not None:
+            podcast_transcript_critique = state["podcast_class"]["podcast_transcript_critique"]
+        if state.get("podcast_class").get("podcast_transcript") is not None:
+            existing_podcast_transcript = state["podcast_class"]["podcast_transcript"]
+        if state.get("podcast_class").get("podcast_transcript_critique_count") is not None:
+            current_podcast_transcript_critique_count = state["podcast_class"]["podcast_transcript_critique_count"]
     system_prompt = f"{role_of_each_podcast_transcript_supervisor_worker[PODCAST_TRANSCRIPT_GENERATOR_AGENT]} \n"+"""
     The name of the podcast is "Newspresso". \n
+    Please make sure to improve the script based on the critique of the podcast transcript and the existing podcast transcript. \n
     Please make sure to not use any other tags except <Person1> and <Person2>. \n
     The script should be in the following format: \n
     <Person1> "Welcome to Newspresso – your personal generative AI podcast! We've got a jam-packed episode today covering everything from global politics to basketball buzzer-beaters. Let's dive right in with a tense exchange at the White House." \n
@@ -23,12 +34,10 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the summary of the top headlines: {top_headlines_summary}"),
+        ("user", "Here is the summary of the top headlines: {top_headlines_summary} and the critique of the podcast transcript: {podcast_transcript_critique} and the existing podcast transcript: {existing_podcast_transcript}"),
     ])
     
-    # Format the prompt with the content before creating the agent
-    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary=top_headlines_summary)
-    
+    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary=top_headlines_summary, podcast_transcript_critique=podcast_transcript_critique, existing_podcast_transcript=existing_podcast_transcript)
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
         tools=[], 
@@ -38,12 +47,27 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     result = podcast_transcript_generator_agent.invoke(invoke_message)
     print("===RESULT OF PODCAST TRANSCRIPT GENERATOR NODE=====")
     print(result)
+    podcast_class = PodcastClass(podcast_transcript=result["messages"][-1].content)
+    if state.get("podcast_class") is not None:
+        podcast_class = state["podcast_class"].copy()
+        podcast_class["podcast_transcript"] = result["messages"][-1].content
+
+    if current_podcast_transcript_critique_count < MAX_PODCAST_TRANSCRIPT_CRITIQUE_COUNT:
+        return Command(
+            update={
+                "messages": [
+                    HumanMessage(content="Please provide the critique based on the podcast transcript.", name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
+                ],
+                "podcast_class": podcast_class,
+            },
+            goto=PODCAST_TRANSCRIPT_CRITIC_AGENT,
+        )
     return Command(
         update={
             "messages": [
                 HumanMessage(content="Podcast transcript generated successfully.", name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
             ],
-            "podcast_class": PodcastClass(podcast_transcript=result["messages"][-1].content)
+            "podcast_class": podcast_class,
         },
         goto=PODCAST_TRANSCRIPT_SUPERVISOR_AGENT,
     )

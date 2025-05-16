@@ -5,6 +5,8 @@ class TopicClass(TypedDict):
 
 class PodcastClass(TypedDict):
     podcast_transcript: str = Field(description="The podcast transcript")
+    podcast_transcript_critique: str = Field(description="The critique of the podcast transcript")
+    podcast_transcript_critique_count: int = Field(description="The count of the critique of the podcast transcript")
 
 class TopHeadlinesClass(TypedDict):
     top_headlines_processed_news_file: str = Field(description="The processed news file of the top headlines")

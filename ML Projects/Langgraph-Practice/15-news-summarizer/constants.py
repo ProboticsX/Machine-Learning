@@ -1,5 +1,6 @@
-MODEL_NAME = "gpt-4o-mini"
+MODEL_NAME = "gpt-4.1-mini"
 MAX_TOP_HEADLINES_CRITIQUE_COUNT = 1
+MAX_PODCAST_TRANSCRIPT_CRITIQUE_COUNT = 1
 
 NEWS_SUPERVISOR_AGENT = "news_supervisor_agent"
 
@@ -14,4 +15,4 @@ PODCAST_TRANSCRIPT_SUPERVISOR_AGENT = "podcast_transcript_supervisor_agent"
 
 PODCAST_TRANSCRIPT_GENERATOR_AGENT = "podcast_transcript_generator_agent"
 PODCAST_TRANSCRIPT_WRITER_AGENT = "podcast_transcript_writer_agent"
-PODCAST_TRANSCRIPT_FINETUNER_AGENT = "podcast_transcript_finetuner_agent"
+PODCAST_TRANSCRIPT_CRITIC_AGENT = "podcast_transcript_critic_agent"

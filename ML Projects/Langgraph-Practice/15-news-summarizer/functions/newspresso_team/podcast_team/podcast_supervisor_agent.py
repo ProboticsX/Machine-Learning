@@ -41,16 +41,25 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
         print("===RESPONSE OF PODCAST SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
-        if goto == "FINISH":
-            goto = NEWS_SUPERVISOR_AGENT
         print("===GOTO=====")
         print(goto)
-        return Command(goto=goto, update={"next": goto})
+        if goto == "FINISH":
+            goto = NEWS_SUPERVISOR_AGENT
+            return Command(
+            goto=goto, 
+            update={
+                "next": goto,
+                "messages": [
+                    HumanMessage(content="The podcast audio file was generated, podcast transcript was finetuned and saved to the file.", name=PODCAST_SUPERVISOR_AGENT)
+                ]
+            }
+           )
+        return Command(goto=goto)
 
     return podcast_supervisor_node
 
 role_of_each_podcast_worker = {
-    PODCAST_TRANSCRIPT_SUPERVISOR_AGENT: "Supervisor agent who is tasked with managing the conversation between the workers. The goal is to generate a podcast script, fine tune it and then write it to a file.",
+    PODCAST_TRANSCRIPT_SUPERVISOR_AGENT: "Supervisor agent who is tasked with managing the conversation between the workers. The goal is to first generate a podcast script and then write it to a file.",
     PODCAST_AUDIO_GENERATOR_AGENT: "Audio generator agent who is tasked with generating the audio file for the podcast and save it to a file.",
 }
 

@@ -40,17 +40,24 @@ def make_podcast_transcript_supervisor_node(llm, members, role_of_each_worker) -
         print("===RESPONSE OF PODCAST TRANSCRIPT SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
-        if goto == "FINISH":
-            goto = PODCAST_SUPERVISOR_AGENT
         print("===GOTO=====")
         print(goto)
+        if goto == "FINISH":
+            goto = PODCAST_SUPERVISOR_AGENT
+            return Command(
+            goto=goto, 
+            update={
+                "next": goto,
+                "messages": [
+                    HumanMessage(content="The podcast transcript was generated, finetuned and saved to the file.", name=PODCAST_TRANSCRIPT_SUPERVISOR_AGENT)
+                ]
+            }
+           )
         return Command(goto=goto, update={"next": goto})
-
     return podcast_transcript_supervisor_node
 
 role_of_each_podcast_transcript_supervisor_worker = {
     PODCAST_TRANSCRIPT_GENERATOR_AGENT: "Script generator agent who is tasked with generating a podcast script for the top headlines.",
-    PODCAST_TRANSCRIPT_FINETUNER_AGENT: "Finetuner agent who is tasked with fine tuning the transcript.",
     PODCAST_TRANSCRIPT_WRITER_AGENT: "Transcript writer agent who is tasked with writing the transcript to a file.",
 }
 

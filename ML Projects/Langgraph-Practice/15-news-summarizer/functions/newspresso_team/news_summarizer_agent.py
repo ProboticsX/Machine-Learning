@@ -8,8 +8,7 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
     system_prompt = (
         "You are a supervisor tasked with managing a conversation between the"
         " following workers: "+ ", ".join(members) + ". Given the following user request,"
-        " respond with the worker to act next. Each worker will perform a"
-        " task and respond with their results and status." 
+        " respond with the worker to act next. Each worker will perform a task and respond with their results and status." 
         "When you think you have answered the user request, respond with FINISH."
         "Here's the role of each worker: \n"
         + "\n".join(f"{worker}: {role}" for worker, role in role_of_each_worker.items())
@@ -48,8 +47,8 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
 
 
 role_of_each_news_supervisor_worker = {
-    PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the fine tuned podcast script and audio file.",
-    TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news."
+    PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the fine tuned podcast script and audio file. The goal is to first generate a podcast transcript, then fine tune it and then write it to a file. Lastly, the audio file should be generated from the fine tuned transcript.",
+    TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news. The goal is to first get the top headlines, then summarize the news and then write it to a file."
 }
 
 
