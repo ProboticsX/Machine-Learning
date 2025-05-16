@@ -22,6 +22,14 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
     system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_SUMMARIZER_AGENT]}."+"""
       The summary should be in about 200-300 words for each headline. \n
       Please make sure to improve the summary based on the critique of the top headlines and the existing summary. \n
+      Make sure to attach the relevant links/sources to the various top headlines in the summary. For example:\n
+       - <Top Headline 1 Summary> \n
+           - Relevant links: [Link 1, Link 2, Link 3] \n
+       - <Top Headline 2 Summary> \n
+           - Relevant links: [Link 1, Link 2, Link 3] \n
+       - <Top Headline 3 Summary> \n
+           - Relevant links: [Link 1, Link 2, Link 3] \n
+    Finally, write the summary to a file. \n
      """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
