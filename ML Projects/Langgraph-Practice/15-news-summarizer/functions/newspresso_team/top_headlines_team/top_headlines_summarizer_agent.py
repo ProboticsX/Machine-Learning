@@ -29,7 +29,7 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
            - Relevant links: [Link 1, Link 2, Link 3] \n
        - <Top Headline 3 Summary> \n
            - Relevant links: [Link 1, Link 2, Link 3] \n
-    Finally, write the summary to a json file where each json object contains the following fields:\n
+    Additionally, write the summary to a json file where each json object contains the following fields:\n
         - source: <Source of the top headline> \n
         - author: <Author of the top headline> \n
         - title: <Title of the top headline> \n
@@ -38,6 +38,7 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
         - urlToImage: <URL to the image of the top headline> \n
         - published_at: <Published at of the top headline> \n
         - content_summary: <summary of the top headline content which is the same as generated above> \n
+    Lastly, push the summary to the firebase database.
      """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -72,7 +73,7 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines summarized successfully.", name=TOP_HEADLINES_SUMMARIZER_AGENT)
+                HumanMessage(content="Top headlines summarized successfully! The summary has been written to a text file and a json file and pushed to the firebase database.", name=TOP_HEADLINES_SUMMARIZER_AGENT)
             ],
             "top_headlines": current_top_headlines,
         },

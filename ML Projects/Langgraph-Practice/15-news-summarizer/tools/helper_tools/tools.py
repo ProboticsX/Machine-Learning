@@ -73,6 +73,13 @@ def web_search(query: str) -> str:
     search = TavilySearchResults()
     return search.invoke(query)
 
+@tool
+def push_headlines_to_firebase_db() -> str:
+    """Pushes the headlines to the firebase database."""
+    firebase_tools = FirebaseTools()
+    result = firebase_tools.push_headlines_from_json(summary_json_file)
+    return result
+
 # Get the project root directory (15-news-summarizer)
 project_root = Path(__file__).parent.parent.parent
 transcript_dir = project_root / "data" / "transcripts"
@@ -86,7 +93,7 @@ summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
-top_headlines_summarizer_tools = [read_json_file, web_search, write_to_summary_file, write_summary_to_json_file]
+top_headlines_summarizer_tools = [read_json_file, web_search, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db]
 
 transcript_generator_agent_tools = [write_to_file]
 podcast_audio_generator_agent_tools = [create_podcast]
