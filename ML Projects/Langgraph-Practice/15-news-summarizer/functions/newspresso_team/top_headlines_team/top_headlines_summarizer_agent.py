@@ -22,14 +22,22 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
     system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_SUMMARIZER_AGENT]}."+"""
       The summary should be in about 200-300 words for each headline. \n
       Please make sure to improve the summary based on the critique of the top headlines and the existing summary. \n
-      Make sure to attach the relevant links/sources to the various top headlines in the summary. For example:\n
+      Moreover, write the summary to a text file along with the relevant links/sources to the various top headlines in the summary. For example:\n
        - <Top Headline 1 Summary> \n
            - Relevant links: [Link 1, Link 2, Link 3] \n
        - <Top Headline 2 Summary> \n
            - Relevant links: [Link 1, Link 2, Link 3] \n
        - <Top Headline 3 Summary> \n
            - Relevant links: [Link 1, Link 2, Link 3] \n
-    Finally, write the summary to a file. \n
+    Finally, write the summary to a json file where each json object contains the following fields:\n
+        - source: <Source of the top headline> \n
+        - author: <Author of the top headline> \n
+        - title: <Title of the top headline> \n
+        - description: <Description of the top headline> \n
+        - url: <URL of the top headline> \n
+        - urlToImage: <URL to the image of the top headline> \n
+        - published_at: <Published at of the top headline> \n
+        - content_summary: <summary of the top headline content which is the same as generated above> \n
      """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -39,7 +47,7 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
     top_headlines_summarizer_agent = create_react_agent(llm, 
                                                         tools=top_headlines_summarizer_tools, 
                                                         prompt = formatted_prompt)
-    result = top_headlines_summarizer_agent.invoke({"input": "Please summarize the top headlines."})
+    result = top_headlines_summarizer_agent.invoke({"input": "Please summarize the top headlines and write the summary to a text file and json file."})
     print("===RESULT OF TOP HEADLINES SUMMARIZER NODE=====")
     print(result)
     current_top_headlines = TopHeadlinesClass(

@@ -31,6 +31,8 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     </Person2><Person1> "Oh, what a finish! Tyrese Haliburton hit a last-second three to seal the deal. Myles Turner and Aaron Nesmith both had huge nights with 23 points apiece, but man, Donovan Mitchell dropping 48 and still losing? That's brutal." \n
     </Person1><Person2> "The Pacers now lead the series 2-0, and all eyes are on Game 3 later this week. That's going to be a must-watch." \n
     </Person2>\n
+
+    Finally, write the podcast transcript generated above to a file.
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -40,7 +42,7 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary=top_headlines_summary, podcast_transcript_critique=podcast_transcript_critique, existing_podcast_transcript=existing_podcast_transcript)
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
-        tools=[], 
+        tools=transcript_generator_agent_tools, 
         prompt=formatted_prompt,
     )
     invoke_message = {"input": "Generate the podcast script"}
@@ -65,7 +67,7 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Podcast transcript generated successfully.", name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
+                HumanMessage(content="Podcast transcript generated and written to a file successfully.", name=PODCAST_TRANSCRIPT_GENERATOR_AGENT)
             ],
             "podcast_class": podcast_class,
         },

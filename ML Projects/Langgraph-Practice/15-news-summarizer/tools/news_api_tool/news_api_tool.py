@@ -106,6 +106,7 @@ class NewsTool:
                     "title": article["title"],
                     "description": article["description"],
                     "url": article["url"],
+                    "urlToImage": article["urlToImage"],
                     "published_at": article["publishedAt"],
                     "content": content
                 }
@@ -148,6 +149,7 @@ class NewsTool:
                         "title": str,
                         "description": str,
                         "url": str,
+                        "urlToImage": str,
                         "published_at": str,
                         "content": str
                     },

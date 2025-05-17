@@ -3,7 +3,7 @@ from constants import *
 from classes import AgentState
 from tools.helper_tools.tools import *
 
-def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
+def make_newspresso_supervisor_node(llm, members, role_of_each_worker) -> str:
     options = ["FINISH"] + members
     system_prompt = (
         "You are a supervisor tasked with managing a conversation between the"
@@ -19,9 +19,9 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
 
         next: Literal[*options]
 
-    def news_supervisor_node(state: AgentState) -> Command[Literal[*members, END]]:
-        print("====NEWS SUPERVISOR NODE=====")
-        print("===STATE AT NEWS SUPERVISOR NODE=====")
+    def newspresso_supervisor_node(state: AgentState) -> Command[Literal[*members, END]]:
+        print("====NEWSPRESSO SUPERVISOR NODE=====")
+        print("===STATE AT NEWSPRESSO SUPERVISOR NODE=====")
         print(state)
         """An LLM-based router."""
         context = state["messages"]
@@ -43,15 +43,15 @@ def make_news_supervisor_node(llm, members, role_of_each_worker) -> str:
         print(goto)
         return Command(goto=goto, update={"next": goto})
 
-    return news_supervisor_node
+    return newspresso_supervisor_node
 
 
-role_of_each_news_supervisor_worker = {
+role_of_each_newspresso_supervisor_worker = {
     PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the fine tuned podcast script and audio file. The goal is to first generate a podcast transcript, then fine tune it and then write it to a file. Lastly, the audio file should be generated from the fine tuned transcript.",
     TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news. The goal is to first get the top headlines, then summarize the news and then write it to a file."
 }
 
 
 #NEWS SUPERVISOR
-news_supervisor_members = list(role_of_each_news_supervisor_worker.keys())
-news_supervisor_agent = make_news_supervisor_node(llm, members=news_supervisor_members, role_of_each_worker=role_of_each_news_supervisor_worker)
+newspresso_supervisor_members = list(role_of_each_newspresso_supervisor_worker.keys())
+newspresso_supervisor_agent = make_newspresso_supervisor_node(llm, members=newspresso_supervisor_members, role_of_each_worker=role_of_each_newspresso_supervisor_worker)

@@ -2,7 +2,7 @@ MODEL_NAME = "gpt-4.1-mini"
 MAX_TOP_HEADLINES_CRITIQUE_COUNT = 1
 MAX_PODCAST_TRANSCRIPT_CRITIQUE_COUNT = 1
 
-NEWS_SUPERVISOR_AGENT = "news_supervisor_agent"
+NEWSPRESSO_SUPERVISOR_AGENT = "newspresso_supervisor_agent"
 
 TOP_HEADLINES_SUPERVISOR_AGENT = "top_headlines_supervisor_agent"
 TOP_HEADLINES_AGENT = "top_headlines_agent"

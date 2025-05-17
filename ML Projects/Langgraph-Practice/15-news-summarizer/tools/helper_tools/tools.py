@@ -54,6 +54,13 @@ def write_to_summary_file(content: str) -> str:
     return f"File written successfully to {summary_file}"
 
 @tool
+def write_summary_to_json_file(content: str) -> str:
+    """Writes the content to a json file in the data/summary folder."""
+    with open(summary_json_file, "w") as f:
+        f.write(content)
+    return f"File written successfully to {summary_json_file}"
+
+@tool
 def get_todays_date_and_day() -> str:
     """Gets the today's date and day."""
     today = datetime.now().strftime("%Y-%m-%d")
@@ -70,16 +77,17 @@ def web_search(query: str) -> str:
 project_root = Path(__file__).parent.parent.parent
 transcript_dir = project_root / "data" / "transcripts"
 transcript_dir.mkdir(parents=True, exist_ok=True)
-transcript_file = transcript_dir / "podcast-script.txt"
+transcript_file = transcript_dir / "podcast_script.txt"
 processsed_news_file_path = NewsTool().processed_news_path
 summary_dir = project_root / "data" / "summary"
 summary_dir.mkdir(parents=True, exist_ok=True)
-summary_file = summary_dir / "top-headlines-summary.txt"
+summary_file = summary_dir / "top_headlines_summary.txt"
+summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
-top_headlines_summarizer_tools = [read_json_file, web_search, write_to_summary_file]
+top_headlines_summarizer_tools = [read_json_file, web_search, write_to_summary_file, write_summary_to_json_file]
 
-podcast_transcript_writer_agent_tools = [write_to_file]
+transcript_generator_agent_tools = [write_to_file]
 podcast_audio_generator_agent_tools = [create_podcast]
 podcast_transcript_critic_agent_tools = [get_todays_date_and_day]

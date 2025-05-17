@@ -1,4 +1,4 @@
-from functions.newspresso_team.news_summarizer_agent import news_supervisor_agent
+from functions.newspresso_team.newspresso_supervisor_agent import newspresso_supervisor_agent
 
 from functions.newspresso_team.top_headlines_team.top_headlines_supervisor_agent import top_headlines_supervisor_agent
 from functions.newspresso_team.top_headlines_team.top_headlines_summarizer_agent import top_headlines_summarizer_node
@@ -9,7 +9,6 @@ from functions.newspresso_team.podcast_team.podcast_supervisor_agent import podc
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_supervisor_agent import podcast_transcript_supervisor_agent
 from functions.newspresso_team.podcast_team.podcast_audio_generator_agent import podcast_audio_generator_node
 
-from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_writer_agent import podcast_transcript_writer_node
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_generator_agent import podcast_transcript_generator_node
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_critic_agent import podcast_transcript_critic_node
 
@@ -18,7 +17,7 @@ from classes import AgentState
 
 workflow = StateGraph(AgentState)
 
-workflow.add_node(NEWS_SUPERVISOR_AGENT, news_supervisor_agent)
+workflow.add_node(NEWSPRESSO_SUPERVISOR_AGENT, newspresso_supervisor_agent)
 
 workflow.add_node(TOP_HEADLINES_SUPERVISOR_AGENT, top_headlines_supervisor_agent)
 workflow.add_node(TOP_HEADLINES_SUMMARIZER_AGENT, top_headlines_summarizer_node)
@@ -29,11 +28,10 @@ workflow.add_node(PODCAST_SUPERVISOR_AGENT, podcast_supervisor_agent)
 workflow.add_node(PODCAST_TRANSCRIPT_SUPERVISOR_AGENT, podcast_transcript_supervisor_agent)
 workflow.add_node(PODCAST_AUDIO_GENERATOR_AGENT, podcast_audio_generator_node)
 
-workflow.add_node(PODCAST_TRANSCRIPT_WRITER_AGENT, podcast_transcript_writer_node)
 workflow.add_node(PODCAST_TRANSCRIPT_GENERATOR_AGENT, podcast_transcript_generator_node)
 workflow.add_node(PODCAST_TRANSCRIPT_CRITIC_AGENT, podcast_transcript_critic_node)
 
-workflow.add_edge(START, NEWS_SUPERVISOR_AGENT)
+workflow.add_edge(START, NEWSPRESSO_SUPERVISOR_AGENT)
 
 graph = workflow.compile()
 

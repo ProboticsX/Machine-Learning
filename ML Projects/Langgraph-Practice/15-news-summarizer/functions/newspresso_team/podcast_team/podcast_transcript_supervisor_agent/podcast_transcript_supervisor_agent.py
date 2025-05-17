@@ -58,7 +58,6 @@ def make_podcast_transcript_supervisor_node(llm, members, role_of_each_worker) -
 
 role_of_each_podcast_transcript_supervisor_worker = {
     PODCAST_TRANSCRIPT_GENERATOR_AGENT: "Script generator agent who is tasked with generating a podcast script for the top headlines.",
-    PODCAST_TRANSCRIPT_WRITER_AGENT: "Transcript writer agent who is tasked with writing the transcript to a file.",
 }
 
 # PODCAST TRANSCRIPT SUPERVISOR

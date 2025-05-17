@@ -2,13 +2,13 @@ from common_imports import *
 from constants import *
 from classes import AgentState
 from tools.helper_tools.tools import *
-from functions.newspresso_team.news_summarizer_agent import role_of_each_news_supervisor_worker
+from functions.newspresso_team.newspresso_supervisor_agent import role_of_each_newspresso_supervisor_worker
 
 
 def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
     options = ["FINISH"] + members
     system_prompt = (
-        f"{role_of_each_news_supervisor_worker[PODCAST_SUPERVISOR_AGENT]}"
+        f"{role_of_each_newspresso_supervisor_worker[PODCAST_SUPERVISOR_AGENT]}"
         "You are tasked with managing a conversation between the"
         " following workers: "+ str(members) + ". Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
@@ -24,7 +24,7 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
 
         next: Literal[*options]
 
-    def podcast_supervisor_node(state: AgentState) -> Command[Literal[*members, NEWS_SUPERVISOR_AGENT]]:
+    def podcast_supervisor_node(state: AgentState) -> Command[Literal[*members, NEWSPRESSO_SUPERVISOR_AGENT]]:
         print("====PODCAST SUPERVISOR NODE=====")
         print("===STATE AT PODCAST SUPERVISOR NODE=====")
         print(state)
@@ -44,7 +44,7 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
         print("===GOTO=====")
         print(goto)
         if goto == "FINISH":
-            goto = NEWS_SUPERVISOR_AGENT
+            goto = NEWSPRESSO_SUPERVISOR_AGENT
             return Command(
             goto=goto, 
             update={
