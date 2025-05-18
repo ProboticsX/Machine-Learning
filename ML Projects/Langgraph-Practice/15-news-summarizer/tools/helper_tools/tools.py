@@ -1,10 +1,10 @@
 from common_imports import *
 
 @tool
-def get_top_headlines(topic: str) -> str:
+def get_top_headlines(category: str) -> str:
     """Gets the top headlines from the news API."""
     news_tool = NewsTool()
-    result = news_tool.get_top_headlines(topic)
+    result = news_tool.get_top_headlines(category)
     return result
 
 @tool

@@ -1,6 +1,6 @@
 from common_imports import *
 from constants import *
-from classes import AgentState, TopHeadlinesClass, TopicClass
+from classes import AgentState, TopHeadlinesClass, CategoryClass
 from tools.helper_tools.tools import *
 from functions.newspresso_team.top_headlines_team.top_headlines_supervisor_agent import role_of_each_top_headlines_worker
 
@@ -25,24 +25,24 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
             ("system", system_prompt),
             ("user", "Here's the user question: {question}"),
         ])
-        llm_with_structured_output = llm.with_structured_output(TopicClass)
+        llm_with_structured_output = llm.with_structured_output(CategoryClass)
         topic_extractor_chain = prompt | llm_with_structured_output
         invoke_message = {"question": question}
         result = topic_extractor_chain.invoke(invoke_message)
         print("===RESULT OF TOPIC EXTRACTOR CHAIN=====")
         print(result)
-        return result["topic"]
+        return result["category"]
 
     user_question = state["messages"][0].content
-    topic = get_topic_from_user_question(user_question)
+    category = get_topic_from_user_question(user_question)
 
     # Get the top headlines from the news API
     system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_AGENT]}"
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Please fetch the top headlines for the topic: {topic}"),
+        ("user", "Please fetch the top headlines for the category: {category}"),
     ])
-    formatted_prompt = prompt.format(topic=topic)
+    formatted_prompt = prompt.format(category=category)
     top_headlines_agent = create_react_agent(llm, 
                                              tools=top_headlines_agent_tools, 
                                              prompt = formatted_prompt)
@@ -62,7 +62,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
                 HumanMessage(content="Top headlines fetched successfully.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines": current_top_headlines,
-            "topic": TopicClass(topic=topic),
+            "category_class": CategoryClass(category=category),
         },
         goto=TOP_HEADLINES_SUPERVISOR_AGENT,
     )

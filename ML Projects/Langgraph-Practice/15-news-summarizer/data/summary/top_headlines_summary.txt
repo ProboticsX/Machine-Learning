@@ -1,49 +1,19 @@
-- Moody's Downgrades U.S. Credit Rating
+- Doom: The Dark Ages, the latest installment in the iconic Doom video game series, faces the challenge of attracting new players in 2025's competitive gaming landscape. Despite its long-standing reputation and loyal fanbase since its debut in 1993, Doom competes against free-to-play giants like Fortnite and Roblox, which dominate player attention. The new medieval sci-fi setting and gameplay changes aim to appeal to a broader audience, especially newcomers. Unlike subscription or microtransaction-based games, Doom offers a one-time purchase without additional costs, which developers argue provides clear value. While pricing for premium games has remained relatively stable when adjusting for inflation, ongoing debates about game costs continue, especially against the backdrop of tariff concerns and the rise of subscription services. The game is also available on subscription platforms like Xbox Game Pass, challenging traditional sales models but offering accessibility. With features such as customizable difficulty and replay value, Doom: The Dark Ages seeks to stay relevant in an evolving market by blending familiar elements with fresh innovations.
 
-Moody's has downgraded the U.S. credit rating from Aaa to Aa1, citing a substantial rise in federal government debt and increased interest payments. This downgrade highlights investors' concerns about the sustainability of U.S. fiscal policy. Over the past decade, government debt and interest payments have escalated beyond levels seen in similarly rated sovereign nations. Moody's points out that successive U.S. administrations and Congress have failed to implement effective measures to reverse the trend of increasing deficits and rising interest costs. The downgrade follows prior similar actions by Standard and Poor's in 2011 and Fitch Ratings in 2023. Moody's forecasts federal deficits to grow significantly, driven by entitlement spending and interest payments, with debt projected to rise to 118% of GDP by 2035.
+    - Relevant links: [BBC News - Doom article](https://www.bbc.com/news/articles/c4gezq2q911o)
 
-Despite the downgrade, Moody's outlook on the U.S. remains stable, recognizing strengths such as the size and resilience of the U.S. economy, its global reserve currency status, and effective monetary policy led by an independent Federal Reserve. The downgrade has sparked political responses, with the White House attributing past fiscal issues to COVID stimulus spending and asserting plans for fiscal reform.
+- GameStop has announced that it will have additional stock of the highly anticipated Nintendo Switch 2 available both in physical stores and online at its launch on June 5th, 2025. The in-store launch events begin on June 4th at 3 PM local time, while online orders open at midnight EST on June 5th. This comes after the retailer's preorder phase saw rapid sellouts online, though some customers found success reserving consoles in-store. Other major retailers like Best Buy have also confirmed extra stock availability in many physical locations at launch. The Switch 2 has generated excitement with upgraded hardware and improvements, and GameStop’s commitment to increased supply aims to help meet demand. Nintendo also issued direct invitations for console purchases through its own sales channels starting early May, enhancing consumer access options.
 
-Key takeaways include the seriousness of rising government debt, ongoing fiscal challenges, political debate over causes and solutions, and the U.S.'s continued economic strength despite downgraded credit.
+    - Relevant links: [The Verge - GameStop Switch 2 stock](https://www.theverge.com/news/668918/gamestop-nintendo-switch-2-stock-in-store-online-launch)
 
-Relevant links: [https://www.cbsnews.com/news/us-credit-rating-downgraded-by-moodys-loses-aaa-status/]
+- Google’s annual developer conference, Google I/O 2025, scheduled for May 20-21 at the Shoreline Amphitheatre in Mountain View, promises updates across Google’s product ecosystem. Key highlights will include enhancements to Android 16, featuring improved notifications, support for Auracast to streamline Bluetooth device switching, new lock screen widgets, and additional accessibility features. AI remains a focal point, with anticipated announcements for Google's Gemini line of AI models, including an upgraded Gemini Ultra and potentially new premium subscription tiers to unlock greater capabilities. The event will also spotlight Google's AI applications such as Astra and Project Mariner, designed to develop AI agents capable of real-time, multimodal understanding and web navigation. Other sessions will cover Chrome, Google Cloud, Google Play, and Android development tools, with expectations for surprises around AI-assisted podcasting and video summary technologies reflective of Google’s expanding AI investments.
 
-- NJ Transit Rail Service Shuts Down Due to Historic Strike
+    - Relevant links: [TechCrunch - Google I/O 2025 coverage](https://techcrunch.com/2025/05/16/google-i-o-2025-what-to-expect-including-updates-to-gemini-and-android-16/)
 
-Approximately 450 locomotive engineers representing NJ Transit initiated a strike at midnight on Friday, leading to a complete shutdown of NJ Transit's rail service, which serves over 100,000 weekday commuters. This is the first major transit strike in New Jersey since 1983. The union, Brotherhood of Locomotive Engineers and Trainmen, rejected a tentative agreement due to insufficient pay raises, with members having gone without raises since 2019.
+- Nintendo has detailed a series of free updates for several popular Switch games to optimize performance on the upcoming Switch 2 console, which launches on June 5th, 2025. These improvements include enhanced visuals tailored to the Switch 2's larger screen, better frame rates, HDR support, and new features like GameShare. Notable games receiving these upgrades are Pokémon Scarlet, Pokémon Violet, Super Mario Odyssey, and The Legend of Zelda: Link’s Awakening, among others. While these updates are less extensive than paid Nintendo Switch 2 Edition upgrades for some titles, they offer tangible enhancements that improve gameplay experience on the new hardware—particularly for games that had performance issues on the original Switch. This move ensures that classic titles can be enjoyed with noticeable improvements on the new system, appealing to both new and returning players.
 
-The strike has forced commuters to seek alternative transportation, including buses, PATH trains, and ferries, which are expected to be overcrowded. NJ Transit President emphasized fiscal constraints preventing unsustainable wage agreements, while Governor Phil Murphy highlighted the agency's challenging financial reality.
+    - Relevant links: [The Verge - Nintendo Switch 2 updates](https://www.theverge.com/news/668830/nintendo-switch-2-game-updates)
 
-The strike is ongoing, with union and transit officials preparing for further negotiations; the disruption represents a significant challenge for New Jersey's transportation system and its commuters.
+- Privacy and online anonymity remain challenging issues as illustrated by a test of the "Cover Your Tracks" tool by the Electronic Frontier Foundation (EFF). This tool measures how well a user’s browser blocks tracking attempts and how unique their browser fingerprint is. While modern browsers like Safari and Firefox include features to block ads and trackers effectively, they struggle to prevent browser fingerprinting—a practice where trackers use device and browser information to uniquely identify users across the web. The test revealed that even with privacy settings enabled and ad blockers installed, browsers can be easily singled out, limiting true anonymity. Techniques to avoid fingerprinting, such as using the Tor browser or privacy extensions like Privacy Badger, can improve privacy but may reduce web functionality or user experience. This nuanced balance underscores the ongoing difficulty in fully protecting online identity against sophisticated tracking technologies.
 
-Relevant links: [https://gothamist.com/news/nj-transit-rail-service-shuts-down-as-workers-go-on-historic-strike]
-
-- U.S. Tech Giants Support UAE Stargate AI Data Center Project
-
-Leading U.S. technology companies Nvidia, Cisco, Oracle, and OpenAI are backing the UAE Stargate project, an ambitious AI data center initiative in Abu Dhabi, UAE. The project will feature extensive computing capacity, including a 5-gigawatt campus and a 1-gigawatt compute cluster in the first phase. Nvidia's latest Blackwell GB300 AI chips will supply critical hardware.
-
-This project aligns with a similar U.S. Stargate AI infrastructure announced by President Donald Trump, who has recently made a state visit to the UAE and Saudi Arabia. Nvidia CEO Jensen Huang, OpenAI CEO Sam Altman, and other tech executives participated in the announcement. The initiative marks an important step in expanding AI infrastructure globally, leveraging U.S. technological expertise alongside Emirati investment and leadership.
-
-The collaboration emphasizes cross-border AI development and strategic partnerships in the Middle East, an area of growing importance for technological innovation and investment.
-
-Relevant links: [https://www.cnbc.com/2025/05/16/trump-middle-east-openai.html]
-
-- REI Anniversary Sale Offers Discounts on Outdoor Gear including Garmin Devices
-
-REI's annual anniversary sale is offering up to 30% off on a wide range of outdoor gear, including popular Garmin products such as smartwatches, GPS devices, and satellite communicators. Notable deals include the Garmin Forerunner series, Garmin Fenix 8, and Garmin inReach Mini 2, among others. These devices are favored for outdoor activities like running, hiking, and camping due to their advanced tracking, health monitoring features, and connectivity.
-
-In addition to wearables, the sale includes camping essentials like LifeStraw water filters, camp stoves, headlamps, and portable solar-powered lights. REI members can also take advantage of additional savings, making this sale a significant opportunity for outdoor enthusiasts to gear up for the season.
-
-These offers promote accessibility to quality outdoor technology and equipment at reduced prices, enhancing preparedness and enjoyment for outdoor activities.
-
-Relevant links: [https://www.theverge.com/tech/668088/rei-anniversary-sale-2025-garmin-watch-inreach-stoves-water-filters-deal-sale]
-
-- Tesla’s Robotaxi Fleet in Austin to Use Extensive Teleoperation for Safety
-
-Tesla is set to launch a limited robotaxi service in Austin, Texas, deploying 10-20 Model Y vehicles equipped with Supervised Full Self-Driving technology, supplemented by teleoperation—remote vehicle control by Tesla employees—to ensure safety. This approach acknowledges current technological limits, emphasizing safety through human oversight of autonomous operations.
-
-The service, slated for launch in June 2025, diverges from Tesla's earlier autonomous driving ambitions by including remote supervision instead of fully unsupervised self-driving. This teleoperation will help manage operational risks and improve reliability especially for initial deployment phases.
-
-Industry analysts note that while this move offers progress, it also underscores challenges Tesla faces in achieving fully autonomous vehicle deployment. Teleoperation could enhance safety but may delay widespread driverless adoption. The initiative represents a pragmatic step toward robotaxi commercialization while managing safety and operational concerns.
-
-Relevant links: [http://electrek.co/2025/05/16/tesla-robotaxi-fleet-powered-by-plenty-of-teleoperation/]  
+    - Relevant links: [Lifehacker - Cover Your Tracks test](https://lifehacker.com/tech/cover-your-tracks-see-whos-following-you-online)

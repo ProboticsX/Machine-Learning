@@ -34,7 +34,7 @@ class NewsTool:
         self.raw_news_path = self.news_dir / "raw_news.json"
         self.processed_news_path = self.news_dir / "processed_news.json"
 
-    def fetch_news(self, topic: str) -> Dict:
+    def fetch_news(self, category: str) -> Dict:
         """Fetch latest news from NewsAPI."""
         try:
             # Initialize NewsAPI client
@@ -45,7 +45,7 @@ class NewsTool:
             response = newsapi.get_top_headlines(
                 language='en',
                 country='us',
-                category=topic,
+                category=category,
                 page_size=100  # Get more articles to ensure we have enough with content
             )
             logger.info(f"Successfully fetched {len(response['articles'])} articles from NewsAPI")
@@ -133,7 +133,7 @@ class NewsTool:
             logger.error(f"Error saving data: {e}")
             raise
 
-    def get_top_headlines(self, topic: str) -> Dict:
+    def get_top_headlines(self, category: str) -> Dict:
         """
         Fetch and process news articles.
         
@@ -159,7 +159,7 @@ class NewsTool:
         """
         try:
             # Fetch news articles
-            news_data = self.fetch_news(topic)
+            news_data = self.fetch_news(category)
             
             # Save raw news data
             self.save_json(news_data, self.raw_news_path)

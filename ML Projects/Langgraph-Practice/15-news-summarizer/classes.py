@@ -1,7 +1,7 @@
 from common_imports import *
 
-class TopicClass(TypedDict):
-    topic: str = Field(description="The topic of the user question")
+class CategoryClass(TypedDict):
+    category: str = Field(description="The category of the news")
 
 class PodcastClass(TypedDict):
     podcast_transcript: str = Field(description="The podcast transcript")
@@ -18,4 +18,4 @@ class AgentState(MessagesState):
     next: str = Field(description="The next agent to call")
     top_headlines: TopHeadlinesClass = Field(description="The top headlines class")
     podcast_class: PodcastClass = Field(description="The podcast class")
-    topic: TopicClass = Field(description="The topic of the user question")
+    category_class: CategoryClass = Field(description="The category class")
