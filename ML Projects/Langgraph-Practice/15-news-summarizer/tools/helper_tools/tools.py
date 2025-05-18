@@ -74,18 +74,18 @@ def web_search(query: str) -> str:
     return search.invoke(query)
 
 @tool
-def push_headlines_to_firebase_db() -> str:
+def push_headlines_to_firebase_db(category: str) -> str:
     """Pushes the headlines to the firebase database."""
     firebase_tools = FirebaseTools()
-    result = firebase_tools.push_headlines_from_json(summary_json_file)
+    result = firebase_tools.push_headlines_from_json(summary_json_file, category=category)
     return result
 
 @tool
-def push_audio_to_firebase_storage(audio_file_path: str) -> str:
+def push_audio_to_firebase_storage(audio_file_path: str, category: str) -> str:
     """Pushes the audio to the firebase storage."""
     try:
         firebase_tools = FireStorageAndFireStoreAudioTool(storage_bucket="iosapp-5d233.firebasestorage.app")
-        result = firebase_tools.store_audio_file(audio_file_path)
+        result = firebase_tools.store_audio_file(audio_file_path, category=category)
         return str(result)
     except Exception as e:
         return f"Error pushing audio to Firebase Storage: {str(e)}"
@@ -103,7 +103,7 @@ summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
-top_headlines_summarizer_tools = [read_json_file, web_search, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db]
+top_headlines_summarizer_tools = [read_json_file, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db]
 
 transcript_generator_agent_tools = [write_to_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]

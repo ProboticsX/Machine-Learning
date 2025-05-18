@@ -1,52 +1,52 @@
 [
   {
-    "source": "BBC News",
-    "author": null,
-    "title": "Doom: The Dark Ages and the challenges of finding new players - BBC",
-    "description": "Doom is one of the most well-known series in gaming but it still has to work to find new players.",
-    "url": "https://www.bbc.com/news/articles/c4gezq2q911o",
-    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/78bb/live/ed7ac1a0-326b-11f0-8947-7d6241f9fce9.png",
-    "published_at": "2025-05-17T00:08:51Z",
-    "content_summary": "Doom: The Dark Ages, the latest installment in the iconic Doom video game series, faces the challenge of attracting new players in 2025's competitive gaming landscape. Despite its long-standing reputation and loyal fanbase since its debut in 1993, Doom competes against free-to-play giants like Fortnite and Roblox, which dominate player attention. The new medieval sci-fi setting and gameplay changes aim to appeal to a broader audience, especially newcomers. Unlike subscription or microtransaction-based games, Doom offers a one-time purchase without additional costs, which developers argue provides clear value. While pricing for premium games has remained relatively stable when adjusting for inflation, ongoing debates about game costs continue, especially against the backdrop of tariff concerns and the rise of subscription services. The game is also available on subscription platforms like Xbox Game Pass, challenging traditional sales models but offering accessibility. With features such as customizable difficulty and replay value, Doom: The Dark Ages seeks to stay relevant in an evolving market by blending familiar elements with fresh innovations."
-  },
-  {
-    "source": "The Verge",
-    "author": "Jay Peters",
-    "title": "GameStop will have more Switch 2 stock at launch - The Verge",
-    "description": "GameStop will have additional Switch 2 stock available in-store and online when the console launches on June 5th, according to a post on X.",
-    "url": "https://www.theverge.com/news/668918/gamestop-nintendo-switch-2-stock-in-store-online-launch",
-    "urlToImage": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/04/STKR001_NINTENDO_SWITCH_4_D.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200",
-    "published_at": "2025-05-16T22:23:37Z",
-    "content_summary": "GameStop has announced that it will have additional stock of the highly anticipated Nintendo Switch 2 available both in physical stores and online at its launch on June 5th, 2025. The in-store launch events begin on June 4th at 3 PM local time, while online orders open at midnight EST on June 5th. This comes after the retailer's preorder phase saw rapid sellouts online, though some customers found success reserving consoles in-store. Other major retailers like Best Buy have also confirmed extra stock availability in many physical locations at launch. The Switch 2 has generated excitement with upgraded hardware and improvements, and GameStop’s commitment to increased supply aims to help meet demand. Nintendo also issued direct invitations for console purchases through its own sales channels starting early May, enhancing consumer access options."
-  },
-  {
     "source": "TechCrunch",
-    "author": "Kyle Wiggers",
-    "title": "Google I/O 2025: What to expect, including updates to Gemini and Android 16 - TechCrunch",
-    "description": "Google I/O, Google's biggest developer conference of the year, is nearly upon us. Here's what to expect, including updates to Gemini and Android.",
-    "url": "https://techcrunch.com/2025/05/16/google-i-o-2025-what-to-expect-including-updates-to-gemini-and-android-16/",
-    "urlToImage": "https://techcrunch.com/wp-content/uploads/2024/05/google-io-generic.jpg?resize=1200,800",
-    "published_at": "2025-05-16T22:19:00Z",
-    "content_summary": "Google’s annual developer conference, Google I/O 2025, scheduled for May 20-21 at the Shoreline Amphitheatre in Mountain View, promises updates across Google’s product ecosystem. Key highlights will include enhancements to Android 16, featuring improved notifications, support for Auracast to streamline Bluetooth device switching, new lock screen widgets, and additional accessibility features. AI remains a focal point, with anticipated announcements for Google's Gemini line of AI models, including an upgraded Gemini Ultra and potentially new premium subscription tiers to unlock greater capabilities. The event will also spotlight Google's AI applications such as Astra and Project Mariner, designed to develop AI agents capable of real-time, multimodal understanding and web navigation. Other sessions will cover Chrome, Google Cloud, Google Play, and Android development tools, with expectations for surprises around AI-assisted podcasting and video summary technologies reflective of Google’s expanding AI investments."
+    "author": "Connie Loizos",
+    "title": "OpenAI's planned data center in Abu Dhabi would be bigger than Monaco - TechCrunch",
+    "description": "OpenAI's planned data center in Abu Dhabi would be bigger than Monaco, according to a report from Bloomberg.",
+    "url": "https://techcrunch.com/2025/05/16/openais-planned-data-center-in-abu-dhabi-would-be-bigger-than-monaco/",
+    "urlToImage": "https://techcrunch.com/wp-content/uploads/2025/02/GettyImages-2197091379.jpg?w=1024",
+    "published_at": "2025-05-16T22:56:06Z",
+    "content_summary": "OpenAI's planned data center in Abu Dhabi marks a transformative milestone in the global AI infrastructure landscape. Spanning an immense 10 square miles, this data center's scale surpasses the entire principality of Monaco and will operate with a power consumption equivalent to five nuclear reactors. This project, part of OpenAI's ambitious Stargate initiative developed with Abu Dhabi's G42 conglomerate, aims to bolster AI development capabilities on an unprecedented scale. While the U.S. capacity project in Texas is expected to reach 1.2 gigawatts, Abu Dhabi's facility will more than quadruple this capacity at 5 gigawatts. The collaboration highlights deepening U.S.-UAE AI ties, reinforced by Microsoft's $1.5 billion investment in G42, but not without concerns regarding G42's past ties to Chinese entities and national security. G42's commitment to divest from China aims to address these apprehensions. Ultimately, this data center cements Abu Dhabi's status as a major AI hub, potentially accelerating AI innovations globally."
   },
   {
-    "source": "The Verge",
-    "author": "Jay Peters",
-    "title": "Nintendo details Switch 2 updates for Switch games - The Verge",
-    "description": "Nintendo shared information about Switch 2-focused improvements coming to Switch games like Pokémon Scarlet and Violet and Super Mario Odyssey.",
-    "url": "https://www.theverge.com/news/668830/nintendo-switch-2-game-updates",
-    "urlToImage": "https://platform.theverge.com/wp-content/uploads/sites/2/2025/05/Pokemon_SV_Screenshot_10.jpg?quality=90&strip=all&crop=0%2C3.4613147178592%2C100%2C93.077370564282&w=1200",
-    "published_at": "2025-05-16T19:53:24Z",
-    "content_summary": "Nintendo has detailed a series of free updates for several popular Switch games to optimize performance on the upcoming Switch 2 console, which launches on June 5th, 2025. These improvements include enhanced visuals tailored to the Switch 2's larger screen, better frame rates, HDR support, and new features like GameShare. Notable games receiving these upgrades are Pokémon Scarlet, Pokémon Violet, Super Mario Odyssey, and The Legend of Zelda: Link’s Awakening, among others. While these updates are less extensive than paid Nintendo Switch 2 Edition upgrades for some titles, they offer tangible enhancements that improve gameplay experience on the new hardware—particularly for games that had performance issues on the original Switch. This move ensures that classic titles can be enjoyed with noticeable improvements on the new system, appealing to both new and returning players."
+    "source": "NPR",
+    "author": "",
+    "title": "The 145% tariff already did its damage : Planet Money - NPR",
+    "description": "Even though the 145% tariff on Chinese imports only lasted a month, it already inflicted its scars on the economy. Global trade is just not something you can turn off and on like that. Some companies got really unlucky.",
+    "url": "https://www.npr.org/2025/05/16/1251782092/tariff-us-china-pause-trade-war",
+    "urlToImage": "https://media.npr.org/assets/img/2025/05/16/img_2356_wide-8a8c856e8803d8258dd87ae2a4dee377bd838ad2.jpg?s=1400&c=100&f=jpeg",
+    "published_at": "2025-05-16T22:42:13Z",
+    "content_summary": "The brief yet impactful imposition of a 145% tariff on Chinese imports to the U.S. has demonstrated the fragility and interconnectedness of global trade systems. Although active for only one month, the tariff caused substantial disruption to supply chains and logistics, resulting in severe cost increases for businesses caught mid-shipment. Medium-sized companies importing $1 million in goods experienced an additional $1.45 million in tariff costs alone. The episode sheds light on how global commerce cannot simply be turned on or off instantaneously without lasting economic repercussions. Stories from affected businesses illustrate the wide-ranging and enduring consequences of such abrupt policy shifts, underscoring the sensitivity of international trade to geopolitical tensions."
   },
   {
-    "source": "Lifehacker.com",
-    "author": "Jake Peterson",
-    "title": "I Used 'Cover Your Tracks' to See What's Following Me Online, and Yikes - Lifehacker",
-    "description": "I'm not as anonymous as I thought.",
-    "url": "https://lifehacker.com/tech/cover-your-tracks-see-whos-following-you-online",
-    "urlToImage": "https://lifehacker.com/imagery/articles/01JVD9RV7029HDPCM7YZ8X94J9/hero-image.fill.size_1200x675.jpg",
-    "published_at": "2025-05-16T22:00:00Z",
-    "content_summary": "Privacy and online anonymity remain challenging issues as illustrated by a test of the 'Cover Your Tracks' tool by the Electronic Frontier Foundation (EFF). This tool measures how well a user’s browser blocks tracking attempts and how unique their browser fingerprint is. While modern browsers like Safari and Firefox include features to block ads and trackers effectively, they struggle to prevent browser fingerprinting—a practice where trackers use device and browser information to uniquely identify users across the web. The test revealed that even with privacy settings enabled and ad blockers installed, browsers can be easily singled out, limiting true anonymity. Techniques to avoid fingerprinting, such as using the Tor browser or privacy extensions like Privacy Badger, can improve privacy but may reduce web functionality or user experience. This nuanced balance underscores the ongoing difficulty in fully protecting online identity against sophisticated tracking technologies."
+    "source": "9to5Mac",
+    "author": "Chance Miller",
+    "title": "CarPlay Ultra: Features, supported cars, more - 9to5Mac",
+    "description": "After three years of anticipation, Apple officially launched next-generation CarPlay this week, dubbed CarPlay Ultra. CarPlay Ultra packs countless new...",
+    "url": "https://9to5mac.com/2025/05/16/carplay-ultra-features/",
+    "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/05/Aston-Martin_Apple-CarPlay-Ultra_03.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+    "published_at": "2025-05-16T21:01:00Z",
+    "content_summary": "Apple unveiled CarPlay Ultra, its most significant overhaul of the car infotainment system in years, delivering a deeply integrated and customizable driving experience. With complete control over all of a vehicle's driver displays, CarPlay Ultra allows automakers to embed their branding and tailor interfaces uniquely. Aston Martin leads adoption, with several other automakers committed to supporting the platform. Drivers can customize instrument clusters, center displays, and widgets, while native integration enables control of vehicle functions such as climate, tire pressure, and driving modes directly through CarPlay and via Siri voice commands. This innovation represents Apple's strategic advance in blending the iPhone ecosystem with core vehicle operations, enhancing personalization and immersion."
+  },
+  {
+    "source": "KOMO News",
+    "author": "KOMO News Staff",
+    "title": "CVS to acquire & operate 64 Rite Aid stores in the PNW, buy customer prescription files - KOMO",
+    "description": "CVS Pharmacy has announced its agreement to buy the prescription files of 625 Rite Aid pharmacies across 15 states.",
+    "url": "https://komonews.com/news/local/cvs-to-acquire-operate-64-rite-aid-stores-in-the-pnw-buy-customer-prescription-files-pharmacy-pescription-drugs-shopping-cough-cold-flu-insulin-ozempic-adderall-prozac-filing-court-transfer-pnw",
+    "urlToImage": "https://komonews.com/resources/media/3b3c1428-5f19-4275-9b2f-ff432198c08f-large16x9_IMG_7385.JPG",
+    "published_at": "2025-05-16T20:59:49Z",
+    "content_summary": "CVS Pharmacy's acquisition of 64 Rite Aid stores across Idaho, Oregon, and Washington, along with customer prescription files from 625 Rite Aid locations in 15 states, marks a significant consolidation in the pharmaceutical retail sector. Following Rite Aid's bankruptcy and extensive store closures, this court-approved transaction will expand CVS's presence in key Pacific Northwest markets. While subject to regulatory approval, CVS aims to facilitate a seamless transition for customers and employees, leveraging its extensive network of over 9,000 stores nationwide. This acquisition exemplifies the ongoing industry trend of consolidation amid financial distress in traditional retail pharmacy chains."
+  },
+  {
+    "source": "Gothamist",
+    "author": "https://gothamist.com/staff/stephen-nessen, https://gothamist.com/staff/ramsey-khalifeh",
+    "title": "NJ Transit strike foists riders onto Amtrak, which charges $70 for a 17-minute ride - Gothamist",
+    "description": "Without NJ Transit rail service, riders were left with fewer commuting options and a whole lot of reasons to complain.",
+    "url": "https://gothamist.com/news/nj-transit-strike-foists-riders-onto-amtrak-which-charges-70-for-a-17-minute-ride",
+    "urlToImage": "https://api-prod.gothamist.com/images/351314/fill-1200x650|format-webp|webpquality-85/",
+    "published_at": "2025-05-16T20:23:00Z",
+    "content_summary": "The NJ Transit strike has severely disrupted daily commutes for over 100,000 riders, forcing many to resort to costly alternatives like Amtrak, which charges $70 for a mere 17-minute ride. Initiated due to contract disputes with locomotive engineers, the strike halted all NJ Transit rail service, leading to gridlocked roads, lost workdays, and widespread frustration. Governor Phil Murphy's call for remote work underscored the strike's profound economic impact on the region. The dispute highlights vulnerabilities in transit infrastructure and labor relations, with negotiations ongoing and hopes for a swift resolution to restore critical commuter services."
   }
 ]

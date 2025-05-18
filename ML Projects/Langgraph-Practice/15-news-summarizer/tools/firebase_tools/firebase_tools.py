@@ -30,13 +30,14 @@ class FirebaseTools:
         
         self.db = firestore.client()
     
-    def push_headlines(self, headlines_data: List[Dict[str, Any]], collection_path: str = "news") -> Dict[str, Any]:
+    def push_headlines(self, headlines_data: List[Dict[str, Any]], collection_path: str = "news_latest", category: str = "general") -> Dict[str, Any]:
         """
         Push headlines to Firestore database.
         
         Args:
             headlines_data (List[Dict[str, Any]]): List of headline dictionaries to push
             collection_path (str): Base collection path where headlines should be stored
+            category (str): Category of the headlines (e.g., technology, business, general)
             
         Returns:
             Dict[str, Any]: Status of the operation including success/failure and details
@@ -46,27 +47,39 @@ class FirebaseTools:
             today_date = datetime.now().strftime("%Y-%m-%d")
             
             # Reference to today's headlines collection
-            # Structure: news (collection) -> top_headlines (document) -> headlines (collection) -> today's date (document) -> headlines (collection)
-            headlines_ref = self.db.collection(collection_path).document("top_headlines").collection("headlines").document(today_date).collection("headlines")
+            # Structure: news_latest (collection) -> top_headlines (document) -> category (document) -> date (document) -> headlines (collection) -> headline_num (documents)
+            headlines_collection = (
+                self.db.collection(collection_path)
+                .document("top_headlines")
+                .collection("categories")
+                .document(category)
+                .collection("dates")
+                .document(today_date)
+                .collection("headlines")
+            )
             
             # Check if there are existing headlines and delete them
-            existing_headlines = headlines_ref.get()
-            if existing_headlines:
-                print(f"Found existing headlines for {today_date}, deleting them...")
-                # Delete all documents in the collection
-                for doc in existing_headlines:
-                    doc.reference.delete()
-                print("Existing headlines deleted")
+            existing_docs = headlines_collection.get()
+            if existing_docs:
+                print(f"Found existing headlines for {category} on {today_date}, deleting them...")
+                batch = self.db.batch()
+                for doc in existing_docs:
+                    batch.delete(doc.reference)
+                batch.commit()
+                print(f"Deleted existing headlines for {category} on {today_date}")
             
             # Create a batch for atomic operations
             batch = self.db.batch()
             
-            # Add each headline to the batch
+            # Add each headline as a separate document
             for index, headline in enumerate(headlines_data):
-                doc_ref = headlines_ref.document(f"headline_{index}")
+                doc_ref = headlines_collection.document(f"headline_{index}")
                 headline_data = {
                     **headline,
-                    "timestamp": firestore.SERVER_TIMESTAMP
+                    "timestamp": firestore.SERVER_TIMESTAMP,
+                    "category": category,
+                    "date": today_date,
+                    "index": index
                 }
                 batch.set(doc_ref, headline_data)
             
@@ -75,8 +88,9 @@ class FirebaseTools:
             
             return {
                 "success": True,
-                "message": f"Successfully pushed {len(headlines_data)} headlines to Firestore",
+                "message": f"Successfully pushed {len(headlines_data)} headlines to Firestore for category: {category}",
                 "date": today_date,
+                "category": category,
                 "headlines_count": len(headlines_data)
             }
             
@@ -87,13 +101,14 @@ class FirebaseTools:
                 "error": str(e)
             }
     
-    def push_headlines_from_json(self, json_file_path: str, collection_path: str = "news") -> Dict[str, Any]:
+    def push_headlines_from_json(self, json_file_path: str, collection_path: str = "news_latest", category: str = "general") -> Dict[str, Any]:
         """
         Push headlines from a JSON file to Firestore database.
         
         Args:
             json_file_path (str): Path to the JSON file containing headlines
             collection_path (str): Base collection path where headlines should be stored
+            category (str): Category of the headlines (e.g., technology, business, general)
             
         Returns:
             Dict[str, Any]: Status of the operation including success/failure and details
@@ -104,7 +119,7 @@ class FirebaseTools:
                 headlines = json.load(file)
             
             # Push the headlines
-            return self.push_headlines(headlines, collection_path)
+            return self.push_headlines(headlines, collection_path, category)
             
         except Exception as e:
             return {
@@ -120,5 +135,5 @@ if __name__ == "__main__":
     
     # Example of pushing headlines from a JSON file
     json_path = "../../data/summary/top_headlines_summary.json"
-    result = firebase_tools.push_headlines_from_json(json_path)
+    result = firebase_tools.push_headlines_from_json(json_path, category="technology")
     print(result)
