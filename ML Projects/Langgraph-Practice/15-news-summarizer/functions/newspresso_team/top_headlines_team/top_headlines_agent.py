@@ -53,15 +53,15 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     current_top_headlines = TopHeadlinesClass(
         top_headlines_processed_news_file=processsed_news_file_path
     )
-    if state.get("top_headlines") is not None:
-        current_top_headlines = state["top_headlines"].copy()
+    if state.get("top_headlines_class") is not None:
+        current_top_headlines = state["top_headlines_class"].copy()
         current_top_headlines["top_headlines_processed_news_file"] = processsed_news_file_path
     return Command(
         update={
             "messages": [
                 HumanMessage(content="Top headlines fetched successfully.", name=TOP_HEADLINES_AGENT)
             ],
-            "top_headlines": current_top_headlines,
+            "top_headlines_class": current_top_headlines,
             "category_class": CategoryClass(category=category),
         },
         goto=TOP_HEADLINES_SUPERVISOR_AGENT,

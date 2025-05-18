@@ -8,7 +8,7 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     print("====PODCAST TRANSCRIPT GENERATOR NODE=====")
     print("===STATE AT PODCAST TRANSCRIPT GENERATOR NODE=====")
     print(state)
-    top_headlines_summary = state["top_headlines"]["top_headlines_summary"]
+    top_headlines_summary_json_file = state["top_headlines_class"]["top_headlines_summary_json_file"]
     podcast_transcript_critique = ""
     existing_podcast_transcript = ""
     current_podcast_transcript_critique_count = 0
@@ -36,16 +36,16 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the summary of the top headlines: {top_headlines_summary} and the critique of the podcast transcript: {podcast_transcript_critique} and the existing podcast transcript: {existing_podcast_transcript}"),
+        ("user", "Here is the summary of the top headlines found in the json file: {top_headlines_summary_json_file} and the critique of the podcast transcript (if any): {podcast_transcript_critique} and the existing podcast transcript (if any): {existing_podcast_transcript}"),
     ])
     
-    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary=top_headlines_summary, podcast_transcript_critique=podcast_transcript_critique, existing_podcast_transcript=existing_podcast_transcript)
+    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript_critique=podcast_transcript_critique, existing_podcast_transcript=existing_podcast_transcript)
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
         tools=transcript_generator_agent_tools, 
         prompt=formatted_prompt,
     )
-    invoke_message = {"input": "Generate the podcast script"}
+    invoke_message = {"input": "Generate the podcast transcript"}
     result = podcast_transcript_generator_agent.invoke(invoke_message)
     print("===RESULT OF PODCAST TRANSCRIPT GENERATOR NODE=====")
     print(result)

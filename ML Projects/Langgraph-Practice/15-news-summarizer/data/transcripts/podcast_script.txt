@@ -1,13 +1,15 @@
-<Person1> "Welcome to Newspresso – your personal generative AI podcast! I'm Alex, and joining me is Jamie. Today is Tuesday, June 25th, 2024. We’re bringing you the top business headlines, freshly crafted with the power of generative AI to give you insightful, neutral, and well-sourced summaries." 
+<Person1> "Welcome to Newspresso – your personal generative AI podcast! It's Saturday, May 17, 2025, and we've prepared an engaging episode for you, packed with the latest entertainment news from Cannes to courtroom drama. Let's jump right in with some thrilling box office updates."
 
-</Person1><Person2> "Hi everyone, I’m Jamie. It’s great to be here! These business updates don’t just inform but help you see the bigger economic picture and how these trends might impact markets around the world." 
+</Person1><Person2> "Absolutely! 'Final Destination Bloodlines,' the sixth installment of the horror franchise, made a splash with a franchise-best $21 million opening day across 3,523 locations. Its success is attributed to immersive premium formats and strong audience and critical reception. On the other hand, The Weeknd's psychological thriller 'Hurry Up Tomorrow' opened modestly at $2.33 million, facing mixed reviews and limited audience appeal. Other films like 'Sinners' and 'Thunderbolts' continue steady earnings, while titles like 'A Minecraft Movie' and 'The Accountant 2' remain in theaters."
 
-</Person2><Person1> "Absolutely. Behind the scenes, generative AI helps us analyze vast data and deliver summaries that are both clear and comprehensive. Plus, these summaries are saved in both text and JSON formats, preserving formatting and links for anyone who wants to explore further." 
+</Person2><Person1> "From the box office to the glamour of Cannes, Oscar winner Angelina Jolie delivered a heartfelt humanitarian message at Chopard's annual gala held at Carlton Beach. Honoring rising stars Marie Colomb and Finn Bennett, Jolie emphasized how international cinema fosters empathy and remembered artists lost in global conflicts. The event saw attendance by stars including Quentin Tarantino and Halle Berry, blending glamour with advocacy perfectly."
 
-</Person1><Person2> "And all this valuable content is currently available on the Firebase database under the ‘business’ category. Whether you’re an investor, entrepreneur, or simply business curious, you can access these summaries quickly with no errors — a real resource for staying informed." 
+</Person1><Person2> "Meanwhile, rising star Harris Dickinson made an impressive directorial debut with 'Urchin' at Cannes. His film, portraying homelessness and mental health challenges in London, received a standing ovation for five minutes straight. Harris, known for his acting in films like 'Triangle' and 'Babygirl,' is clearly off to a promising new chapter as a filmmaker."
 
-</Person2><Person1> "If listeners want, we can also provide file paths or guide you on accessing the Firebase content. Just reach out—keeping you connected to reliable business news is our priority." 
+</Person2><Person1> "Cannes is also undergoing stylistic changes with a new dress code enforcing modesty by banning nudity and excessive dress trains. This shift means some iconic daring gowns from past festivals, worn by celebrities like Bella Hadid and Kendall Jenner, wouldn't meet this year's standards. It's a notable move towards more practical and modest red carpet fashion."
 
-</Person1><Person2> "Thanks for tuning into Newspresso. We’ll be back soon with more updates that matter, all powered by AI and delivered with a human touch. Stay curious!" 
+</Person1><Person2> "On a more serious note, Dawn Richard of Danity Kane took the stand in the high-profile Sean Combs trial. She recounted witnessing a violent assault on Cassie Ventura in 2009, including attempts by Combs to strike Ventura with a skillet. Her testimony supports the prosecution's claims, while Combs continues to deny all allegations. This case has been a major focus in the music world for several days now."
 
-</Person2>
+</Person2><Person1> "That rounds out our top headlines for this Saturday on Newspresso. We hope you enjoyed this mix of uplifting cinematic achievements and sobering legal updates. Thanks for tuning in!"
+
+</Person1><Person2> "We'll catch you next time for another fresh shot of news, brewed just for you on Newspresso!"

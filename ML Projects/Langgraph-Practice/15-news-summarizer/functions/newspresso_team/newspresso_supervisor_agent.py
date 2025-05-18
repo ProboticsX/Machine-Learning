@@ -34,7 +34,7 @@ def make_newspresso_supervisor_node(llm, members, role_of_each_worker) -> str:
         llm_with_structured_output = llm.with_structured_output(Router)
         news_supervisor_chain = prompt | llm_with_structured_output
         response = news_supervisor_chain.invoke(invoke_message)
-        print("===RESPONSE OF NEWS SUPERVISOR NODE=====")
+        print("===RESPONSE OF NEWSPRESSO SUPERVISOR NODE=====")
         print(response)
         goto = response["next"]
         if goto == "FINISH":

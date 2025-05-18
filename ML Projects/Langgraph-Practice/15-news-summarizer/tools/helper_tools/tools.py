@@ -1,4 +1,5 @@
 from common_imports import *
+import re
 
 @tool
 def get_top_headlines(category: str) -> str:
@@ -90,6 +91,63 @@ def push_audio_to_firebase_storage(audio_file_path: str, category: str) -> str:
     except Exception as e:
         return f"Error pushing audio to Firebase Storage: {str(e)}"
 
+@tool
+def validate_json_file() -> str:
+    """Validates the summary JSON file for common issues and returns validation status.
+    
+    Checks for:
+    - File existence
+    - Valid JSON syntax
+    - Control characters
+    - Invalid characters
+    - Unclosed brackets/braces
+    - Proper UTF-8 encoding
+    
+    Returns:
+        str: Validation result with details if any issues are found
+    """
+    try:
+        # Check if file exists
+        if not os.path.exists(summary_json_file):
+            return "❌ Validation failed: File not found"
+        
+        # Read file content
+        with open(summary_json_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Check for control characters
+        control_chars = ''.join(map(chr, list(range(0, 32)) + list(range(127, 160))))
+        control_char_re = re.compile('[%s]' % re.escape(control_chars))
+        if control_char_re.search(content):
+            return "❌ Validation failed: File contains control characters"
+        
+        # Check for unclosed brackets/braces
+        if content.count('{') != content.count('}'):
+            return "❌ Validation failed: Unmatched curly braces"
+        if content.count('[') != content.count(']'):
+            return "❌ Validation failed: Unmatched square brackets"
+        
+        # Try to parse JSON
+        try:
+            json.loads(content)
+        except json.JSONDecodeError as e:
+            return f"❌ Validation failed: Invalid JSON syntax - {str(e)}"
+        
+        # Check for invalid characters
+        try:
+            content.encode('ascii')
+        except UnicodeEncodeError:
+            # If we can't encode as ASCII, check if it's valid UTF-8
+            try:
+                content.encode('utf-8')
+            except UnicodeEncodeError:
+                return "❌ Validation failed: File contains invalid characters"
+        
+        return "✅ Validation passed: File is a valid JSON"
+        
+    except Exception as e:
+        return f"❌ Validation failed: Unexpected error - {str(e)}"
+
 # Get the project root directory (15-news-summarizer)
 project_root = Path(__file__).parent.parent.parent
 transcript_dir = project_root / "data" / "transcripts"
@@ -103,8 +161,9 @@ summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 top_headlines_agent_tools = [get_top_headlines]
-top_headlines_summarizer_tools = [read_json_file, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db]
+top_headlines_summarizer_tools = [read_json_file, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db, validate_json_file]
+top_headlines_critic_tools = [read_json_file]
 
-transcript_generator_agent_tools = [write_to_file]
+transcript_generator_agent_tools = [write_to_file, read_json_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]
 podcast_transcript_critic_agent_tools = [get_todays_date_and_day]
