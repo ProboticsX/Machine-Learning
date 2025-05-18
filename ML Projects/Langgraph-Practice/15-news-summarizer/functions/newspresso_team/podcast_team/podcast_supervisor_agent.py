@@ -60,7 +60,7 @@ def make_podcast_supervisor_node(llm, members, role_of_each_worker) -> str:
 
 role_of_each_podcast_worker = {
     PODCAST_TRANSCRIPT_SUPERVISOR_AGENT: "Supervisor agent who is tasked with managing the conversation between the workers. The goal is to first generate a podcast script and then write it to a file.",
-    PODCAST_AUDIO_GENERATOR_AGENT: "Audio generator agent who is tasked with generating the audio file for the podcast and save it to a file.",
+    PODCAST_AUDIO_GENERATOR_AGENT: "Audio generator agent who is tasked with generating the audio file for the podcast and save it to a file. The audio file should be pushed to the firebase storage.",
 }
 
 # PODCAST SUPERVISOR

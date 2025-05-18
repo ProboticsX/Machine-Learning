@@ -1,19 +1,49 @@
-- Sean 'Diddy' Combs Trial Update: The high-profile trial of hip-hop mogul Sean "Diddy" Combs wrapped up its first week in Manhattan federal court amid charges including sex trafficking, racketeering conspiracy and transportation to engage in prostitution. Former girlfriend Cassie Ventura, the prosecution's star witness, testified for over 20 hours, describing a decade-long relationship marked by physical abuse and drug-fueled sexual encounters called "freak offs." The defense presented texts suggesting Ventura was a willing participant. Additional witnesses including a Homeland Security agent and singer Dawn Richard testified, the latter recounting witnessing Combs assault Ventura. If convicted, Combs faces life imprisonment and is currently held without bail. The trial is expected to last at least eight weeks. This case has also seen outreach by Combs's allies to Trump officials for a pardon, underscoring the ongoing political dynamics surrounding it.
+- Moody's Downgrades U.S. Credit Rating
 
-   - Relevant links: [https://www.yahoo.com/news/live/sean-diddy-combs-trial-live-updates-cassie-ventura-finishes-testifying-in-sex-trafficking-case-192231451.html, http://www.rollingstone.com/music/music-features/sean-diddy-combs-trump-pardon-trial-1235340256/]
+Moody's has downgraded the U.S. credit rating from Aaa to Aa1, citing a substantial rise in federal government debt and increased interest payments. This downgrade highlights investors' concerns about the sustainability of U.S. fiscal policy. Over the past decade, government debt and interest payments have escalated beyond levels seen in similarly rated sovereign nations. Moody's points out that successive U.S. administrations and Congress have failed to implement effective measures to reverse the trend of increasing deficits and rising interest costs. The downgrade follows prior similar actions by Standard and Poor's in 2011 and Fitch Ratings in 2023. Moody's forecasts federal deficits to grow significantly, driven by entitlement spending and interest payments, with debt projected to rise to 118% of GDP by 2035.
 
-- Movie Premiere: "Eddington" at Cannes – Ari Aster's latest film, "Eddington," a modern Western starring Joaquin Phoenix, Emma Stone, Austin Butler, and Pedro Pascal, premiered at Cannes with a standing ovation. The film, set during the 2020 pandemic, explores political and social tensions between a small-town sheriff and mayor. Despite some audience members leaving before the end, the film earned recognition for its provocative themes and strong performances. "Eddington" is set for theatrical release on July 18, 2025.
+Despite the downgrade, Moody's outlook on the U.S. remains stable, recognizing strengths such as the size and resilience of the U.S. economy, its global reserve currency status, and effective monetary policy led by an independent Federal Reserve. The downgrade has sparked political responses, with the White House attributing past fiscal issues to COVID stimulus spending and asserting plans for fiscal reform.
 
-   - Relevant links: [https://variety.com/2025/film/festivals/eddington-cannes-joaquin-phoenix-pedro-pascal-1236388256/]
+Key takeaways include the seriousness of rising government debt, ongoing fiscal challenges, political debate over causes and solutions, and the U.S.'s continued economic strength despite downgraded credit.
 
-- Chrissy Teigen's Sobriety Journey: Model and television personality Chrissy Teigen opened up about a recent relapse in her sobriety from alcohol. In an Instagram post, Teigen described the struggle with alcohol as a "f--king beast" and shared feelings of disappointment over her relapse. She highlighted the ongoing challenges of sobriety and expressed pride in her progress and sobriety community while committing to continued mindfulness in her journey. Teigen first announced her sobriety effort in 2020 and has been candid about ups and downs in the process.
+Relevant links: [https://www.cbsnews.com/news/us-credit-rating-downgraded-by-moodys-loses-aaa-status/]
 
-   - Relevant links: [https://pagesix.com/2025/05/16/celebrity-news/chrissy-teigen-admits-she-relapsed-on-alcohol/]
+- NJ Transit Rail Service Shuts Down Due to Historic Strike
 
-- Ralph Fiennes Cast as President Snow in "Hunger Games: Sunrise on the Reaping": Renowned actor Ralph Fiennes has been cast to portray the tyrannical President Snow in Lionsgate's upcoming film "Hunger Games: Sunrise on the Reaping," set 24 years before the events of the original series. The movie will be directed by Francis Lawrence and released on November 20, 2026. The casting honors Donald Sutherland's portrayal of Snow in the original films, with Fiennes bringing his acclaimed acting prowess to the prequel narrative.
+Approximately 450 locomotive engineers representing NJ Transit initiated a strike at midnight on Friday, leading to a complete shutdown of NJ Transit's rail service, which serves over 100,000 weekday commuters. This is the first major transit strike in New Jersey since 1983. The union, Brotherhood of Locomotive Engineers and Trainmen, rejected a tentative agreement due to insufficient pay raises, with members having gone without raises since 2019.
 
-   - Relevant links: [http://www.hollywoodreporter.com/movies/movie-news/hunger-games-sunrise-on-the-reaping-ralph-fiennes-snow-1236219336/]
+The strike has forced commuters to seek alternative transportation, including buses, PATH trains, and ferries, which are expected to be overcrowded. NJ Transit President emphasized fiscal constraints preventing unsustainable wage agreements, while Governor Phil Murphy highlighted the agency's challenging financial reality.
 
-- Sean Combs Allies Seek Trump Pardon: Reports detail how longtime allies of Sean Combs are actively engaging with Trump administration officials to lay groundwork for a presidential pardon or clemency. Despite Combs’ unfavorable legal standing amid serious federal charges, his associates have emphasized his longstanding personal relationship with former President Trump and framed the prosecution as politically motivated. However, senior officials express skepticism regarding the likelihood and optics of such a clemency given the grave nature of the allegations against Combs.
+The strike is ongoing, with union and transit officials preparing for further negotiations; the disruption represents a significant challenge for New Jersey's transportation system and its commuters.
 
-   - Relevant links: [http://www.rollingstone.com/music/music-features/sean-diddy-combs-trump-pardon-trial-1235340256/]
+Relevant links: [https://gothamist.com/news/nj-transit-rail-service-shuts-down-as-workers-go-on-historic-strike]
+
+- U.S. Tech Giants Support UAE Stargate AI Data Center Project
+
+Leading U.S. technology companies Nvidia, Cisco, Oracle, and OpenAI are backing the UAE Stargate project, an ambitious AI data center initiative in Abu Dhabi, UAE. The project will feature extensive computing capacity, including a 5-gigawatt campus and a 1-gigawatt compute cluster in the first phase. Nvidia's latest Blackwell GB300 AI chips will supply critical hardware.
+
+This project aligns with a similar U.S. Stargate AI infrastructure announced by President Donald Trump, who has recently made a state visit to the UAE and Saudi Arabia. Nvidia CEO Jensen Huang, OpenAI CEO Sam Altman, and other tech executives participated in the announcement. The initiative marks an important step in expanding AI infrastructure globally, leveraging U.S. technological expertise alongside Emirati investment and leadership.
+
+The collaboration emphasizes cross-border AI development and strategic partnerships in the Middle East, an area of growing importance for technological innovation and investment.
+
+Relevant links: [https://www.cnbc.com/2025/05/16/trump-middle-east-openai.html]
+
+- REI Anniversary Sale Offers Discounts on Outdoor Gear including Garmin Devices
+
+REI's annual anniversary sale is offering up to 30% off on a wide range of outdoor gear, including popular Garmin products such as smartwatches, GPS devices, and satellite communicators. Notable deals include the Garmin Forerunner series, Garmin Fenix 8, and Garmin inReach Mini 2, among others. These devices are favored for outdoor activities like running, hiking, and camping due to their advanced tracking, health monitoring features, and connectivity.
+
+In addition to wearables, the sale includes camping essentials like LifeStraw water filters, camp stoves, headlamps, and portable solar-powered lights. REI members can also take advantage of additional savings, making this sale a significant opportunity for outdoor enthusiasts to gear up for the season.
+
+These offers promote accessibility to quality outdoor technology and equipment at reduced prices, enhancing preparedness and enjoyment for outdoor activities.
+
+Relevant links: [https://www.theverge.com/tech/668088/rei-anniversary-sale-2025-garmin-watch-inreach-stoves-water-filters-deal-sale]
+
+- Tesla’s Robotaxi Fleet in Austin to Use Extensive Teleoperation for Safety
+
+Tesla is set to launch a limited robotaxi service in Austin, Texas, deploying 10-20 Model Y vehicles equipped with Supervised Full Self-Driving technology, supplemented by teleoperation—remote vehicle control by Tesla employees—to ensure safety. This approach acknowledges current technological limits, emphasizing safety through human oversight of autonomous operations.
+
+The service, slated for launch in June 2025, diverges from Tesla's earlier autonomous driving ambitions by including remote supervision instead of fully unsupervised self-driving. This teleoperation will help manage operational risks and improve reliability especially for initial deployment phases.
+
+Industry analysts note that while this move offers progress, it also underscores challenges Tesla faces in achieving fully autonomous vehicle deployment. Teleoperation could enhance safety but may delay widespread driverless adoption. The initiative represents a pragmatic step toward robotaxi commercialization while managing safety and operational concerns.
+
+Relevant links: [http://electrek.co/2025/05/16/tesla-robotaxi-fleet-powered-by-plenty-of-teleoperation/]  

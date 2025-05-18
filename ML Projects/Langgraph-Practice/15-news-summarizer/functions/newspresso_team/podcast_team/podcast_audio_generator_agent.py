@@ -8,7 +8,9 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
     print("====PODCAST AUDIO GENERATOR NODE=====")
     print("===STATE AT PODCAST AUDIO GENERATOR NODE=====")
     print(state)
-    system_prompt = f"{role_of_each_podcast_worker[PODCAST_AUDIO_GENERATOR_AGENT]}."
+    system_prompt = f"{role_of_each_podcast_worker[PODCAST_AUDIO_GENERATOR_AGENT]}."+"""
+        Use the audio file path from the podcastaudio just generated and push it to the firebase storage.
+    """
     podcast_audio_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
         ("user", "Here is the transcript file path: {transcript_file}"),
@@ -24,7 +26,7 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Podcast audio generated from the podcast transcript successfully.", name=PODCAST_AUDIO_GENERATOR_AGENT)
+                HumanMessage(content="Podcast audio generated from the podcast transcript successfully! The audio file has been pushed to the firebase storage.", name=PODCAST_AUDIO_GENERATOR_AGENT)
             ],
         },
         goto=PODCAST_SUPERVISOR_AGENT,

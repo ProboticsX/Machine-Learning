@@ -29,7 +29,7 @@ def top_headlines_summarizer_node(state: AgentState) -> Command[Literal[TOP_HEAD
            - Relevant links: [Link 1, Link 2, Link 3] \n
        - <Top Headline 3 Summary> \n
            - Relevant links: [Link 1, Link 2, Link 3] \n
-    Additionally, write the summary to a json file where each json object contains the following fields:\n
+    Additionally, write the summary to a json file where each json object contains the following fields, make sure there are no invalid control characters in the json file:\n
         - source: <Source of the top headline> \n
         - author: <Author of the top headline> \n
         - title: <Title of the top headline> \n
