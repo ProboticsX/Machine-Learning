@@ -1,175 +1,318 @@
 {
   "status": "ok",
-  "totalResults": 19,
+  "totalResults": 33,
   "articles": [
     {
       "source": {
         "id": null,
-        "name": "Variety"
+        "name": "Yahoo Entertainment"
       },
-      "author": "J. Kim Murphy",
-      "title": "Box Office: Final Destination at Franchise-Best, Hurry Up Tomorrow Slow - Variety",
-      "description": "'Final Destination Bloodlines' logged a series-high opening day, while the Weeknd's 'Hurry Up Tomorrow' is slowing down for a slim opening.",
-      "url": "https://variety.com/2025/film/news/box-office-final-destination-hurry-up-tomorrow-1236401306/",
-      "urlToImage": "https://variety.com/wp-content/uploads/2025/05/destination-tomorrow-split.jpg?w=1000&h=563&crop=1",
-      "publishedAt": "2025-05-17T15:25:00Z",
-      "content": "Death draws a crowd. Warner Bros. and New Line’s “Final Destination Bloodlines” is fated for a franchise-best opening after scoring $21 million across Friday and preview screenings from 3,523 locatio… [+5081 chars]"
+      "author": "Ryan Young",
+      "title": "PGA Championship Final Round leaderboard, live updates: Scottie Scheffler regains control - Yahoo Sports",
+      "description": "We're just 18 holes away from someone claiming the Wanamaker Trophy.",
+      "url": "https://sports.yahoo.com/golf/breaking-news/live/pga-championship-final-round-leaderboard-live-updates-scottie-scheffler-regains-control-120020463.html",
+      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/LZmqgE9Sn.t0V80ye96Qug--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA7Y2Y9d2VicA--/https://s.yimg.com/os/creatr-uploaded-images/2025-05/af405260-336f-11f0-9d86-4b5acac6f1bc",
+      "publishedAt": "2025-05-18T22:27:54Z",
+      "content": "Scottie Scheffler was in full control at Quail Hollow. But a mediocre start has allowed the field to stick with him, most notably Jon Rahm.\r\nScheffler, after his 6-under 65 on Saturday, held a three-… [+618 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Hollywood Reporter"
+        "name": "CNBC"
       },
-      "author": "Chris Gardner",
-      "title": "Angelina Jolie Delivers Humanitarian Message at Chopard Dinner in Cannes - The Hollywood Reporter",
-      "description": "The Oscar winner turned up at Carlton Beach to honor rising stars Marie Colomb and Finn Bennett at Chopard’s annual gala, attended by festival officials and high-profile talent.",
-      "url": "http://www.hollywoodreporter.com/lifestyle/lifestyle-news/angelina-jolie-cannes-humanitarian-chopard-jewelry-1236220105/",
-      "urlToImage": "https://www.hollywoodreporter.com/wp-content/uploads/2025/05/GettyImages-2215464612.jpg?crop=0px%2C484px%2C5330px%2C2983px&resize=1440%2C810",
-      "publishedAt": "2025-05-17T14:01:06Z",
-      "content": "Angelina Jolie is at the Cannes Film Festival, not with a film in the lineup but with official duties thanks to the festival’s longtime (and glamorous) sponsor, Chopard.\r\nThe Oscar winner agreed to s… [+4552 chars]"
+      "author": "Alex Harring",
+      "title": "Stock futures slide after U.S. debt downgrade highlights deficit risk: Live updates - CNBC",
+      "description": "The major indexes are coming off a winning week.",
+      "url": "https://www.cnbc.com/2025/05/18/stock-futures-slide-after-us-debt-downgrade-highlights-deficit-risk-live-updates.html",
+      "urlToImage": "https://image.cnbcfm.com/api/v1/image/108145461-17472353652025-05-14t150459z_1033381729_rc2qheajs8p8_rtrmadp_0_usa-stocks.jpeg?v=1747235400&w=1920&h=1080",
+      "publishedAt": "2025-05-18T22:19:00Z",
+      "content": "Stock futures fell Sunday evening as investors responded to Moody's downgrade of the U.S.' credit rating.\r\nFutures tied to the Dow Jones Industrial Average dropped 292 points points, or 0.7%. S&amp;P… [+1827 chars]"
+    },
+    {
+      "source": {
+        "id": "cnn",
+        "name": "CNN"
+      },
+      "author": "Mostafa Salem, Ibrahim Dahman, Kara Fox, Dana Karni",
+      "title": "Israel begins extensive Gaza ground operation after intense airstrikes kill more than 100 overnight - CNN",
+      "description": "Israel launched an extensive ground operation in Gaza Sunday in addition to an intense air campaign that health officials in the territory say killed over 100 people overnight and shuttered the last functioning hospital in the enclave’s north.",
+      "url": "https://www.cnn.com/2025/05/18/middleeast/israel-gaza-peace-talks-millitary-operation-intl",
+      "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/2025-05-18t104421z-1077947244-rc24keadf4o1-rtrmadp-3-israel-palestinians-gaza.JPG?c=16x9&q=w_800,c_fill",
+      "publishedAt": "2025-05-18T21:07:00Z",
+      "content": "Israel launched an extensive ground operation in Gaza Sunday in addition toan intense air campaign that health officials in the territory say killed over 100 people overnight and shuttered the last f… [+9531 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Mark Gurman, Drake Bennett",
+      "title": "Why Apple Still Hasn’t Cracked AI - Bloomberg.com",
+      "description": "Insiders say continued failure to get artificial intelligence right threatens everything from the iPhone’s dominance to plans for robots and other futuristic products.",
+      "url": "https://www.bloomberg.com/news/features/2025-05-18/how-apple-intelligence-and-siri-ai-went-so-wrong",
+      "urlToImage": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iLtk10_jAnA4/v0/1200x630.jpg",
+      "publishedAt": "2025-05-18T21:00:28Z",
+      "content": "Back in 2018 it looked like Apple Inc.s artificial intelligence efforts were finally getting on track. Early that year, Craig Federighi, Apples software chief, gathered his senior staff and announced… [+1060 chars]"
+    },
+    {
+      "source": {
+        "id": "espn",
+        "name": "ESPN"
+      },
+      "author": "Katie Barnes",
+      "title": "WNBA probes 'hateful' comments toward Reese - ESPN",
+      "description": "The WNBA is looking into allegations of \"hateful fan comments\" directed at Angel Reese after an incident involving Caitlin Clark and Reese in Saturday's Sky-Fever game.",
+      "url": "https://www.espn.com/wnba/story/_/id/45211935/wnba-investigating-hateful-fan-comments-clark-reese-incident",
+      "urlToImage": "https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2025%2F0517%2Fr1494521_1296x729_16%2D9.jpg",
+      "publishedAt": "2025-05-18T20:45:00Z",
+      "content": "The WNBA said Sunday that it is looking into allegations of \"hateful fan comments\" directed at Angel Reese during Saturday's game between the Chicago Sky and Indiana Fever in Indianapolis after an in… [+2824 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Rolling Stone"
+        "name": "Parade"
       },
-      "author": "Nancy Dillon, Cheyenne Roundtree",
-      "title": "Sean Combs Trial: Dawn Richard Tells Jury She Witnessed Violent Assault on Cassie - Rolling Stone",
-      "description": "Dawn Richard testified at Sean Combs' criminal trial Friday after Cassie Ventura finished four days on the witness stand.",
-      "url": "http://www.rollingstone.com/music/music-news/sean-combs-trial-danity-kane-dawn-richard-testifies-1235340096/",
-      "urlToImage": "https://www.rollingstone.com/wp-content/uploads/2025/05/Dawn-Richard-sean-combs-trial.jpg?crop=0px%2C42px%2C1800px%2C1014px&resize=1600%2C900",
-      "publishedAt": "2025-05-17T13:15:02Z",
-      "content": "Follow all our Sean Combs trial coverage\r\nBad Boy Records artist Dawn Richard was called as the fifth witness at Sean Combs’ sex-trafficking and racketeering trial on Friday, as prosecutors sought to… [+7629 chars]"
+      "author": "Effie Orfanides",
+      "title": "Shia LaBeouf, 38, Is Nearly Unrecognizable at Cannes - Yahoo",
+      "description": "The actor was seen with salt-and-pepper hair and a mustache.",
+      "url": "https://parade.com/celebrities/shia-labeouf-38-is-nearly-unrecognizable-at-cannes",
+      "urlToImage": "https://media.zenfs.com/en/parade_250/79eadf25da3e3d7841ceb6a8c618dfd4",
+      "publishedAt": "2025-05-18T20:15:50Z",
+      "content": "Shia LaBeouf attended the photocall for Slauson Rec at the 78th annual Cannes Film Festival at Palais des Festivals on May 18.\r\nThe actor sported a white t-shirt with a black jacket and a pair of sla… [+1826 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Variety"
+        "name": "BBC News"
       },
-      "author": "Alex Ritman",
-      "title": "Harris Dickinson's 'Urchin' Gets 5-Minute Cannes Standing Ovation - Variety",
-      "description": "\"Triangle and Sadness\" and \"Babygirl\" star Harris Dickinson has delighted the Cannes crowd with his feature directorial debut 'Urchin'",
-      "url": "https://variety.com/2025/film/global/harris-dickinson-urchin-cannes-standing-ovation-1236390909/",
-      "urlToImage": "https://variety.com/wp-content/uploads/2025/05/GettyImages-2215526709.jpg?w=1000&h=563&crop=1",
-      "publishedAt": "2025-05-17T11:15:00Z",
-      "content": "“Triangle and Sadness” and “Babygirl” star Harris Dickinson has delighted the Cannes crowd with his feature directorial debut “Urchin.”\r\nThe film, led by “Fear the Walking Dead” star Frank Dillane an… [+2168 chars]"
-    },
-    {
-      "source": {
-        "id": "business-insider",
-        "name": "Business Insider"
-      },
-      "author": "Amanda Krause",
-      "title": "11 daring dresses that might be banned at the Cannes Film Festival if worn today - Business Insider",
-      "description": "The Cannes Film Festival has always featured red carpets with daring fashion. Thanks to a new dress code, that's changing this year.",
-      "url": "https://www.businessinsider.com/cannes-film-festival-dresses-that-would-be-banned-dress-code-2025-5",
-      "urlToImage": "https://i.insider.com/682612863fe8d3928365f3f0?width=1200&format=jpeg",
-      "publishedAt": "2025-05-17T11:12:00Z",
-      "content": "I never thought I'd say this, but we need more \"naked\" dresses on the Cannes Film Festival red carpet.\r\nYou know the style I'm talking about. They're form-fitted, made with mesh, and heavily beaded i… [+4889 chars]"
+      "author": null,
+      "title": "Joe Biden diagnosed with prostate cancer, his office says - BBC",
+      "description": "Biden, 82, was diagnosed on Friday after seeing a doctor for urinary symptoms, his office said.",
+      "url": "https://www.bbc.com/news/articles/cwywqg7lq1zo",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/f882/live/d15ad5e0-3429-11f0-af1b-15f9249b1b04.jpg",
+      "publishedAt": "2025-05-18T20:12:21Z",
+      "content": "Former US President Joe Biden has been diagnosed with prostate cancer that has spread to his bones, a statement from his office said on Sunday. \r\nBiden, 82, was diagnosed on Friday after he saw a doc… [+3821 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Hollywood Reporter"
+        "name": "Motorsport.com"
       },
-      "author": "Lily Ford",
-      "title": "Pedro Pascal, Emma Stone on Ari Aster Film 'Eddington' and America - The Hollywood Reporter",
-      "description": "The movie, set in a small New Mexico town where the local sheriff (Phoenix) decides to run against the COVID-conscious mayor (Pascal), received a muted response at its Friday night premiere.",
-      "url": "http://www.hollywoodreporter.com/movies/movie-news/pedro-pascal-joaquin-phoenix-emma-stone-ari-aster-eddington-1236219942/",
-      "urlToImage": "https://www.hollywoodreporter.com/wp-content/uploads/2025/05/FotoJet-2025-05-17T121031.520.jpg?w=1440&h=810&crop=1",
-      "publishedAt": "2025-05-17T11:03:45Z",
-      "content": "Ari Aster and his Eddingtoncast are unpacking what the film is saying about America.\r\nThe filmmaker was joined by Joaquin Phoenix, Pedro Pascal, Emma Stone, Austin Butler, Micheal Ward and Luke Grime… [+4850 chars]"
+      "author": "Filip Cleeren",
+      "title": "The winners and losers from F1's 2025 Imola GP - Motorsport.com",
+      "description": "Imola went out with a bang in Formula 1 after a most entertaining GP at the charming but narrow Italian venue. Here's who impressed and who heads to Monaco with a hangover",
+      "url": "https://www.motorsport.com/f1/news/the-winners-and-losers-from-f1s-2025-imola-gp/10724245/",
+      "urlToImage": "https://cdn-9.motorsport.com/images/amp/0mbBdqA2/s6/max-verstappen-red-bull-racing-3.jpg",
+      "publishedAt": "2025-05-18T19:42:12Z",
+      "content": "While fans of old school venues may have wanted to see Imola stay on the calendar, the Emilia Romagna Grand Prix hasn't always delivered since its modern F1 return. But Pirelli's move towards softer … [+7813 chars]"
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "ABC News",
+      "title": "Johnson says House GOP ‘on track’ to pass Trump agenda bill after Friday failure - ABC News",
+      "description": null,
+      "url": "https://abcnews.go.com/Politics/johnson-house-gop-track-pass-trump-agenda-bill/story?id\\\\u003d121929563",
+      "urlToImage": null,
+      "publishedAt": "2025-05-18T19:09:48Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "politico",
+        "name": "Politico"
+      },
+      "author": "Associated Press",
+      "title": "Why did a a Mexican tall ship smack into the Brooklyn Bridge? - Politico",
+      "description": "Federal officials have launched an investigation.",
+      "url": "https://www.politico.com/news/2025/05/18/why-did-a-a-mexican-tall-ship-smack-into-the-brooklyn-bridge-00356342",
+      "urlToImage": "https://static.politico.com/ce/25/5b03ba7644789211372b59e33d7e/brooklyn-bridge-collision-02094.jpg",
+      "publishedAt": "2025-05-18T18:57:58Z",
+      "content": "While docked at Pier 35, Sunday, May 18, 2025 in New York, a sailor climbs the mast rigging on the Cuauhtémoc, a masted Mexican Navy training ship that collided with the Brooklyn Bridge the night bef… [+3712 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "PennLive"
+        "name": "Pitchfork"
       },
-      "author": "Brian Linder | blinder@pennlive.com",
-      "title": "Trump ripped by singer after Taylor Swift diss: ‘Wipe the makeup off his face’ - PennLive.com",
-      "description": "More than a few people found the president's post to be a bit odd.",
-      "url": "https://www.pennlive.com/news/2025/05/trump-ripped-by-singer-after-taylor-swift-diss-wipe-the-makeup-off-his-face.html",
-      "urlToImage": "https://www.pennlive.com/resizer/v2/4P4B3KU6KJBZRMIDZRHCVWSM2A.JPG?auth=fc99ff671e3550651003b5ffc68e64860a7c3880849182a0fb224a531a2b6f98&width=1280&quality=90",
-      "publishedAt": "2025-05-17T10:05:00Z",
-      "content": "President Donald Trump making the rounds in the Middle East and out of nowhere he threw out a social media post about Taylor Swift on Friday for some reason.\r\nHas anyone noticed that, since I said I … [+1092 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "TMZ"
-      },
-      "author": "TMZ Staff",
-      "title": "Diddy Party Pics From Night He Allegedly Overdosed at Playboy Mansion - TMZ",
-      "description": "In Diddy's federal sex trafficking trial in NYC this week, star witness Cassie testified about a drug overdose the rap mogul suffered back in 2012 at a party at the famed Playboy Mansion ... and TMZ has some scenes from that night's party, and some of the cel…",
-      "url": "https://www.tmz.com/2025/05/17/diddy-playboy-mansion-party-alleged-drug-overdose-opiate-cassie-testimony/",
-      "urlToImage": "https://imagez.tmz.com/image/62/16by9/2025/05/16/6257ff3db67f45a4adfb4118145f7abc_xl.jpg",
-      "publishedAt": "2025-05-17T10:00:47Z",
-      "content": "One of Cassie's bombshells in Diddy's federal trial is her claim he suffered a 2012 drug overdose following a Playboy Mansion bash, and we've got hot shots from the fateful, celeb-packed event.\r\nCass… [+747 chars]"
+      "author": "Jazz Monroe, Walden Green",
+      "title": "Dawn Richard Testifies in Diddy Trial - Pitchfork",
+      "description": "After the conclusion of Cassie’s four-day testimony on Friday, May 16, Diddy’s former Diddy - Dirty Money bandmate took the stand",
+      "url": "https://pitchfork.com/news/dawn-richard-testifies-in-diddy-trial/",
+      "urlToImage": "https://media.pitchfork.com/photos/682a1e0a00483da9e5cc71fb/16:9/w_1280,c_limit/Dawn-Richard-Diddy.jpeg",
+      "publishedAt": "2025-05-18T17:54:02Z",
+      "content": "On Friday, May 16, Dawn Richard took the stand in the federal sex trafficking trial against her former collaborator Sean Diddy Combs. Richards testimony followed four days of questioning of Casandra … [+2271 chars]"
     },
     {
       "source": {
         "id": "associated-press",
         "name": "Associated Press"
       },
-      "author": "Jill Lawless",
-      "title": "Lights, camera, glitter ball: The Eurovision Song Contest reaches its grand final - AP News",
-      "description": "The world’s largest live music event has reached its glitter-drenched conclusion with the grand final of the Eurovision Song Contest. Acts from 26 countries will perform on Saturday to some 160 million viewers for the continent’s pop crown. Bookmakers say the…",
-      "url": "https://apnews.com/article/eurovision-song-contest-grand-final-38de9d9fc86f75180036a6834edae2c2",
-      "urlToImage": "https://dims.apnews.com/dims4/default/f3a42cf/2147483647/strip/true/crop/6900x3881+0+359/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F62%2F87%2Fd1cd552df3ee7f94b8f76124de7b%2F6e1f74ac070747f1b270076e451d60d5",
-      "publishedAt": "2025-05-17T08:36:00Z",
-      "content": "BASEL, Switzerland (AP) The worlds largest live music event has reached its glitter-drenched conclusion with the grand final on Saturday of the Eurovision Song Contest, a celebration of music and uni… [+5252 chars]"
+      "author": "Josh Boak",
+      "title": "Trump’s tariffs may mean Walmart shoppers pay more, his treasury chief acknowledges - AP News",
+      "description": "Treasury Secretary Scott Bessent has acknowledged that Walmart, the largest U.S. retailer, may pass along some of the costs from President Donald Trump’s tariffs to its shoppers through higher prices. Bessent on Sunday described his call with the company’s CE…",
+      "url": "https://apnews.com/article/trump-tariffs-walmart-price-increases-bessent-855f1aeb6baba764e35fa1316d0e3c53",
+      "urlToImage": "https://dims.apnews.com/dims4/default/ec67726/2147483647/strip/true/crop/6000x3375+0+312/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2Fda%2F24%2Fc4744a419cf4b4faa8faff571bcc%2Fb7d4f728bc3d492c8a2099177df16251",
+      "publishedAt": "2025-05-18T17:22:00Z",
+      "content": "WASHINGTON (AP) Treasury Secretary Scott Bessent acknowledged Sunday that Walmart, the largest U.S. retailer, may pass along some of the costs from President Donald Trumps tariffs to its shoppers thr… [+4116 chars]"
+    },
+    {
+      "source": {
+        "id": "axios",
+        "name": "Axios"
+      },
+      "author": "Avery Lotz",
+      "title": "Democrats reflect on 2024 loss amid reports highlighting Biden's decline - Axios",
+      "description": "\"In light of what has come out, it is painfully obvious President Biden should not have run,\" Rep. Ro Khanna said.",
+      "url": "https://www.axios.com/2025/05/18/biden-hur-audio-democrats-react",
+      "urlToImage": "https://images.axios.com/wxZLn2F3rP5CbIfZm4dIGKbruMM=/0x328:6727x4112/1366x768/2025/05/18/1747583194216.jpg",
+      "publishedAt": "2025-05-18T16:43:35Z",
+      "content": "Some Democrats on Sunday expressed a collective responsibility for the party's 2024 election loss amid concerns about former President Biden's mental fitness.\r\nThe big picture: Audio obtained by Axio… [+3337 chars]"
+    },
+    {
+      "source": {
+        "id": "bloomberg",
+        "name": "Bloomberg"
+      },
+      "author": "Katia Dmitrieva",
+      "title": "China-US Trade Truce Prompts Nations to Consider Tougher Tactics - Bloomberg",
+      "description": "China’s defiant stance in negotiating a tariff truce with the US has convinced some countries they need to take a tougher position in their own trade talks with the Trump administration.",
+      "url": "https://www.bloomberg.com/news/articles/2025-05-18/china-us-trade-truce-prompts-nations-to-consider-tougher-tactics",
+      "urlToImage": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iJjIRFQEnTaI/v0/1200x800.jpg",
+      "publishedAt": "2025-05-18T16:01:00Z",
+      "content": "Supply Lines is a daily newsletter that tracks global trade. Sign up here.\r\nChinas defiant stance in negotiating a tariff truce with the US has convinced some countries they need to take a tougher po… [+61 chars]"
+    },
+    {
+      "source": {
+        "id": "cnn",
+        "name": "CNN"
+      },
+      "author": "TuAnh Dam, Rafael Romo",
+      "title": "Here’s how the nighttime escape of 10 inmates from a New Orleans jail unfolded - CNN",
+      "description": "Ten inmates who broke out of a New Orleans jail Friday had prepared for their escape, and possibly had help, officials said.",
+      "url": "https://www.cnn.com/2025/05/18/us/new-orleans-louisiana-inmates-escape",
+      "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/still-21630896-101528-still.jpg?c=16x9&q=w_800,c_fill",
+      "publishedAt": "2025-05-18T16:00:00Z",
+      "content": "Just after midnight Friday, a corrections monitoring technician in New Orleans stepped away for food. When he left, the Orleans Justice Center had been in lockdown since 10:30 p.m., as it usually was… [+7503 chars]"
+    },
+    {
+      "source": {
+        "id": "politico",
+        "name": "Politico"
+      },
+      "author": "Associated Press",
+      "title": "Residents dig out after severe storms kill 27 in Kentucky, Missouri and Virginia - Politico",
+      "description": "“We are hard at work this morning addressing the tragic damage and deaths caused by severe weather,” Kentucky Gov. Andy Beshear said.",
+      "url": "https://www.politico.com/news/2025/05/18/tornadoes-kentucky-missouri-virginia-00355945",
+      "urlToImage": "https://static.politico.com/12/50/21eb2f114f26ad10166d2a844375/severe-weather-kentucky-24987.jpg",
+      "publishedAt": "2025-05-18T15:59:22Z",
+      "content": "The latest Kentucky storms were part of a weather system Friday that killed seven in Missouri and two in northern Virginia, authorities said. The system also spawned tornadoes in Wisconsin, brought p… [+2678 chars]"
+    },
+    {
+      "source": {
+        "id": "the-hill",
+        "name": "The Hill"
+      },
+      "author": "Elizabeth Crisp",
+      "title": "Bessent defends Trump’s Qatari luxury jet gift: ‘French gave us the Statue of Liberty’ - The Hill",
+      "description": "Treasury Secretary Scott Bessent defended the Trump administration’s decision to accept a $400 million luxury jet from Qatar, comparing it to the French gift of the Statue of Liberty, while also highlighting the importance of the Qatar Airways deal to purchas…",
+      "url": "https://thehill.com/homenews/5306272-bessent-defends-trump-jet-gift/",
+      "urlToImage": "https://thehill.com/wp-content/uploads/sites/2/2025/05/AP25126563288039.jpg?w=1280",
+      "publishedAt": "2025-05-18T15:41:00Z",
+      "content": "Skip to content\r\nTreasury Department Secretary Scott Bessent defended the Trump administration’s decision to accept a $400 million luxury jet from the Qatari government, comparing it to the French gi… [+2417 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Wrestling Inc."
+        "name": "Heat.com"
       },
-      "author": "Wrestling Inc. Staff",
-      "title": "WWE SmackDown 5/16/2025: 3 Things We Hated And 3 Things We Loved - Wrestling Inc.",
-      "description": "On a night that saw a couple major SNME announcements, here are three things we hated and three things we loved about the 5/16/25 episode of \"WWE SmackDown.\"",
-      "url": "https://www.wrestlinginc.com/1862051/wwe-smackdown-may-16-2025-3-things-we-hated-3-things-we-loved/",
-      "urlToImage": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-5162025-3-things-we-hated-and-3-things-we-loved/l-intro-1747455393.jpg",
-      "publishedAt": "2025-05-17T04:32:06Z",
-      "content": "R-Truth is forever on his own planet and is quite delulu, as the kids say, but this time, I think he might be on to something now that he's challenged and officially has a match with his \"childhood h… [+2308 chars]"
-    },
-    {
-      "source": {
-        "id": "associated-press",
-        "name": "Associated Press"
-      },
-      "author": "David Bauder",
-      "title": "Photo group says it has ‘suspended attribution’ of historic Vietnam picture because of doubts - AP News",
-      "description": "There's more muddle now to an issue that has split the photographic community. An organization that honored The Associated Press' Nick Ut with its “photo of the year” in 1973 for an iconic image of a naked girl running from a napalm attack during the Vietnam …",
-      "url": "https://apnews.com/article/napalm-girl-vietnam-photo-ap-documentary-4248c1d896a2178705879303a9846c92",
-      "urlToImage": "https://dims.apnews.com/dims4/default/b451685/2147483647/strip/true/crop/3679x2069+0+191/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F5a%2Fd1%2F4b67f05c53aac76cd0a8c2c76f85%2F3a9e3c77a3c84524891af9f7d7272885",
-      "publishedAt": "2025-05-17T00:47:00Z",
-      "content": "An organization that honored The Associated Press Nick Ut with its photo of the year in 1973 for a picture of a girl running from a napalm attack in the Vietnam War says it has suspended its attribut… [+2562 chars]"
+      "author": "NBA.com Staff",
+      "title": "Starting 5, May 18: Thunder, Nuggets clash in Game 7 showdown - NBA",
+      "description": "Kia MVP finalists Nikola Jokić and Shai Gilgeous-Alexander face off in a win-or-go-home Game 7, with a trip to the West Finals against Minnesota on the line.",
+      "url": "https://www.nba.com/news/starting-5-may-18-thunder-nuggets-clash-in-game-7-showdown",
+      "urlToImage": "https://cdn.nba.com/manage/2025/05/murray-sga-720-2214380687.jpg",
+      "publishedAt": "2025-05-18T14:12:50Z",
+      "content": "Thunder. Nuggets. Game 7. 3:30 ET, ABCWhich team will meet the Wolves in the Western Conference Finals?\r\n5 STORIES IN TODAY’S EDITION \r\nGame 7 In 1 Minute: Everything you need to know entering todays… [+12899 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Rolling Stone"
+        "name": "The Daily Galaxy --Great Discoveries Channel"
       },
-      "author": "Tomás Mier",
-      "title": "Musicians Union Slams Trump’s Taylor Swift, Bruce Springsteen Tantrum - Rolling Stone",
-      "description": "American Federation Musicians defends Taylor Swift and Bruce Springsteen after Donald Trump’s attacks, backing their right to free expression.",
-      "url": "http://www.rollingstone.com/music/music-news/trump-taylor-swift-bruce-springsteen-musicians-union-1235341840/",
-      "urlToImage": "https://www.rollingstone.com/wp-content/uploads/2025/05/trump-musicians-union.jpg?w=1600&h=900&crop=1",
-      "publishedAt": "2025-05-16T23:37:30Z",
-      "content": "The American Federation of Musicians (AFM) is standing by its artists. On Friday, the union issued a statement defending Taylor Swift and Bruce Springsteen after Donald Trumpattacked the two stars on… [+1568 chars]"
+      "author": null,
+      "title": "Scientists Find Mysterious New Microbe on Tiangong Space Station With Surprising Abilities - The Daily Galaxy",
+      "description": "Chinese scientists have discovered a new bacteria strain on the Tiangong Space Station.",
+      "url": "https://dailygalaxy.com/2025/05/new-microbe-on-tiangong-space-station/",
+      "urlToImage": "https://dailygalaxy.com/wp-content/uploads/2025/05/Scientists-Find-Mysterious-New-Microbe-on-Tiangong-Space-Station-With-Surprising-Abilities.jpg",
+      "publishedAt": "2025-05-18T14:00:00Z",
+      "content": "Chinese scientists have identified a new bacterial strain aboard the Tiangong Space Station, marking a significant milestone in space microbiology. According to a report by theSouth China Morning Pos… [+2733 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Deadline"
+        "name": "Business Wire"
       },
-      "author": "Zac Ntim, Nancy Tartaglione",
-      "title": "Kristen Stewart’s ‘The Chronology Of Water’ Flows To 6½-Minute Ovation After Cannes Premiere - Deadline",
-      "description": "Kristen Stewart’s feature directorial debut The Chronology Of Water was greeted by a 6 1/2-minute ovation by an enthusiastic audience in Cannes.",
-      "url": "http://deadline.com/2025/05/kristen-stewart-chronology-of-water-ovation-cannes-1236400801/",
-      "urlToImage": "https://deadline.com/wp-content/uploads/2025/05/P101IMMQ.jpg?w=1024",
-      "publishedAt": "2025-05-16T23:09:00Z",
-      "content": "Kristen Stewart’s feature directorial debut The Chronology of Water unspooled at the Cannes Film Festival on Friday night and was greeted by a 6½-minute ovation by an enthusiastic audience.\r\nStewart’… [+2013 chars]"
+      "author": "Business Wire",
+      "title": "Capital One Completes Acquisition of Discover - Business Wire",
+      "description": null,
+      "url": "https://www.businesswire.com/news/home/20250517147002/en/Capital-One-Completes-Acquisition-of-Discover",
+      "urlToImage": null,
+      "publishedAt": "2025-05-18T12:30:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "abc-news",
+        "name": "ABC News"
+      },
+      "author": "ABC News",
+      "title": "Pope Leo XIV calls for unity and 'missionary spirit' during inaugural mass at Vatican - ABC News",
+      "description": null,
+      "url": "https://abcnews.go.com/International/pope-leo-xiv-tours-st-peters-square-popemobile/story?id\\\\u003d121919621",
+      "urlToImage": null,
+      "publishedAt": "2025-05-18T12:22:30Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "the-washington-post",
+        "name": "The Washington Post"
+      },
+      "author": "Geoffrey A. Fowler",
+      "title": "Column | Gen Z users tested Instagram Teen Accounts; they got sex posts, body shaming - The Washington Post",
+      "description": "Meta promised parents it would shield teens from harmful content. Tests by young users and our tech columnist dad find it fails spectacularly in important ways.",
+      "url": "https://www.washingtonpost.com/technology/2025/05/18/instagram-teen-accounts-test/",
+      "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/NMKHRSC2ATQDEH6NPD5BV3AGAU.jpg&w=1440",
+      "publishedAt": "2025-05-18T12:13:48Z",
+      "content": "Instagram promises parents that its Teen Accounts shield kids from harm by default. Tests by a Gen Z nonprofit and me a dad found it fails spectacularly on some key dimensions.\r\nThis spring, Sacramen… [+10048 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "SciTechDaily"
+      },
+      "author": null,
+      "title": "Earth’s Secret Hydrogen Jackpot: Enough Clean Power for 170,000 Years - SciTechDaily",
+      "description": "Scientists may have found a clean hydrogen jackpot underground, with a new recipe to find and tap it.",
+      "url": "https://scitechdaily.com/earths-secret-hydrogen-jackpot-enough-clean-power-for-170000-years/",
+      "urlToImage": "https://scitechdaily.com/images/Hydrogen-Energy-Clean-Energy.jpg",
+      "publishedAt": "2025-05-18T10:49:58Z",
+      "content": "Scientists may have found a clean hydrogen jackpot underground, with a new recipe to find and tap it.\r\nNatural hydrogen trapped in the Earth’s crust could power humanity for millennia, and without em… [+5872 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "BBC News"
+      },
+      "author": null,
+      "title": "Minister 'pushing' for deal over UK use of EU passport e-gates - BBC",
+      "description": "The deal could form part of negotiations taking place between the UK and EU on Monday.",
+      "url": "https://www.bbc.com/news/articles/cgeg1302d19o",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/ea53/live/31c5e9b0-33d5-11f0-b4ff-e315209d55c1.png",
+      "publishedAt": "2025-05-18T10:15:22Z",
+      "content": "A deal that would allow UK passport holders to use EU e-gates at airports is being \"pushed for\", a government minister has confirmed.\r\nEuropean relations minister Nick Thomas-Symonds, who is leading … [+5194 chars]"
     },
     {
       "source": {
@@ -177,77 +320,77 @@
         "name": "Variety"
       },
       "author": "Ellise Shafer",
-      "title": "Bono Rocks Cannes With 7-Minute Standing Ovation for ‘Stories of Surrender’ - Variety",
-      "description": "Bono was on hand at Cannes Film Festival on Friday night for the world premiere of his new documentary, \"Bono: Stories of Surrender.\"",
-      "url": "https://variety.com/2025/film/festivals/bono-cannes-stories-of-surrender-premiere-1236398893/",
-      "urlToImage": "https://variety.com/wp-content/uploads/2025/05/EG80863-1.jpg?w=1000&h=563&crop=1",
-      "publishedAt": "2025-05-16T22:13:00Z",
-      "content": "Bono was on hand at the Cannes Film Festival on Friday night for the world premiere of his new Apple documentary, “Bono: Stories of Surrender,” where the U2 frontman received a 7-minute standing ovat… [+2650 chars]"
+      "title": "Jennifer Lawrence Gets Honest About Motherhood and Postpartum at Cannes - Variety",
+      "description": "Jennifer Lawrence was bracingly honest about her experience with motherhood and postpartum at the Cannes press conference for \"Die My Love.\"",
+      "url": "https://variety.com/2025/film/news/jennifer-lawrence-motherhood-postpartum-cannes-1236402315/",
+      "urlToImage": "https://variety.com/wp-content/uploads/2025/05/jen.jpg?w=1000&h=563&crop=1",
+      "publishedAt": "2025-05-18T09:13:00Z",
+      "content": "Jennifer Lawrence was bracingly honest about her own experience with motherhood and postpartum at the Cannes press conference for her upcoming film “Die My Love,” a thriller following a new mother de… [+3521 chars]"
+    },
+    {
+      "source": {
+        "id": "techcrunch",
+        "name": "TechCrunch"
+      },
+      "author": "Anthony Ha",
+      "title": "Epic Games asks judge to force Apple to approve Fortnite - TechCrunch",
+      "description": "Epic Games is escalating its efforts to pressure Apple to allow its game Fortnite into its App Store, with a new court filing asking Judge Yvonne Gonzalez",
+      "url": "https://techcrunch.com/2025/05/17/epic-games-asks-judge-to-force-apple-to-approve-fortnite/",
+      "urlToImage": "https://techcrunch.com/wp-content/uploads/2020/08/fortnite-epic-GettyImages-957063528.jpg?resize=1200,800",
+      "publishedAt": "2025-05-17T16:20:43Z",
+      "content": "Epic Games is escalating its efforts to pressure Apple to allow its game Fortnite into its App Store, with a new court filing asking Judge Yvonne Gonzalez Rogers to require that Apple accept any comp… [+1780 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "New York Post"
+        "name": "9to5Mac"
       },
-      "author": "Alexandra Bellusci",
-      "title": "Chrissy Teigen reveals alcohol relapse and sobriety struggles: It’s a ‘beast’ - New York Post",
-      "description": "The model is getting candid on where she stands with alcohol.",
-      "url": "https://nypost.com/2025/05/16/entertainment/chrissy-teigen-reveals-she-relapsed-calls-alcohol-a-beast/",
-      "urlToImage": "https://nypost.com/wp-content/uploads/sites/2/2025/05/104640027.jpg?quality=75&strip=all&w=1024",
-      "publishedAt": "2025-05-16T18:28:00Z",
-      "content": "Chrissy Teigen is getting candid on her relationship with alcohol.\r\nThe 39-year-old opened up about her sobriety journey on social media on Thursday.\r\n“Oh man. Ive been dreading todays podcast releas… [+4079 chars]"
+      "author": "Michael Burkhardt",
+      "title": "Leaker shares new iPhone 17 Air details: Impressive weight, lackluster battery - 9to5Mac",
+      "description": "In a new post on Naver, smartphone supply chain leaker yeux1122 has shared two new details regarding Apple’s upcoming iPhone...",
+      "url": "https://9to5mac.com/2025/05/17/iphone-17-air-new-leak-battery-weight-details/",
+      "urlToImage": "https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2024/11/iPhone-Air-mockup-02.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1",
+      "publishedAt": "2025-05-17T16:11:00Z",
+      "content": "In a new post on Naver, smartphone supply chain leaker yeux1122 has shared two new details regarding Apple’s upcoming iPhone 17 Air: its battery capacity and weight.\r\nThis account, for the most part,… [+2549 chars]"
+    },
+    {
+      "source": {
+        "id": "cnn",
+        "name": "CNN"
+      },
+      "author": "Jen Christensen, Amanda Sealy, Nadia Kounang",
+      "title": "The gift of life: A visual history of organ transplantation - CNN",
+      "description": "There were more than 48,000 organ transplants in the United States last year. They’re commonplace now, but the practice was considered experimental only a half-century ago.",
+      "url": "https://www.cnn.com/2025/05/17/health/the-gift-of-life-a-visual-history-of-organ-transplantation",
+      "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/01-gettyimages-1236345274.jpg?c=16x9&q=w_800,c_fill",
+      "publishedAt": "2025-05-17T13:00:00Z",
+      "content": "EDITORS NOTE:  Watch Dr. Sanjay Gupta Reports: Animal Pharm on Sunday, May 18, at 8 p.m. ET/PT on CNN.\r\nThere were more than 48,000 organ transplants in the United States last year. Theyre commonplac… [+12009 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Billboard"
+        "name": "Medical Xpress"
       },
-      "author": "Michael Saponara",
-      "title": "Chris Brown Denied Bail in U.K. After Arrest for Alleged 2023 Nightclub Attack - Billboard",
-      "description": "Chris Brown has been denied bail in the U.K. after being arrested for an alleged 2023 nightclub attack.",
-      "url": "http://www.billboard.com/music/rb-hip-hop/chris-brown-denied-bail-uk-2023-nightclub-attack-1235973863/",
-      "urlToImage": "https://www.billboard.com/wp-content/uploads/2024/10/Chris-Brown-feb-13-2024-billboard-1548.jpg?w=1024",
-      "publishedAt": "2025-05-16T17:24:03Z",
-      "content": "Chris Brown was denied bail during a court hearing for his assault charge in Manchester, England, on Friday (May 16), according to Reuters. \r\nThe singer was taken into custody on Thursday (May 15) af… [+1258 chars]"
+      "author": "Science X",
+      "title": "US approves first blood test for Alzheimer's - Medical Xpress",
+      "description": "The United States on Friday approved the first blood test for Alzheimer's, a move that could help patients begin treatment earlier with newly approved drugs that slow the progression of the devastating neurological disease.",
+      "url": "https://medicalxpress.com/news/2025-05-blood-alzheimer.html",
+      "urlToImage": "https://scx2.b-cdn.net/gfx/news/hires/2023/blood-test-5.jpg",
+      "publishedAt": "2025-05-17T11:20:38Z",
+      "content": "The United States on Friday approved the first blood test for Alzheimer's, a move that could help patients begin treatment earlier with newly approved drugs that slow the progression of the devastati… [+2177 chars]"
     },
     {
       "source": {
         "id": null,
-        "name": "Vulture"
+        "name": "Motley Fool"
       },
-      "author": "Kathryn VanArendonk",
-      "title": "‘Before Anyone Else Defines It, I’m Going to Define It’ - Vulture",
-      "description": "‘Andor’ creator Tony Gilroy reflects on the show and his five years inside the ‘Star Wars’ universe: ‘I cannot express the naïveté and ignorance with which I entered this project.’",
-      "url": "http://www.vulture.com/article/tony-gilroy-andor-star-wars-rogue-one-interview.html",
-      "urlToImage": "https://pyxis.nymag.com/v1/imgs/459/786/427eb3257b538936757dcb391c84506385-tony-gilroy.1x.rsocial.w1200.jpg",
-      "publishedAt": "2025-05-16T16:08:02Z",
-      "content": "Considering how reflective, candid, and loquacious he is in conversation, its maybe not surprising that Andorcreator Tony Gilroy does not have trouble writing the incisive political monologues that h… [+16171 chars]"
-    },
-    {
-      "source": {
-        "id": "nbc-news",
-        "name": "NBC News"
-      },
-      "author": "Andrew Jones",
-      "title": "Eurovision 2025 final: How to watch, Céline Dion rumors, predictions, time, channel and controversies - NBC News",
-      "description": "Performers will battle it out during Saturday’s Eurovision grand final, which airs at 3 p.m. ET on Peacock for viewers in the U.S.",
-      "url": "https://www.nbcnews.com/world/europe/eurovision-final-2025-how-watch-time-celine-dion-odds-channel-stream-rcna207119",
-      "urlToImage": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2025-05/250515-Switzerland-KAJ-music-group-ac0458p-70d0b5.jpg",
-      "publishedAt": "2025-05-16T14:40:39Z",
-      "content": "BASEL, Switzerland Fans from around the world have descended upon the 69th Eurovision Song Contest to rally behind performers from their home countries who have been battling it out onstage all week.… [+6473 chars]"
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "Hollywood Reporter"
-      },
-      "author": "Scott Roxborough",
-      "title": "Is This the Most Political Cannes Festival Since ’68? - The Hollywood Reporter",
-      "description": "As fest staff tries to follow \"political neutrality\" guidelines, Robert De Niro’s passionate opening-night excoriation of Trump as \"America’s philistine president\" set a combative tone not seen in decades.",
-      "url": "http://www.hollywoodreporter.com/movies/movie-news/cannes-most-political-festivial-since-1968-1236218955/",
-      "urlToImage": "https://www.hollywoodreporter.com/wp-content/uploads/2025/05/GettyImages-2214898494.jpg?crop=0px%2C320px%2C5642px%2C3157px&resize=1440%2C810",
-      "publishedAt": "2025-05-16T08:00:46Z",
-      "content": "Has Cannes gone all political on us? The French film festival, which used to pride itself on, sometimes to a fault, being the apolitical “cinema for cinema’s sake” festival, appears to be storming th… [+5876 chars]"
+      "author": "Rich Smith",
+      "title": "President Trump Just Cut the Budget on Boeing's and Lockheed's Most Important Space Program - The Motley Fool",
+      "description": "The space race is still running, but already I see winners -- and losers.",
+      "url": "https://www.fool.com/investing/2025/05/17/trump-cut-budget-on-boeing-and-lockheed-space-prog/",
+      "urlToImage": "https://g.foolcdn.com/editorial/images/818096/rocket-launch.jpg",
+      "publishedAt": "2025-05-17T11:07:00Z",
+      "content": "The space race is still running, but already I see winners -- and losers.Eight years ago, President Donald Trump opened a new age in space when he announced mankind will return to the moon via a new … [+4625 chars]"
     }
   ]
 }
