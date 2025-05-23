@@ -1,39 +1,29 @@
-- Dow Jones Today: Stocks Plunge, Treasury Yields Surge as Investors Monitor Tax Bill; Dow Drops 800 Points, Bitcoin Wavers After Hitting Record High
+- Dow Jones Today: Stocks Plunge, Treasury Yields Surge as Investors Monitor Tax Bill
 
-On May 21, 2025, the stock market saw a major selloff with the Dow Jones Industrial Average plunging more than 800 points (1.9%) as investors reacted to growing concerns over a sweeping tax and spending bill moving through Congress. The bill is expected to significantly boost the federal deficit, causing Treasury yields to soar, with the 10-year Treasury note yield hitting 4.60%, the highest since February. Technology stocks were broadly lower, though Alphabet bucked the trend with a nearly 3% gain fueled by optimism around AI prospects revealed at its recent Google I/O conference. Bitcoin hit an all-time high of $109,900 before retreating to around $106,000. Safety assets like gold futures rose 1.2%. The market atmosphere remains fragile as macroeconomic concerns, regulatory scrutiny of major companies, and ongoing geopolitical risks persist.
+The stock market witnessed a significant drop on May 21, 2025, with the Dow Jones Industrial Average plunging by nearly 800 points, a 1.9% decline. The market turmoil was driven primarily by concerns over a comprehensive tax and spending bill progressing through Congress, which could substantially increase the federal deficit. Treasury yields, particularly the 10-year Treasury note, surged to levels not seen since February, reaching 4.60%, translating to increased borrowing costs. Key contributors to the market's decline include UnitedHealth, which fell almost 6% amid reports of secret payments to nursing homes to reduce hospital transfers. Other notable declines were seen in Target, Lowe's, and Palo Alto Networks despite some companies posting better than expected earnings. In contrast, Alphabet gained nearly 3%, buoyed by optimism around its AI advancements, alongside Bitcoin hitting a record high before fluctuating.
 
-- Trump's Crypto Dinner Cost Over $1 Million Per Seat, on Average - NBC News
+Relevant links: [https://www.investopedia.com/dow-jones-today-05212025-11738984]
 
-More than 200 cryptocurrency investors, many anonymous and foreign nationals, paid between $55,000 and $37.7 million each to attend a dinner with former President Donald Trump, held at Trump National Golf Club in Washington, D.C. The $TRUMP token contests secured seats, with total spending across winners amounting to $394 million. Analysts raised concerns about foreign nationals buying political influence through cryptocurrency donations, which is illegal under U.S. law. The dinner illuminates ongoing controversies about Trump’s use of office for personal financial gain and the opaque intersection of cryptocurrency and political fundraising. The event also exemplifies broader regulatory challenges fitting blockchain-based assets into traditional campaign finance frameworks.
+- Trump's crypto dinner cost over $1 million per seat, on average
 
-- Cigna Announces New Deal for Copay Caps on Eli Lilly and Novo Nordisk Weight Loss Drugs - CNBC
+More than 200 wealthy crypto buyers paid hefty sums to attend a black-tie dinner with President Donald Trump, with total expenditures on Trump's official cryptocurrency $TRUMP reaching $394 million. Winners of a contest to meet Trump each spent between $55,000 and $37.7 million, with an average spending of almost $1.8 million. Approximately 72% of attendees appear to be foreign nationals, raising concerns regarding U.S. laws prohibiting foreign campaign donations. Trump-affiliated companies own 80% of the $TRUMP token, which profits through transaction fees. Despite ethical questions raised, the White House defends the president’s actions as serving American interests. The event illustrates how Trump's business interests are intertwined with his presidency, leveraging exclusive events for personal gain.
 
-Cigna's pharmacy benefits unit Evernorth reached a new coverage deal with drugmakers Eli Lilly and Novo Nordisk to cap out-of-pocket costs for GLP-1 weight loss drugs Wegovy and Zepbound at $200 monthly for insured patients. This initiative aims to encourage wider employer coverage of these costly medications, addressing affordability barriers. The deal includes a simplified pre-authorization process and consistent pricing across retail and home delivery pharmacies. Large employers and insurers are gradually negotiating discounts estimated between 30% to 50% off list prices. The move precedes Medicare discount negotiations set for 2027 and responds to growing demand for effective obesity treatments amid rising health concerns and insurer hesitancy due to high drug costs.
+Relevant links: [https://www.nbcnews.com/tech/crypto/trumps-crypto-dinner-cost-1-million-seat-average-rcna207802]
 
-- Nike Will Raise Prices on a Wide Range of Products as Soon as This Week - CNBC
+- Cigna announces new deal for copay caps on Eli Lilly and Novo Nordisk weight loss drugs
 
-Nike announced price increases across various adult footwear, apparel, and equipment by $2 to $10, anticipated on shelves as early as this week, effective June 1, 2025. Footwear priced between $100 and $150 will rise by $5, and higher-priced sneakers by $10. Notably, children's products and Nike's Air Force 1 shoes will not be affected. The hikes are attributed to ongoing tariffs on imports from China and Vietnam, which impact Nike's manufacturing costs. Although the company did not directly link the price changes to tariffs, the retail sector braces for margin pressure amid these levies. Nike's strategic pricing adjustments reflect efforts to maintain profitability while navigating cost and supply chain challenges.
+Cigna's Evernorth unit announced a new agreement with pharmaceutical giants Eli Lilly and Novo Nordisk to cap monthly out-of-pocket costs at $200 for popular GLP-1 weight loss drugs Wegovy and Zepbound. This move aims to widen employer coverage and reduce costs for insured workers. Currently, only half of Cigna’s clients offer coverage due to high drug prices. The deal also simplifies pre-authorization processes and enables access to these drugs at consistent prices across retail pharmacies and home delivery services. The pricing deal may reduce costs by nearly 20% for current plan sponsors, complementing recent initiatives like CVS Caremark designating Wegovy as its preferred drug and upcoming Medicare negotiations expected to further lower prices.
 
-- Why Are More Shoppers Struggling to Repay 'Buy Now, Pay Later' Loans? - Yahoo Finance
+Relevant links: [https://www.cnbc.com/2025/05/21/cigna-eli-lilly-novo-nordisk-weight-loss-drugs.html]
 
-Buy Now, Pay Later (BNPL) services like Klarna are facing a rise in repayment struggles among users, an issue compounded by increased consumer debt levels and economic pressure on vulnerable segments. Klarna reported a 17% increase in first-quarter consumer credit losses, mainly due to a higher volume of loans issued. BNPL plans, often marketed as zero-interest and without credit checks, remain popular for their ease and flexibility, especially among younger populations and minority groups. However, increased late payments and missed installments raise concerns about overextension and financial instability. Regulatory oversight has lessened under the current administration, removing protections established to shield consumers from potential pitfalls, sparking calls for renewed attention to these growing risks.
+- Nike will raise prices on a wide range of products as soon as this week
 
+In response to anticipated tariff impacts on profits, Nike is set to increase prices on numerous adult footwear, apparel, and equipment products, effective as early as the week of May 21, 2025. Price hikes range from $2 to $10, with footwear priced above $150 seeing the highest increases. Notably, prices on children's products and popular items like Nike's Air Force 1 will remain unchanged as the company aims to minimize financial burden on families. Nike is adjusting prices as part of regular business evaluations amid challenges posed by new tariffs on goods from China and Vietnam. The increases will reflect in Nike’s stores and website, with broader retail impacts yet to be seen.
 
----
+Relevant links: [https://www.cnbc.com/2025/05/21/nike-price-increases-tariffs.html]
 
-Relevant links:
+- Why are more shoppers struggling to repay 'buy now, pay later' loans?
 
-- Dow Jones Today Summary
-    - [Investopedia Article](https://www.investopedia.com/dow-jones-today-05212025-11738984)
+Increasing numbers of shoppers are facing difficulties repaying 'buy now, pay later' (BNPL) loans, a trend highlighted by Klarna’s recent disclosure of a 17% rise in consumer credit losses in Q1. BNPL plans, which enable installment payments often without interest or credit checks, are popular among younger consumers and minority groups but are raising concerns over potential overextension of credit. Studies suggest BNPL usage can lead to increased spending, overdraft fees, and credit card debt. Regulatory scrutiny has decreased under the current federal administration, raising warnings from consumer advocates about reduced protections. The challenges reflect broader financial stress, exacerbated by rising costs of living and a record high national consumer debt.
 
-- Trump's Crypto Dinner Summary  
-    - [NBC News Article](https://www.nbcnews.com/tech/crypto/trumps-crypto-dinner-cost-1-million-seat-average-rcna207802)
-
-- Cigna Copay Caps Summary  
-    - [CNBC Article](https://www.cnbc.com/2025/05/21/cigna-eli-lilly-novo-nordisk-weight-loss-drugs.html)
-
-- Nike Price Raises Summary  
-    - [CNBC Article](https://www.cnbc.com/2025/05/21/nike-price-increases-tariffs.html)
-
-- BNPL Repayment Struggle Summary  
-    - [Yahoo Finance Article](https://finance.yahoo.com/news/why-more-shoppers-struggling-repay-203002254.html)
+Relevant links: [https://finance.yahoo.com/news/why-more-shoppers-struggling-repay-203002254.html]

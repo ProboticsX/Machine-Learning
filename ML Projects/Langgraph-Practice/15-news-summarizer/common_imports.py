@@ -34,6 +34,8 @@ from langchain_community.utilities.tavily_search import TavilySearchAPIWrapper
 from langgraph.types import Command
 from langgraph_supervisor import create_supervisor
 from typing import Annotated
+from constants import *
+import requests
 
 # Other imports
 from pydantic import BaseModel, Field
@@ -53,3 +55,4 @@ from tools.firebase_tools.firebase_tools import FirebaseTools
 load_dotenv()
 
 llm = ChatOpenAI(model_name=MODEL_NAME)
+perplexity_model = "sonar"

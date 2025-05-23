@@ -1,4 +1,6 @@
 MODEL_NAME = "gpt-4.1-mini"
+PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
+
 MAX_TOP_HEADLINES_CRITIQUE_COUNT = 1
 MAX_PODCAST_TRANSCRIPT_CRITIQUE_COUNT = 1
 

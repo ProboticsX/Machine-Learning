@@ -148,6 +148,39 @@ def validate_json_file() -> str:
     except Exception as e:
         return f"❌ Validation failed: Unexpected error - {str(e)}"
 
+def get_perplexity_payload(question: str, return_images: bool = False):
+    payload = {
+        "model": perplexity_model,
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant that answers questions and provides information."},
+            {"role": "user", "content": question}
+        ],
+        "return_images": return_images,
+    }
+    return payload
+
+def get_perplexity_headers():
+    headers = {
+        "Authorization": f"Bearer {os.getenv("PERPLEXITY_API_KEY")}",
+        "Content-Type": "application/json"
+    }
+    return headers
+
+@tool
+def get_perplexity_response(question: str, return_images: bool = False):
+    """Gets the response from the perplexity API.
+    Args:
+        question: The question to ask the perplexity API.
+        return_images: Whether to return images in the response. If True, the response will contain the image URLs.
+    Returns:
+        str: The response from the perplexity API.
+    """
+
+    payload = get_perplexity_payload(question, return_images)
+    headers = get_perplexity_headers()
+    response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
+    return response.json()
+
 # Get the project root directory (15-news-summarizer)
 project_root = Path(__file__).parent.parent.parent
 transcript_dir = project_root / "data" / "transcripts"
@@ -160,7 +193,7 @@ summary_file = summary_dir / "top_headlines_summary.txt"
 summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
-top_headlines_agent_tools = [get_top_headlines]
+top_headlines_agent_tools = [get_perplexity_response, get_todays_date_and_day, write_summary_to_json_file, push_headlines_to_firebase_db]
 top_headlines_summarizer_tools = [read_json_file, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db, validate_json_file]
 top_headlines_critic_tools = [read_json_file]
 
