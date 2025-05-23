@@ -20,7 +20,7 @@ def print_dict_structure(d, indent=0):
             print("  " * (indent + 1) + f"Value: {value}")
 
 if __name__ == "__main__":
-    print("Hello from News Summarizer!")
+    print("Hello from Newspresso!")
     # question = "find US and New York state GDP in 2024. what percentage of US GDP was New York state?? Multiply the result by 369."
     # question = "Who's the richest person in the world? Find what company they own and what's the stock price of the company! Finally, multuply the stock price by 369."
     # question = "What's the stock price of the most valuable company in the world? Give me the name of the CEO of the company too."
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # question = "What is ((3*5) + 10)*5? Also, who's the richest person in the world?"
     # processsed_news_file_path = NewsTool().processed_news_path
     # print(processsed_news_file_path)
-    question = "What are the general top headlines for today? Create a podcast on the same."
+    question = "What are the top headlines in the business category for today? Create a podcast on the same."
     displayGraph(graph)
     result = graph.invoke({"messages": [question]}, config={"recursion_limit": 35})
     print("======RESULT=======")
