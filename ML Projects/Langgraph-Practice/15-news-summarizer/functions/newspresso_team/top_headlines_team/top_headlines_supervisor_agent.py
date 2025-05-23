@@ -49,7 +49,7 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
             update={
                 "next": goto,
                 "messages": [
-                    HumanMessage(content="The top headlines were generated, summarized and saved to the file.", name=TOP_HEADLINES_SUPERVISOR_AGENT)
+                    HumanMessage(content="The top headlines were generated, summarized and saved to the file and pushed to the firebase database.", name=TOP_HEADLINES_SUPERVISOR_AGENT)
                 ]
             }
            )
@@ -61,8 +61,7 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
 
 
 role_of_each_top_headlines_worker = {
-    TOP_HEADLINES_AGENT: "Agent who is tasked with providing the top headlines with full content.",
-    TOP_HEADLINES_SUMMARIZER_AGENT: "Agent who is tasked with summarizing the top headlines. The summary should be written to a text file and a json file and pushed to the firebase database.",
+    TOP_HEADLINES_AGENT: "Agent who is tasked with providing the summary of the top headlines. Moreover, the summary is written to a json file and pushed to the firebase database.",
 }
 
 # TOP HEADLINES SUPERVISOR

@@ -2,6 +2,7 @@ from common_imports import *
 
 class CategoryClass(TypedDict):
     category: str = Field(description="The category of the news")
+    country: str = Field(description="The country of the news")
 
 class PodcastClass(TypedDict):
     podcast_transcript: str = Field(description="The podcast transcript")

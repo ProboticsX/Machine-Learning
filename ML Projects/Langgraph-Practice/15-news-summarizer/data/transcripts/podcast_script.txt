@@ -1,23 +1,25 @@
-<Person1> "Welcome to Newspresso – your personal generative AI podcast! We're Marcus and Leslie, here to bring you a clear, concise roundup of top news stories shaping our world today, May 21, 2025. Let's start with a rollercoaster day on Wall Street that’s affecting investors everywhere." 
+<Person1> "Welcome to Newspresso – your personal generative AI podcast! Today is May 23, 2025, and we have a powerful lineup covering legal battles, tragic incidents, new safety regulations, and a humanitarian crisis. Let's jump right into a significant Supreme Court deadlock."
 
-</Person1><Person2> "Absolutely, Marcus. The Dow Jones Industrial Average plunged over 800 points, a sharp 1.9% drop, as investors reacted to a sweeping tax and spending bill moving through Congress that's likely to balloon the federal deficit. This caused Treasury yields to soar, with the 10-year note hitting 4.60% — the highest since February. Tech stocks mostly declined, but Alphabet stood out with a nearly 3% gain, buoyed by optimism from its recent Google I/O conference focused on AI." 
+</Person1><Person2> "Absolutely. The U.S. Supreme Court split 4-4 in a case involving Oklahoma's plan to fund the nation's first religious charter school, St. Isidore of Seville Catholic Virtual Charter School. This leaves the Oklahoma Supreme Court ruling intact, which blocks the use of public funds for this religious school, upholding the constitutional separation of church and state."
 
-</Person2><Person1> "Bitcoin hit a stunning all-time high near $110,000 before settling back around $106,000, and gold futures gained 1.2%, reflecting investors' flight to safety amid market volatility and uncertainty from regulatory scrutiny and global risks." 
+</Person2><Person1> "Right. Justice Amy Coney Barrett recused herself, leading to the tie, so while this decision doesn't set a national precedent, it continues the debate about funding religious education. We could see this case return to the Supreme Court in the future when the full bench is available."
 
-</Person1><Person2> "Turning to politics, former President Donald Trump hosted a high-profile crypto dinner in Washington D.C., where more than 200 wealthy and mostly anonymous crypto investors paid between $55,000 and $37.7 million each. Seats were won through the $TRUMP token contests, with total spending hitting $394 million. This raised concerns over potential illegal political influence purchases by foreign nationals through cryptocurrency donations." 
+</Person1><Person2> "Turning to a somber story from Washington, D.C., Elias Rodriguez was charged with first-degree murder for killing two Israeli embassy staff, Yaron Lischinsky and Sarah Lynn Milgrim, outside the Capital Jewish Museum. The FBI is investigating this as an act of terror and anti-Semitism."
 
-</Person2><Person1> "This event underscores ongoing controversies about Trump's use of office for financial gain and highlights the challenges regulators face trying to fit blockchain assets into traditional campaign finance laws." 
+</Person2><Person1> "A heartbreaking tragedy. The victims were engaged, and Rodriguez reportedly shouted 'free, free Palestine' during the attack. This incident highlights ongoing security concerns for diplomatic personnel and the local community. Rodriguez is awaiting a preliminary hearing scheduled for June."
 
-</Person1><Person2> "On healthcare, Cigna’s Evernorth struck a new deal with Eli Lilly and Novo Nordisk to cap monthly out-of-pocket expenses at $200 for GLP-1 weight loss drugs like Wegovy and Zepbound for insured patients. This move aims to boost employer coverage and patient access by making these effective but costly medications more affordable." 
+</Person1><Person2> "In another major legal development, the Supreme Court handed President Trump a 6-3 victory by allowing him to remove members of independent labor agencies at will, at least temporarily. This overturns decades of precedent that protected these officials from removal except for cause."
 
-</Person2><Person1> "The deal includes a simplified pre-authorization process and steady pricing across pharmacies, with expected discounts of 30% to 50%. It sets the stage ahead of Medicare negotiations planned for 2027, amid rising obesity concerns." 
+</Person2><Person1> "This ruling shifts presidential authority over regulatory agencies, citing that these agencies execute executive power. However, critics warn this could increase political influence over independent bodies, potentially undermining their impartiality. The full impact will unfold over time."
 
-</Person1><Person2> "In retail news, Nike announced it will raise prices on various adult footwear, apparel, and equipment by $2 to $10 starting this week, coming into effect June 1. Sneaker prices from $100 to $150 will increase by $5; higher-end sneakers will see a $10 hike. Notably, children’s products and Air Force 1 shoes are exempt." 
+</Person1><Person2> "On the practical side, parents should know new federal car seat regulations begin June 30, 2025. These rules require side-impact crash testing for all new car seats, aiming to better protect children under 40 pounds from side collisions."
 
-</Person2><Person1> "Nike attributes these hikes to persistent tariffs on imports from China and Vietnam, which continue to pressure manufacturing costs as the company battles supply chain challenges and seeks to maintain profits." 
+</Person2><Person1> "The updated standards include more rigorous tests using specially sized dummies, with specific weight limits: infant seats capped at 30 pounds, forward-facing starting at 26.5 pounds, and boosters from 40 pounds, though boosters are exempt from side-impact tests. The goal is to reduce head and chest injuries dramatically."
 
-</Person1><Person2> "Lastly, more shoppers are struggling with Buy Now, Pay Later plans. Klarna reported a 17% rise in first-quarter credit losses, driven by increased loan volumes. These plans are especially popular with younger and minority shoppers due to ease and zero interest offers but carry risks of overextension and financial instability." 
+</Person1><Person2> "Finally, a critical humanitarian alert from Gaza. Aid trucks delivering food and supplies are being repeatedly looted amid the ongoing blockade and conflict. The UN warns nearly two million people face worsening famine conditions as access to resources remains severely restricted."
 
-</Person2><Person1> "Regulatory oversight for these services has eased, removing protections designed to shield consumers, prompting calls for renewed attention on these financial vulnerabilities. That wraps up today's top stories on Newspresso. Thanks for listening!" 
+</Person2><Person1> "This is described as Gaza's cruelest phase yet. Attacks have killed Palestinian guards protecting the aid, further disrupting deliveries. International calls for intervention are urgent, aiming to prevent catastrophic starvation among civilians caught in the crisis."
 
-</Person1>
+</Person1><Person2> "That wraps our top headlines for May 23, 2025. Thanks for joining us on Newspresso – stay informed, stay compassionate. Until next time!"
+
+</Person2>

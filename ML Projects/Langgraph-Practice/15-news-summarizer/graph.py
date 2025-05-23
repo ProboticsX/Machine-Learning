@@ -1,9 +1,7 @@
 from functions.newspresso_team.newspresso_supervisor_agent import newspresso_supervisor_agent
 
 from functions.newspresso_team.top_headlines_team.top_headlines_supervisor_agent import top_headlines_supervisor_agent
-from functions.newspresso_team.top_headlines_team.top_headlines_summarizer_agent import top_headlines_summarizer_node
 from functions.newspresso_team.top_headlines_team.top_headlines_agent import top_headlines_node
-from functions.newspresso_team.top_headlines_team.top_headlines_critic_agent import top_headlines_critic_node
 
 from functions.newspresso_team.podcast_team.podcast_supervisor_agent import podcast_supervisor_agent
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_supervisor_agent import podcast_transcript_supervisor_agent
@@ -20,9 +18,7 @@ workflow = StateGraph(AgentState)
 workflow.add_node(NEWSPRESSO_SUPERVISOR_AGENT, newspresso_supervisor_agent)
 
 workflow.add_node(TOP_HEADLINES_SUPERVISOR_AGENT, top_headlines_supervisor_agent)
-workflow.add_node(TOP_HEADLINES_SUMMARIZER_AGENT, top_headlines_summarizer_node)
 workflow.add_node(TOP_HEADLINES_AGENT, top_headlines_node)
-workflow.add_node(TOP_HEADLINES_CRITIC_AGENT, top_headlines_critic_node)
 
 workflow.add_node(PODCAST_SUPERVISOR_AGENT, podcast_supervisor_agent)
 workflow.add_node(PODCAST_TRANSCRIPT_SUPERVISOR_AGENT, podcast_transcript_supervisor_agent)

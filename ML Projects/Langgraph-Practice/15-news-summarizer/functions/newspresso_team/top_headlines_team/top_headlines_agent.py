@@ -10,33 +10,37 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     print("===STATE AT TOP HEADLINES NODE=====")
     print(state)
 
-    def get_topic_from_user_question(question: str) -> str:
-        """Get the topic from the user request."""
-        system_prompt = """You are given a user question and you need to extract the topic from it.
-                       These are the topics you can choose from: \n
+    def get_category_class_from_user_question(question: str) -> str:
+        """Get the category from the user request."""
+        system_prompt = """You are given a user question and you need to extract the category from it.
+                       These are the categories you can choose from: \n
                         - business \n
                         - technology \n
                         - science \n
                         - health \n
                         - entertainment \n
                         - sports \n
-                        - general (choose this if cannot find a specific topic) \n
+                        - general (choose this if cannot find a specific category) \n
+
+                        Also, find out what country the user is from. If not mentioned, choose USA.
                        """
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
             ("user", "Here's the user question: {question}"),
         ])
         llm_with_structured_output = llm.with_structured_output(CategoryClass)
-        topic_extractor_chain = prompt | llm_with_structured_output
+        category_extractor_chain = prompt | llm_with_structured_output
         invoke_message = {"question": question}
-        result = topic_extractor_chain.invoke(invoke_message)
-        print("===RESULT OF TOPIC EXTRACTOR CHAIN=====")
+        result = category_extractor_chain.invoke(invoke_message)
+        print("===RESULT OF CATEGORY EXTRACTOR CHAIN=====")
         print(result)
-        return result["category"]
+        return result["category"], result["country"]
 
     user_question = state["messages"][0].content
-    category = get_topic_from_user_question(user_question)
-    payload = get_perplexity_payload(f"What are the top 5 headlines in the {category} category for today?")
+    category_class = get_category_class_from_user_question(user_question)
+    category = category_class[0]
+    country = category_class[1]
+    payload = get_perplexity_payload(f"What are the top 5 headlines in the {category} category for today in {country}?")
     headers = get_perplexity_headers()
     response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
     top_headlines = response.json()["choices"][0]["message"]["content"]
@@ -70,15 +74,15 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     print(result)
 
     current_top_headlines = TopHeadlinesClass(
-        top_headlines_processed_news_file=processsed_news_file_path
+            top_headlines_summary_json_file=summary_json_file
     )
     if state.get("top_headlines_class") is not None:
         current_top_headlines = state["top_headlines_class"].copy()
-        current_top_headlines["top_headlines_processed_news_file"] = processsed_news_file_path
+        current_top_headlines["top_headlines_summary_json_file"] = summary_json_file
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines fetched successfully. The json file was saved and has been pushed to the firebase database.", name=TOP_HEADLINES_AGENT)
+                HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved and has been pushed to the firebase database.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
             "category_class": CategoryClass(category=category),

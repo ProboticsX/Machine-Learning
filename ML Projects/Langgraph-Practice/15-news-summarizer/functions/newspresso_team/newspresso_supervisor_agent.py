@@ -48,7 +48,7 @@ def make_newspresso_supervisor_node(llm, members, role_of_each_worker) -> str:
 
 role_of_each_newspresso_supervisor_worker = {
     PODCAST_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the fine tuned podcast script and audio file. The goal is to first generate a fine tuned podcast transcript and then write it to a file. Lastly, the audio file should be generated from the fine tuned transcript.",
-    TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news. The goal is to first get the top headlines, then summarize the news and then write it to a file."
+    TOP_HEADLINES_SUPERVISOR_AGENT: "Supervisor agent who is tasked with providing the top headlines along with the summary of the news. The goal is to fetch the top headlines and summarize the news. Moreover, the summary is written to a json file and pushed to the firebase database."
 }
 
 
