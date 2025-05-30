@@ -36,10 +36,10 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the summary of the top headlines found in the json file: {top_headlines_summary_json_file} and the critique of the podcast transcript (if any): {podcast_transcript_critique} and the existing podcast transcript (if any): {existing_podcast_transcript}"),
+        ("user", "Here is the summary of the top headlines found in the json file: {top_headlines_summary_json_file} and the critique of the podcast transcript (if any): {podcast_transcript_critique} and the existing podcast transcript (if any): {existing_podcast_transcript}. The podcast transcript file path is {podcast_transcript_file_path}"),
     ])
-    
-    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript_critique=podcast_transcript_critique, existing_podcast_transcript=existing_podcast_transcript)
+    podcast_transcript_file_path = podcast_transcript_file
+    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript_critique=podcast_transcript_critique, existing_podcast_transcript=existing_podcast_transcript, podcast_transcript_file_path=podcast_transcript_file_path)
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
         tools=transcript_generator_agent_tools, 

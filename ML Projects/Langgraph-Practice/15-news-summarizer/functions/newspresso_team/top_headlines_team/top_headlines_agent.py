@@ -67,9 +67,10 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Please enrich the following top headlines with the information provided: {top_headlines}"),
+        ("user", "Please enrich the following top headlines with the information provided: {top_headlines}. The summary json file path is {summary_json_file_path}"),
     ])
-    formatted_prompt = prompt.format(top_headlines=top_headlines)
+    summary_json_file_path = summary_json_file
+    formatted_prompt = prompt.format(top_headlines=top_headlines, summary_json_file_path=summary_json_file_path)
     top_headlines_agent = create_react_agent(llm, 
                                              tools=top_headlines_agent_tools, 
                                              prompt = formatted_prompt)

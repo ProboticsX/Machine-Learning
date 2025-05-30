@@ -2,13 +2,6 @@ from common_imports import *
 import re
 
 @tool
-def get_top_headlines(category: str) -> str:
-    """Gets the top headlines from the news API."""
-    news_tool = NewsTool()
-    result = news_tool.get_top_headlines(category)
-    return result
-
-@tool
 def read_json_file(file_path: str) -> str:
     """Reads and returns the contents of a JSON file.
     
@@ -30,17 +23,17 @@ def read_json_file(file_path: str) -> str:
         return f"Error reading file: {str(e)}"
 
 @tool
-def write_to_file(content: str) -> str:
+def write_text_file(content: str, file_path: str) -> str:
     """Writes the content to a file in the data/transcripts folder."""
-    with open(transcript_file, "w") as f:
+    with open(file_path, "w") as f:
         f.write(content)
-    return f"File written successfully to {transcript_file}"
+    return f"File written successfully to {file_path}"
 
 @tool
-def create_podcast() -> str:
+def create_podcast(file_path: str) -> str:
     """Creates a podcast from the transcript file."""
     audio_file = generate_podcast(
-        transcript_file=str(transcript_file),
+        transcript_file=str(file_path),
         tts_model="gemini",
         api_key_label="GEMINI_API_KEY"
     )
@@ -48,18 +41,11 @@ def create_podcast() -> str:
     return "Podcast created successfully and audio file path is: "+str(audio_file)
 
 @tool
-def write_to_summary_file(content: str) -> str:
-    """Writes the content to a file in the data/summary folder."""
-    with open(summary_file, "w") as f:
-        f.write(content)
-    return f"File written successfully to {summary_file}"
-
-@tool
-def write_summary_to_json_file(content: str) -> str:
+def write_json_file(content: str, file_path: str) -> str:
     """Writes the content to a json file in the data/summary folder."""
-    with open(summary_json_file, "w") as f:
+    with open(file_path, "w") as f:
         f.write(content)
-    return f"File written successfully to {summary_json_file}"
+    return f"File written successfully to {file_path}"
 
 @tool
 def get_todays_date_and_day() -> str:
@@ -79,10 +65,10 @@ def web_search(query: str) -> str:
     return search.invoke(query)
 
 @tool
-def push_headlines_to_firebase_db(category: str) -> str:
+def push_headlines_to_firebase_db(category: str, file_path: str) -> str:
     """Pushes the headlines to the firebase database."""
     firebase_tools = FirebaseTools()
-    result = firebase_tools.push_headlines_from_json(summary_json_file, category=category)
+    result = firebase_tools.push_headlines_from_json(file_path, category=category)
     return result
 
 @tool
@@ -208,7 +194,7 @@ def check_image_url(image_url: str) -> str:
     """
     try:
         # Check if URL contains a valid image extension anywhere
-        valid_image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg']
+        valid_image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp']
         if not any(ext in image_url.lower() for ext in valid_image_extensions):
             return "❌ URL does not point to a valid image file (missing image extension)"
 
@@ -231,22 +217,21 @@ def check_image_url(image_url: str) -> str:
     except Exception as e:
         return f"❌ Error checking image URL: {str(e)}"
 
-# Get the project root directory (15-news-summarizer)
 project_root = Path(__file__).parent.parent.parent
+
 transcript_dir = project_root / "data" / "transcripts"
 transcript_dir.mkdir(parents=True, exist_ok=True)
-transcript_file = transcript_dir / "podcast_script.txt"
-processsed_news_file_path = NewsTool().processed_news_path
+podcast_transcript_file = transcript_dir / "podcast_transcript.txt"
+
 summary_dir = project_root / "data" / "summary"
 summary_dir.mkdir(parents=True, exist_ok=True)
-summary_file = summary_dir / "top_headlines_summary.txt"
 summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 category_extractor_agent_tools = [get_todays_date_and_day]
-top_headlines_agent_tools = [get_perplexity_response, write_summary_to_json_file, validate_json_file]
-top_headlines_image_agent_tools = [read_json_file, write_summary_to_json_file, get_perplexity_response_with_image, check_image_url, validate_json_file]
-top_headlines_firebase_pusher_agent_tools = [read_json_file, push_headlines_to_firebase_db, validate_json_file, write_summary_to_json_file]
+top_headlines_agent_tools = [get_perplexity_response, write_json_file, validate_json_file]
+top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
+top_headlines_firebase_pusher_agent_tools = [push_headlines_to_firebase_db, read_json_file, write_json_file, validate_json_file]
 
-transcript_generator_agent_tools = [write_to_file, read_json_file]
+transcript_generator_agent_tools = [write_text_file, read_json_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]
