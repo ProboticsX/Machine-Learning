@@ -10,9 +10,9 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     print("===STATE AT TOP HEADLINES NODE=====")
     print(state)
 
-    def get_category_class_from_user_question(question: str) -> str:
+    def category_extractor(question: str) -> str:
         """Get the category from the user request."""
-        system_prompt = """You are given a user question and you need to extract the category from it.
+        system_prompt = """You are given a user question and you need to extract the category, country and date from it.
                        These are the categories you can choose from: \n
                         - business \n
                         - technology \n
@@ -22,25 +22,29 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
                         - sports \n
                         - general (choose this if cannot find a specific category) \n
 
-                        Also, find out what country the user is from. If not mentioned, choose USA.
+                        Also, find out what country the user is from. If not mentioned, choose USA. \n
+                        Finally, output the today's date in the format of YYYY-MM-DD.
                        """
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
-            ("user", "Here's the user question: {question}"),
+            ("user", question),
         ])
-        llm_with_structured_output = llm.with_structured_output(CategoryClass)
-        category_extractor_chain = prompt | llm_with_structured_output
-        invoke_message = {"question": question}
-        result = category_extractor_chain.invoke(invoke_message)
-        print("===RESULT OF CATEGORY EXTRACTOR CHAIN=====")
+        formatted_prompt = prompt.format(question=question)
+        category_extractor_agent = create_react_agent(llm, tools=category_extractor_agent_tools, prompt=formatted_prompt, response_format=CategoryClass)
+        invoke_message = {"input": "Please do the task as per the system prompt"}
+        result = category_extractor_agent.invoke(invoke_message)
+        print("===RESULT OF CATEGORY EXTRACTOR AGENT=====")
         print(result)
-        return result["category"], result["country"]
+        return result["structured_response"]["category"], result["structured_response"]["country"], result["structured_response"]["date"]
 
     user_question = state["messages"][0].content
-    category_class = get_category_class_from_user_question(user_question)
+    category_class = category_extractor(user_question)
     category = category_class[0]
     country = category_class[1]
-    payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} in the last 24 hours?")
+    date = category_class[2]
+    print("===CATEGORY, COUNTRY AND DATE=====")
+    print(category, country, date)
+    payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} on {date}?")
     headers = get_perplexity_headers()
     response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
     top_headlines = response.json()["choices"][0]["message"]["content"]
@@ -51,6 +55,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     You are given a list of top headlines. \n
     You need to enrich each of the headlines with the following information using the tool provided. \n
     Make sure that the enriched content is relevant to the top headlines provided. \n
+    Please do not skip any of the headlines. \n
     Save the results in a json file and the format for each headline should be as follows: \n
         - title: The title of the headline.\n
         - description: Short description of the headline. It should be around 100 words.\n
@@ -68,7 +73,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     top_headlines_agent = create_react_agent(llm, 
                                              tools=top_headlines_agent_tools, 
                                              prompt = formatted_prompt)
-    invoke_message = {"input": "Please enrich the top headlines with the information provided. Make sure not to skip any of the headlines. Save the results in a json file and push it to the firebase database."}
+    invoke_message = {"input": "Please do the task as per the system prompt"}
     result = top_headlines_agent.invoke(invoke_message)
     print("===RESULT OF TOP HEADLINES NODE=====")
     print(result)
@@ -85,7 +90,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
                 HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved and has been pushed to the firebase database. The image URL of the top headlines are not verified yet.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
-            "category_class": CategoryClass(category=category),
+            "category_class": CategoryClass(category=category, country=country, date=date),
         },
         goto=TOP_HEADLINES_SUPERVISOR_AGENT,
     )

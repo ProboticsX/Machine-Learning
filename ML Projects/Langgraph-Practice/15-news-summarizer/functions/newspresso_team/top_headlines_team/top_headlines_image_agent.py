@@ -28,7 +28,7 @@ def top_headlines_image_node(state: AgentState) -> Command[Literal[TOP_HEADLINES
     top_headlines_image_agent = create_react_agent(llm, 
                                              tools=top_headlines_image_agent_tools, 
                                              prompt = formatted_prompt)
-    invoke_message = {"input": "Please check the image URL of the top headlines and update the json file if needed."}
+    invoke_message = {"input": "Please do the task as per the system prompt"}
     result = top_headlines_image_agent.invoke(invoke_message)
     print("===RESULT OF TOP HEADLINES IMAGE NODE=====")
     print(result)

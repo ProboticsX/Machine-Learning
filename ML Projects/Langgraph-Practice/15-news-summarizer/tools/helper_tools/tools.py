@@ -63,7 +63,11 @@ def write_summary_to_json_file(content: str) -> str:
 
 @tool
 def get_todays_date_and_day() -> str:
-    """Gets the today's date and day."""
+    """
+    Gets the today's date and day.
+    Returns:
+        str: The today's date and day in the format of YYYY-MM-DD and the day of the week.
+    """
     today = datetime.now().strftime("%Y-%m-%d")
     day = datetime.now().strftime("%A")
     return f"{today} {day}"
@@ -239,9 +243,9 @@ summary_file = summary_dir / "top_headlines_summary.txt"
 summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
-top_headlines_agent_tools = [get_perplexity_response, get_todays_date_and_day, write_summary_to_json_file, push_headlines_to_firebase_db]
+category_extractor_agent_tools = [get_todays_date_and_day]
+top_headlines_agent_tools = [get_perplexity_response, write_summary_to_json_file, push_headlines_to_firebase_db]
 top_headlines_image_agent_tools = [read_json_file, write_summary_to_json_file, push_headlines_to_firebase_db, get_perplexity_response_with_image, check_image_url]
 
 transcript_generator_agent_tools = [write_to_file, read_json_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]
-podcast_transcript_critic_agent_tools = [get_todays_date_and_day]

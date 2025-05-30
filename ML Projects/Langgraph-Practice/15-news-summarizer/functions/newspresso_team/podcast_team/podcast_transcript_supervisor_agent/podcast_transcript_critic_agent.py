@@ -8,7 +8,7 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
     print("====PODCAST TRANSCRIPT CRITIC NODE=====")
     print("===STATE AT PODCAST TRANSCRIPT CRITIC NODE=====")
     print(state)
-
+    date = state["category_class"]["date"]
     podcast_transcript = state["podcast_class"]["podcast_transcript"]
     existing_podcast_transcript_critique = ""
     if state.get("podcast_class").get("podcast_transcript_critique") is not None:
@@ -25,10 +25,10 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
     """
     podcast_transcript_critic_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the podcast transcript: {podcast_transcript} and the existing critique: {existing_podcast_transcript_critique}"),
+        ("user", "Here is the podcast transcript: {podcast_transcript} and the existing critique: {existing_podcast_transcript_critique}. The date is {date}"),
     ])
     podcast_transcript_critic_chain = podcast_transcript_critic_prompt | llm
-    invoke_message = {"podcast_transcript": podcast_transcript, "existing_podcast_transcript_critique": existing_podcast_transcript_critique}
+    invoke_message = {"podcast_transcript": podcast_transcript, "existing_podcast_transcript_critique": existing_podcast_transcript_critique, "date": date}
     result = podcast_transcript_critic_chain.invoke(invoke_message)
     print("===RESULT OF PODCAST TRANSCRIPT CRITIC NODE=====")
     print(result)
