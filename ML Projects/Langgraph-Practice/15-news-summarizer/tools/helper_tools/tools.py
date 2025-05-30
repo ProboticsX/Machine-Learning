@@ -181,6 +181,52 @@ def get_perplexity_response(question: str, return_images: bool = False):
     response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
     return response.json()
 
+@tool
+def get_perplexity_response_with_image(headline_content: str) -> str:
+    """Gets the image URL from the perplexity API.
+    Args:
+        headline_content: The content of the headline related to the image URL.
+    Returns:
+        str: The image URL from the perplexity API.
+    """
+    payload = get_perplexity_payload(headline_content, return_images=True)
+    headers = get_perplexity_headers()
+    response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
+    return response.json()
+
+@tool
+def check_image_url(image_url: str) -> str:
+    """Checks if the image URL is valid and points to an actual image file.
+    Args:
+        image_url: The image URL to check.
+    Returns:
+        str: The image URL if it is valid, otherwise returns an error message.
+    """
+    try:
+        # Check if URL contains a valid image extension anywhere
+        valid_image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp', '.svg']
+        if not any(ext in image_url.lower() for ext in valid_image_extensions):
+            return "❌ URL does not point to a valid image file (missing image extension)"
+
+        # Make HEAD request first to check content type without downloading
+        head_response = requests.head(image_url, allow_redirects=True)
+        if head_response.status_code != 200:
+            return "❌ Image URL is not valid or the image cannot be accessed."
+
+        # Check content type
+        content_type = head_response.headers.get('content-type', '').lower()
+        if not content_type.startswith('image/'):
+            return f"❌ URL does not point to an image (content-type: {content_type})"
+
+        # Make GET request to verify image can be opened
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            return "✅ Image URL is valid and points to an actual image file."
+        else:
+            return "❌ Image URL is not valid or the image cannot be opened."
+    except Exception as e:
+        return f"❌ Error checking image URL: {str(e)}"
+
 # Get the project root directory (15-news-summarizer)
 project_root = Path(__file__).parent.parent.parent
 transcript_dir = project_root / "data" / "transcripts"
@@ -194,8 +240,7 @@ summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 top_headlines_agent_tools = [get_perplexity_response, get_todays_date_and_day, write_summary_to_json_file, push_headlines_to_firebase_db]
-top_headlines_summarizer_tools = [read_json_file, write_to_summary_file, write_summary_to_json_file, push_headlines_to_firebase_db, validate_json_file]
-top_headlines_critic_tools = [read_json_file]
+top_headlines_image_agent_tools = [read_json_file, write_summary_to_json_file, push_headlines_to_firebase_db, get_perplexity_response_with_image, check_image_url]
 
 transcript_generator_agent_tools = [write_to_file, read_json_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]

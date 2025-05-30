@@ -6,6 +6,5 @@ def displayGraph(graph):
 
 
 role_of_each_random_worker = {
-    TOP_HEADLINES_CRITIC_AGENT: "Agent who is tasked with providing the critique of the top headlines summary.",
     PODCAST_TRANSCRIPT_CRITIC_AGENT: "Agent who is tasked with providing the critique of the podcast transcript.",
 }

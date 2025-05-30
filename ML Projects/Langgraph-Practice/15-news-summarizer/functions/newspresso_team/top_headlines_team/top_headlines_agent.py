@@ -40,7 +40,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     category_class = get_category_class_from_user_question(user_question)
     category = category_class[0]
     country = category_class[1]
-    payload = get_perplexity_payload(f"What are the top 5 headlines in the {category} category for today in {country}?")
+    payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} in the last 24 hours?")
     headers = get_perplexity_headers()
     response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
     top_headlines = response.json()["choices"][0]["message"]["content"]
@@ -82,7 +82,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved and has been pushed to the firebase database.", name=TOP_HEADLINES_AGENT)
+                HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved and has been pushed to the firebase database. The image URL of the top headlines are not verified yet.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
             "category_class": CategoryClass(category=category),

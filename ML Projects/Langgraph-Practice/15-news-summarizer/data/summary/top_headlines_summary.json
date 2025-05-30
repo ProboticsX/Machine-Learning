@@ -1,62 +1,61 @@
 [
   {
-    "title": "Supreme Court Rejects Oklahoma's Religious Charter School Funding",
-    "description": "The Supreme Court deadlocked 4-4, leaving intact an Oklahoma Supreme Court ruling that blocked the state's first religious charter school from receiving federal funds, maintaining the constitutional separation of church and state.",
-    "content_summary": "The U.S. Supreme Court ended in a 4-4 tie, leaving the Oklahoma Supreme Court's decision intact, which blocked Oklahoma's plan to use public funds for the religious St. Isidore of Seville Catholic Virtual Charter School. The one-sentence unsigned order affirmed that funding such a religious charter school violated the First Amendment's Establishment Clause, upholding the principle of separation of church and state. Justice Amy Coney Barrett recused herself due to personal and professional conflicts, causing the deadlock. The ruling applies only in Oklahoma and does not set a national precedent. The case raises ongoing legal debates about religious involvement in publicly funded education and may return to the Supreme Court when fully adjudicated by all justices.",
-    "urlToImage": "https://www.christianitytoday.com/wp-content/uploads/2025/05/supreme-court-oklahoma-ruling.jpeg?w=1920",
+    "title": "Federal Executive Order on Collective Bargaining",
+    "description": "A federal executive order issued in March 2025 by the Trump administration removes collective bargaining rights for workers in numerous federal agencies, citing national security concerns as justification. This action has sparked major controversy, legal battles, and opposition from labor unions.",
+    "content_summary": "In March 2025, the Trump administration issued an executive order titled 'Exclusions from Federal Labor-Management Relations Programs' that removes collective bargaining rights from potentially over 1 million federal workers across more than 30 agencies involved in national security, intelligence, and public safety. The order excludes agencies such as the FBI, CIA, NSA, and Secret Service and expands based on national security rationale. The rationale provided is that collective bargaining rights interfere with national security and operational efficiency. The move has triggered immediate legal challenges and ongoing litigation from federal unions. Some agencies are also seeking to cancel existing labor agreements, intensifying the controversy.",
+    "urlToImage": "https://media.tegna-media.com/assets/WQAD/images/542859f3-5af5-41f6-802f-b638d4da3b49/20250329T030818/542859f3-5af5-41f6-802f-b638d4da3b49_1920x1080.jpg",
     "sources": [
-      "https://www.cbsnews.com/news/supreme-court-wont-allow-nations-first-religious-charter-school/",
-      "https://www.foxnews.com/politics/supreme-court-upholds-oklahoma-decision-blow-religious-charter-schools",
-      "https://www.supremecourt.gov/opinions/24pdf/24-394_9p6b.pdf"
+      "https://www.whitehouse.gov/presidential-actions/2025/03/exclusions-from-federal-labor-management-relations-programs/",
+      "https://www.epi.org/policywatch/executive-order-on-exclusions-from-federal-labor-management-relations-programs/",
+      "https://www.genovaburns.com/news/labor-law/2025-04-11-trump-executive-order-targets-federal-unions-and-sparks-legal-battle-over-bargaining-at-18-agencies"
     ],
-    "published_at": "2025-05-23"
+    "published_at": "2025-05-29"
   },
   {
-    "title": "Chicago Man Charged with Murder of Two Israeli Embassy Staff in Washington, D.C.",
-    "description": "Federal prosecutors charged Elias Rodriguez with first-degree murder for shooting two Israeli embassy staff outside the Capital Jewish Museum. The victims' diplomatic status adds to the severity of charges.",
-    "content_summary": "Elias Rodriguez, a 31-year-old Chicago man, was charged with two counts of first-degree murder, murder of foreign officials, and firearm-related felonies after allegedly killing two Israeli embassy staff, Yaron Lischinsky and Sarah Lynn Milgrim, outside the Capital Jewish Museum in Washington, D.C. Rodriguez reportedly shouted 'free, free Palestine' during the attack. The FBI is investigating the shooting as an act of terror and anti-Semitism. The victims were engaged and their deaths have shocked diplomatic and local communities. Rodriguez appeared before a magistrate judge and awaits a preliminary hearing in June. Conviction could result in life imprisonment or the death penalty.",
+    "title": "US Announces Cancellation of Chinese Student Visas",
+    "description": "The United States, under recent announcements by Secretary of State Marco Rubio, is moving toward the cancellation of visas for certain Chinese students linked to the Chinese Communist Party or studying in fields sensitive to national security. This policy increases scrutiny for future Chinese student visa applicants and has sparked concerns about academic exchange and international relations.",
+    "content_summary": "On May 28, 2025, Secretary of State Marco Rubio announced the U.S. would aggressively revoke visas of Chinese students tied to the Chinese Communist Party or enrolled in critical fields such as science, engineering, and technology. The new measures by the State Department and Homeland Security aim to tighten controls amid national security concerns. With over 277,000 Chinese students in the U.S., the policy may affect tens of thousands, causing concern among universities and the Chinese government. The policy faces criticism for potentially damaging educational exchange and bilateral relations, while causing anxiety due to unclear implementation details.",
+    "urlToImage": "https://images.axios.com/PHG94AoxTytLznOZRmmQHmAn7Gs=/0x689:8059x5223/1920x1080/2025/05/28/1748473941780.jpg",
+    "sources": [
+      "https://www.politico.com/news/2025/05/29/state-department-chinese-student-visas-00375568",
+      "https://calmatters.org/education/higher-education/2025/05/chinese-student-visas-california-trump/",
+      "https://san.com/cc/us-revokes-visas-for-chinese-students-tied-to-communist-party/"
+    ],
+    "published_at": "2025-05-29"
+  },
+  {
+    "title": "Trump's Private Dinner Draws Criticism",
+    "description": "Former President Donald Trump hosted an exclusive private dinner for major investors in his $TRUMP meme cryptocurrency at his Virginia golf club, sparking ethical concerns and criticism from lawmakers over potential conflicts of interest and access issues.",
+    "content_summary": "The private dinner hosted by Trump attracted 220 top investors spending an estimated $394 million on the $TRUMP coin, described as 'the most exclusive invitation in the world.' Attendees paid over $1 million each for access. The event featured notable guests like billionaire Justin Sun and drew sharp criticism from ethical watchdogs and politicians for blurring business and political lines. Democratic lawmakers called for DOJ investigations, citing unprecedented concerns about a sitting president's involvement in such commercial activities. The White House defended Trump, claiming he acts in public interest.",
+    "urlToImage": "https://images.axios.com/rZf5wc4GtYh7lrqWpEMtLkpqAOI=/2025/05/22/1747953887783.jpg",
+    "sources": [
+      "https://casten.house.gov/media/press-releases/casten-smith-demand-doj-investigation-into-trump-crypto-dinner",
+      "https://www.usatoday.com/story/news/politics/2025/05/22/trump-crypto-dinner-ethics-meme-coin/83787117007/",
+      "https://www.scrippsnews.com/politics/the-president/trumps-private-crypto-dinner-draws-criticism-over-access-and-the-presidents-ties-to-cryptocurrency"
+    ],
+    "published_at": "2025-05-29"
+  },
+  {
+    "title": "Murder Charges Filed Against Chicago Man",
+    "description": "A Chicago man, Elias Rodriguez, has been charged with murder after fatally shooting two Israeli embassy staff members in Washington, D.C. The attack, investigated as an antisemitic hate crime, has drawn condemnation from U.S. and Israeli officials.",
+    "content_summary": "On May 21, 2025, Elias Rodriguez allegedly shot and killed two Israeli embassy staff members outside the Capital Jewish Museum in Washington, D.C. The victims, Sarah Milgrim and Yaron Lischinsky, were attending a young diplomats event. Rodriguez was detained at the scene and reportedly shouted 'Free, free Palestine!' The FBI and local police are investigating it as an antisemitic act of violence. The U.S. President, D.C. Mayor, and Israeli Prime Minister have condemned the attack, stressing the antisemitic motive. Rodriguez faces federal and local murder charges.",
     "urlToImage": "https://assets1.cbsnewsstatic.com/hub/i/2025/05/23/3b3e82b1-9ebd-41fe-9556-0580b26d0a52/d848978d92fefdd1b0d719b07feeb55e-0-1747969787103.png",
     "sources": [
-      "https://abcnews.go.com/US/suspect-killing-couple-capital-jewish-museum/story?id=122068843",
-      "https://www.cbsnews.com/news/israeli-embassy-staff-shooting-suspect-elias-rodriguez-washington-dc/",
-      "https://www.cbc.ca/news/world/livestory/suspect-charged-after-israeli-embassy-staffers-shot-dead-in-washington-d-c-9.6768751"
+      "https://www.justice.gov/usao-dc/pr/federal-charges-filed-after-deadly-shooting-israeli-diplomats-dc",
+      "https://www.youtube.com/watch?v=YhRHLhQkJvw",
+      "https://en.wikipedia.org/wiki/2025_killing_of_Israeli_Embassy_workers_in_Washington,_D.C."
     ],
-    "published_at": "2025-05-23"
+    "published_at": "2025-05-29"
   },
   {
-    "title": "Supreme Court Allows President Trump to Fire Heads of Independent Labor Agencies",
-    "description": "In a 6-3 decision, the Supreme Court allowed President Trump to remove members of independent labor agencies at will temporarily, signaling a shift in presidential authority over regulatory bodies.",
-    "content_summary": "The Supreme Court granted an emergency stay allowing President Trump to fire members of the National Labor Relations Board and the Merit Systems Protection Board at will, marking a departure from nearly a century-old precedent protecting independent agency members from removal except for cause. The case arose after Trump fired two Democratic members of these agencies, who challenged their removal. The Court reasoned the agencies exercise executive power, justifying presidential control, but left the full merits for further litigation. The ruling drew strong dissents warning it undermines agency independence and could increase political influence over regulatory bodies. This decision may reshape the balance of power between the presidency and independent agencies.",
-    "urlToImage": "https://i.abcnewsfe.com/a/0ab11b54-7b3e-485f-944b-39d9a677981c/Supreme-Court-2-ap-gmh-250519_1747674403933_hpMain.jpg",
+    "title": "US Trade Court Blocks Trump's Tariffs",
+    "description": "The U.S. Court of International Trade has blocked President Trump's tariffs imposed on many foreign nations, ruling that the tariffs were issued without proper legal authority, marking a setback to Trump's trade agenda.",
+    "content_summary": "The court ruled that Trump exceeded his constitutional authority by imposing sweeping tariffs under emergency powers without congressional approval. The tariffs, part of Trump's 'Liberation Day' trade plan, aimed to reshape U.S. trade relations by taxing imports heavily. The decision, resulting from lawsuits by U.S. businesses and states, declared the tariffs illegal and introduced uncertainty for businesses and consumers. The Trump administration intends to appeal this ruling.",
+    "urlToImage": "https://www.usatoday.com/gcdn/authoring/authoring-images/2025/05/28/USAT/83909823007-trump-tariff-pic.JPG?crop=5899,3319,x0,y590&width=660&height=371&format=pjpg&auto=webp",
     "sources": [
-      "https://www.axios.com/2025/05/22/federal-reserve-supreme-court-trump",
-      "https://www.courthousenews.com/supreme-court-gifts-trump-with-power-to-sack-independent-regulators-for-now/",
-      "https://www.cbsnews.com/news/supreme-court-allows-trump-to-fire-labor-board-members/"
+      "https://www.cbsnews.com/news/trump-tariffs-blocked-illegal-court-international-trade-ieepa-whats-next/",
+      "https://economictimes.com/news/international/global-trends/us-court-blocks-trumps-liberation-day-tariffs-citing-overreach-of-power/articleshow/121476685.cms"
     ],
-    "published_at": "2025-05-23"
-  },
-  {
-    "title": "New Car Seat Regulations Effective June 30, 2025, Focus on Side-Impact Safety",
-    "description": "Federal regulations effective mid-2025 require all new car seats to meet side-impact crash standards, enhancing protection for children under 40 pounds during side collisions.",
-    "content_summary": "Starting June 30, 2025, all new car seats manufactured in the U.S. must comply with updated federal safety standards, specifically FMVSS No. 213a, which mandates side-impact crash testing simulating 30-mph collisions. The rules require car seats designed for children under 40 pounds to protect against head and chest injuries from side impacts, using specially sized crash test dummies to reflect vulnerability. Infant seats now have a maximum weight of 30 pounds, forward-facing seats a minimum of 26.5 pounds, and boosters must start at 40 pounds (though boosters are exempt from side-impact testing). These changes aim to dramatically improve child safety in side-impact crashes through enhanced design and testing, with manufacturers redesigning seats accordingly.",
-    "urlToImage": "https://cdn.shopify.com/s/files/1/0366/4397/files/unnamed_f087348b-cac8-4b16-9d4d-e272471d7b63.png?v=1742234448",
-    "sources": [
-      "https://www.whattoexpect.com/news/baby-products/car-seats/new-car-seat-safety-regulations",
-      "https://shoptadpole.com/blogs/the-pond/new-car-seat-rules-in-2025-what-parents-need-to-know",
-      "https://www.safeintheseat.com/post/side-impact-standards-what-they-mean-for-your-childs-safety"
-    ],
-    "published_at": "2025-05-23"
-  },
-  {
-    "title": "Aid Trucks Looted in Southern Gaza Amid Looming Famine",
-    "description": "Aid trucks in Gaza have been looted amid an ongoing blockade and humanitarian crisis, with the UN warning of worsening famine affecting 2 million people.",
-    "content_summary": "In southern Gaza, aid trucks delivering food and supplies have been repeatedly looted by armed groups amid an ongoing Israeli blockade and military operations, exacerbating an already devastating food crisis. On May 23, 2025, attacks and looting targeted World Food Programme trucks, with Palestinian guards killed during these incidents. The blockade restricts humanitarian aid delivery, pushing the region toward catastrophic famine conditions. The UN has described this as Gaza’s cruelest phase, highlighting the dire struggle of civilians to access food and essential resources. Previous large-scale looting incidents have disrupted relief efforts and worsened hunger across Gaza, with urgent international calls for humanitarian intervention to address this escalating crisis.",
-    "urlToImage": "https://i.abcnewsfe.com/a/1dba0a83-dc8f-4e41-b7c0-90b98d9a601f/aid-1-rt-er-250523_1748014064558_hpMain.jpg",
-    "sources": [
-      "https://www.middleeasteye.net/news/israel-bomb-gaza-aid-guards-they-are-attacked-looters",
-      "https://www.arabnews.com/node/2601906/amp",
-      "https://www.scmp.com/news/world/middle-east/article/3287167/nearly-100-food-aid-trucks-violently-looted-gaza-un-agencies-say"
-    ],
-    "published_at": "2025-05-23"
+    "published_at": "2025-05-29"
   }
 ]

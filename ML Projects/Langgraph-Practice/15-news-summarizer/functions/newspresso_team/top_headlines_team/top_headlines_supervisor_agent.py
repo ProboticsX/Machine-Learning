@@ -12,7 +12,7 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
         " following workers: "+ str(members) + ". Given the following user request,"
         " respond with the worker to act next. Each worker will perform a"
         " task and respond with their results and status." 
-        "When you have received the summary of the top headlines, respond with FINISH."
+        "When you have received the summary of the top headlines and the image URL of the top headlines was verified, respond with FINISH."
         " Do not perform any task yourself. Just route the request to any of the workers."
         "Here's the role of each worker: \n"
         + "\n".join(f"{worker}: {role}" for worker, role in role_of_each_worker.items())
@@ -62,6 +62,7 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
 
 role_of_each_top_headlines_worker = {
     TOP_HEADLINES_AGENT: "Agent who is tasked with providing the summary of the top headlines. Moreover, the summary is written to a json file and pushed to the firebase database.",
+    TOP_HEADLINES_IMAGE_AGENT: "Agent who is tasked with checking the image URL of the top headlines. Moreover, the image URL is written to a json file and pushed to the firebase database if they need to be updated.",
 }
 
 # TOP HEADLINES SUPERVISOR

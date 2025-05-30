@@ -8,8 +8,7 @@ NEWSPRESSO_SUPERVISOR_AGENT = "newspresso_supervisor_agent"
 
 TOP_HEADLINES_SUPERVISOR_AGENT = "top_headlines_supervisor_agent"
 TOP_HEADLINES_AGENT = "top_headlines_agent"
-TOP_HEADLINES_SUMMARIZER_AGENT = "top_headlines_summarizer_agent"
-TOP_HEADLINES_CRITIC_AGENT = "top_headlines_critic_agent"
+TOP_HEADLINES_IMAGE_AGENT = "top_headlines_image_agent"
 
 PODCAST_SUPERVISOR_AGENT = "podcast_supervisor_agent"
 PODCAST_AUDIO_GENERATOR_AGENT = "podcast_audio_generator_agent"
