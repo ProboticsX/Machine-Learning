@@ -244,8 +244,9 @@ summary_json_file = summary_dir / "top_headlines_summary.json"
 
 # Tools
 category_extractor_agent_tools = [get_todays_date_and_day]
-top_headlines_agent_tools = [get_perplexity_response, write_summary_to_json_file, push_headlines_to_firebase_db]
-top_headlines_image_agent_tools = [read_json_file, write_summary_to_json_file, push_headlines_to_firebase_db, get_perplexity_response_with_image, check_image_url]
+top_headlines_agent_tools = [get_perplexity_response, write_summary_to_json_file, validate_json_file]
+top_headlines_image_agent_tools = [read_json_file, write_summary_to_json_file, get_perplexity_response_with_image, check_image_url, validate_json_file]
+top_headlines_firebase_pusher_agent_tools = [read_json_file, push_headlines_to_firebase_db, validate_json_file, write_summary_to_json_file]
 
 transcript_generator_agent_tools = [write_to_file, read_json_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]

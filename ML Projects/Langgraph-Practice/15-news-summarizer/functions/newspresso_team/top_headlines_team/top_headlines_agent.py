@@ -62,8 +62,8 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
         - content_summary: A summary of the headline in about 300 words.\n
         - urlToImage: The image URL of the headline.\n
         - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
-        - published_at: Today's date
-    Lastly, push the json file to the firebase database as per the category.
+        - published_at: Today's date \n
+    Lastly, make sure the json file has a valid JSON format. If not, you need to fix it and then save it back.
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -87,7 +87,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved and has been pushed to the firebase database. The image URL of the top headlines are not verified yet.", name=TOP_HEADLINES_AGENT)
+                HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved but not pushed to the firebase database. The image URL of the top headlines are not verified yet.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
             "category_class": CategoryClass(category=category, country=country, date=date),

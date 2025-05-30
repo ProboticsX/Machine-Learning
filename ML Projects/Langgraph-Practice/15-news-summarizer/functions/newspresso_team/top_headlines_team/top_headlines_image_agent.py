@@ -14,11 +14,11 @@ def top_headlines_image_node(state: AgentState) -> Command[Literal[TOP_HEADLINES
     system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_IMAGE_AGENT]}"+"""
     You are given a json file that contains the top headlines which will include the image URL (urlToImage parameter in the json object) for each headline. \n
     You need to check if the image URL of the top headlines is valid and points to an actual image file. \n
-    If the image URL is not valid, you need to find a new image URL related to the headline and update the json file. \n
+    If the image URL is not valid, you need to find a new image URL related to the headline (content_summary parameter in the json object) and update the json file. \n
     If the image URL is valid, you need to check if the image can be opened. \n
     If the image cannot be opened, you need to find a new image URL related to the headline and update the json file. \n
     If the image can be opened, no update for that headline is needed as the image URL is valid. \n
-    Lastly, push the json file to the firebase database. \n
+    Lastly, make sure the json file has a valid JSON format. If not, you need to fix it and then save it back.
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -42,7 +42,7 @@ def top_headlines_image_node(state: AgentState) -> Command[Literal[TOP_HEADLINES
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines fetched and summarized successfully. The image URL of the top headlines was verified and updated if needed.", name=TOP_HEADLINES_IMAGE_AGENT)
+                HumanMessage(content="Top headlines fetched and summarized successfully. The image URLs of the top headlines were verified and updated if needed. The json file is not pushed to the firebase database yet.", name=TOP_HEADLINES_IMAGE_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
         },
