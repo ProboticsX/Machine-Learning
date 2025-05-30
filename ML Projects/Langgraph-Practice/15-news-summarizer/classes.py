@@ -6,7 +6,7 @@ class CategoryClass(TypedDict):
     date: str = Field(description="The date of the news in the format of YYYY-MM-DD")
 
 class PodcastClass(TypedDict):
-    podcast_transcript: str = Field(description="The podcast transcript")
+    podcast_transcript_file_path: str = Field(description="The path of the podcast transcript file")
     podcast_transcript_critique: str = Field(description="The critique of the podcast transcript")
     podcast_transcript_critique_count: int = Field(description="The count of the critique of the podcast transcript")
 

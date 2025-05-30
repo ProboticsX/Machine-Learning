@@ -30,6 +30,12 @@ def write_text_file(content: str, file_path: str) -> str:
     return f"File written successfully to {file_path}"
 
 @tool
+def read_text_file(file_path: str) -> str:
+    """Reads and returns the contents of a text file."""
+    with open(file_path, "r") as f:
+        return f.read()
+
+@tool
 def create_podcast(file_path: str) -> str:
     """Creates a podcast from the transcript file."""
     audio_file = generate_podcast(
@@ -233,5 +239,6 @@ top_headlines_agent_tools = [get_perplexity_response, write_json_file, validate_
 top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
 top_headlines_firebase_pusher_agent_tools = [push_headlines_to_firebase_db, read_json_file, write_json_file, validate_json_file]
 
-transcript_generator_agent_tools = [write_text_file, read_json_file]
+transcript_generator_agent_tools = [write_text_file, read_text_file, read_json_file]
+podcast_transcript_critic_agent_tools = [read_text_file]
 podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]

@@ -9,7 +9,7 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
     print("===STATE AT PODCAST TRANSCRIPT CRITIC NODE=====")
     print(state)
     date = state["category_class"]["date"]
-    podcast_transcript = state["podcast_class"]["podcast_transcript"]
+    podcast_transcript_file_path = state["podcast_class"]["podcast_transcript_file_path"]
     existing_podcast_transcript_critique = ""
     if state.get("podcast_class").get("podcast_transcript_critique") is not None:
         existing_podcast_transcript_critique = state["podcast_class"]["podcast_transcript_critique"]
@@ -21,25 +21,31 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
      Please make sure to improve the critique based on the existing critique. \n
      Example of a good critique can be such as introducing the podcasters, mentioning the day and date, preventing bias, adding facts, adding human touch, etc. \n
      Introduce the podcasters in the podcast show: Person1 is Marcus and Person2 is Leslie. Please make sure to not use any other tags except <Person1> and <Person2>, don't replace these tags in the script.\n
-     Make sure to not use any other tags like ---. Don't change the structure of the script.
+     Make sure to not use any other tags like ---. Don't change the structure of the script. \n
+     You will be given the podcast transcript file path. Please read the file and then provide the critique. \n
     """
     podcast_transcript_critic_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the podcast transcript: {podcast_transcript} and the existing critique: {existing_podcast_transcript_critique}. The date is {date}"),
+        ("user", "Here is the podcast transcript file path: {podcast_transcript_file_path} and the existing critique: {existing_podcast_transcript_critique}. The date is {date}"),
     ])
-    podcast_transcript_critic_chain = podcast_transcript_critic_prompt | llm
-    invoke_message = {"podcast_transcript": podcast_transcript, "existing_podcast_transcript_critique": existing_podcast_transcript_critique, "date": date}
-    result = podcast_transcript_critic_chain.invoke(invoke_message)
+    formatted_prompt = podcast_transcript_critic_prompt.format(podcast_transcript_file_path=podcast_transcript_file_path, existing_podcast_transcript_critique=existing_podcast_transcript_critique, date=date)
+    podcast_transcript_critic_react_agent = create_react_agent(
+        llm,
+        tools=podcast_transcript_critic_agent_tools,
+        prompt=formatted_prompt,
+    )
+    invoke_message = {"input": "Please do the task as per the system prompt"}
+    result = podcast_transcript_critic_react_agent.invoke(invoke_message)
     print("===RESULT OF PODCAST TRANSCRIPT CRITIC NODE=====")
     print(result)
     
     podcast_class = PodcastClass(
-        podcast_transcript_critique=result.content,
+        podcast_transcript_critique=result["messages"][-1].content,
         podcast_transcript_critique_count=current_podcast_transcript_critique_count
     )
     if state.get("podcast_class") is not None:
         podcast_class = state["podcast_class"].copy()
-        podcast_class["podcast_transcript_critique"] = result.content
+        podcast_class["podcast_transcript_critique"] = result["messages"][-1].content
         podcast_class["podcast_transcript_critique_count"] = current_podcast_transcript_critique_count
 
     return Command(
