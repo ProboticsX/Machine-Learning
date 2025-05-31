@@ -1,5 +1,6 @@
 from common_imports import *
 import re
+from tools.podcast_tools.gemini_multispeaker_tool import GeminiMultiSpeakerTool
 
 @tool
 def read_json_file(file_path: str) -> str:
@@ -34,17 +35,6 @@ def read_text_file(file_path: str) -> str:
     """Reads and returns the contents of a text file."""
     with open(file_path, "r") as f:
         return f.read()
-
-@tool
-def create_podcast(file_path: str) -> str:
-    """Creates a podcast from the transcript file."""
-    audio_file = generate_podcast(
-        transcript_file=str(file_path),
-        tts_model="gemini",
-        api_key_label="GEMINI_API_KEY"
-    )
-    print(f"Audio file generated and saved as: {audio_file}")
-    return "Podcast created successfully and audio file path is: "+str(audio_file)
 
 @tool
 def write_json_file(content: str, file_path: str) -> str:
@@ -223,6 +213,14 @@ def check_image_url(image_url: str) -> str:
     except Exception as e:
         return f"❌ Error checking image URL: {str(e)}"
 
+@tool
+def generate_podcast_from_gemini(raw_text: str, output_path: str) -> str:
+    """Generates a podcast audio from the raw text."""
+    gemini_multispeaker_tool = GeminiMultiSpeakerTool()
+    result = gemini_multispeaker_tool.generate_podcast(raw_text, output_path)
+    return result
+
+
 project_root = Path(__file__).parent.parent.parent
 
 transcript_dir = project_root / "data" / "transcripts"
@@ -233,6 +231,10 @@ summary_dir = project_root / "data" / "summary"
 summary_dir.mkdir(parents=True, exist_ok=True)
 summary_json_file = summary_dir / "top_headlines_summary.json"
 
+podcast_audio_dir = project_root / "data" / "podcasts"
+podcast_audio_dir.mkdir(parents=True, exist_ok=True)
+podcast_audio_file = podcast_audio_dir / "podcast_audio"
+
 # Tools
 category_extractor_agent_tools = [get_todays_date_and_day]
 top_headlines_agent_tools = [get_perplexity_response, write_json_file, validate_json_file]
@@ -241,4 +243,4 @@ top_headlines_firebase_pusher_agent_tools = [push_headlines_to_firebase_db, read
 
 transcript_generator_agent_tools = [write_text_file, read_text_file, read_json_file]
 podcast_transcript_critic_agent_tools = [read_text_file]
-podcast_audio_generator_agent_tools = [create_podcast, push_audio_to_firebase_storage]
+podcast_audio_generator_agent_tools = [generate_podcast_from_gemini, push_audio_to_firebase_storage, read_text_file]

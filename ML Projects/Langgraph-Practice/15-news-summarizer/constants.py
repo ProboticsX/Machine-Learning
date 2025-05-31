@@ -14,7 +14,5 @@ TOP_HEADLINES_FIREBASE_PUSHER_AGENT = "top_headlines_firebase_pusher_agent"
 PODCAST_SUPERVISOR_AGENT = "podcast_supervisor_agent"
 PODCAST_AUDIO_GENERATOR_AGENT = "podcast_audio_generator_agent"
 PODCAST_TRANSCRIPT_SUPERVISOR_AGENT = "podcast_transcript_supervisor_agent"
-
 PODCAST_TRANSCRIPT_GENERATOR_AGENT = "podcast_transcript_generator_agent"
-PODCAST_TRANSCRIPT_WRITER_AGENT = "podcast_transcript_writer_agent"
 PODCAST_TRANSCRIPT_CRITIC_AGENT = "podcast_transcript_critic_agent"

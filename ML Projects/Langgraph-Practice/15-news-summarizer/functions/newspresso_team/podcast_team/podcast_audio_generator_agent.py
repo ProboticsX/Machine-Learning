@@ -11,13 +11,13 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
     category = state["category_class"]["category"]
     podcast_transcript_file_path = podcast_transcript_file
     system_prompt = f"{role_of_each_podcast_worker[PODCAST_AUDIO_GENERATOR_AGENT]}."+"""
-        Use the audio file path from the podcastaudio just generated and push it to the firebase storage as per the category.
+        Use the audio file path from the podcast audio just generated and push it to the firebase storage as per the category.
     """
     podcast_audio_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the podcast transcript file path: {podcast_transcript_file_path}, the category of the podcast: {category}"),
+        ("user", "Here is the podcast transcript file path: {podcast_transcript_file_path}, the category of the podcast: {category} and the output path for the podcast audio: {podcast_audio_file}"),
     ])
-    formatted_prompt = podcast_audio_generator_prompt.format(podcast_transcript_file_path=podcast_transcript_file_path, category=category)
+    formatted_prompt = podcast_audio_generator_prompt.format(podcast_transcript_file_path=podcast_transcript_file_path, category=category, podcast_audio_file=podcast_audio_file)
     podcast_audio_generator_agent = create_react_agent(llm, 
                                              tools=podcast_audio_generator_agent_tools, 
                                              prompt = formatted_prompt)

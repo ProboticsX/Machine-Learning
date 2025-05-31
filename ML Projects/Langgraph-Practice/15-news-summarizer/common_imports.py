@@ -44,10 +44,8 @@ from typing import List, Literal
 from typing_extensions import TypedDict
 import yfinance as yf
 import math
-from newsapi import NewsApiClient
 from serpapi import GoogleSearch
 from tools.news_api_tool.news_api_tool import NewsTool
-from podcastfy.client import generate_podcast
 from tools.firebase_tools.firestorage_and_firestore_audio_tool import FireStorageAndFireStoreAudioTool
 from tools.firebase_tools.firebase_tools import FirebaseTools
 

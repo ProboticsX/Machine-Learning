@@ -20,9 +20,11 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
     system_prompt = f"{role_of_each_random_worker[PODCAST_TRANSCRIPT_CRITIC_AGENT]} \n"+"""
      Please make sure to improve the critique based on the existing critique. \n
      Example of a good critique can be such as introducing the podcasters, mentioning the day and date, preventing bias, adding facts, adding human touch, etc. \n
-     Introduce the podcasters in the podcast show: Person1 is Marcus and Person2 is Leslie. Please make sure to not use any other tags except <Person1> and <Person2>, don't replace these tags in the script.\n
-     Make sure to not use any other tags like ---. Don't change the structure of the script. \n
+     Introduce the podcasters in the podcast show: Speaker 1 is Leslie and Speaker 2 is Marcus. Please make sure that every dialogue is in the format of Speaker 1: "..." and Speaker 2: "...". \n
+     Don't replace Speaker 1 and Speaker 2 tags in the script.\n
+     Make the podcast transcript more engaging and interesting to listen to. \n
      You will be given the podcast transcript file path. Please read the file and then provide the critique. \n
+     Don't include any special characters or bold text in the Speaker tags. Don't include any other tags in the script. It should strictly follow the format above. \n
     """
     podcast_transcript_critic_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

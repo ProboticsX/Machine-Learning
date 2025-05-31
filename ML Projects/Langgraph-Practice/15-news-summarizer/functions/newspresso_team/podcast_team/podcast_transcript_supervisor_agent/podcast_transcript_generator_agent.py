@@ -19,17 +19,15 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     system_prompt = f"{role_of_each_podcast_transcript_supervisor_worker[PODCAST_TRANSCRIPT_GENERATOR_AGENT]} \n"+"""
     The name of the podcast is "Newspresso". \n
     Please make sure to improve the script based on the critique of the podcast transcript and the existing podcast transcript (the path of the file is provided to you). \n
-    Please make sure to not use any other tags except <Person1> and <Person2>. \n
     The script should be in the following format: \n
-    <Person1> "Welcome to Newspresso – your personal generative AI podcast! We've got a jam-packed episode today covering everything from global politics to basketball buzzer-beaters. Let's dive right in with a tense exchange at the White House." \n
-    </Person1><Person2> "Right—President Trump recently met with Canada's new Prime Minister, Mark Carney, and let's just say, things got frosty. Trump doubled down on his refusal to lower tariffs on Canadian imports, insisting they're justified. He even accused the U.S. of subsidizing Canada unfairly." \n
-    </Person2><Person1> "Yeah, and Carney tried to emphasize the economic interdependence between the two nations, but even he admitted a trade deal isn't happening anytime soon. Those 25% tariffs are still on the table—and that's a real strain, considering how closely the U.S. and Canada rely on one another." \n
-    </Person1><Person2> "Switching gears, let's talk NBA playoffs. The Indiana Pacers pulled off a nail-biter against the Cleveland Cavaliers, winning 120 to 119!" \n
-    </Person2><Person1> "Oh, what a finish! Tyrese Haliburton hit a last-second three to seal the deal. Myles Turner and Aaron Nesmith both had huge nights with 23 points apiece, but man, Donovan Mitchell dropping 48 and still losing? That's brutal." \n
-    </Person1><Person2> "The Pacers now lead the series 2-0, and all eyes are on Game 3 later this week. That's going to be a must-watch." \n
-    </Person2>\n
+    Speaker 1: "Welcome to Newspresso – your personal generative AI podcast! We've got a jam-packed episode today covering everything from global politics to basketball buzzer-beaters. Let's dive right in with a tense exchange at the White House."
+    Speaker 2: "Right—President Trump recently met with Canada's new Prime Minister, Mark Carney, and let's just say, things got frosty. Trump doubled down on his refusal to lower tariffs on Canadian imports, insisting they're justified. He even accused the U.S. of subsidizing Canada unfairly."
+    Speaker 1: "Yeah, and Carney tried to emphasize the economic interdependence between the two nations, but even he admitted a trade deal isn't happening anytime soon. Those 25% tariffs are still on the table—and that's a real strain, considering how closely the U.S. and Canada rely on one another."
+    Speaker 2: "Switching gears, let's talk NBA playoffs. The Indiana Pacers pulled off a nail-biter against the Cleveland Cavaliers, winning 120 to 119!"
+    Speaker 1: "The Pacers now lead the series 2-0, and all eyes are on Game 3 later this week. That's going to be a must-watch."
 
-    Finally, write the podcast transcript generated above to a file.
+    Don't include any special characters in the Speaker tags. Don't include any other tags in the script. It should strictly follow the format above.
+    Finally, write the podcast transcript generated above to a file. Always save the new file over the existing file.
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

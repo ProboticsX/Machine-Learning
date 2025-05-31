@@ -135,5 +135,14 @@ faiss_index_react/
 .chroma/
 
 ./ML Projects/llm_engineering
-ML Projects/Langgraph-Practice/15-news-summarizer/testing/podcastfy-testing/data/audio
-ML Projects/Langgraph-Practice/15-news-summarizer/testing/google-testing/data/audio
+*./audio/*
+*.mp3
+
+# Secrets and credentials
+secrets/
+**/secrets/
+*.json
+!package.json
+!package-lock.json
+
+podcasts/
