@@ -30,6 +30,24 @@ class FirebaseTools:
         
         self.db = firestore.client()
     
+    def _convert_timestamp_to_iso(self, data: Any) -> Any:
+        """
+        Convert Firestore timestamps to ISO format strings recursively.
+        
+        Args:
+            data: The data to convert (can be dict, list, or primitive type)
+            
+        Returns:
+            The converted data with timestamps as ISO strings
+        """
+        if isinstance(data, dict):
+            return {k: self._convert_timestamp_to_iso(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [self._convert_timestamp_to_iso(item) for item in data]
+        elif hasattr(data, 'timestamp'):  # Check if it's a Firestore timestamp
+            return data.isoformat()
+        return data
+
     def push_headlines(self, headlines_data: List[Dict[str, Any]], collection_path: str = "news_latest", category: str = "general") -> Dict[str, Any]:
         """
         Push headlines to Firestore database.
@@ -128,12 +146,92 @@ class FirebaseTools:
                 "error": str(e)
             }
 
+    def get_headlines_by_date(self, date: str) -> Dict[str, Any]:
+        """
+        Fetch all headlines for a specific date across all categories.
+        
+        Args:
+            date (str): Date in YYYY-MM-DD format
+            
+        Returns:
+            Dict[str, Any]: Dictionary containing headlines organized by category
+        """
+        try:
+            # Reference to the categories collection
+            categories_ref = (
+                self.db.collection("news_latest")
+                .document("top_headlines")
+                .collection("categories")
+            )
+            
+            # Get all categories using list_documents
+            categories = list(categories_ref.list_documents())
+            
+            result = {
+                "success": True,
+                "date": date,
+                "categories": {}
+            }
+            
+            # Iterate through each category
+            for category_doc in categories:
+                category = category_doc.id
+                
+                # Reference to the headlines collection for this category and date
+                headlines_ref = (
+                    categories_ref
+                    .document(category)
+                    .collection("dates")
+                    .document(date)
+                    .collection("headlines")
+                )
+                
+                # Get all headlines for this category and date
+                headlines = headlines_ref.get()
+                
+                # Store headlines for this category
+                category_headlines = []
+                for headline_doc in headlines:
+                    headline_data = headline_doc.to_dict()
+                    headline_data["id"] = headline_doc.id
+                    category_headlines.append(headline_data)
+                
+                # Add category headlines to result if any exist
+                if category_headlines:
+                    result["categories"][category] = category_headlines
+            
+            # Add total headlines count
+            total_headlines = sum(len(headlines) for headlines in result["categories"].values())
+            result["total_headlines"] = total_headlines
+            
+            if total_headlines == 0:
+                result["message"] = f"No headlines found for date: {date}"
+            else:
+                result["message"] = f"Successfully retrieved {total_headlines} headlines across {len(result['categories'])} categories"
+            
+            # Convert any Firestore timestamps to ISO format strings
+            result = self._convert_timestamp_to_iso(result)
+            
+            return result
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "message": f"Error fetching headlines: {str(e)}",
+                "error": str(e)
+            }
+
 # Example usage:
 if __name__ == "__main__":
     # Initialize the Firebase tools
     firebase_tools = FirebaseTools()
     
-    # Example of pushing headlines from a JSON file
-    json_path = "../../data/summary/top_headlines_summary.json"
-    result = firebase_tools.push_headlines_from_json(json_path, category="technology")
-    print(result)
+    # # Example of pushing headlines from a JSON file
+    # json_path = "../../data/summary/top_headlines_summary.json"
+    # result = firebase_tools.push_headlines_from_json(json_path, category="technology")
+    # print(result)
+    
+    # Example of fetching headlines by date
+    date = "2025-05-31"  # Replace with desired date
+    headlines = firebase_tools.get_headlines_by_date(date)
+    print(json.dumps(headlines, indent=2))
