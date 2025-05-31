@@ -18,7 +18,8 @@ def top_headlines_image_node(state: AgentState) -> Command[Literal[TOP_HEADLINES
     If the image URL is valid, you need to check if the image can be opened. \n
     If the image cannot be opened, you need to find a new image URL related to the headline and update the json file. \n
     If the image can be opened, no update for that headline is needed as the image URL is valid. \n
-    Lastly, make sure the json file has a valid JSON format. If not, you need to fix it and then save it back.
+    Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. \n
+    If not in the correct format, you need to fix it and then save it back.
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

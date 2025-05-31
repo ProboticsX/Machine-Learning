@@ -10,38 +10,118 @@ def read_json_file(file_path: str) -> str:
         file_path: Path to the JSON file to read
         
     Returns:
-        str: Contents of the JSON file as a formatted string
+        str: Contents of the JSON file as a formatted string, or error message if reading fails
     """
     try:
-        with open(file_path, 'r') as f:
+        # Read file with explicit UTF-8 encoding
+        with open(file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            return json.dumps(data, indent=2)
+            
+        # Clean any control characters from string values
+        def clean_string(obj):
+            if isinstance(obj, str):
+                # Remove control characters (0x00-0x1F and 0x7F-0x9F)
+                return ''.join(char for char in obj if ord(char) >= 32 and ord(char) != 127)
+            elif isinstance(obj, dict):
+                return {k: clean_string(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [clean_string(item) for item in obj]
+            return obj
+        
+        # Clean the data
+        cleaned_data = clean_string(data)
+        
+        # Return formatted JSON string
+        return json.dumps(cleaned_data, indent=2, ensure_ascii=False)
     except FileNotFoundError:
         return f"Error: File not found at {file_path}"
-    except json.JSONDecodeError:
-        return f"Error: Invalid JSON format in file {file_path}"
+    except json.JSONDecodeError as e:
+        return f"Error: Invalid JSON format in file {file_path} - {str(e)}"
     except Exception as e:
         return f"Error reading file: {str(e)}"
 
 @tool
 def write_text_file(content: str, file_path: str) -> str:
-    """Writes the content to a file in the data/transcripts folder."""
-    with open(file_path, "w") as f:
-        f.write(content)
-    return f"File written successfully to {file_path}"
+    """Writes the content to a file in the data/transcripts folder.
+    
+    Args:
+        content: The text content to write
+        file_path: Path where the text file should be written
+        
+    Returns:
+        str: Success or error message
+    """
+    try:
+        # Clean control characters from the content
+        cleaned_content = ''.join(char for char in content if ord(char) >= 32 and ord(char) != 127)
+        
+        # Write the cleaned content with proper encoding
+        with open(file_path, "w", encoding='utf-8') as f:
+            f.write(cleaned_content)
+        return f"File written successfully to {file_path}"
+    except Exception as e:
+        return f"Error writing file: {str(e)}"
 
 @tool
 def read_text_file(file_path: str) -> str:
-    """Reads and returns the contents of a text file."""
-    with open(file_path, "r") as f:
-        return f.read()
+    """Reads and returns the contents of a text file.
+    
+    Args:
+        file_path: Path to the text file to read
+        
+    Returns:
+        str: Contents of the text file, or error message if reading fails
+    """
+    try:
+        # Read file with explicit UTF-8 encoding
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+            
+        # Clean control characters from the content
+        cleaned_content = ''.join(char for char in content if ord(char) >= 32 and ord(char) != 127)
+        return cleaned_content
+    except FileNotFoundError:
+        return f"Error: File not found at {file_path}"
+    except Exception as e:
+        return f"Error reading file: {str(e)}"
 
 @tool
 def write_json_file(content: str, file_path: str) -> str:
-    """Writes the content to a json file in the data/summary folder."""
-    with open(file_path, "w") as f:
-        f.write(content)
-    return f"File written successfully to {file_path}"
+    """Writes the content to a json file in the data/summary folder.
+    
+    Args:
+        content: The JSON content to write
+        file_path: Path where the JSON file should be written
+        
+    Returns:
+        str: Success or error message
+    """
+    try:
+        # First try to parse the content as JSON to validate it
+        data = json.loads(content)
+        
+        # Clean any control characters from string values
+        def clean_string(obj):
+            if isinstance(obj, str):
+                # Remove control characters (0x00-0x1F and 0x7F-0x9F)
+                return ''.join(char for char in obj if ord(char) >= 32 and ord(char) != 127)
+            elif isinstance(obj, dict):
+                return {k: clean_string(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [clean_string(item) for item in obj]
+            return obj
+        
+        # Clean the data
+        cleaned_data = clean_string(data)
+        
+        # Write the cleaned data back to JSON
+        with open(file_path, "w", encoding='utf-8') as f:
+            json.dump(cleaned_data, f, indent=2, ensure_ascii=False)
+        return f"File written successfully to {file_path}"
+    except json.JSONDecodeError as e:
+        return f"Error: Invalid JSON format - {str(e)}"
+    except Exception as e:
+        return f"Error writing file: {str(e)}"
 
 @tool
 def get_todays_date_and_day() -> str:
@@ -242,5 +322,5 @@ top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_ima
 top_headlines_firebase_pusher_agent_tools = [push_headlines_to_firebase_db, read_json_file, write_json_file, validate_json_file]
 
 transcript_generator_agent_tools = [write_text_file, read_text_file, read_json_file]
-podcast_transcript_critic_agent_tools = [read_text_file]
+podcast_transcript_critic_agent_tools = [read_text_file, web_search]
 podcast_audio_generator_agent_tools = [generate_podcast_from_gemini, push_audio_to_firebase_storage, read_text_file]

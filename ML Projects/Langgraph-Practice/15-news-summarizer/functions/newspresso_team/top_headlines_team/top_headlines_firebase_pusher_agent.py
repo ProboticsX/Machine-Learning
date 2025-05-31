@@ -12,8 +12,9 @@ def top_headlines_firebase_pusher_node(state: AgentState) -> Command[Literal[TOP
     category = state["category_class"]["category"]
     date = state["category_class"]["date"]
     system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_FIREBASE_PUSHER_AGENT]}"+"""
-    You are given a json file that contains the top headlines. Make sure the json file has a valid JSON format. If not, you need to fix it and then save it back.\n
-    You need to push the json file to the firebase database. \n
+    You are given a json file that contains the top headlines. Make sure the json file has a valid JSON format. Do not include any control characters in the json file. \n
+    If not in the correct format, you need to fix it and then save it back.\n
+    You need to push the valid json file to the firebase database. \n
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

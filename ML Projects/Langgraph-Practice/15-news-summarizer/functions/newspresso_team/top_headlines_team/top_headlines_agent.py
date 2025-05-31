@@ -63,7 +63,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
         - urlToImage: The image URL of the headline.\n
         - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
         - published_at: Today's date \n
-    Lastly, make sure the json file has a valid JSON format. If not, you need to fix it and then save it back.
+    Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. If not, you need to fix it and then save it back.
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

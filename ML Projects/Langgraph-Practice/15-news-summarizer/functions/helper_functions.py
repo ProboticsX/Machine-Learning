@@ -2,7 +2,7 @@ from common_imports import *
 
 def displayGraph(graph):
     print(graph.get_graph().draw_ascii())
-    graph.get_graph().draw_mermaid_png(output_file_path="newspresso_team.png")
+    graph.get_graph().draw_mermaid_png(output_file_path="newspresso.png")
 
 
 role_of_each_random_worker = {

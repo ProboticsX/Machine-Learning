@@ -9,6 +9,7 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     print("===STATE AT PODCAST TRANSCRIPT GENERATOR NODE=====")
     print(state)
     top_headlines_summary_json_file = state["top_headlines_class"]["top_headlines_summary_json_file"]
+    date = state["category_class"]["date"]
     podcast_transcript_critique = ""
     current_podcast_transcript_critique_count = 0
     if state.get("podcast_class") is not None:
@@ -31,10 +32,10 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the summary of the top headlines found in the json file: {top_headlines_summary_json_file} and the critique of the podcast transcript (if any): {podcast_transcript_critique}. The podcast transcript file path is {podcast_transcript_file_path}"),
+        ("user", "Here is the summary of the top headlines found in the json file: {top_headlines_summary_json_file} and the critique of the podcast transcript (if any): {podcast_transcript_critique}. The podcast transcript file path is {podcast_transcript_file_path} and the date of the podcast is {date}"),
     ])
     podcast_transcript_file_path = podcast_transcript_file
-    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript_critique=podcast_transcript_critique, podcast_transcript_file_path=podcast_transcript_file_path)
+    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript_critique=podcast_transcript_critique, podcast_transcript_file_path=podcast_transcript_file_path, date=date)
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
         tools=transcript_generator_agent_tools, 

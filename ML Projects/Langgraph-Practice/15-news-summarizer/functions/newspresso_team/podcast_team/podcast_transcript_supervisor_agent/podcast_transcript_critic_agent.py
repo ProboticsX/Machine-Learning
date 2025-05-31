@@ -22,7 +22,8 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
      Example of a good critique can be such as introducing the podcasters, mentioning the day and date, preventing bias, adding facts, adding human touch, etc. \n
      Introduce the podcasters in the podcast show: Speaker 1 is Leslie and Speaker 2 is Marcus. Please make sure that every dialogue is in the format of Speaker 1: "..." and Speaker 2: "...". \n
      Don't replace Speaker 1 and Speaker 2 tags in the script.\n
-     Make the podcast transcript more engaging and interesting to listen to. \n
+     Make the podcast transcript more engaging and interesting to listen to. The podcasters can laugh and joke around related to the news. Moreover, they can interrupt each other and talk over each other. \n
+     The podcasters can also talk about the news in a more casual and conversational manner. They can also mention a fun fact related to the news (if any). \n
      You will be given the podcast transcript file path. Please read the file and then provide the critique. \n
      Don't include any special characters or bold text in the Speaker tags. Don't include any other tags in the script. It should strictly follow the format above. \n
     """
