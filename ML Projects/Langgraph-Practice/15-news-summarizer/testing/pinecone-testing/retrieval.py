@@ -15,6 +15,6 @@ def get_result(query, similar_result = 3):
   result = index.query(vector = vector, top_k = similar_result)
   return result
 
-query = "How much tarrif is being imposed on steel?"
+query = "What happened with Taylor Swift in Paris?"
 result = get_result(query)
 print(result)

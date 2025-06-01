@@ -126,22 +126,91 @@ class HeadlineIngestor:
         if category:
             print(f"Using provided category: {category}")
 
+class HeadlineRetriever:
+    def __init__(self, index_name: str = "newspresso"):
+        """Initialize the retriever with Pinecone index and OpenAI embeddings.
+        
+        Args:
+            index_name (str): Name of the Pinecone index to use (default: "newspresso")
+        """
+        # Initialize OpenAI embeddings
+        self.embeddings = OpenAIEmbeddings()
+        
+        # Initialize Pinecone
+        self.pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
+        self.index = self.pc.Index(index_name)
+    
+    def retrieve_headlines(self, 
+                          query: str, 
+                          top_k: int = 3,
+                          date: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Retrieve relevant headlines based on the query.
+        
+        Args:
+            query (str): The search query
+            top_k (int): Number of results to return (default: 3)
+            date (str, optional): Filter results by date (format: YYYY-MM-DD)
+            
+        Returns:
+            List[Dict[str, Any]]: List of retrieved headlines with their metadata
+        """
+        # Generate embedding for the query
+        query_embedding = self.embeddings.embed_query(query)
+        
+        # Query Pinecone with a larger top_k to account for filtering
+        results = self.index.query(
+            vector=query_embedding,
+            top_k=top_k * 2 if date else top_k,  # Fetch more results if we need to filter
+            include_metadata=True
+        )
+        
+        # Format and filter results
+        headlines = []
+        for match in results.matches:
+            # Extract date from ID (format: date_category_headline_index)
+            doc_date = match.id.split('_')[0]
+            
+            # Apply date filter if specified
+            if date and doc_date != date:
+                continue
+                
+            headlines.append({
+                "id": match.id,
+                "score": match.score,
+                "metadata": match.metadata,
+                "date": doc_date
+            })
+            
+            # Break if we have enough results after filtering
+            if len(headlines) >= top_k:
+                break
+        
+        return headlines
+
 def main():
-    # Initialize ingestor
-    ingestor = HeadlineIngestor()
-    
-    # Ingest headlines
-    json_file_path = "./top_headlines_summary.json"
     index_name = "newspresso"
-    date = "2025-05-31"
-    category = "business"
     
-    ingestor.ingest_headlines(
-        json_file_path=json_file_path,
-        index_name=index_name,
-        date=date,
-        category=category
-    )
+    # Initialize retriever and test retrieval
+    retriever = HeadlineRetriever(index_name=index_name)
+    
+    # Example queries with date filtering
+    test_queries = [
+        ("What happened with Taylor Swift in Paris?", "2025-06-01"),
+        ("Latest business news", "2025-06-01"),
+        ("Technology updates", "2025-05-31")  # No date filter
+    ]
+    
+    print("\nTesting headline retrieval:")
+    for query, date in test_queries:
+        print(f"\nQuery: {query}")
+        if date:
+            print(f"Date filter: {date}")
+        results = retriever.retrieve_headlines(query, date=date)
+        for result in results:
+            print(f"\nTitle: {result['metadata']['title']}")
+            print(f"Date: {result['date']}")
+            print(f"Score: {result['score']:.4f}")
+            print(f"Summary: {result['metadata']['content_summary']}")
 
 if __name__ == "__main__":
     main()

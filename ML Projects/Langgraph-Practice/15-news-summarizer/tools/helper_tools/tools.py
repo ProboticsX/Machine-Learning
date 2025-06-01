@@ -1,7 +1,7 @@
 from common_imports import *
 import re
 from tools.podcast_tools.gemini_multispeaker_tool import GeminiMultiSpeakerTool
-from tools.pinecone_tools.main import HeadlineIngestor
+from tools.pinecone_tools.main import HeadlineIngestor, HeadlineRetriever
 
 @tool
 def read_json_file(file_path: str) -> str:
@@ -314,6 +314,18 @@ def push_top_headlines_to_pinecone(top_headlines_json_file: str, index_name: str
     result = ingestor.ingest_headlines(top_headlines_json_file, index_name=index_name, category=category, date=date)
     return result
 
+@tool
+def retrieve_headlines_from_pinecone(user_question: str, date: str) -> str:
+    """Retrieves the headlines from the pinecone database.
+    Args:
+        user_question: The user question to retrieve the headlines from the pinecone database.
+    Returns:
+        str: The result of the pinecone retrieval.
+    """
+    retriever = HeadlineRetriever(index_name=pinecone_index_name)
+    result = retriever.retrieve_headlines(user_question, date=date)
+    return result
+
 project_root = Path(__file__).parent.parent.parent
 
 transcript_dir = project_root / "data" / "transcripts"
@@ -328,10 +340,6 @@ podcast_audio_dir = project_root / "data" / "podcasts"
 podcast_audio_dir.mkdir(parents=True, exist_ok=True)
 podcast_audio_file = podcast_audio_dir / "podcast_audio"
 
-
-all_top_headlines_dir = project_root / "data" / "all_top_headlines"
-all_top_headlines_dir.mkdir(parents=True, exist_ok=True)
-all_top_headlines_json_file = all_top_headlines_dir / "all_top_headlines.json"
 pinecone_index_name = "newspresso"
 
 # Tools
@@ -343,3 +351,5 @@ top_headlines_cloud_pusher_agent_tools = [push_headlines_to_firebase_db, push_to
 transcript_generator_agent_tools = [write_text_file, read_text_file, read_json_file]
 podcast_transcript_critic_agent_tools = [read_text_file, web_search]
 podcast_audio_generator_agent_tools = [generate_podcast_from_gemini, push_audio_to_firebase_storage, read_text_file]
+
+rag_retriever_agent_tools = [retrieve_headlines_from_pinecone, get_todays_date_and_day]

@@ -12,6 +12,9 @@ from functions.newspresso_team.top_headlines_team.top_headlines_cloud_pusher_age
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_generator_agent import podcast_transcript_generator_node
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_critic_agent import podcast_transcript_critic_node
 
+from functions.newspresso_team.rag_team.rag_supervisor_agent import rag_supervisor_agent
+from functions.newspresso_team.rag_team.rag_retriever_agent import rag_retriever_node
+
 from common_imports import *
 from classes import AgentState
 
@@ -27,9 +30,11 @@ workflow.add_node(TOP_HEADLINES_CLOUD_PUSHER_AGENT, top_headlines_cloud_pusher_n
 workflow.add_node(PODCAST_SUPERVISOR_AGENT, podcast_supervisor_agent)
 workflow.add_node(PODCAST_TRANSCRIPT_SUPERVISOR_AGENT, podcast_transcript_supervisor_agent)
 workflow.add_node(PODCAST_AUDIO_GENERATOR_AGENT, podcast_audio_generator_node)
-
 workflow.add_node(PODCAST_TRANSCRIPT_GENERATOR_AGENT, podcast_transcript_generator_node)
 workflow.add_node(PODCAST_TRANSCRIPT_CRITIC_AGENT, podcast_transcript_critic_node)
+
+workflow.add_node(RAG_SUPERVISOR_AGENT, rag_supervisor_agent)
+workflow.add_node(RAG_RETRIEVER_AGENT, rag_retriever_node)
 
 workflow.add_edge(START, NEWSPRESSO_SUPERVISOR_AGENT)
 

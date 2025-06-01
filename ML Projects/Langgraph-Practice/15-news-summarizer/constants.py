@@ -16,3 +16,6 @@ PODCAST_AUDIO_GENERATOR_AGENT = "podcast_audio_generator_agent"
 PODCAST_TRANSCRIPT_SUPERVISOR_AGENT = "podcast_transcript_supervisor_agent"
 PODCAST_TRANSCRIPT_GENERATOR_AGENT = "podcast_transcript_generator_agent"
 PODCAST_TRANSCRIPT_CRITIC_AGENT = "podcast_transcript_critic_agent"
+
+RAG_SUPERVISOR_AGENT = "rag_supervisor_agent"
+RAG_RETRIEVER_AGENT = "rag_retriever_agent"
