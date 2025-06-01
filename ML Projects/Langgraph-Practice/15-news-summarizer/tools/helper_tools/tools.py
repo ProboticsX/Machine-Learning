@@ -1,6 +1,7 @@
 from common_imports import *
 import re
 from tools.podcast_tools.gemini_multispeaker_tool import GeminiMultiSpeakerTool
+from tools.pinecone_tools.main import HeadlineIngestor
 
 @tool
 def read_json_file(file_path: str) -> str:
@@ -300,6 +301,18 @@ def generate_podcast_from_gemini(raw_text: str, output_path: str) -> str:
     result = gemini_multispeaker_tool.generate_podcast(raw_text, output_path)
     return result
 
+@tool
+def push_top_headlines_to_pinecone(top_headlines_json_file: str, index_name: str, category: str, date: str) -> str:
+    """Pushes the top headlines to the pinecone database.
+    Args:
+        top_headlines_json_file: The path to the top headlines json file.
+        index_name: The name of the pinecone index.
+    Returns:
+        str: The result of the pinecone ingestion.
+    """
+    ingestor = HeadlineIngestor()
+    result = ingestor.ingest_headlines(top_headlines_json_file, index_name=index_name, category=category, date=date)
+    return result
 
 project_root = Path(__file__).parent.parent.parent
 
@@ -315,11 +328,17 @@ podcast_audio_dir = project_root / "data" / "podcasts"
 podcast_audio_dir.mkdir(parents=True, exist_ok=True)
 podcast_audio_file = podcast_audio_dir / "podcast_audio"
 
+
+all_top_headlines_dir = project_root / "data" / "all_top_headlines"
+all_top_headlines_dir.mkdir(parents=True, exist_ok=True)
+all_top_headlines_json_file = all_top_headlines_dir / "all_top_headlines.json"
+pinecone_index_name = "newspresso"
+
 # Tools
 category_extractor_agent_tools = [get_todays_date_and_day]
 top_headlines_agent_tools = [get_perplexity_response, write_json_file, validate_json_file]
 top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
-top_headlines_firebase_pusher_agent_tools = [push_headlines_to_firebase_db, read_json_file, write_json_file, validate_json_file]
+top_headlines_cloud_pusher_agent_tools = [push_headlines_to_firebase_db, push_top_headlines_to_pinecone, read_json_file, write_json_file, validate_json_file]
 
 transcript_generator_agent_tools = [write_text_file, read_text_file, read_json_file]
 podcast_transcript_critic_agent_tools = [read_text_file, web_search]

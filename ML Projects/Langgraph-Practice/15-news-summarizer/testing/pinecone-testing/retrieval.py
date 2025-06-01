@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
-index_name = "news-articles"
+index_name = "newspresso"
 index = pc.Index(index_name)
 embeddings = OpenAIEmbeddings()
 
@@ -15,6 +15,6 @@ def get_result(query, similar_result = 3):
   result = index.query(vector = vector, top_k = similar_result)
   return result
 
-query = "How's the relation between India and Pakistan?"
+query = "How much tarrif is being imposed on steel?"
 result = get_result(query)
 print(result)
