@@ -25,8 +25,10 @@ if __name__ == "__main__":
     # processsed_news_file_path = NewsTool().processed_news_path
     # print(processsed_news_file_path)
     # question = "What are the latest top headlines in the general category in the last 24 hours? Create a podcast on the same."
-    # question = "What are the latest top headlines in the general category? Create a podcast on the same."
-    question = "RAG: What are the new tarrifs imposed on steel?"
+    # question = "What are the latest top headlines in the entertainment category in the last 24 hours? Create a podcast on the same."
+    # question = "RAG: What's the latest news on the US-China trade war?"
+    question = "RAG: What's the latest news on Owen Wilson?"
+    # question = "RAG: Tell me about the recent news on Taylor Swift's new album?"
     displayGraph(graph)
     result = graph.invoke({"messages": [question]}, config={"recursion_limit": 35})
     print("======RESULT=======")

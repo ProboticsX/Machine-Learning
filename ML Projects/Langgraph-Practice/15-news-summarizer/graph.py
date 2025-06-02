@@ -14,6 +14,8 @@ from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.
 
 from functions.newspresso_team.rag_team.rag_supervisor_agent import rag_supervisor_agent
 from functions.newspresso_team.rag_team.rag_retriever_agent import rag_retriever_node
+from functions.newspresso_team.rag_team.rag_grader_agent import rag_grader_node
+from functions.newspresso_team.rag_team.rag_generator_agent import rag_generator_node
 
 from common_imports import *
 from classes import AgentState
@@ -35,6 +37,8 @@ workflow.add_node(PODCAST_TRANSCRIPT_CRITIC_AGENT, podcast_transcript_critic_nod
 
 workflow.add_node(RAG_SUPERVISOR_AGENT, rag_supervisor_agent)
 workflow.add_node(RAG_RETRIEVER_AGENT, rag_retriever_node)
+workflow.add_node(RAG_GRADER_AGENT, rag_grader_node)
+workflow.add_node(RAG_GENERATOR_AGENT, rag_generator_node)
 
 workflow.add_edge(START, NEWSPRESSO_SUPERVISOR_AGENT)
 

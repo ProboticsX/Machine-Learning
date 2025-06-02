@@ -37,6 +37,7 @@ from typing import Annotated
 from constants import *
 import requests
 
+
 # Other imports
 from pydantic import BaseModel, Field
 from IPython.display import Image, display

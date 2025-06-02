@@ -160,7 +160,7 @@ class HeadlineRetriever:
         # Query Pinecone with a larger top_k to account for filtering
         results = self.index.query(
             vector=query_embedding,
-            top_k=top_k * 2 if date else top_k,  # Fetch more results if we need to filter
+            top_k=top_k,  # Fetch more results if we need to filter
             include_metadata=True
         )
         

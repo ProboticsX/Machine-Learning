@@ -61,7 +61,7 @@ def make_rag_supervisor_node(llm, members, role_of_each_worker) -> str:
 
 
 role_of_each_rag_worker = {
-    RAG_RETRIEVER_AGENT: "Agent who is tasked with retrieving the top headlines from the pinecone database.",
+    RAG_RETRIEVER_AGENT: "Agent who is tasked with retrieving the top_k relevant documents from the pinecone database according to the user question.",
 }
 
 # RAG AGENT SUPERVISOR

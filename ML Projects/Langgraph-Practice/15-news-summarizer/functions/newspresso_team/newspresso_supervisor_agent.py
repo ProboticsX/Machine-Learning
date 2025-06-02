@@ -41,7 +41,7 @@ def make_newspresso_supervisor_node(llm, members, role_of_each_worker) -> str:
             goto = END
         print("===GOTO=====")
         print(goto)
-        return Command(goto=goto, update={"next": goto})
+        return Command(goto=goto, update={"next": goto, "user_question": question})
 
     return newspresso_supervisor_node
 

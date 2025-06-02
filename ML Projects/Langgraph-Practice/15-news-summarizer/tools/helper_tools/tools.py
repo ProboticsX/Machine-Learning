@@ -3,6 +3,7 @@ import re
 from tools.podcast_tools.gemini_multispeaker_tool import GeminiMultiSpeakerTool
 from tools.pinecone_tools.main import HeadlineIngestor, HeadlineRetriever
 
+
 @tool
 def read_json_file(file_path: str) -> str:
     """Reads and returns the contents of a JSON file.
@@ -140,6 +141,17 @@ def web_search(query: str) -> str:
     """Searches the web for the query."""
     search = TavilySearchResults()
     return search.invoke(query)
+
+@tool
+def web_search_with_url(url: str) -> str:
+    """Searches the web for the query using the url.
+    Args:
+        url: The url to search the web for.
+    Returns:
+        str: The result of the web search.
+    """
+    search = TavilySearchResults()
+    return search.invoke(url=url)
 
 @tool
 def push_headlines_to_firebase_db(category: str, file_path: str) -> str:
@@ -315,7 +327,7 @@ def push_top_headlines_to_pinecone(top_headlines_json_file: str, index_name: str
     return result
 
 @tool
-def retrieve_headlines_from_pinecone(user_question: str, date: str) -> str:
+def retrieve_headlines_from_pinecone(user_question: str, date: str, top_k: int) -> str:
     """Retrieves the headlines from the pinecone database.
     Args:
         user_question: The user question to retrieve the headlines from the pinecone database.
@@ -323,8 +335,19 @@ def retrieve_headlines_from_pinecone(user_question: str, date: str) -> str:
         str: The result of the pinecone retrieval.
     """
     retriever = HeadlineRetriever(index_name=pinecone_index_name)
-    result = retriever.retrieve_headlines(user_question, date=date)
+    result = retriever.retrieve_headlines(user_question, date=date, top_k=top_k)
     return result
+
+@tool
+def get_stock_price(ticker: str) -> float:
+    """Gets a stock price from Yahoo Finance.
+
+    Args:
+        ticker: ticker str
+    """
+    stock = yf.Ticker(ticker)
+    return stock.info['previousClose']
+
 
 project_root = Path(__file__).parent.parent.parent
 
@@ -353,3 +376,4 @@ podcast_transcript_critic_agent_tools = [read_text_file, web_search]
 podcast_audio_generator_agent_tools = [generate_podcast_from_gemini, push_audio_to_firebase_storage, read_text_file]
 
 rag_retriever_agent_tools = [retrieve_headlines_from_pinecone, get_todays_date_and_day]
+rag_grader_agent_tools = [web_search_with_url]
