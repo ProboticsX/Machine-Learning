@@ -44,51 +44,79 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     date = category_class[2]
     print("===CATEGORY, COUNTRY AND DATE=====")
     print(category, country, date)
-    payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} on {date}?")
-    headers = get_perplexity_headers()
-    response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
-    top_headlines = response.json()["choices"][0]["message"]["content"]
-    print("===BASIC TOP HEADLINES FROM PERPLEXITY API=====")
-    print(top_headlines)
-    
-    system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_AGENT]}"+"""
-    You are given a list of top headlines. \n
-    You need to enrich each of the headlines with the following information using the tool provided. \n
-    Make sure that the enriched content is relevant to the top headlines provided. \n
-    Please do not skip any of the headlines. \n
-    Save the results in a json file and the format for each headline should be as follows: \n
-        - title: The title of the headline.\n
-        - description: Short description of the headline. It should be around 100 words.\n
-        - content_summary: A summary of the headline in about 300 words.\n
-        - urlToImage: The image URL of the headline.\n
-        - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
-        - published_at: Today's date \n
-    Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. If not, you need to fix it and then save it back.
-    """
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", system_prompt),
-        ("user", "Please enrich the following top headlines with the information provided: {top_headlines}. The summary json file path is {summary_json_file_path}"),
-    ])
     summary_json_file_path = summary_json_file
-    formatted_prompt = prompt.format(top_headlines=top_headlines, summary_json_file_path=summary_json_file_path)
-    top_headlines_agent = create_react_agent(llm, 
-                                             tools=top_headlines_agent_tools, 
-                                             prompt = formatted_prompt)
+    result = None
+    top_headlines_agent = None
+
+    if category == "general":
+        system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_AGENT]}"+"""
+         You need to fetch the top headlines from the firebase database across all categories based on the date. \n
+         You will be given the date. \n
+         You need to use the tool provided to fetch the top headlines. \n
+         Please do not skip any of the headlines. \n
+         The format for each headline should be as follows: \n
+            - title: The title of the headline.\n
+            - description: Short description of the headline. It should be around 100 words.\n
+            - content_summary: A summary of the headline in about 300 words.\n
+            - urlToImage: The image URL of the headline.\n
+            - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
+            - published_at: Today's date \n
+         Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. If not, you need to fix it and then save it back.
+        """
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "The date is {date}. The summary json file path is {summary_json_file_path}"),
+        ])
+        formatted_prompt = prompt.format(date=date, summary_json_file_path=summary_json_file_path)
+        top_headlines_agent = create_react_agent(llm, tools=top_headlines_agent_tools_general_category, prompt=formatted_prompt)
+        
+    else:
+        payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} on {date}?")
+        headers = get_perplexity_headers()
+        response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
+        top_headlines = response.json()["choices"][0]["message"]["content"]
+        print("===BASIC TOP HEADLINES FROM PERPLEXITY API=====")
+        print(top_headlines)
+        
+        system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_AGENT]}"+"""
+        You are given a list of top headlines. \n
+        You need to enrich each of the headlines with the following information using the tool provided. \n
+        Make sure that the enriched content is relevant to the top headlines provided. \n
+        Please do not skip any of the headlines. \n
+        Save the results in a json file and the format for each headline should be as follows: \n
+            - title: The title of the headline.\n
+            - description: Short description of the headline. It should be around 100 words.\n
+            - content_summary: A summary of the headline in about 300 words.\n
+            - urlToImage: The image URL of the headline.\n
+            - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
+            - published_at: Today's date \n
+        Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. If not, you need to fix it and then save it back.
+        """
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "Please enrich the following top headlines with the information provided: {top_headlines}. The summary json file path is {summary_json_file_path}"),
+        ])
+        formatted_prompt = prompt.format(top_headlines=top_headlines, summary_json_file_path=summary_json_file_path)
+        top_headlines_agent = create_react_agent(llm, 
+                                                tools=top_headlines_agent_tools_any_category, 
+                                                prompt = formatted_prompt)
     invoke_message = {"input": "Please do the task as per the system prompt"}
     result = top_headlines_agent.invoke(invoke_message)
     print("===RESULT OF TOP HEADLINES NODE=====")
     print(result)
-
     current_top_headlines = TopHeadlinesClass(
             top_headlines_summary_json_file=summary_json_file
     )
     if state.get("top_headlines_class") is not None:
         current_top_headlines = state["top_headlines_class"].copy()
         current_top_headlines["top_headlines_summary_json_file"] = summary_json_file
+    image_url_verified_string = "The image URL of the top headlines are not verified yet."
+    if category == "general":
+        image_url_verified_string = "The image URL of the top headlines are verified successfully."
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines fetched and summarized successfully. The json file was saved but not pushed to the firebase database. The image URL of the top headlines are not verified yet.", name=TOP_HEADLINES_AGENT)
+                HumanMessage(content=f"Top headlines fetched and summarized successfully. The json file was saved but not pushed to the firebase database. {image_url_verified_string}", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
             "category_class": CategoryClass(category=category, country=country, date=date),

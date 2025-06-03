@@ -172,3 +172,7 @@ class GeminiMultiSpeakerTool:
                 return {"audio_file": output_file}
             
         return {"error": "Failed to generate audio"}
+
+if __name__ == "__main__":
+    gemini_multispeaker_tool = GeminiMultiSpeakerTool()
+    gemini_multispeaker_tool.generate_podcast("Speaker 1: This is a test podcast. Speaker 2: This is a test podcast.")

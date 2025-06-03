@@ -148,7 +148,7 @@ class FirebaseTools:
 
     def get_headlines_by_date(self, date: str) -> Dict[str, Any]:
         """
-        Fetch all headlines for a specific date across all categories.
+        Fetch all headlines for a specific date across all categories, excluding the "general" category.
         
         Args:
             date (str): Date in YYYY-MM-DD format
@@ -176,6 +176,10 @@ class FirebaseTools:
             # Iterate through each category
             for category_doc in categories:
                 category = category_doc.id
+                
+                # Skip the "general" category
+                if category == "general":
+                    continue
                 
                 # Reference to the headlines collection for this category and date
                 headlines_ref = (
@@ -232,6 +236,6 @@ if __name__ == "__main__":
     # print(result)
     
     # Example of fetching headlines by date
-    date = "2025-05-31"  # Replace with desired date
+    date = "2025-06-02"  # Replace with desired date
     headlines = firebase_tools.get_headlines_by_date(date)
     print(json.dumps(headlines, indent=2))

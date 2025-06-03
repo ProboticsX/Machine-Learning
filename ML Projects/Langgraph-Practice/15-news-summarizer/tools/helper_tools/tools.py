@@ -247,7 +247,7 @@ def get_perplexity_headers():
 
 @tool
 def get_perplexity_response(question: str, return_images: bool = False):
-    """Gets the response from the perplexity API.
+    """Use this tool when the category is not general. Gets the response from the perplexity API.
     Args:
         question: The question to ask the perplexity API.
         return_images: Whether to return images in the response. If True, the response will contain the image URLs.
@@ -315,7 +315,7 @@ def generate_podcast_from_gemini(raw_text: str, output_path: str) -> str:
 
 @tool
 def push_top_headlines_to_pinecone(top_headlines_json_file: str, index_name: str, category: str, date: str) -> str:
-    """Pushes the top headlines to the pinecone database.
+    """Use this tool when the category is not general. Pushes the top headlines to the pinecone database.
     Args:
         top_headlines_json_file: The path to the top headlines json file.
         index_name: The name of the pinecone index.
@@ -339,14 +339,16 @@ def retrieve_headlines_from_pinecone(user_question: str, date: str, top_k: int) 
     return result
 
 @tool
-def get_stock_price(ticker: str) -> float:
-    """Gets a stock price from Yahoo Finance.
-
+def get_general_headlines_from_firebase_db(date: str) -> str:
+    """Use this tool when the category is general. Gets the general headlines from the firebase database across all categories based on the date. \n
     Args:
-        ticker: ticker str
+        date: The date to get the headlines from.
+    Returns:
+        str: The general headlines from the firebase database.
     """
-    stock = yf.Ticker(ticker)
-    return stock.info['previousClose']
+    firebase_tools = FirebaseTools()
+    result = firebase_tools.get_headlines_by_date(date=date)
+    return result
 
 
 project_root = Path(__file__).parent.parent.parent
@@ -367,7 +369,8 @@ pinecone_index_name = "newspresso"
 
 # Tools
 category_extractor_agent_tools = [get_todays_date_and_day]
-top_headlines_agent_tools = [get_perplexity_response, write_json_file, validate_json_file]
+top_headlines_agent_tools_any_category = [get_perplexity_response, write_json_file, validate_json_file]
+top_headlines_agent_tools_general_category = [get_general_headlines_from_firebase_db, write_json_file, validate_json_file]
 top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
 top_headlines_cloud_pusher_agent_tools = [push_headlines_to_firebase_db, push_top_headlines_to_pinecone, read_json_file, write_json_file, validate_json_file]
 

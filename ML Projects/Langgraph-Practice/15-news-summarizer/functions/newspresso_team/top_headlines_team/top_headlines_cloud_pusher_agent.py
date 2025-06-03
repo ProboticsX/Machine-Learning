@@ -15,7 +15,7 @@ def top_headlines_cloud_pusher_node(state: AgentState) -> Command[Literal[TOP_HE
     You are given a json file that contains the top headlines. Make sure the json file has a valid JSON format. Do not include any control characters in the json file. \n
     If not in the correct format, you need to fix it and then save it back.\n
     You need to push the valid json file to the firebase database. \n
-    Lastly, you need to push the json file to the pinecone database. \n
+    Lastly, if the category is general, you do not need to push it to the pinecone database. If the category is not general, you need to push the json file to the pinecone database.\n
     """
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
@@ -29,11 +29,13 @@ def top_headlines_cloud_pusher_node(state: AgentState) -> Command[Literal[TOP_HE
     result = top_headlines_cloud_pusher_agent.invoke(invoke_message)
     print("===RESULT OF TOP HEADLINES CLOUD PUSHER NODE=====")
     print(result)
-
+    pinecone_string = "and pinecone database"
+    if category == "general":
+        pinecone_string = ""
     return Command(
         update={
             "messages": [
-                HumanMessage(content="Top headlines fetched and summarized successfully. The image URLs of the top headlines were verified. The json file was pushed to the firestore database and pinecone database.", name=TOP_HEADLINES_CLOUD_PUSHER_AGENT)
+                HumanMessage(content=f"Top headlines fetched and summarized successfully. The image URLs of the top headlines were verified. The json file was pushed to the firestore database {pinecone_string}.", name=TOP_HEADLINES_CLOUD_PUSHER_AGENT)
             ],
         },
         goto=TOP_HEADLINES_SUPERVISOR_AGENT,
