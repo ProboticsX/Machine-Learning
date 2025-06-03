@@ -364,7 +364,7 @@ summary_json_file = summary_dir / "top_headlines_summary.json"
 podcast_audio_dir = project_root / "data" / "podcasts"
 podcast_audio_dir.mkdir(parents=True, exist_ok=True)
 podcast_audio_file = podcast_audio_dir / "podcast_audio"
-
+podcast_audio_file_name = "podcast_audio"
 pinecone_index_name = "newspresso"
 
 # Tools

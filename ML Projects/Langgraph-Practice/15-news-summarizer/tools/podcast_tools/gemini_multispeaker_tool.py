@@ -108,8 +108,16 @@ class GeminiMultiSpeakerTool:
             output_path: Path to save the generated audio file
             
         Returns:
-            Dictionary containing the path to the generated audio file
+            Dictionary containing the path to the generated audio file or error message
         """
+        # Check text length
+        if len(raw_text) > 5000:
+            return {
+                "error": "Text is too long. Please keep text under 5000 characters per chunk for reliable generation.",
+                "text_length": len(raw_text),
+                "max_recommended": 5000
+            }
+            
         contents = [
             types.Content(
                 role="user",
@@ -146,6 +154,11 @@ class GeminiMultiSpeakerTool:
             ),
         )
 
+        all_audio_data = bytearray()
+        mime_type = None
+        file_extension = None
+        chunk_count = 0
+
         for chunk in self.client.models.generate_content_stream(
             model=self.model,
             contents=contents,
@@ -160,18 +173,35 @@ class GeminiMultiSpeakerTool:
                 
             if chunk.candidates[0].content.parts[0].inline_data and chunk.candidates[0].content.parts[0].inline_data.data:
                 inline_data = chunk.candidates[0].content.parts[0].inline_data
-                data_buffer = inline_data.data
-                file_extension = mimetypes.guess_extension(inline_data.mime_type)
+                chunk_count += 1
                 
-                if file_extension is None:
-                    file_extension = ".wav"
-                    data_buffer = self._convert_to_wav(inline_data.data, inline_data.mime_type)
+                # Store mime type and file extension from first chunk
+                if mime_type is None:
+                    mime_type = inline_data.mime_type
+                    file_extension = mimetypes.guess_extension(mime_type)
+                    if file_extension is None:
+                        file_extension = ".wav"
                 
-                output_file = f"{output_path}{file_extension}"
-                self._save_binary_file(output_file, data_buffer)
-                return {"audio_file": output_file}
+                # Append audio data
+                all_audio_data.extend(inline_data.data)
+        
+        if not all_audio_data:
+            return {"error": "Failed to generate audio"}
             
-        return {"error": "Failed to generate audio"}
+        # Convert to WAV if needed
+        if file_extension == ".wav":
+            data_buffer = self._convert_to_wav(bytes(all_audio_data), mime_type)
+        else:
+            data_buffer = bytes(all_audio_data)
+        
+        output_file = f"{output_path}{file_extension}"
+        self._save_binary_file(output_file, data_buffer)
+        
+        return {
+            "audio_file": output_file,
+            "chunks_processed": chunk_count,
+            "total_audio_size": len(all_audio_data)
+        }
 
 if __name__ == "__main__":
     gemini_multispeaker_tool = GeminiMultiSpeakerTool()
