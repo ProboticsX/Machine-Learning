@@ -31,3 +31,4 @@ podcastfy
 pinecone
 firebase-admin
 google-genai
+elevenlabs[pyaudio]

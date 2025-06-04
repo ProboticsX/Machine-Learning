@@ -4,7 +4,7 @@ import signal
 from elevenlabs.client import ElevenLabs
 from elevenlabs.conversational_ai.conversation import Conversation
 from elevenlabs.conversational_ai.default_audio_interface import DefaultAudioInterface
-
+from tools import client_tools
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -17,6 +17,7 @@ conversation = Conversation(
     # API client and agent ID.
     elevenlabs,
     agent_id,
+    client_tools = client_tools,
 
     # Assume auth is required when API_KEY is set.
     requires_auth=bool(api_key),
