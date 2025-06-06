@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from typing import Any
+from typing import Any, List, Literal, Dict, Optional
 from livekit import agents
 from livekit.agents import AgentSession, Agent, RoomInputOptions, function_tool, RunContext, metrics, UserStateChangedEvent, JobProcess
 from livekit.plugins import (
@@ -17,7 +17,8 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langgraph.prebuilt import create_react_agent, ToolNode
 from datetime import datetime
-
+from typing_extensions import TypedDict
+import requests
 
 load_dotenv()
 
@@ -27,30 +28,16 @@ class Assistant(Agent):
         super().__init__(
             instructions="""
                     Your name is Leslie and you are a news podcaster for an app named "Newspresso". Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get ai-generated summary along with relevant sources. Moreover, it generates news podcasts everyday based on the news. \n
-                    Your goal is to answer whatever questions users ask you related to the headlines covered today by the app. You will be given knowledge of whatever news is being covered today in the app. \n
-                    Please don't answer any questions that's not covered in the news. \n
-                    You need to answer a user's question if you think the user has asked question related to the news covered in the app. Then you can use the knowledge base to answer the user's questions and use the websearch tool if you need additional web searching to do. Additionally, you can also answer the question if the user asks basic questions related to the weather today, or the date/day of the month. \n
-                    You don't need to answer a user's question if you think that the user's question is irrelevant to what's being covered in the news and is not at all related to the knowledge base. And explain why you can't answer the question in addition to saying no. \n""")
+                    Your goal is to answer whatever questions users ask you related to the headlines covered today by the app.\n
+                    Please don't answer any questions that's not covered in the news.  And explain why you can't answer the question in addition to saying no.\n
+                    You need to answer a user's question if you think the user has asked question related to the news covered in the app. Then you can use the knowledge base to answer the user's questions and use the websearch tool if you need additional web searching to do.\n
+                    """)
 
     async def on_enter(self):
         # when the agent is added to the session, it'll generate a reply
         # according to its instructions
         # self.session.generate_reply()
         self.session.say("Hey! I'm Leslie from Newspresso! How can I assist you today?")
-        
-    @function_tool()
-    async def lookup_weather(
-        self,
-        context: RunContext,
-        location: str,
-    ) -> dict[str, Any]:
-        """Look up weather information for a given location.
-        
-        Args:
-            location: The location to look up weather information for.
-        """
-
-        return {"weather": "sunny", "temperature_f": 70}
     
     # to hang up the call as part of a function call
     @function_tool
@@ -74,27 +61,52 @@ class Assistant(Agent):
         print(f"get_todays_date: {today}")
         return f"{today}"
 
-    
     @function_tool
-    async def get_result(self, query: str, date: str, top_k: int = 1):
+    async def get_answer_from_user_query(self, query: str) -> str:
+        """Use this tool to answer any question related to the user's question.
+        
+        Args:
+            query (str): The search query from the user
+            
+        Returns:
+            str: Answer to the user's question""" 
+        date = await self.get_todays_date()
+        headlines = await self.get_relevant_headlines(query=query, top_k=2, date=date)
+        
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("user", "Here is the user question: {query}. The documents: {headlines}."),
+        ])
+        invoke_message = {"input": "Please do the task as per the system prompt"}
+        formatted_prompt = prompt.format(query=query, headlines=headlines)
+        rag_generator_agent = create_react_agent(llm, 
+                                             tools=[self.get_perplexity_response],
+                                             prompt = formatted_prompt,
+                                             )
+        result_from_agent = rag_generator_agent.invoke(invoke_message)
+        print(f"get_answer_from_user_query: {result_from_agent}")
+        return result_from_agent['messages'][-1].content
+
+
+    #Normal Tool with async
+    async def get_relevant_headlines(self, query: str, top_k: int, date: str) -> List[Dict[str, Any]]:
         """Retrieve relevant headlines based on the query.
         
         Args:
             query (str): The search query from the user
-            top_k (int): Number of results to return (default: 1)
-            date (str): The today's date in the format of YYYY-MM-DD.
+            top_k (int): Number of results to return
             
         Returns:
-            List[Dict[str, Any]]: List of retrieved headlines with their metadata""" 
-        # date="2025-06-05"       
+            str: Answer to the user's question""" 
+        
         query_embedding = await embeddings.aembed_query(query)
-        results = index.query(vector=query_embedding, top_k=top_k, include_metadata=True)
+        pinecone_filter = {"published_at": {"$eq": date}} if date else None
+        results = index.query(vector=query_embedding, top_k=top_k, include_metadata=True, filter=pinecone_filter)
+        print(f"The results returned from RAG are:{results}")
         headlines = []
         for match in results.matches:
-            # Extract date from ID (format: date_category_headline_index)
             doc_date = match.id.split('_')[0]
             
-            # Apply date filter if specified
             if date and doc_date != date:
                 continue
                 
@@ -105,24 +117,40 @@ class Assistant(Agent):
                 "date": doc_date
             })
             
-            # Break if we have enough results after filtering
             if len(headlines) >= top_k:
                 break
-        
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", system_prompt),
-            ("user", "Here is the user question: {query}. The documents: {headlines}. The date is {date}"),
-        ])
-        invoke_message = {"input": "Please do the task as per the system prompt"}
-        formatted_prompt = prompt.format(query=query, headlines=headlines, date=date)
-        rag_generator_agent = create_react_agent(llm, 
-                                             tools=[],
-                                             prompt = formatted_prompt,
-                                             )
-        result_from_agent = rag_generator_agent.invoke(invoke_message)
-        print(f"get_result: {result_from_agent}")
-        return result_from_agent['messages'][-1].content
+        return headlines
 
+    #Normal Tool not needing async
+    def get_perplexity_response(self, question: str):
+        """Use this tool only when the question is answerable and you need extra information from web search. Gets the response from the perplexity API.
+        Args:
+            question: The question to ask the perplexity API.
+        Returns:
+            str: The response from the perplexity API.
+        """
+
+        payload = self.get_perplexity_payload(question)
+        headers = self.get_perplexity_headers()
+        response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
+        return response.json()
+
+    def get_perplexity_payload(self, question: str, return_images: bool = False):
+        payload = {
+            "model": perplexity_model,
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant that answers questions and provides information."},
+                {"role": "user", "content": question}
+            ],
+        }
+        return payload
+
+    def get_perplexity_headers(self):
+        headers = {
+            "Authorization": f"Bearer {os.getenv("PERPLEXITY_API_KEY")}",
+            "Content-Type": "application/json"
+        }
+        return headers
 
 async def entrypoint(ctx: agents.JobContext):
     # each log entry will include these fields
@@ -138,16 +166,16 @@ async def entrypoint(ctx: agents.JobContext):
 
     )
     # log metrics as they are emitted, and total usage after session is over
-    usage_collector = metrics.UsageCollector()
+    # usage_collector = metrics.UsageCollector()
 
-    @session.on("metrics_collected")
-    def _on_metrics_collected(ev: MetricsCollectedEvent):
-        metrics.log_metrics(ev.metrics)
-        usage_collector.collect(ev.metrics)
+    # @session.on("metrics_collected")
+    # def _on_metrics_collected(ev: MetricsCollectedEvent):
+    #     metrics.log_metrics(ev.metrics)
+    #     usage_collector.collect(ev.metrics)
 
-    async def log_usage():
-        summary = usage_collector.get_summary()
-        logger.info(f"Usage: {summary}")
+    # async def log_usage():
+    #     summary = usage_collector.get_summary()
+    #     logger.info(f"Usage: {summary}")
 
     inactivity_task: asyncio.Task | None = None
 
@@ -177,7 +205,7 @@ async def entrypoint(ctx: agents.JobContext):
             inactivity_task.cancel()
 
     # shutdown callbacks are triggered when the session is over
-    ctx.add_shutdown_callback(log_usage)
+    # ctx.add_shutdown_callback()
 
 
     await session.start(
@@ -198,6 +226,8 @@ index_name = "newspresso"
 index = pc.Index(index_name)
 embeddings = OpenAIEmbeddings()
 system_prompt = """You are a helpful assistant that generates the final answer to the user question. Please don't answer the questions in case it's not relevant to the documents attached and let the user know about it."""
+perplexity_model = "sonar"
+PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
 
 if __name__ == "__main__":
     agents.cli.run_app(agents.WorkerOptions(entrypoint_fnc=entrypoint, prewarm_fnc=prewarm_fnc))
