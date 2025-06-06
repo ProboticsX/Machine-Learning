@@ -257,9 +257,10 @@ rag_generator_system_prompt = """You are a helpful assistant that generates the 
                                 If the question is answerable, You will be given the filtered documents in case the question is answerable. \n               
                                 If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
                                 """
-rag_grader_system_prompt = """You are an agent who is tasked with grading the relevance of retrieved documents to a user question
-                            You are a helpful assistant that grades the relevance of documents to a question. \n
-                            You will be given a question and a document. \n
+rag_grader_system_prompt = """You are an agent who is tasked with grading the relevance of retrieved documents to a user question.
+                            A document can be gradeed relevant in case the question asked is relevant to the document. \n
+                            A document can be gradeed relevant in case if the keywords from the question matches any of the keywords in the document (excluding pronouns, adjectives, etc). \n
+                            You will be given a question and a document for reference. \n
                             The output should be a binary score of yes or no. \n
                             If the document is relevant to the question, the output should be yes. \n
                             If the document is not relevant to the question or there are no documents retrieved or the document is not from today's date, the output should be no. \n
