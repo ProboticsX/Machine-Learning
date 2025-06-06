@@ -19,6 +19,8 @@ from langgraph.prebuilt import create_react_agent, ToolNode
 from datetime import datetime
 from typing_extensions import TypedDict
 import requests
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 load_dotenv()
 
@@ -28,10 +30,12 @@ class Assistant(Agent):
         super().__init__(
             instructions="""
                     Your name is Leslie and you are a news podcaster for an app named "Newspresso". \n
-                    Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get ai-generated summary along with relevant sources. \n
+                    Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get AI-generated summary along with relevant sources. \n
                     Moreover, it generates news podcasts everyday based on the news. \n
                     Your goal is to answer whatever questions users ask you related to the headlines covered today by the app.\n
+                    Always use the tool attached (get_answer_from_user_query) to answer the user's question. Don't use general knowledge to answer any of the user's question on your own.
                     """)
+        self.tfidf = TfidfVectorizer(max_features=1000)
 
     async def on_enter(self):
         # when the agent is added to the session, it'll generate a reply
@@ -69,8 +73,8 @@ class Assistant(Agent):
             
         Returns:
             str: Answer to the user's question""" 
-        date = await self.get_todays_date()
-        headlines = await self.get_relevant_headlines(query=query, top_k=3, date=date)
+        date = "2025-06-05"#await self.get_todays_date()
+        headlines = await self.get_relevant_headlines(query=query, top_k=1, date=date)
         
         # RAG Grader Agent
         prompt = ChatPromptTemplate.from_messages([
@@ -102,7 +106,7 @@ class Assistant(Agent):
         # RAG Generator Agent
         prompt = ChatPromptTemplate.from_messages([
             ("system", rag_generator_system_prompt),
-            ("user", "Here is the user question: {query}. Whether the question asked is relevant to the news or not? : {rag_grader_final_result} The filtered documents (in case the question is answerable): {filtered_docs}."),
+            ("user", "Here is the user question: {query}. Result from grader whether the question asked is relevant to the news or not (Yes/No)? : {rag_grader_final_result} The filtered documents (in case the question is answerable): {filtered_docs}."),
         ])
         formatted_prompt = prompt.format(query=query, rag_grader_final_result=rag_grader_final_result,  filtered_docs=filtered_docs)
         rag_generator_agent = create_react_agent(llm, 
@@ -116,36 +120,97 @@ class Assistant(Agent):
 
     #Normal Tool with async
     async def get_relevant_headlines(self, query: str, top_k: int, date: str) -> List[Dict[str, Any]]:
-        """Retrieve relevant headlines based on the query.
+        """Retrieve relevant headlines using hybrid search.
         
         Args:
-            query (str): The search query from the user
+            query (str): The search query
             top_k (int): Number of results to return
+            date (str, optional): Filter results by date (format: YYYY-MM-DD)
             
         Returns:
-            str: Answer to the user's question""" 
-        
-        query_embedding = await embeddings.aembed_query(query)
+            List[Dict[str, Any]]: List of retrieved headlines with their metadata
+        """
+        print(f"{query}, {top_k}, {date}")
+        dense_embedding = await embeddings.aembed_query(query)
+        sparse_vector = await self._create_sparse_vector(query)
         pinecone_filter = {"published_at": {"$eq": date}} if date else None
-        results = index.query(vector=query_embedding, top_k=top_k, include_metadata=True, filter=pinecone_filter)
-        print(f"The results returned from RAG are:{results}")
-        headlines = []
-        for match in results.matches:
-            doc_date = match.id.split('_')[0]
-            
-            if date and doc_date != date:
-                continue
-                
-            headlines.append({
+
+        dense_results = dense_index.query(
+            vector=dense_embedding,
+            top_k=top_k * 2,  # Fetch more results to account for filtering
+            include_metadata=True,
+            filter=pinecone_filter
+        )
+        print(f"dense_results:{dense_results}")
+
+        sparse_results = sparse_index.query(
+            sparse_vector=sparse_vector,
+            top_k=top_k * 2,  # Fetch more results to account for filtering
+            include_metadata=True,
+            filter=pinecone_filter
+        )
+        print(f"sparse_results:{sparse_results}")
+
+        merged_results = await self._merge_and_deduplicate_results(dense_results, sparse_results, top_k * 2)
+        print(f"The results returned from RAG are:{merged_results}")
+
+        return merged_results
+    
+    async def _create_sparse_vector(self, text: str) -> Dict[str, List]:
+        """Create a sparse vector using TF-IDF."""
+        # Fit and transform the text
+        tfidf_matrix = self.tfidf.fit_transform([text])
+        
+        # Get feature names and values
+        feature_names = self.tfidf.get_feature_names_out()
+        values = tfidf_matrix.toarray()[0]
+        
+        # Create sparse vector in Pinecone format
+        indices = []
+        vector_values = []
+        
+        for i, value in enumerate(values):
+            if value > 0:  # Only include non-zero values
+                indices.append(i)
+                vector_values.append(float(value))
+        
+        return {
+            "indices": indices,
+            "values": vector_values
+        }
+    
+    async def _merge_and_deduplicate_results(self, dense_results, sparse_results, top_k: int) -> List[Dict[str, Any]]:
+        """Merge and deduplicate results from dense and sparse searches."""
+        # Create a dictionary to store unique results by ID
+        unique_results = {}
+        
+        # Process dense results
+        for match in dense_results.matches:
+            unique_results[match.id] = {
                 "id": match.id,
                 "score": match.score,
                 "metadata": match.metadata,
-                "date": doc_date
-            })
-            
-            if len(headlines) >= top_k:
-                break
-        return headlines
+                "date": match.id.split('_')[0]
+            }
+        
+        # Process sparse results and update scores if ID exists
+        for match in sparse_results.matches:
+            if match.id in unique_results:
+                # If ID exists, take the higher score
+                unique_results[match.id]["score"] = max(unique_results[match.id]["score"], match.score)
+            else:
+                unique_results[match.id] = {
+                    "id": match.id,
+                    "score": match.score,
+                    "metadata": match.metadata,
+                    "date": match.id.split('_')[0]
+                }
+        
+        # Convert to list and sort by score
+        merged_results = list(unique_results.values())
+        merged_results.sort(key=lambda x: x["score"], reverse=True)
+        
+        return merged_results[:top_k]
 
     #Normal Tool not needing async
     def get_perplexity_response(self, question: str):
@@ -159,7 +224,9 @@ class Assistant(Agent):
         payload = self.get_perplexity_payload(question)
         headers = self.get_perplexity_headers()
         response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
-        return response.json()
+        result = response.json()
+        print(f"get_perplexity_response: {result}")
+        return result
 
     def get_perplexity_payload(self, question: str, return_images: bool = False):
         payload = {
@@ -249,7 +316,8 @@ logger.setLevel(logging.INFO)
 llm = ChatOpenAI(model_name="gpt-4.1-mini")
 pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 index_name = "newspresso"
-index = pc.Index(index_name)
+dense_index = pc.Index(f"{index_name}-dense")
+sparse_index = pc.Index(f"{index_name}-sparse")
 embeddings = OpenAIEmbeddings()
 rag_generator_system_prompt = """You are a helpful assistant that generates the final answer to the user question. \n
                                 Please don't answer the questions in case it's not relevant to the documents attached and let the user know about it. \n
