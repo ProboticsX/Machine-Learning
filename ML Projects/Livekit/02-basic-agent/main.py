@@ -27,10 +27,10 @@ class Assistant(Agent):
     def __init__(self) -> None:
         super().__init__(
             instructions="""
-                    Your name is Leslie and you are a news podcaster for an app named "Newspresso". Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get ai-generated summary along with relevant sources. Moreover, it generates news podcasts everyday based on the news. \n
+                    Your name is Leslie and you are a news podcaster for an app named "Newspresso". \n
+                    Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get ai-generated summary along with relevant sources. \n
+                    Moreover, it generates news podcasts everyday based on the news. \n
                     Your goal is to answer whatever questions users ask you related to the headlines covered today by the app.\n
-                    Please don't answer any questions that's not covered in the news.  And explain why you can't answer the question in addition to saying no.\n
-                    You need to answer a user's question if you think the user has asked question related to the news covered in the app. Then you can use the knowledge base to answer the user's questions and use the websearch tool if you need additional web searching to do.\n
                     """)
 
     async def on_enter(self):
@@ -57,13 +57,12 @@ class Assistant(Agent):
             str: The today's date in the format of YYYY-MM-DD.
         """
         today = datetime.now().strftime("%Y-%m-%d")
-        day = datetime.now().strftime("%A")
         print(f"get_todays_date: {today}")
         return f"{today}"
 
     @function_tool
     async def get_answer_from_user_query(self, query: str) -> str:
-        """Use this tool to answer any question related to the user's question.
+        """Use this tool to answer any user's question.
         
         Args:
             query (str): The search query from the user
@@ -71,21 +70,48 @@ class Assistant(Agent):
         Returns:
             str: Answer to the user's question""" 
         date = await self.get_todays_date()
-        headlines = await self.get_relevant_headlines(query=query, top_k=2, date=date)
+        headlines = await self.get_relevant_headlines(query=query, top_k=3, date=date)
         
+        # RAG Grader Agent
         prompt = ChatPromptTemplate.from_messages([
-            ("system", system_prompt),
-            ("user", "Here is the user question: {query}. The documents: {headlines}."),
+            ("system", rag_grader_system_prompt),
+            ("user", "Here is the user question: {query}. The document to be graded: {document}."),
         ])
         invoke_message = {"input": "Please do the task as per the system prompt"}
-        formatted_prompt = prompt.format(query=query, headlines=headlines)
+        filtered_docs = []
+        documents = headlines
+        for document in documents:
+            formatted_prompt = prompt.format(query=query, document=document['metadata']['content_summary'])
+            rag_grader_agent = create_react_agent(llm, 
+                                                    tools=[],
+                                                    prompt = formatted_prompt
+                                                    )
+            document_result = rag_grader_agent.invoke(invoke_message)
+            print("===HERE IS THE RESULT OF THE DOCUMENT:", document['id'],"===")
+            print(document_result)
+            if document_result["messages"][-1].content.lower() == "yes":
+                print("=====GRADER: DOCUMENT IS RELEVANT======")
+                filtered_docs.append(document)
+            else:
+                print("=====GRADER: DOCUMENT IS NOT RELEVANT======")
+        rag_grader_final_result = "yes"
+        if len(filtered_docs) == 0:
+            rag_grader_final_result = "no"
+        print(f"rag_grader_final_result{rag_grader_final_result} and filtered documents: {filtered_docs}")
+        
+        # RAG Generator Agent
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", rag_generator_system_prompt),
+            ("user", "Here is the user question: {query}. Whether the question asked is relevant to the news or not? : {rag_grader_final_result} The filtered documents (in case the question is answerable): {filtered_docs}."),
+        ])
+        formatted_prompt = prompt.format(query=query, rag_grader_final_result=rag_grader_final_result,  filtered_docs=filtered_docs)
         rag_generator_agent = create_react_agent(llm, 
                                              tools=[self.get_perplexity_response],
                                              prompt = formatted_prompt,
                                              )
-        result_from_agent = rag_generator_agent.invoke(invoke_message)
-        print(f"get_answer_from_user_query: {result_from_agent}")
-        return result_from_agent['messages'][-1].content
+        result_from_rag_generator_agent = rag_generator_agent.invoke(invoke_message)
+        print(f"get_answer_from_user_query: {result_from_rag_generator_agent}")
+        return result_from_rag_generator_agent['messages'][-1].content
 
 
     #Normal Tool with async
@@ -225,7 +251,19 @@ pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 index_name = "newspresso"
 index = pc.Index(index_name)
 embeddings = OpenAIEmbeddings()
-system_prompt = """You are a helpful assistant that generates the final answer to the user question. Please don't answer the questions in case it's not relevant to the documents attached and let the user know about it."""
+rag_generator_system_prompt = """You are a helpful assistant that generates the final answer to the user question. \n
+                                Please don't answer the questions in case it's not relevant to the documents attached and let the user know about it. \n
+                                You will be given the (yes/no) decision on whether question is answerable or not. \n
+                                If the question is answerable, You will be given the filtered documents in case the question is answerable. \n               
+                                If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
+                                """
+rag_grader_system_prompt = """You are an agent who is tasked with grading the relevance of retrieved documents to a user question
+                            You are a helpful assistant that grades the relevance of documents to a question. \n
+                            You will be given a question and a document. \n
+                            The output should be a binary score of yes or no. \n
+                            If the document is relevant to the question, the output should be yes. \n
+                            If the document is not relevant to the question or there are no documents retrieved or the document is not from today's date, the output should be no. \n
+                            """
 perplexity_model = "sonar"
 PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
 
