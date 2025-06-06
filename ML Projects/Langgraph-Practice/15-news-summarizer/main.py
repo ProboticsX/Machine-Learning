@@ -24,8 +24,8 @@ if __name__ == "__main__":
     # question = "find US and New York state GDP in 2024. what percentage of US GDP was New York state?? Multiply the result by 369."
     # processsed_news_file_path = NewsTool().processed_news_path
     # print(processsed_news_file_path)
-    question = "What are the latest top headlines in the general category in the last 24 hours? Create a podcast on the same."
-    # question = "What are the latest top headlines in the business category in the last 24 hours? Create a podcast on the same."
+    # question = "What are the latest top headlines in the general category in the last 24 hours? Create a podcast on the same."
+    question = "What are the latest top headlines in the business category in the last 24 hours? Create a podcast on the same."
     # question = "RAG: What's the latest news on the US-China trade war?"
     # question = "RAG: What's the latest news on Owen Wilson?"
     # question = "RAG: Tell me about the recent news on Taylor Swift's new album?"

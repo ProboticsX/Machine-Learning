@@ -2,3 +2,9 @@ livekit-agents[deepgram,openai,cartesia,silero,turn-detector,google,metrics]~=1.
 livekit-plugins-noise-cancellation~=0.2
 python-dotenv
 logging
+pinecone
+langchain_openai
+langchain_core
+langgraph
+scikit-learn
+numpy

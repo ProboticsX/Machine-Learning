@@ -1,122 +1,63 @@
 [
   {
-    "title": "Companies Face Uncertainty Due to Tariff Fluctuations",
-    "description": "Companies are grappling with significant uncertainty caused by fluctuations in tariff policies, notably under President Trump's administration. This uncertainty complicates long-term business decisions, affecting supply chains and overall economic stability. Executives from major firms like Target, Goldman Sachs, and Pepsi have voiced concerns that tariff volatility hampers strategic planning and could have wider economic repercussions.",
-    "content_summary": "The ongoing fluctuations in tariffs have led to multifaceted challenges for companies, impacting both manufacturing and service sectors. Firms are adjusting their operations by increasing prices or seeking alternative suppliers, though options are limited due to specific dependencies, especially on countries like China. This uncertainty acts as a brake on business development, particularly for those with complex supply chains that are costly to reshore. Tariffs have also increased consumer prices, adding inflationary pressure and financial burdens on households, especially lower-income families. Moreover, potential retaliatory tariffs and continued inflation add to the uncertain economic environment, complicating growth and stability for U.S. businesses. Various economic reports underscore that tariff uncertainty and its ripple effects pose significant risks for sustained business confidence and investment.",
-    "urlToImage": "https://fsinvestments.com/wp-content/uploads/2025/03/COTW_2025-03-28_blog-730px.jpg",
+    "title": "Stocks Fall Amid Trade Talks and Jobs Report Anticipation",
+    "description": "Recent stock market movements have been influenced by ongoing trade talks and anticipation of the upcoming jobs report. Despite a narrower-than-expected U.S. trade deficit, investors are cautious due to slightly higher jobless claims.",
+    "content_summary": "The stock market has experienced fluctuations recently, driven by developments in trade negotiations and the upcoming jobs report. On June 5, 2025, the U.S. trade deficit narrowed to $61.6 billion, which was a significant improvement from the previous month, alleviating some economic concerns. However, weekly jobless claims rose to 247,000, exceeding expectations, which could indicate a slight slowdown in the job market. These economic indicators are crucial as they provide insights into the health of the U.S. economy. The Dow Jones Industrial Average and the S&P 500 have shown mixed performances, with slight gains or losses in recent trading sessions. The Nasdaq Composite has been more resilient, often leading the gains among major indexes. Technology stocks, such as Broadcom and Nvidia, have been strong performers, while Tesla experienced some decline. Investors are looking ahead to the jobs report scheduled for June 7, 2025, which is expected to provide further clarity on the employment situation. The anticipation surrounding this report has contributed to the current cautious market environment. Trade tensions, particularly between the U.S. and China, remain a significant factor influencing market sentiment. Despite these challenges, some indices have shown resilience, with the S&P 500 nearing its all-time high after a strong rally in May.",
+    "urlToImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Stock_Market_April_5_2025_3_Months.png/960px-Stock_Market_April_5_2025_3_Months.png",
     "sources": [
-      "https://www.richmondfed.org/region_communities/regional_data_analysis/regional_matters/2025/impact_of_tariffs_on_regions_firms",
-      "https://budgetlab.yale.edu/research/state-us-tariffs-may-12-2025",
-      "https://am.jpmorgan.com/us/en/asset-management/adv/insights/market-insights/guide-to-the-markets/economic-and-market-update/"
+      "https://www.investopedia.com/dow-jones-today-06042025-11747867",
+      "https://www.youtube.com/watch?v=HBM_WUmOTBo",
+      "https://www.nasdaq.com/articles/us-stocks-may-lack-direction-ahead-monthly-jobs-report",
+      "https://www.kiro7.com/news/wall-street-listless/7YDDP4KJKNFRROFSYLE57QO3QI/"
     ],
-    "published_at": "2025-06-04"
+    "published_at": "2025-06-06"
   },
   {
-    "title": "Amazon Dominates Grocery Sales",
-    "description": "Amazon has solidified its position as a leading player in grocery sales, surpassing $100 billion in gross grocery and household essentials sales in 2024. Its everyday essentials category grew more than twice as fast as other categories in the first quarter of 2025, reflecting strong consumer demand and the success of services like Amazon Fresh.",
-    "content_summary": "Amazon's dominance in grocery sales stems from its innovative approaches in online and physical grocery retailing, including Amazon Fresh and Whole Foods. Amazon Fresh, with over 40 U.S. stores and a significant user base, has been a key growth driver. Online grocery sales have experienced exponential growth, fueled by consumer preferences for convenience and savings through memberships. E-grocery sales topped $9.8 billion in April 2025, evidencing the shift towards digital grocery shopping. Amazon's strategic expansion in both digital and physical markets positions it as a formidable competitor in the grocery sector, reshaping consumer buying patterns and the retail landscape. Its continued growth has significant implications for traditional grocery chains and competitors.",
-    "urlToImage": "https://cdn.statcdn.com/Statistic/1335000/1338894-blank-355.png",
+    "title": "Tesla Tumbles Amid Musk-Trump Dispute",
+    "description": "Tesla's stock plunged 14% in a single trading session after a highly publicized feud between Elon Musk and former President Donald Trump escalated. Trump suggested potentially stripping federal contracts from Musk's companies, intensifying investor concerns.",
+    "content_summary": "The feud between Elon Musk and Donald Trump reached a boiling point in early June 2025, resulting in a sharp decline in Tesla's stock value. Over the course of two days, Tesla shares dropped by nearly 15%, erasing over $150 billion from the company's market capitalization and marking one of the worst stretches for the stock in years. The selloff was triggered by escalating public exchanges between Musk and Trump, with Musk vociferously criticizing a Trump-supported budget reconciliation bill, which he labeled a 'disgusting abomination' for its anticipated impact on federal deficits. Musk, who had previously worked within the Trump administration and supported Trump's campaign, cited concerns over the bill's projected $2.4 trillion increase in annual budget deficits over the next decade. His opposition intensified after a Congressional Budget Office report confirmed the bill's fiscal impact, leading Musk to urge Republican lawmakers to block the legislation. Trump, on the other hand, expressed his disappointment with Musk's stance, particularly as the bill included provisions reducing subsidies for electric vehicle (EV) programs—a sector critical to Tesla's business. Trump went further by suggesting on Truth Social that the government could cut spending by withdrawing federal contracts from Musk's companies, a move that rattled investors and prompted fears about potential regulatory or policy retaliation. The episode reflects broader anxieties in the market about the influence of political relationships and policy shifts on corporate fortunes, especially in industries reliant on government support or subsidies.",
+    "urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2025/06/931/523/trump-musk.jpg?ve=1&tl=1",
     "sources": [
-      "https://www.statista.com/statistics/1450393/leading-grocery-store-by-market-share-us/",
-      "https://www.contimod.com/amazon-statistics/",
-      "https://www.jll.com/en-us/insights/market-perspectives/grocery-tracker"
+      "https://www.foxbusiness.com/politics/investor-nightmare-how-trump-musk-fallout-crushing-tesla-stock",
+      "https://www.cbsnews.com/news/elon-musk-trump-tesla-shares-down-truth-social-fallout/",
+      "https://www.investopedia.com/tesla-stock-sinks-as-trump-musk-relationship-falls-apart-in-public-spat-11748777"
     ],
-    "published_at": "2025-06-04"
+    "published_at": "2025-06-06"
   },
   {
-    "title": "Municipal Credit Quality Report",
-    "description": "The 2025 State of the States Municipal Credit Quality Report by Conning outlines a stable municipal credit outlook for 2025 but warns of challenges stemming from federal policy uncertainties and sector-specific stresses.",
-    "content_summary": "The municipal bond market in early 2025 shows strong credit fundamentals but faces potential risks from economic and policy factors. Demand for municipal bonds remains robust, especially in high-yield funds, and taxable municipals are performing well due to favorable Treasury yield movements. Nonetheless, concerns exist over tightening credit spreads, rising issuance, and demands weakened by tax policy ambiguity. Key credit risks include delayed financial disclosures, pressures in the education sector, and increasing debt loads. Despite these challenges, the municipal credit market offers strategic investment opportunities due to its resilient core quality. Investors are advised to navigate carefully, balancing cautious optimism against emerging risks in federal and local fiscal policies.",
-    "urlToImage": "https://breckinridge-fs.s3.amazonaws.com/files/callouts/2025-muni-outlook-24.png",
+    "title": "MongoDB Soars on Strong Earnings",
+    "description": "MongoDB shares surged over 15% following the release of its first-quarter fiscal 2026 earnings results, driven by strong demand for AI-related applications and cloud database services.",
+    "content_summary": "MongoDB's stock price surged by 15.44% in pre-market trading on June 5, 2025, after the company reported impressive first-quarter earnings. The key drivers of this growth included a 22% increase in revenue to $549 million and a 26% year-over-year revenue growth from its Atlas multi-cloud database service, which now accounts for 72% of total quarterly revenue. MongoDB added 2,600 new customers, expanding its customer base to over 57,100. The company's raised guidance and strategic moves, such as increasing its share repurchase program by $800 million to a total of $1 billion, further boosted investor confidence. Despite reporting a net loss of $37.6 million, MongoDB showed a significant improvement from the previous year and achieved non-GAAP net income of $86.3 million. MongoDB's focus on AI is also gaining traction, with the introduction of new AI retrieval models and a public preview of its Model Context Protocol Server, enhancing its offerings for AI-powered applications. The appointment of Mike Berry as the new CFO is expected to enhance the company's financial strategy. Technically, MongoDB's stock has formed an inverse head and shoulders pattern, indicating potential for a bullish upside reversal. Key price levels to watch include resistance areas around $253, $298, and $355, along with a vital support level near $212.",
+    "urlToImage": "https://content.stockstotrade.com/wp-content/uploads/2025/06/mongodbs-stock-ssoars-on-earnings-beats-1024x738.png",
     "sources": [
-      "https://am.gs.com/cms-assets/gsam-app/documents/insights/en/2025/muni-quarterly-1q25.pdf",
-      "https://www.breckinridge.com/insights/details/2025-municipal-market-outlook/",
-      "https://www.nuveen.com/en-us/insights/investment-outlook/fixed-income-weekly-commentary"
+      "https://www.investopedia.com/watch-these-mongodb-price-levels-as-stock-pops-after-database-software-provider-lifts-outlook-11748689",
+      "https://investors.mongodb.com/news-releases/news-release-details/mongodb-inc-announces-first-quarter-fiscal-2026-financial",
+      "https://www.ainvest.com/news/mongodb-stock-soar-15-44-strong-earnings-ai-push-2506/"
     ],
-    "published_at": "2025-06-04"
+    "published_at": "2025-06-06"
   },
   {
-    "title": "Impact of Economic Uncertainty on Hiring and Investment",
-    "description": "Economic uncertainty, especially regarding trade policies like tariffs, is causing many U.S. companies to delay hiring and investment plans. This cautious approach threatens to slow economic growth and may lead to a downturn if prolonged.",
-    "content_summary": "In 2025, heightened economic uncertainty driven by ambiguous trade policies and tariff fluctuations has forced many companies to adopt a wait-and-see strategy for hiring and investment decisions. Surveys indicate that policy uncertainty reduces hiring by 13% and investment by 16% across industries, with pronounced effects in manufacturing and trade sectors. The job market has slowed to a two-year low in hiring rates, reflecting hesitation among employers. This caution hampers economic momentum, potentially jeopardizing growth and complicating labor market recovery. Despite the slowdown, wage growth remains steady, particularly for job changers. The overall economic climate is one of careful navigation as businesses await clearer direction on trade and economic policies.",
-    "urlToImage": "https://intellizence.com/storage/2025/05/Leading-Companies-That-Announced-Mass-Layoffs-in-2025-2.png",
+    "title": "Tech Stocks Show Mixed Performance",
+    "description": "Major tech companies saw mixed results recently, with Microsoft, Amazon, and Alphabet posting slight gains, while Nvidia and Broadcom experienced slight declines. This reflects ongoing volatility and investor response to AI developments and market dynamics.",
+    "content_summary": "In recent weeks, Microsoft, Amazon, and Alphabet have reported slight gains, driven by positive earnings reports and strategic investments in AI and cloud infrastructure. Microsoft maintained its capital expenditure forecast, signaling continued investment in growth areas. Amazon's stock, despite a year-to-date decline of 5.8%, showed resilience with robust first-quarter results, driven by its diversified revenue streams and ambitious AI plans. Alphabet also saw shares rise as it maintained its position in AI and digital advertising. On the other hand, Nvidia and Broadcom experienced slight declines. Nvidia's stock volatility has been influenced by concerns over tariffs affecting its customers and the broader semiconductor market, despite its strong position in AI chips. While Nvidia's AI chips are exempt from the most aggressive tariffs, the indirect impact on its customers could still affect demand.",
+    "urlToImage": "https://www.voronoiapp.com/_next/image?url=https%3A%2F%2Fcdn.voronoiapp.com%2Fpublic%2Fimages%2F2c99c96b-e97a-4871-9c3c-675d9a7a1ad7.webp&w=3840&q=85",
     "sources": [
-      "https://www.weforum.org/stories/2025/05/wef-chief-economists-outlook-tariffs/",
-      "https://www.atlantafed.org/blogs/macroblog/2025/05/15/uncertainty-over-trade-policy-will-cut-hiring-and-investment-say-business-execs",
-      "https://www.ainvest.com/news/hiring-slows-year-economic-uncertainty-weighs-job-market-2506/"
+      "https://www.investopedia.com/dow-jones-today-06052025-11748703",
+      "https://www.nasdaq.com/articles/meta-microsoft-alphabet-and-amazon-just-delivered-incredible-news-nvidia-stock-investors",
+      "https://247wallst.com/investing/2025/06/04/amazon-stock-amzn-price-prediction-and-forecast/"
     ],
-    "published_at": "2025-06-04"
+    "published_at": "2025-06-06"
   },
   {
-    "title": "Federal Policy Challenges Ahead",
-    "description": "Federal policy challenges in 2025 include critical fiscal issues such as the debt ceiling debate, immigration reforms, and budgetary constraints. These pose risks to economic stability and require careful management to avoid escalating instability.",
-    "content_summary": "In 2025, the U.S. faces several pressing federal policy challenges that significantly impact economic and social outcomes. Key issues include the contentious debt ceiling negotiations, with the Republican Party demanding spending cuts while seeking to raise the debt limit, creating risk for economic turmoil. Additional complexities arise from the expiration of the 2017 tax cuts later this year. Immigration policy reforms are also central to the agenda, proposing border security and changes with potential economic implications. Moreover, budgetary pressures are compounded by the temporary continuing resolution in place until March 2025, demanding swift congressional action. Collectively, these challenges underscore the importance of policy clarity and fiscal responsibility to support economic stability and growth.",
-    "urlToImage": "https://russellinvestments.com/content/dam/ri/images/global/blogs/images/policiesmaingraphicdec3.webp",
+    "title": "Energy and Oil Prices Rise",
+    "description": "West Texas Intermediate crude oil futures rose 1.4% to $63.75 per barrel, rebounding from a recent decline, while gold futures edged higher to $3,405 per ounce amid ongoing economic volatility.",
+    "content_summary": "West Texas Intermediate (WTI) crude oil futures experienced a notable rebound, rising 1.4% to reach $63.75 per barrel. This increase follows a period of volatility in energy markets, where prices had previously declined due to concerns over global demand and shifting supply dynamics. The recovery reflects renewed optimism among traders, possibly driven by positive economic data, geopolitical factors, or inventory changes that supported prices. Recent daily and monthly price reports show WTI hovering in the low to mid-$60s range, with a daily price of $63.37 reported on June 5, 2025, according to local market sources. The monthly average for May 2025 stood at $62.17, indicating a relatively stable range despite underlying market fluctuations. Simultaneously, gold futures saw a slight upward movement, with prices reaching $3,405 per ounce. The increase in gold prices highlights a broader trend of investors seeking safe-haven assets amid ongoing uncertainty in global financial markets. While the gains for gold were modest, they underscore the continued appeal of precious metals as a hedge against inflation and economic instability. Both oil and gold markets are sensitive to factors including central bank policy decisions, geopolitical tensions, and macroeconomic data. The recent price movements in WTI and gold may be interpreted as a sign of cautious optimism, where energy markets find some footing after a pullback, and investors remain attracted to the perceived safety of gold. These trends are likely to be monitored closely for further signals about the direction of global commodity prices in the coming weeks.",
+    "urlToImage": "https://www.statista.com/graphic/1/279941/west-texas-intermediate-wti-crude-oil-price.jpg",
     "sources": [
-      "https://about.bgov.com/insights/public-affairs-strategies/top-10-public-policy-issues/",
-      "https://www.fitchratings.com/research/sovereigns/us-faces-several-fiscal-policy-challenges-in-2025-07-01-2025",
-      "https://www.governing.com/politics/ten-of-the-biggest-issues-to-watch-in-2025"
+      "https://www.oaoa.com/local-news/daily-oil-price-june-5-2025/",
+      "https://fred.stlouisfed.org/series/DCOILWTICO",
+      "https://www.tworiversks.coop/markets/chart.php?symbol=CLM25&type=CANDLE"
     ],
-    "published_at": "2025-06-04"
-  },
-  {
-    "title": "7-Eleven and Universal Pictures Collaborate for Jurassic World Rebirth",
-    "description": "7-Eleven and Universal Pictures have collaborated for the release of 'Jurassic World Rebirth,' offering exclusive merchandise, snacks, and experiences. This partnership brings the world of dinosaurs into 7-Eleven stores, combining retail and entertainment.",
-    "content_summary": "The collaboration between 7-Eleven and Universal Pictures for 'Jurassic World Rebirth' marks an exciting moment in the retail and entertainment sectors. This partnership is part of a broader strategy by Universal to expand the 'Jurassic World' franchise, which includes a new film set to release on July 2, 2025. The retail launch of 'Jurassic World Rebirth' products began on June 1, 2025, featuring a range of merchandise and toys from major partners like Mattel, LEGO, and Funko. Exclusive offers at 7-Eleven include unique merchandise such as vacation shirts and all-terrain tees, snacks and drinks like special Slurpees, and immersive themed experiences. This collaboration blends retail with entertainment and is part of Universal's broader strategy to innovate the franchise across various platforms, including digital content and theme park experiences.",
-    "urlToImage": "https://mma.prnewswire.com/media/2702621/2503_JWR_Comp_W_1280x1280.jpg",
-    "sources": [
-      "https://7collection.com/collections/jurassic-world-rebirth",
-      "https://www.7-eleven.com",
-      "https://licensinginternational.org/news/with-jurassic-world-rebirth-universal-products-experiences-brings-a-new-era-to-the-blockbuster-franchise/"
-    ],
-    "published_at": "2025-06-04"
-  },
-  {
-    "title": "Leonardo DiCaprio in Paul Thomas Anderson's 'One Battle After Another'",
-    "description": "'One Battle After Another' is an upcoming American black comedy action film directed by Paul Thomas Anderson, starring Leonardo DiCaprio and a star-studded cast. The film follows ex-revolutionaries reuniting to rescue a daughter after 16 years.",
-    "content_summary": "'One Battle After Another' is a highly anticipated film by acclaimed director Paul Thomas Anderson, featuring stars like Leonardo DiCaprio, Sean Penn, and Benicio del Toro. The story centers on former revolutionaries uniting to rescue a daughter when a past enemy resurfaces after 16 years, blending action and dark humor. Inspired by Thomas Pynchon's novel 'Vineland,' the film explores themes of history and paranoia. With Anderson's frequent collaborators handling cinematography and music, the movie promises a visually captivating and engaging experience. Scheduled for release on September 26, 2025, the film is expected to attract fans of complex storytelling and the director's work.",
-    "urlToImage": "https://m.media-amazon.com/images/M/MV5BYzA5ZTMyMWYtMWEwZS00MTU4LTgwMjktYTE5OTU1YzFjMGRiXkEyXkFqcGc@._V1_.jpg",
-    "sources": [
-      "https://www.imdb.com/title/tt30144839/",
-      "https://en.wikipedia.org/wiki/One_Battle_After_Another",
-      "https://www.youtube.com/watch?v=feOQFKv2Lw4"
-    ],
-    "published_at": "2025-06-04"
-  },
-  {
-    "title": "Lil Tecca Discusses New Music Era",
-    "description": "Rapper Lil Tecca is embracing a creatively intentional era in his music with his upcoming album Dopamine, featuring new singles like 'Dark Thoughts' and 'OWA OWA', highlighting his artistic growth and fan connection.",
-    "content_summary": "Lil Tecca is advancing his musical career with the forthcoming album Dopamine, characterized by a 'creatively intentional' approach. The New York rapper has released singles 'Dark Thoughts' and 'OWA OWA,' the latter sampling The Buggles' 'Video Killed the Radio Star' and acclaimed as a potential summer hit. He discusses balancing personal artistic evolution with fan expectations in recent interviews, revealing maturity and a desire to push musical boundaries. Dopamine is completed, though its official release date is not announced, building anticipation among fans eager for the full album.",
-    "urlToImage": "https://media.bleumag.com/brand-img/CPMgSo0pt/0x0/lil-tecca-smoking-with-red-backgrounf-1747763927597.jpg",
-    "sources": [
-      "https://bleumag.com/music/lil-tecca-dopamine-release-date/",
-      "https://abcnews.go.com/Entertainment/video/rapper-lil-tecca-talks-embracing-creatively-intentional-era-122466118",
-      "https://thebeatcincy.iheart.com/content/2025-05-30-rap-rising-lil-tecca-new-song-owa-owa-ahead-of-upcoming-album-dopamine/"
-    ],
-    "published_at": "2025-06-04"
-  },
-  {
-    "title": "Saquon Barkley Announced as Madden NFL 26 Cover Athlete",
-    "description": "Philadelphia Eagles running back Saquon Barkley has been named the Madden NFL 26 cover athlete following a record-setting NFL season and Super Bowl victory.",
-    "content_summary": "Saquon Barkley's career milestone as Madden NFL 26 cover athlete celebrates his exceptional achievements, including breaking the NFL single-season rushing record with 2,504 yards and leading the Eagles to a Super Bowl win. His Madden ratings evolved from 82 OVR to reaching the elite '99 Club.' The cover art features his iconic reverse hurdle highlight from the Super Bowl, underscoring his dynamic playing style. Barkley is the first Eagles offensive player on Madden cover since Donovan McNabb in Madden 06, embodying elite NFL talent and fan recognition.",
-    "urlToImage": "https://images.axios.com/hteq7_A-0V6CWrpZLEwpRNntD70=/2025/06/02/1748889882088.jpg",
-    "sources": [
-      "https://www.espn.com/gaming/story/_/id/45441617/saquon-barkley-madden-nfl-26-ratings-99-club",
-      "https://www.espn.com/nfl/story/_/id/45432412/eagles-rb-saquon-barkley-lands-madden-cover-iconic-leap",
-      "https://whyy.org/articles/eagles-saquon-barkley-madden-nfl-2026/"
-    ],
-    "published_at": "2025-06-04"
-  },
-  {
-    "title": "Netflix Reveals Upcoming Slate",
-    "description": "Netflix announced its 2025 content slate featuring finales for 'Stranger Things', new seasons and spin-offs of 'Squid Game', and continuation of popular series like 'Wednesday'.",
-    "content_summary": "Netflix's 2025 lineup includes major shows and finales that highlight its content strategy. The fan-favorite 'Stranger Things' will end with a two-part final season in late 2025. 'Squid Game' expands with a reality TV spin-off gaining a second season. Though specific details on 'Wednesday' are limited, the series remains a key part of Netflix's portfolio. The lineup also features new films for summer 2025 such as 'Happy Gilmore 2' and 'The Old Guard 2,' alongside increased documentary and reality programming. These offerings underline Netflix's continued investment in varied genres and formats to engage a broad audience.",
-    "urlToImage": "https://uploaded.celebconfirmed.com/0_78c2ae35_697c_402b_9fdd_4729fb7522a0_bc4fef919f.jpg",
-    "sources": [
-      "https://www.netflix.com/tudum/next-on-netflix",
-      "https://www.whats-on-netflix.com/coming-soon/netflix-movie-series-2025/",
-      "https://www.netflix.com/tudum/features/new-summer-movies-on-netflix-2025"
-    ],
-    "published_at": "2025-06-04"
+    "published_at": "2025-06-06"
   }
 ]

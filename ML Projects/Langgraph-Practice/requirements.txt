@@ -32,3 +32,5 @@ pinecone
 firebase-admin
 google-genai
 elevenlabs[pyaudio]
+scikit-learn
+numpy
