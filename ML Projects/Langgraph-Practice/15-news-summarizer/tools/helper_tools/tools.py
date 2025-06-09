@@ -374,7 +374,7 @@ top_headlines_agent_tools_general_category = [get_general_headlines_from_firebas
 top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
 top_headlines_cloud_pusher_agent_tools = [push_headlines_to_firebase_db, push_top_headlines_to_pinecone, read_json_file, write_json_file, validate_json_file]
 
-transcript_generator_agent_tools = [write_text_file, read_text_file, read_json_file]
+transcript_generator_agent_tools = [write_text_file, read_json_file]
 podcast_transcript_critic_agent_tools = [read_text_file, web_search]
 podcast_audio_generator_agent_tools = [generate_podcast_from_gemini, push_audio_to_firebase_storage, read_text_file]
 

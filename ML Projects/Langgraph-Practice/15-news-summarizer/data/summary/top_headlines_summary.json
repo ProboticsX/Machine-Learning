@@ -1,63 +1,62 @@
 [
   {
-    "title": "Stocks Fall Amid Trade Talks and Jobs Report Anticipation",
-    "description": "Recent stock market movements have been influenced by ongoing trade talks and anticipation of the upcoming jobs report. Despite a narrower-than-expected U.S. trade deficit, investors are cautious due to slightly higher jobless claims.",
-    "content_summary": "The stock market has experienced fluctuations recently, driven by developments in trade negotiations and the upcoming jobs report. On June 5, 2025, the U.S. trade deficit narrowed to $61.6 billion, which was a significant improvement from the previous month, alleviating some economic concerns. However, weekly jobless claims rose to 247,000, exceeding expectations, which could indicate a slight slowdown in the job market. These economic indicators are crucial as they provide insights into the health of the U.S. economy. The Dow Jones Industrial Average and the S&P 500 have shown mixed performances, with slight gains or losses in recent trading sessions. The Nasdaq Composite has been more resilient, often leading the gains among major indexes. Technology stocks, such as Broadcom and Nvidia, have been strong performers, while Tesla experienced some decline. Investors are looking ahead to the jobs report scheduled for June 7, 2025, which is expected to provide further clarity on the employment situation. The anticipation surrounding this report has contributed to the current cautious market environment. Trade tensions, particularly between the U.S. and China, remain a significant factor influencing market sentiment. Despite these challenges, some indices have shown resilience, with the S&P 500 nearing its all-time high after a strong rally in May.",
-    "urlToImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Stock_Market_April_5_2025_3_Months.png/960px-Stock_Market_April_5_2025_3_Months.png",
+    "title": "National Guard Deployment",
+    "description": "The Trump administration has deployed 2,000 National Guard troops to the Los Angeles area following protests triggered by immigration enforcement operations. The deployment aims to restore order amid clashes between protesters and federal immigration agents, including ICE officers.",
+    "content_summary": "Protests erupted in Los Angeles after immigration raids sparked confrontations between demonstrators and federal agents. Protesters blocked streets and highways, notably including the 101 freeway, with some incidents of violence such as cars being set on fire. To address the situation, President Donald Trump ordered the deployment of National Guard troops, describing the unrest as 'lawlessness.' California's Governor Gavin Newsom opposed this move, criticizing it as inflammatory. The protests, centered in areas like Paramount, have become a focal point for opposition against ICE's immigration raids, leading to standoffs with law enforcement. The National Guard's presence is intended to support local authorities in dispersing crowds and maintaining public safety.",
+    "urlToImage": "https://fortune.com/img-assets/wp-content/uploads/2025/06/AP25158746934704-e1749347319852.jpg?w=1440&q=90",
     "sources": [
-      "https://www.investopedia.com/dow-jones-today-06042025-11747867",
-      "https://www.youtube.com/watch?v=HBM_WUmOTBo",
-      "https://www.nasdaq.com/articles/us-stocks-may-lack-direction-ahead-monthly-jobs-report",
-      "https://www.kiro7.com/news/wall-street-listless/7YDDP4KJKNFRROFSYLE57QO3QI/"
+      "https://www.latimes.com/california/live/national-guard-troops-la-immigration-ice-clashes-paramount",
+      "https://abcnews.go.com/US/live-updates/la-immigration-protests-live-updates-trump-deploys-2000",
+      "https://www.cbsnews.com/losangeles/news/national-guard-troops-los-angeles-immigration-protests/"
     ],
-    "published_at": "2025-06-06"
+    "published_at": "2025-06-09"
   },
   {
-    "title": "Tesla Tumbles Amid Musk-Trump Dispute",
-    "description": "Tesla's stock plunged 14% in a single trading session after a highly publicized feud between Elon Musk and former President Donald Trump escalated. Trump suggested potentially stripping federal contracts from Musk's companies, intensifying investor concerns.",
-    "content_summary": "The feud between Elon Musk and Donald Trump reached a boiling point in early June 2025, resulting in a sharp decline in Tesla's stock value. Over the course of two days, Tesla shares dropped by nearly 15%, erasing over $150 billion from the company's market capitalization and marking one of the worst stretches for the stock in years. The selloff was triggered by escalating public exchanges between Musk and Trump, with Musk vociferously criticizing a Trump-supported budget reconciliation bill, which he labeled a 'disgusting abomination' for its anticipated impact on federal deficits. Musk, who had previously worked within the Trump administration and supported Trump's campaign, cited concerns over the bill's projected $2.4 trillion increase in annual budget deficits over the next decade. His opposition intensified after a Congressional Budget Office report confirmed the bill's fiscal impact, leading Musk to urge Republican lawmakers to block the legislation. Trump, on the other hand, expressed his disappointment with Musk's stance, particularly as the bill included provisions reducing subsidies for electric vehicle (EV) programs—a sector critical to Tesla's business. Trump went further by suggesting on Truth Social that the government could cut spending by withdrawing federal contracts from Musk's companies, a move that rattled investors and prompted fears about potential regulatory or policy retaliation. The episode reflects broader anxieties in the market about the influence of political relationships and policy shifts on corporate fortunes, especially in industries reliant on government support or subsidies.",
-    "urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2025/06/931/523/trump-musk.jpg?ve=1&tl=1",
+    "title": "Economic News",
+    "description": "Kevin Hassett, White House National Economic Council director, stated that the Trump administration may consider Medicare cuts if senators uncover fraud or abuse. This stance comes amid budget discussions involving President Trump's comprehensive legislative bill.",
+    "content_summary": "On the program 'Face the Nation,' Kevin Hassett clarified that Medicare is not currently targeted for cuts. However, if the Senate identifies fraud or abuse within Medicare during their legislative review, the administration would be open to adjusting the program. Hassett highlighted noticeable fraud and waste in Medicaid but had not seen comparable evidence in Medicare. The administration is willing to address any Medicare abuse uncovered by the Senate. This position is part of broader health care legislative efforts, including tax cuts, border security measures, and programs affecting Medicaid and food assistance. The discussion reflects ongoing scrutiny and proposed reforms in federal health programs.",
+    "urlToImage": "https://assets1.cbsnewsstatic.com/hub/i/2025/06/08/8b246c72-39c0-4974-99ee-8af84f598985/0608-ftn-hasett.jpg",
     "sources": [
-      "https://www.foxbusiness.com/politics/investor-nightmare-how-trump-musk-fallout-crushing-tesla-stock",
-      "https://www.cbsnews.com/news/elon-musk-trump-tesla-shares-down-truth-social-fallout/",
-      "https://www.investopedia.com/tesla-stock-sinks-as-trump-musk-relationship-falls-apart-in-public-spat-11748777"
+      "https://www.cbsnews.com/news/kevin-hassett-medicare-trump-big-beautiful-bill-face-the-nation/",
+      "https://www.cbsnews.com/video/kevin-hassett-says-if-senate-finds-medicare-abuse-then-we-would-look-at-it-in-trump-bill/",
+      "https://www.youtube.com/watch?v=nc55QRX4Iho"
     ],
-    "published_at": "2025-06-06"
+    "published_at": "2025-06-09"
   },
   {
-    "title": "MongoDB Soars on Strong Earnings",
-    "description": "MongoDB shares surged over 15% following the release of its first-quarter fiscal 2026 earnings results, driven by strong demand for AI-related applications and cloud database services.",
-    "content_summary": "MongoDB's stock price surged by 15.44% in pre-market trading on June 5, 2025, after the company reported impressive first-quarter earnings. The key drivers of this growth included a 22% increase in revenue to $549 million and a 26% year-over-year revenue growth from its Atlas multi-cloud database service, which now accounts for 72% of total quarterly revenue. MongoDB added 2,600 new customers, expanding its customer base to over 57,100. The company's raised guidance and strategic moves, such as increasing its share repurchase program by $800 million to a total of $1 billion, further boosted investor confidence. Despite reporting a net loss of $37.6 million, MongoDB showed a significant improvement from the previous year and achieved non-GAAP net income of $86.3 million. MongoDB's focus on AI is also gaining traction, with the introduction of new AI retrieval models and a public preview of its Model Context Protocol Server, enhancing its offerings for AI-powered applications. The appointment of Mike Berry as the new CFO is expected to enhance the company's financial strategy. Technically, MongoDB's stock has formed an inverse head and shoulders pattern, indicating potential for a bullish upside reversal. Key price levels to watch include resistance areas around $253, $298, and $355, along with a vital support level near $212.",
-    "urlToImage": "https://content.stockstotrade.com/wp-content/uploads/2025/06/mongodbs-stock-ssoars-on-earnings-beats-1024x738.png",
+    "title": "Recalls and Safety",
+    "description": "Due to safety concerns, about 1.7 million egg varieties are being recalled over potential Salmonella contamination. Additionally, nearly 4 million BowFlex adjustable dumbbells are recalled after reports that plates can dislodge and cause injury to users.",
+    "content_summary": "The egg recall involves brown cage-free and brown certified organic eggs supplied by the August Egg Company, linked to a Salmonella Enteritidis outbreak infecting 79 people across seven states, with 21 hospitalizations reported. The FDA and CDC advise against consuming these eggs, sold in retailers including Walmart. Separately, BowFlex has recalled nearly 4 million adjustable dumbbells (models 552 and 1090) after over 100 injuries such as concussions and broken toes were reported due to weight plates detaching during use. Consumers are eligible for refunds or replacements depending on purchase channels. Both recalls highlight ongoing efforts to ensure consumer safety amidst widespread product distribution.",
+    "urlToImage": "https://c.ndtvimg.com/2025-06/5f9s4no8_eggs_625x300_08_June_25.jpg",
     "sources": [
-      "https://www.investopedia.com/watch-these-mongodb-price-levels-as-stock-pops-after-database-software-provider-lifts-outlook-11748689",
-      "https://investors.mongodb.com/news-releases/news-release-details/mongodb-inc-announces-first-quarter-fiscal-2026-financial",
-      "https://www.ainvest.com/news/mongodb-stock-soar-15-44-strong-earnings-ai-push-2506/"
+      "https://www.delish.com/food-news/a65002724/salmonella-outbreak-eggs-recall-fda/",
+      "https://www.cdc.gov/salmonella/outbreaks/eggs-06-25/investigation.html",
+      "https://www.cbsnews.com/news/bowflex-adjustable-dumbbells-recall/"
     ],
-    "published_at": "2025-06-06"
+    "published_at": "2025-06-09"
   },
   {
-    "title": "Tech Stocks Show Mixed Performance",
-    "description": "Major tech companies saw mixed results recently, with Microsoft, Amazon, and Alphabet posting slight gains, while Nvidia and Broadcom experienced slight declines. This reflects ongoing volatility and investor response to AI developments and market dynamics.",
-    "content_summary": "In recent weeks, Microsoft, Amazon, and Alphabet have reported slight gains, driven by positive earnings reports and strategic investments in AI and cloud infrastructure. Microsoft maintained its capital expenditure forecast, signaling continued investment in growth areas. Amazon's stock, despite a year-to-date decline of 5.8%, showed resilience with robust first-quarter results, driven by its diversified revenue streams and ambitious AI plans. Alphabet also saw shares rise as it maintained its position in AI and digital advertising. On the other hand, Nvidia and Broadcom experienced slight declines. Nvidia's stock volatility has been influenced by concerns over tariffs affecting its customers and the broader semiconductor market, despite its strong position in AI chips. While Nvidia's AI chips are exempt from the most aggressive tariffs, the indirect impact on its customers could still affect demand.",
-    "urlToImage": "https://www.voronoiapp.com/_next/image?url=https%3A%2F%2Fcdn.voronoiapp.com%2Fpublic%2Fimages%2F2c99c96b-e97a-4871-9c3c-675d9a7a1ad7.webp&w=3840&q=85",
+    "title": "FDA Hiring Stalled",
+    "description": "The Trump administration's cost-cutting efforts have resulted in a federal hiring freeze that stalled new hiring and caused staff departures at the Food and Drug Administration (FDA), impacting its workforce and regulatory operations.",
+    "content_summary": "A hiring freeze extended through July 15, 2025, prevents filling vacant and new government positions except for critical roles. This measure has led to a significant decrease in FDA staffing capacity, with over 3,500 positions eliminated due to the administration's cost reduction strategy. The FDA's ability to regulate and innovate may be impaired, raising concerns about public health protection. While the administration argues that these cuts enhance efficiency and reduce waste, critics warn that reducing FDA workforce could cause delays in drug and device approvals and compromise oversight. The FDA's essential role in safeguarding medical products underscores the impact of these workforce challenges.",
+    "urlToImage": "https://therevolvingdoorproject.org/wp-content/uploads/2025/02/50773855346_3cb8d7f8be_o.jpg",
     "sources": [
-      "https://www.investopedia.com/dow-jones-today-06052025-11748703",
-      "https://www.nasdaq.com/articles/meta-microsoft-alphabet-and-amazon-just-delivered-incredible-news-nvidia-stock-investors",
-      "https://247wallst.com/investing/2025/06/04/amazon-stock-amzn-price-prediction-and-forecast/"
+      "https://www.whitehouse.gov/fact-sheets/2025/04/fact-sheet-president-donald-j-trump-extends-the-hiring-freeze/",
+      "https://www.whitehouse.gov/presidential-actions/2025/04/extension-of-hiring-freeze/",
+      "https://www.brookings.edu/articles/the-trump-administrations-nih-and-fda-cuts-will-negatively-impact-patients/"
     ],
-    "published_at": "2025-06-06"
+    "published_at": "2025-06-09"
   },
   {
-    "title": "Energy and Oil Prices Rise",
-    "description": "West Texas Intermediate crude oil futures rose 1.4% to $63.75 per barrel, rebounding from a recent decline, while gold futures edged higher to $3,405 per ounce amid ongoing economic volatility.",
-    "content_summary": "West Texas Intermediate (WTI) crude oil futures experienced a notable rebound, rising 1.4% to reach $63.75 per barrel. This increase follows a period of volatility in energy markets, where prices had previously declined due to concerns over global demand and shifting supply dynamics. The recovery reflects renewed optimism among traders, possibly driven by positive economic data, geopolitical factors, or inventory changes that supported prices. Recent daily and monthly price reports show WTI hovering in the low to mid-$60s range, with a daily price of $63.37 reported on June 5, 2025, according to local market sources. The monthly average for May 2025 stood at $62.17, indicating a relatively stable range despite underlying market fluctuations. Simultaneously, gold futures saw a slight upward movement, with prices reaching $3,405 per ounce. The increase in gold prices highlights a broader trend of investors seeking safe-haven assets amid ongoing uncertainty in global financial markets. While the gains for gold were modest, they underscore the continued appeal of precious metals as a hedge against inflation and economic instability. Both oil and gold markets are sensitive to factors including central bank policy decisions, geopolitical tensions, and macroeconomic data. The recent price movements in WTI and gold may be interpreted as a sign of cautious optimism, where energy markets find some footing after a pullback, and investors remain attracted to the perceived safety of gold. These trends are likely to be monitored closely for further signals about the direction of global commodity prices in the coming weeks.",
-    "urlToImage": "https://www.statista.com/graphic/1/279941/west-texas-intermediate-wti-crude-oil-price.jpg",
+    "title": "General Economic Climate",
+    "description": "The U.S. economic calendar typically includes crucial data releases such as inflation, trade, and employment figures; however, specific details for June 9, 2025, are not available. These data points influence monetary policy and economic forecasting.",
+    "content_summary": "Inflation rates reflect changes in consumer prices and guide Federal Reserve policies. Trade balances reveal the economic health relating to exports and imports, influencing currency strength and sector performance. Employment figures, including unemployment rates and job creation, serve as key indicators of economic vitality, affecting consumer spending and growth potential. Specific economic data on June 9 may include wholesale inventories, consumer inflation expectations, and Treasury bill auctions, which impact short-term interest rates and government financing. While precise releases for the day are unavailable, these metrics collectively aid investors, policymakers, and analysts in understanding economic trends.",
+    "urlToImage": "https://www.statista.com/graphic/1/273418/unadjusted-monthly-inflation-rate-in-the-us.jpg",
     "sources": [
-      "https://www.oaoa.com/local-news/daily-oil-price-june-5-2025/",
-      "https://fred.stlouisfed.org/series/DCOILWTICO",
-      "https://www.tworiversks.coop/markets/chart.php?symbol=CLM25&type=CANDLE"
+      "https://equalsmoney.com/economic-calendar/june",
+      "https://tradingeconomics.com/united-states/calendar",
+      "https://us.econoday.com"
     ],
-    "published_at": "2025-06-06"
+    "published_at": "2025-06-09"
   }
 ]

@@ -12,14 +12,17 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     date = state["category_class"]["date"]
     podcast_transcript_critique = ""
     current_podcast_transcript_critique_count = 0
+    podcast_transcript = ""
     if state.get("podcast_class") is not None:
+        if state.get("podcast_class").get("podcast_transcript") is not None:
+            podcast_transcript = state["podcast_class"]["podcast_transcript"]
         if state.get("podcast_class").get("podcast_transcript_critique") is not None:
             podcast_transcript_critique = state["podcast_class"]["podcast_transcript_critique"]
         if state.get("podcast_class").get("podcast_transcript_critique_count") is not None:
             current_podcast_transcript_critique_count = state["podcast_class"]["podcast_transcript_critique_count"]
     system_prompt = f"{role_of_each_podcast_transcript_supervisor_worker[PODCAST_TRANSCRIPT_GENERATOR_AGENT]} \n"+"""
     The name of the podcast is "Newspresso". \n
-    Please make sure to improve the script based on the critique of the podcast transcript and the existing podcast transcript (the path of the file is provided to you). \n
+    Please make sure to improve the script based on the critique of the podcast transcript and the existing podcast transcript (the path of the file is provided to you if it's existing). \n
     The script should be in the following format: \n
     Speaker 1: "Welcome to Newspresso – your personal generative AI podcast! We've got a jam-packed episode today covering everything from global politics to basketball buzzer-beaters. Let's dive right in with a tense exchange at the White House."
     Speaker 2: "Right—President Trump recently met with Canada's new Prime Minister, Mark Carney, and let's just say, things got frosty. Trump doubled down on his refusal to lower tariffs on Canadian imports, insisting they're justified. He even accused the U.S. of subsidizing Canada unfairly."
@@ -32,10 +35,10 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the summary of the top headlines found in the json file: {top_headlines_summary_json_file} and the critique of the podcast transcript (if any): {podcast_transcript_critique}. The podcast transcript file path is {podcast_transcript_file_path} and the date of the podcast is {date}"),
+        ("user", "Here is the summary of the top headlines found in the json file for which you need to generate the podcast transcript for: {top_headlines_summary_json_file}. Here's the existing podcast transcript (if any) {podcast_transcript} and the critique of the existing podcast transcript (if any): {podcast_transcript_critique}. The generated podcast transcript should be saved here {podcast_transcript_file_path} and the date of the podcast is {date}."),
     ])
     podcast_transcript_file_path = podcast_transcript_file
-    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript_critique=podcast_transcript_critique, podcast_transcript_file_path=podcast_transcript_file_path, date=date)
+    formatted_prompt = podcast_transcript_generator_prompt.format(top_headlines_summary_json_file=top_headlines_summary_json_file, podcast_transcript=podcast_transcript, podcast_transcript_critique=podcast_transcript_critique, podcast_transcript_file_path=podcast_transcript_file_path, date=date)
     podcast_transcript_generator_agent = create_react_agent(
         llm, 
         tools=transcript_generator_agent_tools, 
@@ -48,6 +51,7 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     podcast_class = PodcastClass(podcast_transcript_file_path=podcast_transcript_file_path)
     if state.get("podcast_class") is not None:
         podcast_class = state["podcast_class"].copy()
+        podcast_class["podcast_transcript"] = result["messages"][-1].content
         podcast_class["podcast_transcript_file_path"] = podcast_transcript_file_path
 
     if current_podcast_transcript_critique_count < MAX_PODCAST_TRANSCRIPT_CRITIQUE_COUNT:
