@@ -94,14 +94,14 @@ class FireStorageAndFireStoreAudioTool:
         except Exception as e:
             print(f"Error deleting existing audio files: {str(e)}")
     
-    def store_audio_file(self, audio_file_path: str, category: str = "general", metadata: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    def store_audio_file(self, audio_file_path: str, category: str = "general", custom_file_name: Optional[str] = None) -> Dict[str, Any]:
         """
         Store an audio file in Firebase Storage and save its metadata to Firestore.
         
         Args:
             audio_file_path (str): Path to the audio file
             category (str): Category of the headlines (e.g., technology, business, general)
-            metadata (Dict[str, Any], optional): Additional metadata to store with the file
+            custom_file_name (str, optional): Custom name to use when storing the file. If not provided, uses the original file name.
             
         Returns:
             Dict[str, Any]: Status of the operation including success/failure and details
@@ -115,18 +115,12 @@ class FireStorageAndFireStoreAudioTool:
                 }
             
             # Get file information
-            file_name = os.path.basename(audio_file_path)
-            file_extension = os.path.splitext(file_name)[1].lower()
+            original_file_name = os.path.basename(audio_file_path)
             
-            # Validate file type
-            if file_extension not in ['.mp3', '.wav', '.m4a', '.ogg']:
-                return {
-                    "success": False,
-                    "message": f"Unsupported audio file format: {file_extension}",
-                    "error": "UnsupportedFileFormat"
-                }
+            # Use custom file name if provided, otherwise use original file name (without extension)
+            base_name = custom_file_name if custom_file_name else os.path.splitext(original_file_name)[0]
+            file_name = os.path.splitext(base_name)[0]  # Remove any extension from the base name as the API by default saves it in .wav format
             
-            # Get today's date in YYYY-MM-DD format
             today_date = datetime.now().strftime("%Y-%m-%d")
             
             # Delete existing audio files for today

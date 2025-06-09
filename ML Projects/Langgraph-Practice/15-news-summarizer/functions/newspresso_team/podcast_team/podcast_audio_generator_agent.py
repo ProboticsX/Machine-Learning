@@ -15,7 +15,7 @@ def podcast_audio_generator_node(state: AgentState) -> Command[Literal[PODCAST_S
     """
     podcast_audio_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("user", "Here is the podcast transcript file path: {podcast_transcript_file_path}, the category of the podcast: {category} and the output path for the podcast audio: {podcast_audio_dir}. The podcast audio file name is {podcast_audio_file_name}."),
+        ("user", "Here is the podcast transcript file path: {podcast_transcript_file_path}, the category of the podcast: {category} and the output path for the podcast audio: {podcast_audio_dir}. The podcast audio file name should be {podcast_audio_file_name}."),
     ])
     formatted_prompt = podcast_audio_generator_prompt.format(podcast_transcript_file_path=podcast_transcript_file_path, category=category, podcast_audio_dir = podcast_audio_dir,podcast_audio_file_name=podcast_audio_file_name)
     podcast_audio_generator_agent = create_react_agent(llm, 

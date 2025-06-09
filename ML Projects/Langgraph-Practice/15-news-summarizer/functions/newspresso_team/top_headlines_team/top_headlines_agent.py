@@ -13,7 +13,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     def category_extractor(question: str) -> str:
         """Get the category from the user request."""
         system_prompt = """You are given a user question and you need to extract the category, country and date from it.
-                       These are the categories you can choose from: \n
+                       These are the only categories you can choose from: \n
                         - business \n
                         - technology \n
                         - science \n

@@ -46,7 +46,7 @@ payload = {
         },
         {
             "role": "user",
-            "content": "Find images for Donald Trump"
+            "content": "Can you find the news related to Microsoft’s new Start menu for Windows 11"
         }
     ],
     "return_images": True,
