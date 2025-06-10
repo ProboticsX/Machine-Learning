@@ -172,7 +172,7 @@ def push_audio_to_firebase_storage(audio_file_path: str, category: str, custom_f
     """
     try:
         firebase_tools = FireStorageAndFireStoreAudioTool(storage_bucket="iosapp-5d233.firebasestorage.app")
-        result = firebase_tools.store_audio_file(audio_file_path, category=category, custom_file_name=custom_file_name)
+        result = firebase_tools.store_audio_file(audio_file_path, category=category, custom_file_name=podcast_audio_file_name)
         return str(result)
     except Exception as e:
         return f"Error pushing audio to Firebase Storage: {str(e)}"
@@ -358,6 +358,48 @@ def get_general_headlines_from_firebase_db(date: str) -> str:
     return result
 
 
+def fetch_news_from_the_news_api(category: str, date: str):
+    # API endpoint
+    url = "https://api.thenewsapi.com/v1/news/top"
+    api_key =  os.getenv("THE_NEWS_API_KEY")
+    # Query parameters
+    params = {
+        "api_token": f"{api_key}",
+        "categories": f"{category}",
+        "published_on": f"{date}",
+        "locale": "us",
+        "limit": 3,
+        "language": "en"
+    }
+    
+    try:
+        # Make the GET request
+        response = requests.get(url, params=params)
+        response.raise_for_status()  # Raise an exception for bad status codes
+        
+        # Parse the JSON response
+        data = response.json()
+        
+        # Extract only the required fields from each story
+        formatted_stories = []
+        for story in data["data"]:
+            formatted_story = {
+                "title": story["title"],
+                "description": story["description"],
+                "snippet": story["snippet"],
+                "url": story["url"]
+            }
+            formatted_stories.append(formatted_story)
+        
+        # Return the formatted stories as JSON
+        return json.dumps(formatted_stories, indent=2)
+            
+    except requests.exceptions.RequestException as e:
+        return json.dumps({"error": f"Error fetching news: {str(e)}"})
+    except json.JSONDecodeError as e:
+        return json.dumps({"error": f"Error parsing JSON response: {str(e)}"})
+    
+
 project_root = Path(__file__).parent.parent.parent
 
 transcript_dir = project_root / "data" / "transcripts"
@@ -376,7 +418,7 @@ pinecone_index_name = "newspresso"
 
 # Tools
 category_extractor_agent_tools = [get_todays_date_and_day]
-top_headlines_agent_tools_any_category = [get_perplexity_response, write_json_file, validate_json_file]
+top_headlines_agent_tools_any_category = [get_perplexity_response, write_json_file, read_json_file, validate_json_file]
 top_headlines_agent_tools_general_category = [get_general_headlines_from_firebase_db, write_json_file, validate_json_file]
 top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
 top_headlines_cloud_pusher_agent_tools = [push_headlines_to_firebase_db, push_top_headlines_to_pinecone, read_json_file, write_json_file, validate_json_file]

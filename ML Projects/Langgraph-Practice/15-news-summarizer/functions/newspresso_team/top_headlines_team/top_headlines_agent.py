@@ -2,7 +2,6 @@ from common_imports import *
 from constants import *
 from classes import AgentState, TopHeadlinesClass, CategoryClass
 from tools.helper_tools.tools import *
-from tools.helper_tools.tools import get_perplexity_payload, get_perplexity_headers
 from functions.newspresso_team.top_headlines_team.top_headlines_supervisor_agent import role_of_each_top_headlines_worker
 
 def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPERVISOR_AGENT]]:
@@ -71,17 +70,19 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
         top_headlines_agent = create_react_agent(llm, tools=top_headlines_agent_tools_general_category, prompt=formatted_prompt)
         
     else:
-        payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} on {date}?")
-        headers = get_perplexity_headers()
-        response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
-        top_headlines = response.json()["choices"][0]["message"]["content"]
-        print("===BASIC TOP HEADLINES FROM PERPLEXITY API=====")
+        # payload = get_perplexity_payload(f"What are the latest top 5 headlines in the {category} category in {country} on {date}?")
+        # headers = get_perplexity_headers()
+        # response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
+        # top_headlines = response.json()["choices"][0]["message"]["content"]
+        response = fetch_news_from_the_news_api(category=category, date=date)
+        top_headlines = response
+        print("===BASIC TOP HEADLINES FROM THE NEWS API=====")
         print(top_headlines)
         
         system_prompt = f"{role_of_each_top_headlines_worker[TOP_HEADLINES_AGENT]}"+"""
-        You are given a list of top headlines. \n
+        You are given a json list of top headlines. \n
         You need to enrich each of the headlines with the following information using the tool provided. \n
-        Make sure that the enriched content is relevant to the top headlines provided. \n
+        Make sure that the enriched content is relevant to the top headlines provided and the news should be latest based on category provided. \n
         Please do not skip any of the headlines. \n
         Save the results in a json file and the format for each headline should be as follows: \n
             - title: The title of the headline.\n
@@ -94,9 +95,9 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
         """
         prompt = ChatPromptTemplate.from_messages([
             ("system", system_prompt),
-            ("user", "Please enrich the following top headlines with the information provided: {top_headlines}. The summary json file path is {summary_json_file_path}"),
+            ("user", "Please enrich the following top headlines with the information provided: {top_headlines}. The summary json file path is {summary_json_file_path}. Date is {date} and category is {category}"),
         ])
-        formatted_prompt = prompt.format(top_headlines=top_headlines, summary_json_file_path=summary_json_file_path)
+        formatted_prompt = prompt.format(top_headlines=top_headlines, summary_json_file_path=summary_json_file_path, date=date, category=category)
         top_headlines_agent = create_react_agent(llm, 
                                                 tools=top_headlines_agent_tools_any_category, 
                                                 prompt = formatted_prompt)

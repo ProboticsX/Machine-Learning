@@ -46,11 +46,11 @@ payload = {
         },
         {
             "role": "user",
-            "content": "Can you find the news related to Microsoft’s new Start menu for Windows 11"
+            "content": """Can you find the latest news published today (date is: 2025-06-09 and the category is: tech) on the following topic with a brief summary? 
+            Topic: Microsoft's new Start menu for Windows 11. """
         }
     ],
-    "return_images": True,
-    "return_related_questions": True,
+    "return_images": True
 }
 headers = {
     "Authorization": f"Bearer {YOUR_API_KEY}",
