@@ -73,7 +73,7 @@ class Assistant(Agent):
             
         Returns:
             str: Answer to the user's question""" 
-        date = "2025-06-05"#await self.get_todays_date()
+        date = await self.get_todays_date()
         headlines = await self.get_relevant_headlines(query=query, top_k=1, date=date)
         
         # RAG Grader Agent
@@ -270,32 +270,32 @@ async def entrypoint(ctx: agents.JobContext):
     #     summary = usage_collector.get_summary()
     #     logger.info(f"Usage: {summary}")
 
-    inactivity_task: asyncio.Task | None = None
+    # inactivity_task: asyncio.Task | None = None
 
-    async def user_presence_task():
-        # try to ping the user 3 times, if we get no answer, close the session
-        for _ in range(3):
-            await session.generate_reply(
-                instructions=(
-                    "The user has been inactive. Politely check if the user is still present, and "
-                    "gently guide the conversation back toward your intended goal."
-                )
-            )
-            await asyncio.sleep(10)
+    # async def user_presence_task():
+    #     # try to ping the user 3 times, if we get no answer, close the session
+    #     for _ in range(3):
+    #         await session.generate_reply(
+    #             instructions=(
+    #                 "The user has been inactive. Politely check if the user is still present, and "
+    #                 "gently guide the conversation back toward your intended goal."
+    #             )
+    #         )
+    #         await asyncio.sleep(10)
 
-        await asyncio.shield(session.aclose())
-        ctx.delete_room()
+    #     await asyncio.shield(session.aclose())
+    #     ctx.delete_room()
 
-    @session.on("user_state_changed")
-    def _user_state_changed(ev: UserStateChangedEvent):
-        nonlocal inactivity_task
-        if ev.new_state == "away":
-            inactivity_task = asyncio.create_task(user_presence_task())
-            return
+    # @session.on("user_state_changed")
+    # def _user_state_changed(ev: UserStateChangedEvent):
+    #     nonlocal inactivity_task
+    #     if ev.new_state == "away":
+    #         inactivity_task = asyncio.create_task(user_presence_task())
+    #         return
 
-        # ev.new_state: listening, speaking, ..
-        if inactivity_task is not None:
-            inactivity_task.cancel()
+    #     # ev.new_state: listening, speaking, ..
+    #     if inactivity_task is not None:
+    #         inactivity_task.cancel()
 
     # shutdown callbacks are triggered when the session is over
     # ctx.add_shutdown_callback()
