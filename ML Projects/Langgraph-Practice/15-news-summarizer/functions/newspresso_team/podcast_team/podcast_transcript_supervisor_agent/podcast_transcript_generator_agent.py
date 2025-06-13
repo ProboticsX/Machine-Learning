@@ -30,7 +30,8 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
     Speaker 2: "Switching gears, let's talk NBA playoffs. The Indiana Pacers pulled off a nail-biter against the Cleveland Cavaliers, winning 120 to 119!"
     Speaker 1: "The Pacers now lead the series 2-0, and all eyes are on Game 3 later this week. That's going to be a must-watch."
 
-    Don't include any special characters in the Speaker tags. Don't include any other tags in the script. It should strictly follow the format above.
+    Make sure the podcasters cover the headlines in a detailed manner which will help build interest to the users listening. \n
+    Don't include any special characters in the Speaker tags. Don't include any other tags in the script. It should strictly follow the format above. \n
     Finally, write the podcast transcript generated above to a file. Always save the new file over the existing file.
     """
     podcast_transcript_generator_prompt = ChatPromptTemplate.from_messages([

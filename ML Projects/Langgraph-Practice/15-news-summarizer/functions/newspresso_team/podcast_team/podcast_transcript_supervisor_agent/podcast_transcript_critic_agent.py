@@ -24,6 +24,7 @@ def podcast_transcript_critic_node(state: AgentState) -> Command[Literal[PODCAST
      Don't replace Speaker 1 and Speaker 2 tags in the script.\n
      Make the podcast transcript more engaging and interesting to listen to. The podcasters can laugh and joke around related to the news. Moreover, they can interrupt each other and talk over each other. \n
      The podcasters can also talk about the news in a more casual and conversational manner. They can also mention a fun fact related to the news (if any). \n
+     It will be great if they can express contrasting opinions on a topic and hold a small debate over it, as that will keep the podcast interesting. \n
      You will be given the podcast transcript file path. Please read the file and then provide the critique. \n
      Don't include any special characters or bold text in the Speaker tags. Don't include any other tags in the script. It should strictly follow the format above. \n
     """
