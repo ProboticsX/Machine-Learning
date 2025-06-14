@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -11,9 +12,11 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langgraph.prebuilt import create_react_agent
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import List, Dict, Any, AsyncGenerator
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
+import json
+import asyncio
 
 # Load environment variables
 load_dotenv()
@@ -59,6 +62,15 @@ rag_generator_system_prompt = """You are a helpful assistant that generates the 
                                 If the question is answerable, you will be given the filtered documents in case the question is answerable. \n               
                                 If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
                                 """
+
+newspresso_assistant_system_prompt = """Your name is Leslie and you are a news assistant for an app named "Newspresso". \n
+                    Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get AI-generated summary along with relevant sources. \n
+                    Moreover, it generates news podcasts everyday based on the news. \n
+                    Your goal is to answer whatever questions users ask you related to the headlines covered today by the app.\n
+                    Don't use general knowledge to answer any of the user's question on your own. \n
+                    You need to only provide the answer to the question if it is answerable.
+                    If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
+                    """
 
 class QueryRequest(BaseModel):
     query: str
@@ -176,59 +188,104 @@ async def get_relevant_headlines(query: str, top_k: int, date: str) -> List[Dict
         print(f"Error during reranking: {e}")
         return merged_results[:top_k]
 
-@app.post("/process_query", response_model=QueryResponse)
+async def stream_agent_response(agent, input_text: str) -> AsyncGenerator[str, None]:
+    """Stream the response from an agent."""
+    result = agent.invoke({"input": input_text})
+    # Stream the response word by word
+    words = result['messages'][-1].content.split()
+    for word in words:
+        yield f"{word} "
+        await asyncio.sleep(0.05)  # Add a small delay between words
+
+@app.post("/process_query")
 async def process_query(request: QueryRequest):
-    try:
-        query = request.query
-        date = await get_todays_date()
-        headlines = await get_relevant_headlines(query=query, top_k=2, date=date)
-        
-        # RAG Grader Agent
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", rag_grader_system_prompt),
-            ("user", "Here is the user question: {query}. The document to be graded: {document}."),
-        ])
-        
-        filtered_docs = []
-        for document in headlines:
-            formatted_prompt = prompt.format(query=query, document=document['metadata']['chunk_text'])
-            rag_grader_agent = create_react_agent(llm, 
-                                                tools=[],
-                                                prompt=formatted_prompt
-                                                )
-            document_result = rag_grader_agent.invoke({"input": "Please do the task as per the system prompt"})
+    async def generate_stream():
+        try:
+            query = request.query
+            date = await get_todays_date()
+            headlines = await get_relevant_headlines(query=query, top_k=2, date=date)
             
-            if document_result["messages"][-1].content.lower() == "yes" or document["rerank_score"] > 0.5:
-                filtered_docs.append(document)
-        
-        rag_grader_final_result = "yes" if filtered_docs else "no"
-        
-        # RAG Generator Agent
-        prompt = ChatPromptTemplate.from_messages([
-            ("system", rag_generator_system_prompt),
-            ("user", "Here is the user question: {query}. Result from grader whether the question asked is relevant to the news or not (Yes/No)? : {rag_grader_final_result} The filtered documents (in case the question is answerable): {filtered_docs}."),
-        ])
-        
-        formatted_prompt = prompt.format(
-            query=query, 
-            rag_grader_final_result=rag_grader_final_result,
-            filtered_docs=filtered_docs
-        )
-        
-        rag_generator_agent = create_react_agent(llm, 
-                                             tools=[],
-                                             prompt=formatted_prompt
-                                             )
-        
-        result = rag_generator_agent.invoke({"input": "Please do the task as per the system prompt"})
-        
-        return QueryResponse(
-            response=result['messages'][-1].content,
-            status="success"
-        )
+            # RAG Grader Agent
+            prompt = ChatPromptTemplate.from_messages([
+                ("system", rag_grader_system_prompt),
+                ("user", "Here is the user question: {query}. The document to be graded: {document}."),
+            ])
+            
+            filtered_docs = []
+            for document in headlines:
+                formatted_prompt = prompt.format(query=query, document=document['metadata']['chunk_text'])
+                rag_grader_agent = create_react_agent(llm, 
+                                                    tools=[],
+                                                    prompt=formatted_prompt
+                                                    )
+                document_result = rag_grader_agent.invoke({"input": "Please do the task as per the system prompt"})
+                
+                if document_result["messages"][-1].content.lower() == "yes" or document["rerank_score"] > 0.5:
+                    filtered_docs.append(document)
+            
+            rag_grader_final_result = "yes" if filtered_docs else "no"
+            
+            # RAG Generator Agent
+            prompt = ChatPromptTemplate.from_messages([
+                ("system", rag_generator_system_prompt),
+                ("user", "Here is the user question: {query}. Result from grader whether the question asked is relevant to the news or not (Yes/No)? : {rag_grader_final_result} The filtered documents (in case the question is answerable): {filtered_docs}."),
+            ])
+            
+            formatted_prompt = prompt.format(
+                query=query, 
+                rag_grader_final_result=rag_grader_final_result,
+                filtered_docs=filtered_docs
+            )
+            
+            rag_generator_agent = create_react_agent(llm, 
+                                                 tools=[],
+                                                 prompt=formatted_prompt
+                                                 )
+            
+            # Get RAG Generator response
+            rag_generator_response = rag_generator_agent.invoke({"input": "Please do the task as per the system prompt"})['messages'][-1].content
+            
+            # Newspresso Assistant Agent
+            prompt = ChatPromptTemplate.from_messages([
+                ("system", newspresso_assistant_system_prompt),
+                ("user", "Here is the user question: {query}. The result from the RAG Generator Agent: {result}."),
+            ])
+            
+            formatted_prompt = prompt.format(
+                query=query, 
+                result=rag_generator_response
+            )
+            
+            newspresso_assistant_agent = create_react_agent(llm, 
+                                                        tools=[],
+                                                        prompt=formatted_prompt
+                                                        )
+            
+            # Get the final response
+            final_response = newspresso_assistant_agent.invoke({"input": "Please do the task as per the system prompt"})['messages'][-1].content
+            
+            # Stream the response word by word
+            words = final_response.split()
+            for i, word in enumerate(words):
+                # Create a JSON response for each word
+                response = {
+                    "response": word + (" " if i < len(words) - 1 else ""),
+                    "status": "streaming" if i < len(words) - 1 else "success"
+                }
+                yield json.dumps(response) + "\n"
+                await asyncio.sleep(0.1)  # Add a small delay between words
+            
+        except Exception as e:
+            error_response = {
+                "response": f"Error: {str(e)}",
+                "status": "error"
+            }
+            yield json.dumps(error_response) + "\n"
     
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return StreamingResponse(
+        generate_stream(),
+        media_type="application/x-ndjson"  # Use newline-delimited JSON
+    )
 
 def start_ngrok():
     # Open a ngrok tunnel to the HTTP server
