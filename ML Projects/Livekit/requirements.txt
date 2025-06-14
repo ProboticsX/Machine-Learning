@@ -8,3 +8,8 @@ langchain_core
 langgraph
 scikit-learn
 numpy
+fastapi
+uvicorn
+pyngrok
+openai
+ngrok

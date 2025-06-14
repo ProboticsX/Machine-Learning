@@ -282,7 +282,7 @@ class Assistant(Agent):
         print(f"get_perplexity_response: {result}")
         return result
 
-    def get_perplexity_payload(self, question: str, return_images: bool = False):
+    def get_perplexity_payload(self, question: str):
         payload = {
             "model": perplexity_model,
             "messages": [

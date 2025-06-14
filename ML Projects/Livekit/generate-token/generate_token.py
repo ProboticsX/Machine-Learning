@@ -28,8 +28,8 @@ from livekit import api
 from flask import Flask
 
 app = Flask(__name__)
-ROOM_ID = "playground-0vsH-cHSw"
-PARTICIPANT_ID = "identity-gJUq"
+ROOM_ID = "identity"
+PARTICIPANT_ID = "my name"
 
 @app.route('/getToken')
 def getToken():
@@ -38,7 +38,7 @@ def getToken():
     .with_name(f"{ROOM_ID}") \
     .with_grants(api.VideoGrants(
         room_join=True,
-        room=f"{ROOM_ID}",
+        room="my-room",
     ))
   token_str = token.to_jwt()
   print(f"Generated token: {token_str}")
