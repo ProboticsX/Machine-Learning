@@ -1,6 +1,6 @@
 from common_imports import *
 from constants import *
-from classes import AgentState, PodcastClass
+from classes import AgentState, PodcastClass, PodcastSummaryAndTitleClass
 from tools.helper_tools.tools import *
 from functions.newspresso_team.podcast_team.podcast_transcript_supervisor_agent.podcast_transcript_supervisor_agent import role_of_each_podcast_transcript_supervisor_worker
 
@@ -65,6 +65,27 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
             },
             goto=PODCAST_TRANSCRIPT_CRITIC_AGENT,
         )
+    
+    system_prompt = """You are given a podcast transcript and you need to come up with a suitable summary of the transcript in about 100-150 words mentioning what the podcasters talk about.\n
+                       Also, come up with a catchy title for the podcast in about 5-8 words. \n
+    """
+    summary_and_title_generator_prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("user", "Here is the podcast transcript: {podcast_transcript}."),
+    ])
+    formatted_prompt = summary_and_title_generator_prompt.format(podcast_transcript=podcast_transcript)
+    summary_and_title_generator_agent = create_react_agent(
+        llm,
+        tools=[],
+        prompt=formatted_prompt,
+        response_format=PodcastSummaryAndTitleClass
+    )
+    invoke_message = {"input": "Generate the summary and title of the podcast"}
+    result = summary_and_title_generator_agent.invoke(invoke_message)
+    print("===RESULT OF PODCAST SUMMARY AND TITLE GENERATOR NODE=====")
+    print(result)
+    podcast_summary_and_title_class = PodcastSummaryAndTitleClass(podcast_summary=result["structured_response"]["podcast_summary"], podcast_title=result["structured_response"]["podcast_title"])
+    podcast_class["podcast_summary_and_title_class"] = podcast_summary_and_title_class
     return Command(
         update={
             "messages": [

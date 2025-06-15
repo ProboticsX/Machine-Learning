@@ -161,18 +161,20 @@ def push_headlines_to_firebase_db(category: str, file_path: str) -> str:
     return result
 
 @tool
-def push_audio_to_firebase_storage(audio_file_path: str, category: str, custom_file_name: str) -> str:
+def push_audio_to_firebase_storage(audio_file_path: str, category: str, custom_file_name: str, podcast_title: str, podcast_summary: str) -> str:
     """Pushes the audio to the firebase storage.
     Args:
         audio_file_path: The folder path where the audio file will be stored.
         category: Category of the top headlines news.
         custom_file_name: The name of the audio file.
+        podcast_title: The title of the podcast
+        podcast_summary: The summary of the podcast
     Returns:
         str: The response from the perplexity API.
     """
     try:
         firebase_tools = FireStorageAndFireStoreAudioTool(storage_bucket="iosapp-5d233.firebasestorage.app")
-        result = firebase_tools.store_audio_file(audio_file_path, category=category, custom_file_name=podcast_audio_file_name)
+        result = firebase_tools.store_audio_file(audio_file_path, category=category, custom_file_name=podcast_audio_file_name, podcast_title=podcast_title, podcast_summary=podcast_summary)
         return str(result)
     except Exception as e:
         return f"Error pushing audio to Firebase Storage: {str(e)}"

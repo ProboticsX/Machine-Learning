@@ -94,7 +94,7 @@ class FireStorageAndFireStoreAudioTool:
         except Exception as e:
             print(f"Error deleting existing audio files: {str(e)}")
     
-    def store_audio_file(self, audio_file_path: str, category: str = "general", custom_file_name: Optional[str] = None) -> Dict[str, Any]:
+    def store_audio_file(self, audio_file_path: str, category: str = "general", custom_file_name: Optional[str] = None, podcast_title: Optional[str] = None, podcast_summary: Optional[str] = None) -> Dict[str, Any]:
         """
         Store an audio file in Firebase Storage and save its metadata to Firestore.
         
@@ -102,6 +102,8 @@ class FireStorageAndFireStoreAudioTool:
             audio_file_path (str): Path to the audio file
             category (str): Category of the headlines (e.g., technology, business, general)
             custom_file_name (str, optional): Custom name to use when storing the file. If not provided, uses the original file name.
+            podcast_title (str, optional): Title of the podcast episode
+            podcast_summary (str, optional): Summary of the podcast episode
             
         Returns:
             Dict[str, Any]: Status of the operation including success/failure and details
@@ -150,7 +152,9 @@ class FireStorageAndFireStoreAudioTool:
                 "public_url": blob.public_url,
                 "category": category,
                 "date": today_date,
-                "timestamp": firestore.SERVER_TIMESTAMP
+                "timestamp": firestore.SERVER_TIMESTAMP,
+                "podcast_title": podcast_title,
+                "podcast_summary": podcast_summary
             }
             
             # Save metadata to Firestore using the same structure as headlines

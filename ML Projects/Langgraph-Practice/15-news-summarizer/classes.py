@@ -6,11 +6,16 @@ class CategoryClass(TypedDict):
     country: str = Field(description="The country of the news")
     date: str = Field(description="The date of the news in the format of YYYY-MM-DD")
 
+class PodcastSummaryAndTitleClass(TypedDict):
+    podcast_summary: str = Field(description="The summary of the podcast")
+    podcast_title: str = Field(description="The title of the podcast")
+
 class PodcastClass(TypedDict):
     podcast_transcript: str = Field("The podcast transcrip")
     podcast_transcript_file_path: str = Field(description="The path of the podcast transcript file")
     podcast_transcript_critique: str = Field(description="The critique of the podcast transcript")
     podcast_transcript_critique_count: int = Field(description="The count of the critique of the podcast transcript")
+    podcast_summary_and_title_class: PodcastSummaryAndTitleClass = Field(description="The summary and title of the podcast")
 
 class TopHeadlinesClass(TypedDict):
     top_headlines_summary_json_file: str = Field(description="The json file of the top headlines summary")
