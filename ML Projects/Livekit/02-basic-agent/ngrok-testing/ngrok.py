@@ -12,12 +12,14 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langgraph.prebuilt import create_react_agent
 from datetime import datetime
-from typing import List, Dict, Any, AsyncGenerator
+from typing import List, Dict, Any, AsyncGenerator, Optional
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import json
 import asyncio
 from collections import defaultdict
+import requests
+import logging
 
 # Load environment variables
 load_dotenv()
@@ -55,9 +57,11 @@ conversation_memory = defaultdict(list)
 rag_grader_system_prompt = """You are an agent who is tasked with grading the relevance of retrieved documents to a user question.
                             A document can be graded relevant in case the question asked is relevant to the document or if the subject/topic in the question is mentioned in the document. \n
                             You will be given a question, conversation history, and a document for reference. \n
-                            The output should be a binary score of yes or no. \n
-                            If the document is relevant to the question or if the question refers to previous context in the conversation, the output should be yes. \n
-                            If the document is not relevant to the question or there are no documents retrieved or the document is not from today's date, the output should be no. \n
+                            Classify the output in either:
+                            - Directly related (If the document is relevant to the question or if the question refers to previous context in the conversation) \n
+                            - Loosely related (If the document is not relevant to the question but has a few keywords, titles related to the document or the previous conversation) \n
+                            - Unrelated (If the document or previous conversation is not at all related to the question asked) \n
+                            Return only one label.
                             """
 
 rag_generator_system_prompt = """You are a helpful assistant that generates the final answer to the user question. \n
@@ -78,18 +82,54 @@ newspresso_assistant_system_prompt = """Your name is Leslie and you are a news a
                     If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
                     """
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
+
+def get_perplexity_response(question: str):
+    """Use this tool only when the question is answerable and you need extra information from web search. Gets the response from the perplexity API.
+        Args:
+            question: The question to ask the perplexity API.
+        Returns:
+            str: The response from the perplexity API.
+    """
+    payload = get_perplexity_payload(question)
+    headers = get_perplexity_headers()
+    response = requests.request("POST", PERPLEXITY_API_URL, json=payload, headers=headers)
+    result = response.json()
+    print(f"get_perplexity_response: {result}")
+    return result
+
+def get_perplexity_payload(question: str):
+    payload = {
+        "model": perplexity_model,
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant that answers questions and provides information."},
+            {"role": "user", "content": question}
+        ],
+    }
+    return payload
+
+def get_perplexity_headers():
+    headers = {
+        "Authorization": f"Bearer {os.getenv("PERPLEXITY_API_KEY")}",
+        "Content-Type": "application/json"
+    }
+    return headers
+
 class QueryRequest(BaseModel):
     query: str
-    user_id: str = None  # Optional user identifier
-    conversation_id: str = None  # To identify different conversation threads
+    user_id: Optional[str] = None  # Optional user identifier
+    conversation_id: Optional[str] = None  # To identify different conversation threads
+    date: str  # Date in YYYY-MM-DD format
 
 class QueryResponse(BaseModel):
     response: str
     status: str
-
-async def get_todays_date() -> str:
-    """Gets today's date."""
-    return datetime.now().strftime("%Y-%m-%d")
 
 async def create_sparse_vector(text: str) -> Dict[str, List]:
     """Create a sparse vector using TF-IDF."""
@@ -208,15 +248,20 @@ async def stream_agent_response(agent, input_text: str) -> AsyncGenerator[str, N
 async def process_query(request: QueryRequest):
     async def generate_stream():
         try:
+            logger.info(f"Received request - Query: {request.query}, Date: {request.date}, Conversation ID: {request.conversation_id}")
+            
             query = request.query
+            date = request.date  # Use date from request instead of get_todays_date()
             conversation_id = request.conversation_id or "default"
             
             # Get conversation history
             chat_history = conversation_memory[conversation_id]
-            formatted_history = "\n".join([f"User: {msg['query']}\nAssistant: {msg['response']}" for msg in chat_history[-5:]])  # Keep last 5 exchanges
+            formatted_history = "\n".join([f"User: {msg['query']}\nAssistant: {msg['response']}" for msg in chat_history[-5:]])
+            logger.info(f"Retrieved conversation history for ID {conversation_id}: {len(chat_history)} messages")
             
-            date = await get_todays_date()
+            logger.info(f"Fetching relevant headlines for date: {date}")
             headlines = await get_relevant_headlines(query=query, top_k=2, date=date)
+            logger.info(f"Retrieved {len(headlines)} headlines")
             
             # RAG Grader Agent
             prompt = ChatPromptTemplate.from_messages([
@@ -225,7 +270,8 @@ async def process_query(request: QueryRequest):
             ])
             
             filtered_docs = []
-            for document in headlines:
+            for idx, document in enumerate(headlines):
+                logger.info(f"Grading document {idx + 1}/{len(headlines)}")
                 formatted_prompt = prompt.format(
                     query=query,
                     document=document['metadata']['chunk_text'],
@@ -236,13 +282,18 @@ async def process_query(request: QueryRequest):
                                                     prompt=formatted_prompt
                                                     )
                 document_result = rag_grader_agent.invoke({"input": "Please do the task as per the system prompt"})
+                grader_response = document_result["messages"][-1].content
+                logger.info(f"RAG Grader response for document {idx + 1}: {grader_response}")
                 
-                if document_result["messages"][-1].content.lower() == "yes" or document["rerank_score"] > 0.5:
+                if grader_response.lower() in ["directly related", "loosely related"] or document["rerank_score"] > 0.5:
                     filtered_docs.append(document)
+                    logger.info(f"Document {idx + 1} added to filtered docs")
             
+            logger.info(f"Total filtered documents: {len(filtered_docs)}")
             rag_grader_final_result = "yes" if filtered_docs else "no"
             
             # RAG Generator Agent
+            logger.info("Initializing RAG Generator Agent")
             prompt = ChatPromptTemplate.from_messages([
                 ("system", rag_generator_system_prompt),
                 ("user", "Here is the conversation history:\n{history}\n\nCurrent user question: {query}\nResult from grader whether the question asked is relevant to the news or not (Yes/No)? : {rag_grader_final_result}\nThe filtered documents (in case the question is answerable): {filtered_docs}."),
@@ -256,14 +307,17 @@ async def process_query(request: QueryRequest):
             )
             
             rag_generator_agent = create_react_agent(llm, 
-                                                 tools=[],
+                                                 tools=[get_perplexity_response],
                                                  prompt=formatted_prompt
                                                  )
             
             # Get RAG Generator response
-            rag_generator_response = rag_generator_agent.invoke({"input": "Please do the task as per the system prompt"})['messages'][-1].content
+            logger.info("Getting RAG Generator response")
+            rag_generator_response = rag_generator_agent.invoke({"input": "Please do the task as per the system prompt"})
+            logger.info(f"RAG Generator response: {rag_generator_response['messages'][-1].content}")
             
             # Newspresso Assistant Agent
+            logger.info("Initializing Newspresso Assistant Agent")
             prompt = ChatPromptTemplate.from_messages([
                 ("system", newspresso_assistant_system_prompt),
                 ("user", "Here is the conversation history:\n{history}\n\nCurrent user question: {query}\nThe result from the RAG Generator Agent: {result}."),
@@ -271,27 +325,30 @@ async def process_query(request: QueryRequest):
             
             formatted_prompt = prompt.format(
                 query=query,
-                result=rag_generator_response,
+                result=rag_generator_response['messages'][-1].content,
                 history=formatted_history
             )
             
             newspresso_assistant_agent = create_react_agent(llm, 
-                                                        tools=[],
+                                                        tools=[get_perplexity_response],
                                                         prompt=formatted_prompt
                                                         )
             
             # Get the final response
-            final_response = newspresso_assistant_agent.invoke({"input": "Please do the task as per the system prompt"})['messages'][-1].content
+            logger.info("Getting final response from Newspresso Assistant")
+            final_response = newspresso_assistant_agent.invoke({"input": "Please do the task as per the system prompt"})
+            logger.info(f"Final response: {final_response['messages'][-1].content}")
             
             # Store the conversation
             conversation_memory[conversation_id].append({
                 "query": query,
-                "response": final_response,
+                "response": final_response['messages'][-1].content,
                 "timestamp": datetime.now().isoformat()
             })
+            logger.info(f"Stored conversation in memory for ID {conversation_id}")
             
             # Stream the response word by word
-            words = final_response.split()
+            words = final_response['messages'][-1].content.split()
             for i, word in enumerate(words):
                 response = {
                     "response": word + (" " if i < len(words) - 1 else ""),
@@ -301,7 +358,10 @@ async def process_query(request: QueryRequest):
                 yield json.dumps(response) + "\n"
                 await asyncio.sleep(0.1)
             
+            logger.info("Request processing completed successfully")
+            
         except Exception as e:
+            logger.error(f"Error processing request: {str(e)}", exc_info=True)
             error_response = {
                 "response": f"Error: {str(e)}",
                 "status": "error",
@@ -319,6 +379,10 @@ def start_ngrok():
     public_url = ngrok.connect(8000).public_url
     print(f" * ngrok tunnel \"{public_url}\" -> http://127.0.0.1:8000")
     return public_url
+
+
+perplexity_model = "sonar"
+PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
 
 if __name__ == "__main__":
     # Start ngrok
