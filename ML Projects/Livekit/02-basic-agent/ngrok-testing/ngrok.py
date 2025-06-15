@@ -17,6 +17,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import json
 import asyncio
+from collections import defaultdict
 
 # Load environment variables
 load_dotenv()
@@ -47,16 +48,20 @@ llm = ChatOpenAI(model_name="gpt-4.1-mini")
 # Initialize TF-IDF vectorizer
 tfidf = TfidfVectorizer(max_features=1000)
 
+# Initialize conversation memory store
+conversation_memory = defaultdict(list)
+
 # System prompts for RAG
 rag_grader_system_prompt = """You are an agent who is tasked with grading the relevance of retrieved documents to a user question.
                             A document can be graded relevant in case the question asked is relevant to the document or if the subject/topic in the question is mentioned in the document. \n
-                            You will be given a question and a document for reference. \n
+                            You will be given a question, conversation history, and a document for reference. \n
                             The output should be a binary score of yes or no. \n
-                            If the document is relevant to the question, the output should be yes. \n
+                            If the document is relevant to the question or if the question refers to previous context in the conversation, the output should be yes. \n
                             If the document is not relevant to the question or there are no documents retrieved or the document is not from today's date, the output should be no. \n
                             """
 
 rag_generator_system_prompt = """You are a helpful assistant that generates the final answer to the user question. \n
+                                You have access to the conversation history to understand context and references to previous questions. \n
                                 Please don't answer the questions in case it's not relevant to the documents attached and let the user know about it. \n
                                 You will be given the (yes/no) decision on whether question is answerable or not. \n
                                 If the question is answerable, you will be given the filtered documents in case the question is answerable. \n               
@@ -67,6 +72,7 @@ newspresso_assistant_system_prompt = """Your name is Leslie and you are a news a
                     Newspresso aims to provide daily dose of top headlines across various categories where the user can click on any top headline and get AI-generated summary along with relevant sources. \n
                     Moreover, it generates news podcasts everyday based on the news. \n
                     Your goal is to answer whatever questions users ask you related to the headlines covered today by the app.\n
+                    You have access to the conversation history to understand context and references to previous questions. \n
                     Don't use general knowledge to answer any of the user's question on your own. \n
                     You need to only provide the answer to the question if it is answerable.
                     If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
@@ -75,6 +81,7 @@ newspresso_assistant_system_prompt = """Your name is Leslie and you are a news a
 class QueryRequest(BaseModel):
     query: str
     user_id: str = None  # Optional user identifier
+    conversation_id: str = None  # To identify different conversation threads
 
 class QueryResponse(BaseModel):
     response: str
@@ -202,18 +209,28 @@ async def process_query(request: QueryRequest):
     async def generate_stream():
         try:
             query = request.query
+            conversation_id = request.conversation_id or "default"
+            
+            # Get conversation history
+            chat_history = conversation_memory[conversation_id]
+            formatted_history = "\n".join([f"User: {msg['query']}\nAssistant: {msg['response']}" for msg in chat_history[-5:]])  # Keep last 5 exchanges
+            
             date = await get_todays_date()
             headlines = await get_relevant_headlines(query=query, top_k=2, date=date)
             
             # RAG Grader Agent
             prompt = ChatPromptTemplate.from_messages([
                 ("system", rag_grader_system_prompt),
-                ("user", "Here is the user question: {query}. The document to be graded: {document}."),
+                ("user", "Here is the conversation history:\n{history}\n\nCurrent user question: {query}\nThe document to be graded: {document}."),
             ])
             
             filtered_docs = []
             for document in headlines:
-                formatted_prompt = prompt.format(query=query, document=document['metadata']['chunk_text'])
+                formatted_prompt = prompt.format(
+                    query=query,
+                    document=document['metadata']['chunk_text'],
+                    history=formatted_history
+                )
                 rag_grader_agent = create_react_agent(llm, 
                                                     tools=[],
                                                     prompt=formatted_prompt
@@ -228,13 +245,14 @@ async def process_query(request: QueryRequest):
             # RAG Generator Agent
             prompt = ChatPromptTemplate.from_messages([
                 ("system", rag_generator_system_prompt),
-                ("user", "Here is the user question: {query}. Result from grader whether the question asked is relevant to the news or not (Yes/No)? : {rag_grader_final_result} The filtered documents (in case the question is answerable): {filtered_docs}."),
+                ("user", "Here is the conversation history:\n{history}\n\nCurrent user question: {query}\nResult from grader whether the question asked is relevant to the news or not (Yes/No)? : {rag_grader_final_result}\nThe filtered documents (in case the question is answerable): {filtered_docs}."),
             ])
             
             formatted_prompt = prompt.format(
-                query=query, 
+                query=query,
                 rag_grader_final_result=rag_grader_final_result,
-                filtered_docs=filtered_docs
+                filtered_docs=filtered_docs,
+                history=formatted_history
             )
             
             rag_generator_agent = create_react_agent(llm, 
@@ -248,12 +266,13 @@ async def process_query(request: QueryRequest):
             # Newspresso Assistant Agent
             prompt = ChatPromptTemplate.from_messages([
                 ("system", newspresso_assistant_system_prompt),
-                ("user", "Here is the user question: {query}. The result from the RAG Generator Agent: {result}."),
+                ("user", "Here is the conversation history:\n{history}\n\nCurrent user question: {query}\nThe result from the RAG Generator Agent: {result}."),
             ])
             
             formatted_prompt = prompt.format(
-                query=query, 
-                result=rag_generator_response
+                query=query,
+                result=rag_generator_response,
+                history=formatted_history
             )
             
             newspresso_assistant_agent = create_react_agent(llm, 
@@ -264,21 +283,29 @@ async def process_query(request: QueryRequest):
             # Get the final response
             final_response = newspresso_assistant_agent.invoke({"input": "Please do the task as per the system prompt"})['messages'][-1].content
             
+            # Store the conversation
+            conversation_memory[conversation_id].append({
+                "query": query,
+                "response": final_response,
+                "timestamp": datetime.now().isoformat()
+            })
+            
             # Stream the response word by word
             words = final_response.split()
             for i, word in enumerate(words):
-                # Create a JSON response for each word
                 response = {
                     "response": word + (" " if i < len(words) - 1 else ""),
-                    "status": "streaming" if i < len(words) - 1 else "success"
+                    "status": "streaming" if i < len(words) - 1 else "success",
+                    "conversation_id": conversation_id
                 }
                 yield json.dumps(response) + "\n"
-                await asyncio.sleep(0.1)  # Add a small delay between words
+                await asyncio.sleep(0.1)
             
         except Exception as e:
             error_response = {
                 "response": f"Error: {str(e)}",
-                "status": "error"
+                "status": "error",
+                "conversation_id": conversation_id if 'conversation_id' in locals() else None
             }
             yield json.dumps(error_response) + "\n"
     
