@@ -236,6 +236,32 @@ def validate_json_file() -> str:
     except Exception as e:
         return f"❌ Validation failed: Unexpected error - {str(e)}"
 
+@tool
+def get_source_credibility_score(scores_dict: Dict[str, Union[int, float]]) -> float:
+    """Provides score for source_credibility_score which is the average of the different scores assigned per source for each headline
+    Args:
+        scores_dict: The dictionary of score for each headline (eg: {"source_1": 4.3, "source_2": 8.1, "source_3": 7.2})
+    Returns:
+        float: The final source_credibility_score score.
+    """
+    return sum(scores_dict.values())/len(scores_dict)
+    
+
+@tool
+def get_ranking_score(scores_dict: Dict[str, Union[int, float]]) -> float:
+    """Provides score for ranking_score which is the average of all the different scores for a given headline based on the weights assigned to each type of score.
+    Args:
+        scores_dict: The dictionary of different types of scores for each headline (eg: {"categorical_score": 9.2, "source_credibility_score": 4.5, "system_prompt_time_sensitive_score": 9.8})
+    Returns:
+        float: The final ranking_score score.
+    """
+    weights_per_score_dict = {"categorical_score": 0.70, "source_credibility_score": 0.20, "system_prompt_time_sensitive_score": 0.10}
+    ranking_score = 0.0
+    for key in scores_dict:
+        if key in weights_per_score_dict:
+            ranking_score += scores_dict[key] * weights_per_score_dict[key]
+    return ranking_score
+
 def get_perplexity_payload(question: str, return_images: bool = False):
     payload = {
         "model": perplexity_model,
@@ -424,6 +450,7 @@ top_headlines_agent_tools_any_category = [get_perplexity_response, write_json_fi
 top_headlines_agent_tools_general_category = [get_general_headlines_from_firebase_db, write_json_file, validate_json_file]
 top_headlines_image_agent_tools = [get_perplexity_response_with_image, check_image_url, read_json_file, write_json_file, validate_json_file]
 top_headlines_cloud_pusher_agent_tools = [push_headlines_to_firebase_db, push_top_headlines_to_pinecone, read_json_file, write_json_file, validate_json_file]
+top_headlines_ranker_agent_tools = [get_source_credibility_score, get_ranking_score, read_json_file, write_json_file, validate_json_file]
 
 transcript_generator_agent_tools = [write_text_file, read_json_file]
 podcast_transcript_critic_agent_tools = [read_text_file, web_search]

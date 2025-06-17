@@ -60,6 +60,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
             - urlToImage: The image URL of the headline.\n
             - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
             - published_at: Today's date \n
+            - timestamp_published_at: Exact time when the news article got published \n
          Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. If not, you need to fix it and then save it back.
         """
         prompt = ChatPromptTemplate.from_messages([
@@ -91,6 +92,7 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
             - urlToImage: The image URL of the headline.\n
             - sources: The list of citations/relevant sources of the headline. Can be around 2-3 sources per headline.\n
             - published_at: Today's date \n
+            - timestamp_published_at: Exact time when the news article got published \n
         Lastly, make sure the json file has a valid JSON format. Do not include any control characters in the json file. If not, you need to fix it and then save it back.
         """
         prompt = ChatPromptTemplate.from_messages([
@@ -111,13 +113,10 @@ def top_headlines_node(state: AgentState) -> Command[Literal[TOP_HEADLINES_SUPER
     if state.get("top_headlines_class") is not None:
         current_top_headlines = state["top_headlines_class"].copy()
         current_top_headlines["top_headlines_summary_json_file"] = summary_json_file
-    image_url_verified_string = "The image URL of the top headlines are not verified yet."
-    if category == "general":
-        image_url_verified_string = "The image URL of the top headlines are verified successfully."
     return Command(
         update={
             "messages": [
-                HumanMessage(content=f"Top headlines fetched and summarized successfully. The json file was saved but not pushed to the firebase database. {image_url_verified_string}", name=TOP_HEADLINES_AGENT)
+                HumanMessage(content=f"Top headlines fetched and summarized successfully. The json file was saved but not pushed to the firebase database. Please proceed with ranking the headlines.", name=TOP_HEADLINES_AGENT)
             ],
             "top_headlines_class": current_top_headlines,
             "category_class": CategoryClass(category=category, country=country, date=date),

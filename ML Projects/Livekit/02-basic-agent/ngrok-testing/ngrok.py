@@ -125,7 +125,7 @@ class QueryRequest(BaseModel):
     query: str
     user_id: Optional[str] = None  # Optional user identifier
     conversation_id: Optional[str] = None  # To identify different conversation threads
-    date: str  # Date in YYYY-MM-DD format
+    selected_date: str  # Date in YYYY-MM-DD format
 
 class QueryResponse(BaseModel):
     response: str
@@ -248,10 +248,10 @@ async def stream_agent_response(agent, input_text: str) -> AsyncGenerator[str, N
 async def process_query(request: QueryRequest):
     async def generate_stream():
         try:
-            logger.info(f"Received request - Query: {request.query}, Date: {request.date}, Conversation ID: {request.conversation_id}")
+            logger.info(f"Received request - Query: {request.query}, Date: {request.selected_date}, Conversation ID: {request.conversation_id}")
             
             query = request.query
-            date = request.date  # Use date from request instead of get_todays_date()
+            date = request.selected_date  # Use selected_date from request
             conversation_id = request.conversation_id or "default"
             
             # Get conversation history

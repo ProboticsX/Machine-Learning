@@ -66,8 +66,13 @@ def podcast_transcript_generator_node(state: AgentState) -> Command[Literal[PODC
             goto=PODCAST_TRANSCRIPT_CRITIC_AGENT,
         )
     
-    system_prompt = """You are given a podcast transcript and you need to come up with a suitable summary of the transcript in about 100-150 words mentioning what the podcasters talk about.\n
-                       Also, come up with a catchy title for the podcast in about 5-8 words. \n
+    system_prompt = """You are given a podcast transcript and you need to come up with a suitable summary of the transcript in about 25-30 words mentioning what the podcasters talk, mentioning the highlights.\n
+                       Also, come up with a catchy title for the podcast in about 5 words. \n
+                       An example podcast summary can be something like this: \n
+                           In this episode of Newspresso, Leslie and Marcus discuss about the forcasted US recession fears and its current impact on the economy. \n
+                           Moreover, they close the episode with recent updates on the Israel-Iran conflict.
+                       An example podcast title can be something like this: \n
+                           Forcasted US recession, Israel-Iran conflict
     """
     summary_and_title_generator_prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),

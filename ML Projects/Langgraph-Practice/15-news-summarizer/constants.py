@@ -11,6 +11,7 @@ TOP_HEADLINES_SUPERVISOR_AGENT = "top_headlines_supervisor_agent"
 TOP_HEADLINES_AGENT = "top_headlines_agent"
 TOP_HEADLINES_IMAGE_AGENT = "top_headlines_image_agent"
 TOP_HEADLINES_CLOUD_PUSHER_AGENT = "top_headlines_cloud_pusher_agent"
+TOP_HEADLINES_RANKER_AGENT = "top_headlines_ranker_agent"
 
 PODCAST_SUPERVISOR_AGENT = "podcast_supervisor_agent"
 PODCAST_AUDIO_GENERATOR_AGENT = "podcast_audio_generator_agent"

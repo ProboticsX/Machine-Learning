@@ -26,7 +26,7 @@ load_dotenv()
 
 
 class Assistant(Agent):
-    def __init__(self) -> None:
+    def __init__(self, selected_date: Optional[str] = None) -> None:
         super().__init__(
             instructions="""
                     Your name is Leslie and you are a news podcaster for an app named "Newspresso". \n
@@ -38,6 +38,7 @@ class Assistant(Agent):
                     If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
                     """)
         self.tfidf = TfidfVectorizer(max_features=1000)
+        self.selected_date = selected_date
 
     async def on_enter(self):
         # when the agent is added to the session, it'll generate a reply
@@ -76,9 +77,9 @@ class Assistant(Agent):
         Returns:
             str: Answer to the user's question""" 
         query = user_transcript
-        date = await self.get_todays_date()
+        date = self.selected_date if self.selected_date else await self.get_todays_date()
         headlines = await self.get_relevant_headlines(query=query, top_k=1, date=date)
-        
+        print("date in get_answer_from_user_query", date)
         # RAG Grader Agent
         prompt = ChatPromptTemplate.from_messages([
             ("system", rag_grader_system_prompt),
@@ -304,18 +305,31 @@ async def entrypoint(ctx: agents.JobContext):
     ctx.log_context_fields = {
         "room": ctx.room.name,
     }
+    
+    # Get the selected date from room metadata if available
+    selected_date = ctx.room.metadata.get("selected_date") if ctx.room.metadata else None
+    print("selected_date in entrypoint", selected_date)
+    print("room metadata in user_input_transcribed", ctx.room.metadata)
     session = AgentSession(
         stt=openai.STT(),
         llm=openai.LLM(model="gpt-4.1-mini"), #openai.LLM(model="gpt-4.1-mini"), #openai.realtime.RealtimeModel(),
         tts=google.TTS(gender="female", voice_name="en-US-Chirp-HD-F"),
         vad=silero.VAD(session=None, opts=None).load(),
         turn_detection=MultilingualModel(),
-
     )
 
     @session.on("user_input_transcribed")
     def on_user_input_transcribed(event: UserInputTranscribedEvent):
         print(f"User input transcribed: {event.transcript}, final: {event.is_final}")
+        if event.is_final:
+            # Get the selected date from room metadata if available
+            selected_date = ctx.room.metadata.get("selected_date") if ctx.room.metadata else None
+            # Update the Assistant's selected_date
+            session._agent.selected_date = selected_date
+            print("room metadata in user_input_transcribed", ctx.room.metadata)
+            print("selected_date in user_input_transcribed", selected_date)
+
+
     # log metrics as they are emitted, and total usage after session is over
     # usage_collector = metrics.UsageCollector()
 
@@ -361,7 +375,7 @@ async def entrypoint(ctx: agents.JobContext):
 
     await session.start(
         room=ctx.room,
-        agent=Assistant(),
+        agent=Assistant(selected_date=selected_date),
     )
     await ctx.connect()
 

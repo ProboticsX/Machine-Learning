@@ -33,12 +33,30 @@ PARTICIPANT_ID = "my name"
 
 @app.route('/getToken')
 def getToken():
+#   token = api.AccessToken(os.getenv('LIVEKIT_API_KEY'),
+#                         os.getenv('LIVEKIT_API_SECRET')) \
+#     .with_identity("identity") \
+#     .with_name("name") \
+#     .with_grants(api.VideoGrants(
+#         room_join=True,
+#         room="my-room",
+#         can_update_own_metadata=True)) \
+#         .with_room_config(
+#             api.RoomConfiguration(
+#                 agents=[
+#                     api.RoomAgentDispatch(
+#                         agent_name="test-agent", metadata='{"selected_date": "2025-07-15"}'
+#                     )
+#                 ],
+#             ),
+#         )
   token = api.AccessToken(os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET')) \
     .with_identity(f"{PARTICIPANT_ID}") \
     .with_name(f"{ROOM_ID}") \
     .with_grants(api.VideoGrants(
         room_join=True,
         room="my-room",
+        can_update_own_metadata=True
     ))
   token_str = token.to_jwt()
   print(f"Generated token: {token_str}")
