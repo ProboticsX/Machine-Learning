@@ -2,7 +2,7 @@ import os
 import chromadb
 import warnings
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 warnings.filterwarnings("ignore")
 

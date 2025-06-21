@@ -428,6 +428,16 @@ def fetch_news_from_the_news_api(category: str, date: str):
         return json.dumps({"error": f"Error parsing JSON response: {str(e)}"})
     
 
+def get_current_time_iso():
+    """
+    Returns the current time in ISO 8601 format with UTC timezone.
+    Format: YYYY-MM-DDThh:mm:ssZ
+    
+    Returns:
+        str: Current time in ISO 8601 format with UTC timezone
+    """
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 project_root = Path(__file__).parent.parent.parent
 
 transcript_dir = project_root / "data" / "transcripts"

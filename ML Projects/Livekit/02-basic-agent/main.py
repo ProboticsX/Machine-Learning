@@ -21,12 +21,17 @@ from typing_extensions import TypedDict
 import requests
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
+import asyncio
+
+# Global variables
+selected_date = None
+_active_tasks = set()
 
 load_dotenv()
 
 
 class Assistant(Agent):
-    def __init__(self, selected_date: Optional[str] = None) -> None:
+    def __init__(self) -> None:
         super().__init__(
             instructions="""
                     Your name is Leslie and you are a news podcaster for an app named "Newspresso". \n
@@ -38,13 +43,14 @@ class Assistant(Agent):
                     If the question is not answerable, you need to respond in a polite manner to the user that the question cannot be answered.
                     """)
         self.tfidf = TfidfVectorizer(max_features=1000)
-        self.selected_date = selected_date
 
     async def on_enter(self):
         # when the agent is added to the session, it'll generate a reply
         # according to its instructions
         # self.session.generate_reply()
         self.session.say("Hey! I'm Leslie from Newspresso! How can I assist you today?")
+        
+    
     
     # to hang up the call as part of a function call
     # @function_tool
@@ -56,16 +62,6 @@ class Assistant(Agent):
     #     logger.info("Closing session from function tool")
     #     await self.session.generate_reply(instructions="say goodbye to the user")
     #     self._closing_task = asyncio.create_task(self.session.aclose())
-    
-    @function_tool
-    async def get_todays_date(self) -> str:
-        """Gets the today's date.
-        Returns:
-            str: The today's date in the format of YYYY-MM-DD.
-        """
-        today = datetime.now().strftime("%Y-%m-%d")
-        print(f"get_todays_date: {today}")
-        return f"{today}"
 
     @function_tool
     async def get_answer_from_user_query(self, user_transcript: str) -> str:
@@ -77,9 +73,11 @@ class Assistant(Agent):
         Returns:
             str: Answer to the user's question""" 
         query = user_transcript
-        date = self.selected_date if self.selected_date else await self.get_todays_date()
-        headlines = await self.get_relevant_headlines(query=query, top_k=1, date=date)
+        global selected_date
+        date = selected_date
         print("date in get_answer_from_user_query", date)
+        headlines = await self.get_relevant_headlines(query=query, top_k=1, date=date)
+        
         # RAG Grader Agent
         prompt = ChatPromptTemplate.from_messages([
             ("system", rag_grader_system_prompt),
@@ -295,7 +293,7 @@ class Assistant(Agent):
 
     def get_perplexity_headers(self):
         headers = {
-            "Authorization": f"Bearer {os.getenv("PERPLEXITY_API_KEY")}",
+            "Authorization": f"Bearer {os.getenv('PERPLEXITY_API_KEY')}",
             "Content-Type": "application/json"
         }
         return headers
@@ -306,10 +304,10 @@ async def entrypoint(ctx: agents.JobContext):
         "room": ctx.room.name,
     }
     
-    # Get the selected date from room metadata if available
-    selected_date = ctx.room.metadata.get("selected_date") if ctx.room.metadata else None
-    print("selected_date in entrypoint", selected_date)
-    print("room metadata in user_input_transcribed", ctx.room.metadata)
+    # Initialize global selected_date with today's date
+    global selected_date
+    selected_date = get_todays_date()
+    
     session = AgentSession(
         stt=openai.STT(),
         llm=openai.LLM(model="gpt-4.1-mini"), #openai.LLM(model="gpt-4.1-mini"), #openai.realtime.RealtimeModel(),
@@ -321,15 +319,6 @@ async def entrypoint(ctx: agents.JobContext):
     @session.on("user_input_transcribed")
     def on_user_input_transcribed(event: UserInputTranscribedEvent):
         print(f"User input transcribed: {event.transcript}, final: {event.is_final}")
-        if event.is_final:
-            # Get the selected date from room metadata if available
-            selected_date = ctx.room.metadata.get("selected_date") if ctx.room.metadata else None
-            # Update the Assistant's selected_date
-            session._agent.selected_date = selected_date
-            print("room metadata in user_input_transcribed", ctx.room.metadata)
-            print("selected_date in user_input_transcribed", selected_date)
-
-
     # log metrics as they are emitted, and total usage after session is over
     # usage_collector = metrics.UsageCollector()
 
@@ -375,13 +364,49 @@ async def entrypoint(ctx: agents.JobContext):
 
     await session.start(
         room=ctx.room,
-        agent=Assistant(selected_date=selected_date),
+        agent=Assistant(),
     )
     await ctx.connect()
+    
+    # Register text stream handler after session is started
+    ctx.room.register_text_stream_handler(
+        "date_update",
+        handle_text_stream
+    )
+
+def handle_text_stream(reader, participant_identity):
+    task = asyncio.create_task(async_handle_text_stream(reader, participant_identity))
+    _active_tasks.add(task)
+    task.add_done_callback(lambda t: _active_tasks.remove(t))
+
+
+async def async_handle_text_stream(reader, participant_identity):
+    global selected_date
+    info = reader.info
+
+    print(
+        f'Text stream received from {participant_identity}\n'
+        f'  Info: {info}\n'
+    )
+
+    async for chunk in reader:
+        print(f"Next chunk: {chunk}")
+        selected_date = chunk
+        print(f"Global selected_date updated to: {selected_date}")
+
+
+
+def get_todays_date() -> str:
+        """Gets the today's date.
+        Returns:
+            str: The today's date in the format of YYYY-MM-DD.
+        """
+        today = datetime.now().strftime("%Y-%m-%d")
+        print(f"get_todays_date: {today}")
+        return f"{today}"
 
 def prewarm_fnc(proc: JobProcess):
     pass
-
 
 logger = logging.getLogger("basic-agent")
 logger.setLevel(logging.INFO)

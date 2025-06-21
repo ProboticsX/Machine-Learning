@@ -66,7 +66,7 @@ def make_top_headlines_supervisor_node(llm, members, role_of_each_worker) -> str
 
 role_of_each_top_headlines_worker = {
     TOP_HEADLINES_AGENT: "Agent who is tasked with providing the summary of the top headlines. Moreover, the summary is written to a json file.",
-    TOP_HEADLINES_RANKER_AGENT: "Agent who is tasked with ranking the headlines based on the evaluation criterion defined.",
+    TOP_HEADLINES_RANKER_AGENT: "Agent who is tasked with ranking the headlines based on the evaluation criterion defined. Please make sure you don't skip ranking any of the headline.",
     TOP_HEADLINES_IMAGE_AGENT: "Agent who is tasked with checking the image URL of the top headlines. Moreover, the image URL is written to a json file if they need to be updated.",
     TOP_HEADLINES_CLOUD_PUSHER_AGENT: "Agent who is tasked with pushing the json file to the firebase database and pinecone database (In case the category is not general). The json file is provided to you.",
 }
